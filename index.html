@@ -382,8 +382,8 @@ const SB_URL = 'https://jofzimnrgkzvlawuuivp.supabase.co', SB_KEY = 'eyJhbGciOiJ
 const EMAILS = {Jessica:'jessica@nextravel.app', Roberto:'roberto@nextravel.app', Alessandro:'alessandro@nextravel.app', Lia:'lia@nextravel.app', Letizia:'letizia@nextravel.app'};
 const PINLEN = SB ? 6 : 4;
 /* ---------------- AVVISO AGGIORNAMENTI ---------------- */
-const APP_VERSION = '20261006-105325';
-const APP_NOVITA = ["Riepilogo anno: sotto i rimborsi e il guadagno ora vedi quanto è ancora da ricevere."];
+const APP_VERSION = '20261006-105608';
+const APP_NOVITA = ["Riepilogo anno: sotto i rimborsi e il guadagno ora vedi quanto è ancora da ricevere.","\"Chi ha fatto cosa\" è più preciso: dice esattamente cosa è cambiato (es. \"Uscita segnata come PAGATA il 05/10/2026\", \"Importo: 150,00 € → 191,00 €\")."];
 let UPDATE = null;   // {version, novita} quando sul sito c'è una versione più nuova
 async function checkUpdate(){
   if(!SB || location.protocol==='file:') return;
@@ -857,7 +857,7 @@ function editFornitore(id, preset){
       if(f){
         const before=JSON.stringify(f);
         Object.assign(f,data);
-        saveForn(f,'✓ Scheda fornitore modificata', f.nome, ()=>{ const i=DB.fornitori.findIndex(x=>x.id===f.id); const st=DB.fornitori[i].storico; DB.fornitori[i]=JSON.parse(before); DB.fornitori[i].storico=st; saveForn(DB.fornitori[i],'Modifica annullata', f.nome); });
+        saveForn(f,'✓ Scheda fornitore modificata', conCambi(f.nome, cambi(JSON.parse(before), data, LAB_F)), ()=>{ const i=DB.fornitori.findIndex(x=>x.id===f.id); const st=DB.fornitori[i].storico; DB.fornitori[i]=JSON.parse(before); DB.fornitori[i].storico=st; saveForn(DB.fornitori[i],'Modifica annullata', f.nome); });
       } else {
         const nf={id:uid('f'), ...data, storico:[], creato:nowIso()};
         DB.fornitori.push(nf);
@@ -1202,6 +1202,36 @@ function groupUscite(pag){
   }
   return out;
 }
+/* ---- descrizione precisa delle modifiche (per "Chi ha fatto cosa") ---- */
+const fmtV = {
+  soldi: v => (v===null||v===undefined||v==='')?'(vuoto)':eur(v),
+  data:  v => v?fdate(v):'(vuota)',
+  si:    v => v?'sì':'no',
+  testo: v => (v===null||v===undefined||String(v).trim()==='')?'(vuoto)':'«'+String(v).trim()+'»',
+};
+const fmtTipo = v => v==='acconto'?'acconto':'saldo';
+const fmtCat = v => (CATMAP[v]||CATMAP.altro).l;
+const LAB_P={fornitore:['Fornitore','testo'],importo:['Importo','soldi'],tipo:['Tipo',fmtTipo],pagato:['Pagato','si'],dataPagamento:['Data pagamento','data'],scadenza:['Da pagare entro','data'],categoria:['Categoria',fmtCat],localita:['Località','testo'],fattura:['Fattura','testo'],proforma:['Pro-forma','testo'],ragioneSociale:['Ragione sociale','testo'],note:['Note','testo']};
+const LAB_I={tipo:['Tipo',fmtTipo],importo:['Importo','soldi'],ricevuto:['Arrivati','si'],dataIncasso:['Data arrivo','data'],scadenza:['Attesi entro','data'],proforma:['Pro-forma del','data'],fattura:['Fattura','testo'],note:['Note','testo']};
+const LAB_R={descrizione:['Da chi / per cosa','testo'],importo:['Importo','soldi'],ricevuto:['Arrivato','si'],data:['Data arrivo','data'],scadenza:['Atteso entro','data'],note:['Note','testo']};
+const LAB_G={numero:['Numero','testo'],cliente:['Cliente','testo'],rif:['Riferimento','testo'],dataInizio:['Partenza','data'],dataFine:['Rientro','data'],prezzoTotale:['Totale pattuito','soldi'],scadenzaSaldo:['Scadenza saldo','data'],stato:['Stato','testo'],referente:['Gruppo di','testo'],destinazione:['Destinazione','testo'],pax:['Pax','testo'],anno:['Anno','testo'],emailCliente:['Email cliente','testo'],lingua:['Lingua solleciti','testo'],note:['Note','testo']};
+const LAB_F={nome:['Nome','testo'],categoria:['Categoria',fmtCat],localita:['Località','testo'],ragioneSociale:['Ragione sociale','testo'],iban:['IBAN','testo'],intestatario:['Intestatario','testo'],banca:['Banca','testo'],bic:['BIC','testo'],piva:['P.IVA / CF','testo'],indirizzo:['Indirizzo','testo'],referente:['Referente','testo'],telefono:['Telefono','testo'],email:['Email','testo'],alias:['Altri nomi',v=>fmtV.testo((v||[]).join(', '))],note:['Note','testo']};
+function cambi(prima, dopo, lab, salta){
+  const out=[];
+  for(const [k,[l,f]] of Object.entries(lab)){
+    if(!(k in dopo) || (salta||[]).includes(k)) continue;
+    const fn=typeof f==='function'?f:fmtV[f];
+    const a=fn(prima?prima[k]:undefined), b=fn(dopo[k]);
+    if(a!==b) out.push(`${l}: ${a} → ${b}`);
+  }
+  return out;
+}
+/* titolo: "segnata come PAGATA il …" se è cambiato lo stato, altrimenti "modificata" */
+function titoloStato(nome, g, prima, dopo, si, no, data){
+  if(!!prima===!!dopo) return `✓ ${nome} modificat${g}`;
+  return dopo ? `✓ ${nome} segnat${g} come ${si}${data?' il '+fdate(data):' (senza data)'}` : `${nome} segnat${g} come ${no}`;
+}
+const conCambi = (desc, ch) => desc + (ch.length ? ' — ' + ch.join(' · ') : ' — nessun dato cambiato');
 const iDesc = i => `${i.tipo==='saldo'?'Saldo':'Acconto'} · ${eur(i.importo)}`;
 
 /* ---------------- calcoli ---------------- */
@@ -1706,7 +1736,13 @@ function editGruppo(id){
       const data={numero:String(v.numero).trim(),cliente:v.cliente||'',rif:v.rif||'',dataInizio:v.dataInizio||null,dataFine:v.dataFine||v.dataInizio||null,
         prezzoTotale:v.prezzoTotale,scadenzaSaldo:v.scadenzaSaldo||null,stato:v.stato||'aperto',referente:v.referente||'',destinazione:v.destinazione||'',
         pax:v.pax?parseInt(v.pax,10):null,anno:parseInt(v.anno,10)||anno,emailCliente:v.emailCliente||'',lingua:v.lingua||'de',note:v.note||''};
-      if(g){ withUndo(g,()=>Object.assign(g,data),'✓ Dati del gruppo modificati', `${data.rif||data.cliente}`); }
+      if(g){
+        const tt = g.stato!==data.stato ? `✓ Gruppo segnato come ${String(data.stato).toUpperCase()}` : '✓ Dati del gruppo modificati';
+        const chG = cambi({...g, lingua:g.lingua||'de'}, data, LAB_G, g.stato!==data.stato?['stato']:[]);
+        if(!chG.length && g.stato===data.stato) return;
+        const dd = conCambi(`${data.rif||data.cliente}`, chG);
+        withUndo(g,()=>Object.assign(g,data), tt, dd);
+      }
       else {
         const ng={id:uid('g'),...data,dateTesto:'',incassi:[],pagamenti:[],rimborsi:[],solleciti:[],creato:nowIso()};
         touch(ng); DB.gruppi.push(ng);
@@ -1744,7 +1780,11 @@ function editIncasso(gid,iid,preset){
     onSave:v=>{
       const data={tipo:v.tipo,importo:v.importo,ricevuto:v.ricevuto!==false,dataIncasso:v.ricevuto!==false?(v.dataIncasso||null):null,
         scadenza:v.ricevuto===false?(v.scadenza||null):null,proforma:v.proforma||null,fattura:v.fattura||'',note:v.note||''};
-      withUndo(g,()=>{ if(i) Object.assign(i,data); else (g.incassi=g.incassi||[]).push({id:uid('i'),...data}); }, i?'✓ Entrata modificata':'✓ Entrata aggiunta', iDesc(data)+(data.ricevuto?' · arrivata':' · attesa'));
+      const tt = i ? titoloStato('Entrata','a', i.ricevuto!==false, data.ricevuto, 'ARRIVATA', 'ATTESA', data.dataIncasso) : '✓ Entrata aggiunta';
+      const chI = i ? cambi(i, data, LAB_I, ['ricevuto']) : [];
+      if(i && !chI.length && tt.includes('modificat')) return;
+      const dd = i ? conCambi(iDesc(data), chI) : iDesc(data)+(data.ricevuto?' · arrivata':' · attesa');
+      withUndo(g,()=>{ if(i) Object.assign(i,data); else (g.incassi=g.incassi||[]).push({id:uid('i'),...data}); }, tt, dd);
     },
     onDelete: i ? ()=>{ closeForm(); withUndo(g,()=>{ g.incassi=g.incassi.filter(x=>x.id!==i.id); },'Entrata eliminata', iDesc(i)); } : null
   });
@@ -1791,7 +1831,11 @@ function editPagamento(gid,pid,preset){
         fattura:v.fattura||'',proforma:v.proforma||'',ragioneSociale:v.ragioneSociale||'',note:v.note||'',
         categoria:v.categoria||guessCat({fornitore:v.fornitore}), localita:(v.localita||'').trim(),
         fornitoreId:(fornByName(v.fornitore)||{}).id||null};
-      withUndo(g,()=>{ if(p) Object.assign(p,data); else (g.pagamenti=g.pagamenti||[]).push({id:uid('p'),...data}); }, p?'✓ Uscita modificata':'✓ Uscita aggiunta', pDesc(data)+(data.pagato?' · pagata':' · da pagare'));
+      const tt = p ? titoloStato('Uscita','a', !!p.pagato, data.pagato, 'PAGATA', 'DA PAGARE', data.dataPagamento) : '✓ Uscita aggiunta';
+      const chP = p ? cambi({...p, categoria:catOf(p), localita:locOf(p)}, data, LAB_P, ['pagato']) : [];
+      if(p && !chP.length && tt.includes('modificat')) return;
+      const dd = p ? conCambi(pDesc(data), chP) : pDesc(data)+(data.pagato?' · pagata':' · da pagare');
+      withUndo(g,()=>{ if(p) Object.assign(p,data); else (g.pagamenti=g.pagamenti||[]).push({id:uid('p'),...data}); }, tt, dd);
     },
     onDelete: p ? ()=>{ closeForm(); withUndo(g,()=>{ g.pagamenti=g.pagamenti.filter(x=>x.id!==p.id); },'Uscita eliminata', pDesc(p)); } : null
   });
@@ -1827,7 +1871,11 @@ function editRimborso(gid,rid){
     ],
     onSave:v=>{
       const data={descrizione:v.descrizione,importo:v.importo,ricevuto:v.ricevuto!==false,data:v.ricevuto!==false?(v.data||null):null,scadenza:v.ricevuto===false?(v.scadenza||null):null,note:v.note||''};
-      withUndo(g,()=>{ if(r) Object.assign(r,data); else (g.rimborsi=g.rimborsi||[]).push({id:uid('r'),...data}); }, r?'✓ Rimborso modificato':'✓ Rimborso aggiunto', `${data.descrizione} · ${eur(data.importo)}`);
+      const tt = r ? titoloStato('Rimborso','o', r.ricevuto!==false, data.ricevuto, 'ARRIVATO', 'DA RICEVERE', data.data) : '✓ Rimborso aggiunto';
+      const chR = r ? cambi(r, data, LAB_R, ['ricevuto']) : [];
+      if(r && !chR.length && tt.includes('modificat')) return;
+      const dd = r ? conCambi(`${data.descrizione} · ${eur(data.importo)}`, chR) : `${data.descrizione} · ${eur(data.importo)}${data.ricevuto?' · arrivato':' · da ricevere'}`;
+      withUndo(g,()=>{ if(r) Object.assign(r,data); else (g.rimborsi=g.rimborsi||[]).push({id:uid('r'),...data}); }, tt, dd);
     },
     onDelete: r ? ()=>{ closeForm(); withUndo(g,()=>{ g.rimborsi=g.rimborsi.filter(x=>x.id!==r.id); },'Rimborso eliminato', `${r.descrizione} · ${eur(r.importo)}`); } : null
   });
