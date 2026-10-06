@@ -259,6 +259,7 @@ table.t tr.forn-tot td{font-size:14px;color:var(--ink2);font-weight:700;backgrou
 ul.novita{margin:6px 0 4px;padding-left:22px;line-height:1.6}
 ul.novita li{margin:6px 0}
 
+.orange-t{color:var(--orange)!important;font-weight:600}
 /* ---------- fornitori ---------- */
 .fcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:20px}
 .iban{font-family:ui-monospace,Consolas,"Courier New",monospace;font-size:21px;font-weight:700;letter-spacing:.5px;word-break:break-all;font-variant-numeric:tabular-nums}
@@ -381,8 +382,8 @@ const SB_URL = 'https://jofzimnrgkzvlawuuivp.supabase.co', SB_KEY = 'eyJhbGciOiJ
 const EMAILS = {Jessica:'jessica@nextravel.app', Roberto:'roberto@nextravel.app', Alessandro:'alessandro@nextravel.app', Lia:'lia@nextravel.app', Letizia:'letizia@nextravel.app'};
 const PINLEN = SB ? 6 : 4;
 /* ---------------- AVVISO AGGIORNAMENTI ---------------- */
-const APP_VERSION = '20261006-101829';
-const APP_NOVITA = ["L\u0027app ora si trova su GitHub: gli aggiornamenti arrivano subito, senza limiti.","Rimborsi: puoi indicare se sono già arrivati o se li stai aspettando (con la data prevista).","I rimborsi da ricevere compaiono nella pagina \"Oggi\" e in \"Pagamenti e incassi\", con il pulsante \"Segna come arrivato\".","Un gruppo con rimborsi ancora da ricevere non si può chiudere."];
+const APP_VERSION = '20261006-105325';
+const APP_NOVITA = ["Riepilogo anno: sotto i rimborsi e il guadagno ora vedi quanto è ancora da ricevere."];
 let UPDATE = null;   // {version, novita} quando sul sito c'è una versione più nuova
 async function checkUpdate(){
   if(!SB || location.protocol==='file:') return;
@@ -1982,8 +1983,8 @@ function viewRiepilogo(){
     <thead><tr><th>Gruppo</th><th>Cliente</th><th>Date</th><th class="n">Entrate</th><th class="n">Uscite</th><th class="n">Rimborsi</th><th class="n">Guadagno</th><th class="n">Margine</th><th>Stato</th></tr></thead>
     <tbody>${rows.map(({g,c})=>{const st=groupStatus(g,c);return `<tr class="clk" onclick="go('gruppo/${esc(g.id)}')" ${g.stato==='annullato'?'style="opacity:.55"':''}>
       <td><b>${esc(g.numero)}</b></td><td>${esc(gName(g))}</td><td class="s">${esc(gDates(g))}</td>
-      <td class="n">${eur(c.entrate)}</td><td class="n">${eur(c.uscite)}</td><td class="n">${eur(c.rimborsi)}</td>
-      <td class="n"><b class="${c.guadagno<0?'late':'ok'}">${eur(c.guadagno)}</b></td>
+      <td class="n">${eur(c.entrate)}</td><td class="n">${eur(c.uscite)}</td><td class="n">${eur(c.rimborsi)}${c.rimborsiAttesi>0?`<div class="s orange-t">di cui ${eur(c.rimborsiAttesi)} da ricevere</div>`:""}</td>
+      <td class="n"><b class="${c.guadagno<0?'late':'ok'}">${eur(c.guadagno)}</b>${(c.rimborsiAttesi>0||c.entrateAttese>0)?`<div class="s">di cui ${eur(c.rimborsiAttesi+c.entrateAttese)} ancora da incassare</div>`:""}</td>
       <td class="n">${c.margine!=null?c.margine.toFixed(1).replace('.',',')+'%':'—'}</td>
       <td><span class="pill ${st.cls}">${esc(st.txt)}</span></td></tr>`}).join('')}</tbody>
     <tfoot><tr><td colspan="3">Totale (esclusi annullati)</td><td class="n">${eur(ent)}</td><td class="n">${eur(usc)}</td><td class="n">${eur(rim)}</td><td class="n">${eur(gu)}</td><td class="n">${ent?(gu/ent*100).toFixed(1).replace('.',',')+'%':''}</td><td></td></tr></tfoot>
