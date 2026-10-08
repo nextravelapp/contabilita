@@ -427,8 +427,8 @@ const SB_URL = 'https://jofzimnrgkzvlawuuivp.supabase.co', SB_KEY = 'eyJhbGciOiJ
 const EMAILS = {Jessica:'jessica@nextravel.app', Roberto:'roberto@nextravel.app', Alessandro:'alessandro@nextravel.app', Lia:'lia@nextravel.app', Letizia:'letizia@nextravel.app'};
 const PINLEN = SB ? 6 : 4;
 /* ---------------- AVVISO AGGIORNAMENTI ---------------- */
-const APP_VERSION = '20261008-085748';
-const APP_NOVITA = ["L\u0027app ora usa tutta la larghezza dello schermo.","Presenze: la tabella entra tutta nello schermo, senza barre di scorrimento."];
+const APP_VERSION = '20261008-090129';
+const APP_NOVITA = ["Presenze: tolta la colonna Riepilogo, i giorni hanno più spazio."];
 let UPDATE = null;   // {version, novita} quando sul sito c'è una versione più nuova
 async function checkUpdate(){
   if(!SB || location.protocol==='file:') return;
@@ -1131,13 +1131,13 @@ function viewPresenze(){
     <button class="pcode" title="Giorni in cui non era in forza (assunto o cessato nel mese)" onclick="setPRed()" style="color:#fff;background:#e00000;border-color:#e00000">■<small>non in forza</small></button></div>
   <div class="pwrap"><table class="ptab" id="presTable"><thead><tr><th class="pn">DIPENDENTI</th>`;
   for(let d=1; d<=31; d++){ const wd=d<=nd?new Date(PY,PMN-1,d).getDay():-1; h+=`<th class="pd ${wd===0?'sun':''}">${d<=nd?d:''}<small>${d<=nd?WDL[wd]:''}</small></th>`; }
-  h+=`<th class="pm">BASE</th><th class="pm">RIMBORSO<br>SPESE</th><th class="pm">TOTALE</th><th class="pr">Riepilogo</th></tr></thead><tbody>`;
+  h+=`<th class="pm">BASE</th><th class="pm">RIMBORSO<br>SPESE</th><th class="pm">TOTALE</th></tr></thead><tbody>`;
   v.rows.forEach((r,i)=>{
     h+=`<tr><td class="pn"><span>${esc(r.n)}</span><span class="ptl"><button onclick="spostaDip(${i},-1)" title="Su">↑</button><button onclick="spostaDip(${i},1)" title="Giù">↓</button><button onclick="togliDip(${i})" title="Togli dal mese">✕</button></span></td>`;
     for(let d=1; d<=31; d++){ const wd=d<=nd?new Date(PY,PMN-1,d).getDay():-1; const c=(r.d||{})[d]||''; const red=r.red&&r.red[d];
       h+=`<td class="d ${wd===0?'sun':''} ${d>nd?'off':''}" data-i="${i}" data-d="${d}" style="color:${red?'#fff':pCodeColor(c)};${red?'background:#e00000':''}">${d<=nd?esc(c):''}</td>`; }
     const t=totRiga(r);
-    h+=`<td class="pm m" onclick="modSoldi(${i},'base')">${r.base!=null&&r.base!==''?eur(r.base):''}</td><td class="pm m" onclick="modSoldi(${i},'rimb')">${r.rimb!=null&&r.rimb!==''?eur(r.rimb):''}</td><td class="pm">${t!==null?eur(t):''}</td><td class="pr s">${esc(riassunto(contaRiga(r)))}</td></tr>`;
+    h+=`<td class="pm m" onclick="modSoldi(${i},'base')">${r.base!=null&&r.base!==''?eur(r.base):''}</td><td class="pm m" onclick="modSoldi(${i},'rimb')">${r.rimb!=null&&r.rimb!==''?eur(r.rimb):''}</td><td class="pm">${t!==null?eur(t):''}</td></tr>`;
   });
   h+=`</tbody></table></div>
   <div class="row" style="margin-top:12px"><input class="pin" id="pAddName" list="pNomi" placeholder="Aggiungi dipendente…"><datalist id="pNomi">${nomiDipendenti().map(n=>`<option value="${esc(n)}">`).join('')}</datalist><button class="btn" onclick="aggiungiDip()">＋ Aggiungi</button></div>
