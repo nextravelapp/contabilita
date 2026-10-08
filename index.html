@@ -25,7 +25,7 @@ a{color:inherit}
 
 /* ---------- header ---------- */
 header.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
-.top-in{max-width:1200px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.top-in{max-width:none;margin:0;padding:10px 28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .logo{height:46px;width:auto;display:block;cursor:pointer}
 .app-name{font-size:14px;color:var(--mute);border-left:1px solid var(--line);padding-left:14px;line-height:1.2}
 .app-name b{display:block;color:var(--ink);font-size:16px}
@@ -35,12 +35,12 @@ header.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;t
 .savestate{font-size:14px;color:var(--mute);display:flex;align-items:center;gap:6px}
 .savestate .dot{width:9px;height:9px;border-radius:50%;background:var(--green)}
 .savestate.warn .dot{background:var(--orange)}
-nav.tabs{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;gap:6px;overflow-x:auto}
+nav.tabs{max-width:none;margin:0;padding:0 28px;display:flex;flex-wrap:wrap;gap:2px 6px}
 nav.tabs a{display:flex;align-items:center;gap:8px;padding:12px 18px;text-decoration:none;font-weight:600;color:var(--ink2);border-bottom:3px solid transparent;white-space:nowrap;font-size:17px}
 nav.tabs a.on{color:var(--ink);border-color:var(--red)}
 nav.tabs .badge{background:var(--red);color:#fff;border-radius:20px;font-size:13px;padding:1px 8px}
 
-main{max-width:1200px;margin:0 auto;padding:24px 20px 80px}
+main{max-width:none;margin:0;padding:24px 28px 80px}
 h1{font-size:28px;margin:0 0 4px}
 h2{font-size:21px;margin:30px 0 12px;display:flex;align-items:center;gap:10px}
 .sub{color:var(--mute);margin:0 0 20px}
@@ -185,7 +185,7 @@ details.more summary{cursor:pointer;font-weight:700;color:var(--ink2);padding:8p
 #toast button{background:#fff;color:var(--ink);border:0;border-radius:10px;padding:8px 14px;font-weight:800;cursor:pointer}
 
 /* ---------- banner ---------- */
-.banner{max-width:1200px;margin:16px auto 0;padding:0 20px}
+.banner{max-width:none;margin:16px 0 0;padding:0 28px}
 .banner .in{background:var(--blue-bg);border:1px solid #c9d7f5;color:#1c3f8a;border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .banner .in.orange{background:var(--orange-bg);border-color:#f6dcb3;color:#8a4b00}
 
@@ -277,26 +277,28 @@ table.t.riep td.n{white-space:nowrap}
 .pcode[style*="background"] small{color:#fff}
 .pcode:hover{border-color:var(--ink)}
 .pwrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px}
-table.ptab{border-collapse:collapse;font-size:14px;user-select:none;min-width:100%}
+table.ptab{border-collapse:collapse;font-size:14px;user-select:none;width:100%;table-layout:fixed}
 table.ptab th,table.ptab td{border:1px solid #d9dce2;text-align:center;padding:0}
 table.ptab th{background:#fafbfc;font-size:12px;color:var(--ink2);padding:3px 0}
 table.ptab th.pd small{display:block;font-size:10px;color:var(--mute);font-weight:600}
 table.ptab th.sun,table.ptab td.sun{background:#fde8e6}
-table.ptab td.d{width:30px;min-width:30px;height:34px;font-weight:800;cursor:cell;font-size:13px}
+table.ptab td.d{height:34px;font-weight:800;cursor:cell;font-size:13px;overflow:hidden;white-space:nowrap}
 table.ptab td.off{background:#eef0f3;cursor:default}
 table.ptab td.psel{outline:3px solid var(--blue);outline-offset:-3px;background:#dbe6fb}
 table.ptab td.pin{background:#dbe6fb}
-table.ptab .pn{text-align:left;padding:4px 8px;white-space:nowrap;font-weight:700;min-width:210px;position:sticky;left:0;background:var(--card);z-index:1}
+table.ptab .pn{text-align:left;padding:4px 8px;white-space:nowrap;font-weight:700;width:230px;background:var(--card);overflow:hidden;text-overflow:ellipsis}
 table.ptab th.pn{background:#fafbfc}
-table.ptab td.pn{display:flex;align-items:center;gap:6px;justify-content:space-between;height:34px;box-sizing:border-box}
-.ptl{display:flex;gap:2px;opacity:.25}
+table.ptab td.pn{position:relative;padding-right:70px;height:34px}
+.ptl{position:absolute;right:4px;top:50%;transform:translateY(-50%);display:flex;gap:0;opacity:.25}
 table.ptab tr:hover .ptl{opacity:1}
 .ptl button{border:0;background:transparent;cursor:pointer;font-size:13px;padding:2px 4px;color:var(--ink2)}
-table.ptab .pm{min-width:86px;padding:0 6px;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.ptab .pm{width:96px;padding:0 6px;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden}
 table.ptab th.pm{text-align:center}
 table.ptab td.m{cursor:pointer}
 table.ptab td.m:hover{background:#f3f6fb}
-table.ptab .pr{min-width:170px;text-align:left;padding:0 8px;white-space:nowrap}
+table.ptab .pr{width:170px;text-align:left;padding:0 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:1400px){table.ptab .pr{display:none}}
+@media (max-width:1100px){table.ptab{min-width:1050px}}
 input.pin{height:46px;border:1.5px solid #d5d8de;border-radius:10px;padding:0 14px;min-width:260px;font-size:16px}
 .pbottom{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:10px}
 .pbottom h2{font-size:18px;margin:14px 0 8px}
@@ -342,7 +344,7 @@ table.t tr.flash td{animation:flashRow 2.6s ease-out}
 @media (max-width:640px){.ol-txt{display:none}}
 
 /* ---------- testata gruppo fissa ---------- */header.top{top:env(safe-area-inset-top,0px)}
-.stick{position:sticky;top:calc(var(--hh,110px) + env(safe-area-inset-top,0px));z-index:15;background:var(--bg);margin:0 -20px;padding:10px 20px 14px;border-bottom:1px solid var(--line)}
+.stick{position:sticky;top:calc(var(--hh,110px) + env(safe-area-inset-top,0px));z-index:15;background:var(--bg);margin:0 -28px;padding:10px 28px 14px;border-bottom:1px solid var(--line)}
 .stick .ghead{gap:12px;align-items:center}
 .stick .chips{margin-top:6px}
 .stick .kpis{margin-top:12px;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
@@ -425,8 +427,8 @@ const SB_URL = 'https://jofzimnrgkzvlawuuivp.supabase.co', SB_KEY = 'eyJhbGciOiJ
 const EMAILS = {Jessica:'jessica@nextravel.app', Roberto:'roberto@nextravel.app', Alessandro:'alessandro@nextravel.app', Lia:'lia@nextravel.app', Letizia:'letizia@nextravel.app'};
 const PINLEN = SB ? 6 : 4;
 /* ---------------- AVVISO AGGIORNAMENTI ---------------- */
-const APP_VERSION = '20261007-150651';
-const APP_NOVITA = ["Nuova sezione 🗓️ Presenze: il registro presenze dei dipendenti mese per mese, con sigle colorate, note, rimborsi spese e PDF per il consulente."];
+const APP_VERSION = '20261008-085748';
+const APP_NOVITA = ["L\u0027app ora usa tutta la larghezza dello schermo.","Presenze: la tabella entra tutta nello schermo, senza barre di scorrimento."];
 let UPDATE = null;   // {version, novita} quando sul sito c'è una versione più nuova
 async function checkUpdate(){
   if(!SB || location.protocol==='file:') return;
