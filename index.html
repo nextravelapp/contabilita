@@ -264,6 +264,44 @@ table.t.riep th,table.t.riep td{padding:10px 8px}
 table.t.riep{font-size:15px}
 table.t.riep td .pill{white-space:normal;text-align:center;line-height:1.25}
 table.t.riep td.n{white-space:nowrap}
+/* ---------- presenze ---------- */
+.pmesi{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 14px}
+.pill-m{border:1.5px solid var(--line);background:var(--card);border-radius:20px;padding:6px 14px;font-weight:700;cursor:pointer;color:var(--mute)}
+.pill-m.has{color:var(--ink)}
+.pill-m.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.ptools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.pcodes{display:flex;gap:6px;flex-wrap:wrap;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 10px;margin-bottom:10px}
+.pcodes>.s{color:var(--mute);margin-right:4px}
+.pcode{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:4px 10px;font-weight:800;font-size:17px;cursor:pointer;display:flex;flex-direction:column;align-items:center;line-height:1.1;min-width:56px}
+.pcode small{font-size:10px;font-weight:600;color:var(--mute);white-space:nowrap}
+.pcode[style*="background"] small{color:#fff}
+.pcode:hover{border-color:var(--ink)}
+.pwrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px}
+table.ptab{border-collapse:collapse;font-size:14px;user-select:none;min-width:100%}
+table.ptab th,table.ptab td{border:1px solid #d9dce2;text-align:center;padding:0}
+table.ptab th{background:#fafbfc;font-size:12px;color:var(--ink2);padding:3px 0}
+table.ptab th.pd small{display:block;font-size:10px;color:var(--mute);font-weight:600}
+table.ptab th.sun,table.ptab td.sun{background:#fde8e6}
+table.ptab td.d{width:30px;min-width:30px;height:34px;font-weight:800;cursor:cell;font-size:13px}
+table.ptab td.off{background:#eef0f3;cursor:default}
+table.ptab td.psel{outline:3px solid var(--blue);outline-offset:-3px;background:#dbe6fb}
+table.ptab td.pin{background:#dbe6fb}
+table.ptab .pn{text-align:left;padding:4px 8px;white-space:nowrap;font-weight:700;min-width:210px;position:sticky;left:0;background:var(--card);z-index:1}
+table.ptab th.pn{background:#fafbfc}
+table.ptab td.pn{display:flex;align-items:center;gap:6px;justify-content:space-between;height:34px;box-sizing:border-box}
+.ptl{display:flex;gap:2px;opacity:.25}
+table.ptab tr:hover .ptl{opacity:1}
+.ptl button{border:0;background:transparent;cursor:pointer;font-size:13px;padding:2px 4px;color:var(--ink2)}
+table.ptab .pm{min-width:86px;padding:0 6px;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.ptab th.pm{text-align:center}
+table.ptab td.m{cursor:pointer}
+table.ptab td.m:hover{background:#f3f6fb}
+table.ptab .pr{min-width:170px;text-align:left;padding:0 8px;white-space:nowrap}
+input.pin{height:46px;border:1.5px solid #d5d8de;border-radius:10px;padding:0 14px;min-width:260px;font-size:16px}
+.pbottom{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:10px}
+.pbottom h2{font-size:18px;margin:14px 0 8px}
+textarea.pnotes{width:100%;min-height:110px;border:1.5px solid #d5d8de;border-radius:10px;padding:10px 12px;font:inherit;resize:vertical}
+
 /* ---------- fornitori ---------- */
 .fcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:20px}
 .iban{font-family:ui-monospace,Consolas,"Courier New",monospace;font-size:21px;font-weight:700;letter-spacing:.5px;word-break:break-all;font-variant-numeric:tabular-nums}
@@ -359,6 +397,7 @@ table.t tr.flash td{animation:flashRow 2.6s ease-out}
     <a href="#home" data-v="home">🏠 Oggi</a>
     <a href="#gruppi" data-v="gruppi">👥 Gruppi</a>
     <a href="#fornitori" data-v="fornitori">🏢 Fornitori</a>
+    <a href="#presenze" data-v="presenze">🗓️ Presenze</a>
     <a href="#scadenze" data-v="scadenze">📅 Pagamenti e incassi <span class="badge hidden" id="badgeScad"></span></a>
     <a href="#riepilogo" data-v="riepilogo">📊 Riepilogo anno</a>
     <a href="#registro" data-v="registro">🕘 Chi ha fatto cosa</a>
@@ -386,8 +425,8 @@ const SB_URL = 'https://jofzimnrgkzvlawuuivp.supabase.co', SB_KEY = 'eyJhbGciOiJ
 const EMAILS = {Jessica:'jessica@nextravel.app', Roberto:'roberto@nextravel.app', Alessandro:'alessandro@nextravel.app', Lia:'lia@nextravel.app', Letizia:'letizia@nextravel.app'};
 const PINLEN = SB ? 6 : 4;
 /* ---------------- AVVISO AGGIORNAMENTI ---------------- */
-const APP_VERSION = '20261006-151239';
-const APP_NOVITA = ["Riepilogo anno: la tabella è più compatta e si vede tutta, compresa la colonna Stato."];
+const APP_VERSION = '20261007-150651';
+const APP_NOVITA = ["Nuova sezione 🗓️ Presenze: il registro presenze dei dipendenti mese per mese, con sigle colorate, note, rimborsi spese e PDF per il consulente."];
 let UPDATE = null;   // {version, novita} quando sul sito c'è una versione più nuova
 async function checkUpdate(){
   if(!SB || location.protocol==='file:') return;
@@ -503,6 +542,7 @@ function allLog(){
   const out=[...(DB.registro||[])];
   for(const g of DB.gruppi) for(const a of (g.storico||[])) out.push({...a, gid:g.id, gruppo:g.numero||a.gruppo});
   for(const f of (DB.fornitori||[])) for(const a of (f.storico||[])) out.push({...a, gid:null, gruppo:'🏢 '+(f.nome||'')});
+  for(const [k,mo] of Object.entries(DB.presenze||{})) for(const a of (mo.storico||[])) out.push({...a, gid:null, gruppo:'🗓️ Presenze '+k.slice(5)+'/'+k.slice(0,4)});
   return out;
 }
 function commit(msg, undoFn, g, dettaglio){
@@ -598,6 +638,7 @@ function applyPending(){
   if(modalOpen()) return;
   let ch=false;
   if(FPENDING){ DB.fornitori=FPENDING; FPENDING=null; DB.fornitori.forEach(fSetBase); ch=true; }
+  if(APENDING){ DB.presenze=APENDING; APENDING=null; Object.keys(DB.presenze).forEach(pSetBase); ch=true; }
   if(PENDING){ DB.gruppi=PENDING; PENDING=null; DB.gruppi.forEach(setBase); ONLINE_STATE='ok'; ch=true; }
   if(ch) render();
 }
@@ -961,6 +1002,252 @@ function vaiRiga(gid, key){
 document.addEventListener('keydown',e=>{
   if((e.ctrlKey||e.metaKey) && (e.key==='k'||e.key==='K')){ e.preventDefault(); apriCerca(); }
 });
+/* =========================================================
+   PRESENZE DIPENDENTI — un registro per mese ("Originale" + "Per il consulente")
+   ========================================================= */
+const PCODES = [
+  ['F','Ferie','#E00000'], ['M','Malattia','#D08A00'], ['P','Permesso retribuito','#2F5597'], ['R','Riposo settimanale','#000000'],
+  ['DP','Doppio servizio','#00A040'], ['X','Giornata singola','#7030A0'], ['FE','Festività','#C00000'], ['MA','Maternità','#D63384'], ['AI','Assenza ingiustificata','#7F7F7F'],
+];
+const MESI_N = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+const WDL = ['D','L','M','M','G','V','S'];
+function pCodeColor(v){
+  const s=String(v||'').trim().toUpperCase();
+  if(s.startsWith('DP')) return '#00A040'; if(s.startsWith('FE')) return '#C00000';
+  const k=PCODES.find(c=>s===c[0]||s.startsWith(c[0]+'=')||s.startsWith(c[0]+' ')||s.startsWith(c[0]+'('));
+  return k?k[2]:'#000000';
+}
+const giorniMese = (y,m) => new Date(y, m, 0).getDate();
+const pKey = (y,m) => `${y}-${String(m).padStart(2,'0')}`;
+let PY = new Date().getFullYear(), PMN = new Date().getMonth()+1, PVER = 'orig', psel = null, pdrag = false;
+const PBASE = {}, RAWA = {}; let APENDING = null, ARCH_READY = !SB;
+if(!DB.presenze) DB.presenze = {};
+
+/* ---- conversione da/per il database (righe indicizzate per id, così le modifiche si uniscono) ---- */
+function presFromDoc(d){
+  const o=JSON.parse(JSON.stringify(d||{}));
+  for(const v of ['orig','cons']){
+    if(!o[v]) { o[v]=null; continue; }
+    const r=o[v].rows;
+    o[v].rows = isObj(r) ? Object.entries(r).filter(([k,x])=>isObj(x)).map(([k,x])=>({...x,id:x.id||k,d:x.d||{}})).sort((a,b)=>(a.ord??0)-(b.ord??0)) : (Array.isArray(r)?r:[]);
+    o[v].notes = o[v].notes||'';
+  }
+  const s=o.storico; o.storico = isObj(s) ? Object.entries(s).filter(([k,x])=>isObj(x)).map(([k,x])=>({...x,id:x.id||k})).sort((a,b)=>(a.n??0)-(b.n??0)) : (Array.isArray(s)?s:[]);
+  return o;
+}
+function presToDoc(mo){
+  const d=JSON.parse(JSON.stringify(mo));
+  for(const v of ['orig','cons']){
+    if(!mo[v]){ d[v]=null; continue; }
+    const m={}; mo[v].rows.forEach((r,i)=>{ if(!r.id) r.id=uid('d'); r.ord=i+1; m[r.id]=JSON.parse(JSON.stringify(r)); });
+    d[v]={rows:m, notes:mo[v].notes||''};
+  }
+  const st={}; (mo.storico||[]).forEach((e,i)=>{ if(!e.id) e.id=uid('a'); if(e.n==null) e.n=Date.now()+i; st[e.id]=JSON.parse(JSON.stringify(e)); }); d.storico=st;
+  return d;
+}
+function pSetBase(key){ PBASE[key]=JSON.stringify(presToDoc(DB.presenze[key])); }
+function presLog(key, azione, det){
+  const mo=DB.presenze[key]; mo.storico=mo.storico||[];
+  mo.storico.push({id:uid('a'), quando:nowIso(), chi:USER||'—', azione, dettaglio:det||''});
+  if(mo.storico.length>300) mo.storico.splice(0, mo.storico.length-300);
+}
+function salvaMese(key, azione, det){
+  const mo=DB.presenze[key]; if(!mo) return;
+  if(azione) presLog(key, azione, det);
+  mo.modificato=nowIso(); mo.modificatoDa=USER||'—';
+  if(SB){
+    if(!SBC){ ONLINE_ERR='Archivio online non collegato: la modifica non è stata salvata. Ricarica la pagina.'; setSave('err'); renderBanner(); return; }
+    const id='presenze-'+key, doc=presToDoc(mo), base=PBASE[key]?JSON.parse(PBASE[key]):null;
+    const patch = base ? diffDoc(doc, base) : null;
+    PBASE[key]=JSON.stringify(doc);
+    if(base && !patch) return;
+    setSave('pending');
+    const chk = r => { if(r && r.error){ const m=String(r.error.message||''); throw {code:/JWT|auth|permission|policy|row-level/i.test(m)?'invalid_argument':'unavailable', message:m}; } return r; };
+    const write = () => base ? SBC.rpc('patch_archivio',{aid:id, patch}).then(chk) : SBC.from('archivio').upsert({id, data:doc}).then(chk);
+    const run=async()=>{ try{ await write(); }catch(e){ if(e&&e.code==='unavailable'){ await new Promise(r=>setTimeout(r,800)); try{ await write(); }catch(e2){ return fail(e2); } } else return fail(e); } ONLINE_ERR=''; lastSaveAt=new Date(); setSave('ok'); renderBanner(); };
+    const fail=e=>{ console.error(e); ONLINE_ERR=dbErrMsg(e); setSave('err'); renderBanner(); };
+    writeQ['a:'+id]=(writeQ['a:'+id]||Promise.resolve()).then(run);
+  } else if(!ONLINE){ lsSet(LS_KEY, JSON.stringify(DB)); setSave('pending'); scheduleFileSave(); }
+}
+function aApply(){
+  const pres={};
+  for(const [id,d] of Object.entries(RAWA)) if(id.startsWith('presenze-')) pres[id.slice(9)]=presFromDoc(d);
+  APENDING=pres; applyPending();
+}
+async function sbLoadArch(){
+  const r=await SBC.from('archivio').select('id,data');
+  if(r.error){ ARCH_READY=false; return; }
+  ARCH_READY=true;
+  for(const k of Object.keys(RAWA)) delete RAWA[k];
+  for(const row of r.data||[]) RAWA[row.id]=row.data;
+  aApply();
+}
+
+/* ---- conteggi ---- */
+function contaRiga(r){
+  const c={F:0,M:0,R:0,FE:0,DP:0,X:0,MA:0,AI:0,P:0,Pore:0};
+  for(const v of Object.values(r.d||{})){
+    const s=String(v).toUpperCase().trim(); const m=s.match(/^P=?([\d.,]+)/);
+    if(m){ c.Pore+=parseFloat(m[1].replace(',','.'))||0; continue; }
+    const k=PCODES.find(x=>s===x[0]); if(k) c[k[0]]++; else if(s.startsWith('DP')) c.DP++;
+  }
+  return c;
+}
+function riassunto(c){
+  const p=[]; if(c.F) p.push(`F ${c.F}`); if(c.M) p.push(`M ${c.M}`); if(c.P||c.Pore) p.push(`P ${c.P?c.P+'g':''}${c.P&&c.Pore?' + ':''}${c.Pore?String(c.Pore).replace('.',',')+'h':''}`);
+  if(c.FE) p.push(`FE ${c.FE}`); if(c.DP) p.push(`DP ${c.DP}`); if(c.X) p.push(`X ${c.X}`); if(c.MA) p.push(`MA ${c.MA}`); if(c.AI) p.push(`AI ${c.AI}`); if(c.R) p.push(`R ${c.R}`);
+  return p.join(' · ');
+}
+const totRiga = r => { const b=+r.base||0, s=+r.rimb||0; return (b||s)?r2(b+s):null; };
+function nomiDipendenti(){ const s=new Set(); Object.values(DB.presenze).forEach(mo=>['orig','cons'].forEach(v=>mo[v]&&mo[v].rows.forEach(r=>s.add(r.n)))); return [...s].sort(); }
+
+/* ---- pagina ---- */
+function pMese(){ return DB.presenze[pKey(PY,PMN)]; }
+function pVers(){ const mo=pMese(); return mo ? mo[PVER] : null; }
+function viewPresenze(){
+  if(SB && !ARCH_READY) return `<h1>Presenze</h1><div class="empty">🛠️ La sezione Presenze sta per essere attivata. Ancora un attimo di pazienza!</div>`;
+  const key=pKey(PY,PMN), mo=DB.presenze[key];
+  if(mo && !mo[PVER]) PVER = mo.cons ? 'cons' : 'orig';
+  const v = mo ? mo[PVER] : null, nd=giorniMese(PY,PMN);
+  const anni=[...new Set([...Object.keys(DB.presenze).map(k=>+k.slice(0,4)), new Date().getFullYear()])].sort((a,b)=>b-a);
+  let h=`<div class="row"><h1>Presenze</h1><span class="spacer"></span>
+    <div class="seg">${anni.map(a=>`<button class="${a===PY?'on':''}" onclick="PY=${a};psel=null;render()">${a}</button>`).join('')}</div></div>
+  <p class="sub">Un registro per ogni mese. Casella vuota = ha lavorato.</p>
+  <div class="pmesi">${MESI_N.map((m,i)=>{ const o=DB.presenze[pKey(PY,i+1)]; return `<button class="pill-m ${PMN===i+1?'on':''} ${o&&(o.orig||o.cons)?'has':''}" onclick="PMN=${i+1};psel=null;render()">${m.slice(0,3)}</button>`; }).join('')}</div>`;
+  if(!mo || !(mo.orig||mo.cons)){
+    return h+`<div class="card pad" style="margin-top:16px"><h2 style="margin-top:0">${MESI_N[PMN-1]} ${PY}: registro non ancora creato</h2>
+      <p class="sub">Lo creo con i dipendenti del mese precedente e tutte le caselle vuote (vuoto = ha lavorato).</p>
+      <button class="btn big dark" onclick="creaRegistro()">＋ Crea registro di ${MESI_N[PMN-1]}</button></div>`;
+  }
+  h+=`<div class="ptools">
+    <div class="seg"><button class="${PVER==='orig'?'on':''}" ${mo.orig?'':'disabled'} onclick="PVER='orig';psel=null;render()">Originale</button><button class="${PVER==='cons'?'on':''}" ${mo.cons?'':'disabled'} onclick="PVER='cons';psel=null;render()">Per il consulente</button></div>
+    ${mo.orig?`<button class="btn" onclick="copiaConsulente()">${mo.cons?'Rifai copia per il consulente':'Crea copia per il consulente'}</button>`:''}
+    <span class="spacer"></span>
+    <button class="btn dark" onclick="stampaPresenze()">🖨️ Stampa / PDF per il consulente</button></div>
+  <div class="pcodes"><span class="s">Seleziona le caselle e premi:</span>${PCODES.map(([c,n,col])=>`<button class="pcode" style="color:${col}" title="${n}" onclick="setPCode('${c}')">${c}<small>${n}</small></button>`).join('')}
+    <button class="pcode" title="Svuota (= ha lavorato)" onclick="setPCode('')">⌫<small>vuoto</small></button>
+    <button class="pcode" title="Giorni in cui non era in forza (assunto o cessato nel mese)" onclick="setPRed()" style="color:#fff;background:#e00000;border-color:#e00000">■<small>non in forza</small></button></div>
+  <div class="pwrap"><table class="ptab" id="presTable"><thead><tr><th class="pn">DIPENDENTI</th>`;
+  for(let d=1; d<=31; d++){ const wd=d<=nd?new Date(PY,PMN-1,d).getDay():-1; h+=`<th class="pd ${wd===0?'sun':''}">${d<=nd?d:''}<small>${d<=nd?WDL[wd]:''}</small></th>`; }
+  h+=`<th class="pm">BASE</th><th class="pm">RIMBORSO<br>SPESE</th><th class="pm">TOTALE</th><th class="pr">Riepilogo</th></tr></thead><tbody>`;
+  v.rows.forEach((r,i)=>{
+    h+=`<tr><td class="pn"><span>${esc(r.n)}</span><span class="ptl"><button onclick="spostaDip(${i},-1)" title="Su">↑</button><button onclick="spostaDip(${i},1)" title="Giù">↓</button><button onclick="togliDip(${i})" title="Togli dal mese">✕</button></span></td>`;
+    for(let d=1; d<=31; d++){ const wd=d<=nd?new Date(PY,PMN-1,d).getDay():-1; const c=(r.d||{})[d]||''; const red=r.red&&r.red[d];
+      h+=`<td class="d ${wd===0?'sun':''} ${d>nd?'off':''}" data-i="${i}" data-d="${d}" style="color:${red?'#fff':pCodeColor(c)};${red?'background:#e00000':''}">${d<=nd?esc(c):''}</td>`; }
+    const t=totRiga(r);
+    h+=`<td class="pm m" onclick="modSoldi(${i},'base')">${r.base!=null&&r.base!==''?eur(r.base):''}</td><td class="pm m" onclick="modSoldi(${i},'rimb')">${r.rimb!=null&&r.rimb!==''?eur(r.rimb):''}</td><td class="pm">${t!==null?eur(t):''}</td><td class="pr s">${esc(riassunto(contaRiga(r)))}</td></tr>`;
+  });
+  h+=`</tbody></table></div>
+  <div class="row" style="margin-top:12px"><input class="pin" id="pAddName" list="pNomi" placeholder="Aggiungi dipendente…"><datalist id="pNomi">${nomiDipendenti().map(n=>`<option value="${esc(n)}">`).join('')}</datalist><button class="btn" onclick="aggiungiDip()">＋ Aggiungi</button></div>
+  <div class="pbottom">
+    <div><h2>📝 Note del mese</h2><textarea id="pNotes" class="pnotes" placeholder="Acconti, certificati, rimborsi…" onchange="salvaNote(this.value)">${esc(v.notes||'')}</textarea></div>
+    <div><h2>Come funziona</h2><p class="s" style="line-height:1.7;margin:0">Casella vuota = ha lavorato. <b>Clicca</b> una casella o <b>trascina</b> per selezionarne tante, poi premi una sigla qui sopra (o sulla tastiera: F, M, P, R, D = DP, X, E = FE, A = AI; Canc per svuotare). <b>Doppio clic</b> per scrivere a mano, es. <b>P=4</b> per 4 ore di permesso. Le frecce spostano la selezione.</p></div>
+  </div>
+  <div class="sec noprint"><h2>🕘 Chi ha modificato questo mese</h2>${logTable((mo.storico||[]).map(a=>({...a,gruppo:''})), false)}</div>`;
+  setTimeout(paintPSel,0);
+  return h;
+}
+function creaRegistro(){
+  const key=pKey(PY,PMN);
+  let prev=null; const keys=Object.keys(DB.presenze).filter(k=>k<key).sort();
+  for(let i=keys.length-1;i>=0 && !prev;i--){ const o=DB.presenze[keys[i]]; prev=o&&(o.cons||o.orig); }
+  const rows=(prev?prev.rows:nomiDipendenti().map(n=>({n}))).map(r=>({id:uid('d'), n:r.n, d:{}, base:r.base??null, rimb:null}));
+  DB.presenze[key]={orig:{rows, notes:''}, cons:null, storico:[]};
+  PVER='orig'; salvaMese(key, `Creato il registro di ${MESI_N[PMN-1]} ${PY}`, rows.map(r=>r.n).join(', ')); render();
+}
+function copiaConsulente(){
+  const key=pKey(PY,PMN), mo=DB.presenze[key];
+  const fai=()=>{ mo.cons=JSON.parse(JSON.stringify(mo.orig)); mo.cons.rows.forEach(r=>r.id=uid('d')); PVER='cons'; salvaMese(key,'Creata la copia per il consulente',''); render(); toast('✓ Copia per il consulente creata: ora puoi sistemarla'); };
+  if(mo.cons) askConfirm('La versione "Per il consulente" verrà sostituita con una copia dell\'originale.', 'Sì, rifai la copia', fai); else fai();
+}
+const pSelBox = () => ({i1:Math.min(psel.i1,psel.i2), i2:Math.max(psel.i1,psel.i2), d1:Math.min(psel.d1,psel.d2), d2:Math.max(psel.d1,psel.d2)});
+function paintPSel(){
+  document.querySelectorAll('#presTable td.psel,#presTable td.pin').forEach(t=>t.classList.remove('psel','pin'));
+  if(!psel) return; const b=pSelBox();
+  document.querySelectorAll('#presTable td.d').forEach(td=>{ const i=+td.dataset.i, d=+td.dataset.d; if(i>=b.i1&&i<=b.i2&&d>=b.d1&&d<=b.d2) td.classList.add(i===psel.i1&&d===psel.d1?'psel':'pin'); });
+}
+function descrSel(v,b){ const nomi=[...new Set(v.rows.slice(b.i1,b.i2+1).map(r=>r.n))].join(', '); const gg=b.d1===b.d2?`giorno ${b.d1}`:`giorni ${b.d1}–${b.d2}`; return `${nomi} · ${gg}/${String(PMN).padStart(2,'0')}`; }
+function setPCode(code){
+  const v=pVers(); if(!v||!psel) return toast('Seleziona prima le caselle (clicca o trascina sulla tabella)');
+  const nd=giorniMese(PY,PMN), b=pSelBox();
+  for(let i=b.i1;i<=b.i2;i++) for(let d=b.d1; d<=Math.min(b.d2,nd); d++){ const r=v.rows[i]; r.d=r.d||{}; if(code) r.d[d]=code; else delete r.d[d]; }
+  const nome=(PCODES.find(c=>c[0]===code)||[code,'ha lavorato'])[1];
+  salvaMese(pKey(PY,PMN), code?`Segnato ${code} (${nome})`:'Caselle svuotate (= ha lavorato)', descrSel(v,b)+(PVER==='cons'?' · versione consulente':'')); render();
+}
+function setPRed(){
+  const v=pVers(); if(!v||!psel) return toast('Seleziona prima le caselle');
+  const nd=giorniMese(PY,PMN), b=pSelBox(); let tutti=true;
+  for(let i=b.i1;i<=b.i2;i++) for(let d=b.d1; d<=Math.min(b.d2,nd); d++) if(!(v.rows[i].red&&v.rows[i].red[d])) tutti=false;
+  for(let i=b.i1;i<=b.i2;i++) for(let d=b.d1; d<=Math.min(b.d2,nd); d++){ const r=v.rows[i]; r.red=r.red||{}; if(tutti) delete r.red[d]; else r.red[d]=1; }
+  salvaMese(pKey(PY,PMN), tutti?'Tolto "non in forza"':'Segnato "non in forza"', descrSel(v,b)); render();
+}
+function scriviGiorno(i,d){
+  const v=pVers(); if(!v || d>giorniMese(PY,PMN)) return; const r=v.rows[i];
+  openForm({ title:`${r.n} · ${d} ${MESI_N[PMN-1]}`, intro:'Scrivi la sigla, es. R, F, M, P=4 (4 ore di permesso). Vuoto = ha lavorato.', values:{c:(r.d||{})[d]||''},
+    fields:[{key:'c',label:'Sigla'}],
+    onSave:x=>{ const c=String(x.c||'').trim().toUpperCase().replace(/\s+/g,''); r.d=r.d||{}; if(c) r.d[d]=c; else delete r.d[d];
+      salvaMese(pKey(PY,PMN), c?`Scritto ${c}`:'Casella svuotata (= ha lavorato)', `${r.n} · giorno ${d}/${String(PMN).padStart(2,'0')}`); } });
+}
+function modSoldi(i,campo){
+  const v=pVers(), r=v.rows[i], lab=campo==='base'?'Base':'Rimborso spese';
+  openForm({ title:`${r.n} · ${lab}`, intro:`${MESI_N[PMN-1]} ${PY}. Lascia vuoto per togliere l'importo.`, values:{x:r[campo]}, fields:[{key:'x',label:lab,type:'money'}],
+    onSave:x=>{ const prima=r[campo]; r[campo]=x.x; salvaMese(pKey(PY,PMN), `${lab} modificato`, `${r.n} · ${fmtV.soldi(prima)} → ${fmtV.soldi(x.x)}`); } });
+}
+function aggiungiDip(){
+  const n=($('#pAddName').value||'').trim().toUpperCase(); if(!n) return toast('Scrivi il nome del dipendente');
+  const v=pVers(); v.rows.push({id:uid('d'), n, d:{}, base:null, rimb:null}); salvaMese(pKey(PY,PMN), 'Aggiunto dipendente', n); render();
+}
+function togliDip(i){
+  const v=pVers(), r=v.rows[i];
+  askConfirm(`Togliere ${r.n} dal registro di ${MESI_N[PMN-1]} ${PY}${PVER==='cons'?' (versione consulente)':''}?`, 'Sì, togli', ()=>{ v.rows.splice(i,1); psel=null; salvaMese(pKey(PY,PMN),'Tolto dipendente dal mese', r.n); render(); });
+}
+function spostaDip(i,dir){ const v=pVers(), j=i+dir; if(j<0||j>=v.rows.length) return; [v.rows[i],v.rows[j]]=[v.rows[j],v.rows[i]]; salvaMese(pKey(PY,PMN)); render(); }
+function salvaNote(t){ const v=pVers(); if(!v) return; v.notes=t; salvaMese(pKey(PY,PMN),'Note del mese modificate', t.slice(0,120)); }
+function stampaPresenze(){
+  const mo=pMese(), v=pVers(); if(!v) return; const nd=giorniMese(PY,PMN);
+  const leg=PCODES.filter(c=>!['MA','AI'].includes(c[0])).map(([c,n,col])=>`<span style="color:${col}">${c}= ${n}</span>`).join('');
+  const righe=v.rows.map(r=>{ let x=`<tr><td class="n">${esc(r.n)}</td>`; for(let d=1; d<=31; d++){ const c=d<=nd?((r.d||{})[d]||''):''; const red=d<=nd&&r.red&&r.red[d]; x+=`<td style="color:${red?'#fff':pCodeColor(c)};${red?'background:#e00000;':''}${c.length>2?'font-size:7pt;':''}">${esc(c)}</td>`; } const t=totRiga(r); return x+`<td class="m">${r.base!=null&&r.base!==''?eur(r.base):''}</td><td class="m">${r.rimb!=null&&r.rimb!==''?eur(r.rimb):''}</td><td class="m">${t!==null?eur(t):''}</td></tr>`; }).join('');
+  const html=`<!doctype html><html><head><meta charset="utf-8"><title>Presenze Nextravel ${MESI_N[PMN-1]} ${PY}</title><style>
+    @page{size:A4 landscape;margin:9mm} body{font-family:Calibri,Arial,sans-serif;margin:0}
+    .head{display:flex;align-items:center;gap:18px;border:1.5px solid #000;padding:6px 10px 4px}.head img{height:50px}
+    .head .t{flex:1;text-align:right;font-weight:700;font-size:13pt;text-decoration:underline;white-space:nowrap}
+    .leg{display:flex;justify-content:space-between;gap:8px;font-size:9.5pt;font-weight:600;padding:3px 10px 6px;border:1.5px solid #000;border-top:0}
+    table{border-collapse:collapse;width:100%;margin-top:6px;font-size:8.5pt;table-layout:fixed}
+    td,th{border:1px solid #000;text-align:center;height:16px;font-weight:700;padding:0 1px;overflow:hidden;white-space:nowrap}
+    td.n,th.n{text-align:left;width:150px;padding-left:4px} td.m,th.m{width:62px;text-align:right;padding-right:3px}
+    .notes{margin-top:10px;font-size:9.5pt;white-space:pre-wrap}</style></head><body>
+    <div class="head"><img src="${LOGO}"><div class="t">REGISTRO PRESENZA DIPENDENTI ${MESI_N[PMN-1].toUpperCase()} ${PY}</div></div>
+    <div class="leg">${leg}</div>
+    <table><tr><th class="n">DIPENDENTI</th>${Array.from({length:31},(_,i)=>`<th>${i+1}</th>`).join('')}<th class="m" style="text-align:center">BASE</th><th class="m" style="text-align:center">RIMB. SPESE</th><th class="m" style="text-align:center">TOT.</th></tr>${righe}</table>
+    ${v.notes?`<div class="notes"><b>NOTE:</b>\n${esc(v.notes)}</div>`:''}
+    <script>window.onload=()=>setTimeout(()=>window.print(),300)<\/script></body></html>`;
+  const w=window.open('', '_blank'); if(!w) return toast('Il browser ha bloccato la finestra di stampa: consenti i popup per questo sito.');
+  w.document.open(); w.document.write(html); w.document.close();
+}
+/* ---- mouse e tastiera sulla tabella ---- */
+document.addEventListener('mousedown', e=>{
+  const td=e.target.closest && e.target.closest('#presTable td.d'); if(!td || e.button!==0) return;
+  const i=+td.dataset.i, d=+td.dataset.d; if(d>giorniMese(PY,PMN)) return;
+  if(e.shiftKey && psel){ psel.i2=i; psel.d2=d; } else psel={i1:i,d1:d,i2:i,d2:d};
+  pdrag=true; paintPSel(); e.preventDefault();
+});
+document.addEventListener('mouseover', e=>{ if(!pdrag) return; const td=e.target.closest && e.target.closest('#presTable td.d'); if(!td) return; psel.i2=+td.dataset.i; psel.d2=Math.min(+td.dataset.d, giorniMese(PY,PMN)); paintPSel(); });
+document.addEventListener('mouseup', ()=>{ pdrag=false; });
+document.addEventListener('dblclick', e=>{ const td=e.target.closest && e.target.closest('#presTable td.d'); if(td) scriviGiorno(+td.dataset.i, +td.dataset.d); });
+document.addEventListener('click', e=>{ if(!matchMedia('(pointer:coarse)').matches) return; const td=e.target.closest && e.target.closest('#presTable td.d'); if(td) scriviGiorno(+td.dataset.i, +td.dataset.d); });
+document.addEventListener('keydown', e=>{
+  if(!location.hash.startsWith('#presenze') || !psel || modalOpen()) return;
+  if(document.activeElement && ['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
+  const k=e.key.toUpperCase(), map={F:'F',M:'M',P:'P',R:'R',D:'DP',X:'X',E:'FE',A:'AI'};
+  if(map[k] && !e.ctrlKey && !e.metaKey){ e.preventDefault(); setPCode(map[k]); return; }
+  if(e.key==='Delete'||e.key==='Backspace'){ e.preventDefault(); setPCode(''); return; }
+  if(e.key==='Enter'||e.key==='F2'){ e.preventDefault(); scriviGiorno(psel.i1, psel.d1); return; }
+  const mv={ArrowUp:[-1,0],ArrowDown:[1,0],ArrowLeft:[0,-1],ArrowRight:[0,1]}[e.key];
+  if(mv){ e.preventDefault(); const n=pVers().rows.length, nd=giorniMese(PY,PMN);
+    if(e.shiftKey){ psel.i2=Math.max(0,Math.min(n-1,psel.i2+mv[0])); psel.d2=Math.max(1,Math.min(nd,psel.d2+mv[1])); }
+    else { const i=Math.max(0,Math.min(n-1,psel.i1+mv[0])), d=Math.max(1,Math.min(nd,psel.d1+mv[1])); psel={i1:i,d1:d,i2:i,d2:d}; }
+    paintPSel(); }
+});
 /* ---------- Supabase ---------- */
 const RAW={};
 function sbApply(){ PENDING=Object.entries(RAW).map(([id,d])=>fromDoc(id,d)); if(ONLINE_STATE!=='ok' && !modalOpen()){ DB.gruppi=PENDING; PENDING=null; DB.gruppi.forEach(setBase); ONLINE_STATE='ok'; render(); } else applyPending(); }
@@ -969,7 +1256,7 @@ async function sbLoad(){
   if(r.error){ ONLINE_STATE='error'; ONLINE_ERR='Non riesco a leggere i dati: '+r.error.message; render(); return false; }
   for(const k of Object.keys(RAW)) delete RAW[k];
   for(const row of r.data||[]) RAW[row.id]=row.data;
-  sbApply(); await sbLoadForn(); return true;
+  sbApply(); await sbLoadForn(); await sbLoadArch(); return true;
 }
 let sbChan=null, sbPoll=null;
 async function sbStart(){
@@ -980,10 +1267,12 @@ async function sbStart(){
     const row=pl.new; if(row && row.id){ RAW[row.id]=row.data; sbApply(); }
   }).on('postgres_changes',{event:'*',schema:'public',table:'fornitori'},pl=>{
     const row=pl.new; if(row && row.id){ RAWF[row.id]=row.data; FORN_READY=true; fApply(); }
+  }).on('postgres_changes',{event:'*',schema:'public',table:'archivio'},pl=>{
+    const row=pl.new; if(row && row.id){ RAWA[row.id]=row.data; ARCH_READY=true; aApply(); }
   }).subscribe();
   clearInterval(sbPoll); sbPoll=setInterval(()=>{ if(USER && document.visibilityState==='visible' && !modalOpen()) sbLoad(); }, 60000);
 }
-function sbStop(){ if(sbChan){ SBC.removeChannel(sbChan); sbChan=null; } clearInterval(sbPoll); for(const k of Object.keys(RAW)) delete RAW[k]; DB.gruppi=[]; PENDING=null; for(const k of Object.keys(RAWF)) delete RAWF[k]; DB.fornitori=[]; FPENDING=null; ONLINE_STATE='loading'; }
+function sbStop(){ if(sbChan){ SBC.removeChannel(sbChan); sbChan=null; } clearInterval(sbPoll); for(const k of Object.keys(RAW)) delete RAW[k]; DB.gruppi=[]; PENDING=null; for(const k of Object.keys(RAWF)) delete RAWF[k]; DB.fornitori=[]; FPENDING=null; for(const k of Object.keys(RAWA)) delete RAWA[k]; DB.presenze={}; APENDING=null; ONLINE_STATE='loading'; }
 async function sbProfili(){
   if(!SBC){ PINS_READY=true; renderLock(); return; }
   const r=await SBC.rpc('profili_attivi');
@@ -1332,6 +1621,7 @@ function render(){
   else if(v==='archivio') view.innerHTML=viewArchivio();
   else if(v==='registro') view.innerHTML=viewRegistro();
   else if(v==='fornitori') view.innerHTML=viewFornitori();
+  else if(v==='presenze') view.innerHTML=viewPresenze();
   else if(v==='fornitore') view.innerHTML=viewFornitore(decodeURIComponent(arg||''));
   else view.innerHTML=viewHome(todos);
   paintPeers();
@@ -2074,6 +2364,7 @@ async function exportExcel(anno, backup){
     /* foglio nascosto con TUTTI i dati (anche i gruppi eliminati) per poter ripristinare */
     const rows=[['NEXTRAVEL COPIA DI SICUREZZA', nowIso(), 'gruppi: '+DB.gruppi.length, 'versione app: '+APP_VERSION],['id','parte','dati']];
     for(const g of DB.gruppi){ const s=JSON.stringify(g); for(let i=0, n=0; i<s.length; i+=30000, n++) rows.push([g.id, n, s.slice(i,i+30000)]); }
+    for(const [k,mo] of Object.entries(DB.presenze||{})){ const s=JSON.stringify(mo); for(let i=0, n=0; i<s.length; i+=30000, n++) rows.push(['presenze:'+k, n, s.slice(i,i+30000)]); }
     for(const f of (DB.fornitori||[])){ const s=JSON.stringify(f); for(let i=0, n=0; i<s.length; i+=30000, n++) rows.push(['fornitore:'+f.id, n, s.slice(i,i+30000)]); }
     const fr=[['Fornitore','Ragione sociale','Categoria','Località','IBAN','Intestatario','Banca','BIC','P.IVA / CF','Indirizzo','Referente','Telefono','Email','Note']];
     fornitori().forEach(f=>fr.push([f.nome,f.ragioneSociale,(CATMAP[f.categoria]||CATMAP.altro).l,f.localita,f.iban,f.intestatario,f.banca,f.bic,f.piva,f.indirizzo,f.referente,f.telefono,f.email,f.note]));
@@ -2118,7 +2409,7 @@ function presWhere(){
   return {vista:v||'home', gid:g?g.id:'', gruppo:g?(g.numero||''):''};
 }
 function presDesc(u){
-  const n={home:'nella pagina Oggi', gruppi:'nell\'elenco gruppi', scadenze:'in Pagamenti e incassi', riepilogo:'nel Riepilogo anno', registro:'in Chi ha fatto cosa', fornitori:'nell\'anagrafica fornitori', fornitore:'in una scheda fornitore', archivio:'nelle Impostazioni'};
+  const n={home:'nella pagina Oggi', gruppi:'nell\'elenco gruppi', scadenze:'in Pagamenti e incassi', riepilogo:'nel Riepilogo anno', registro:'in Chi ha fatto cosa', presenze:'nelle Presenze', fornitori:'nell\'anagrafica fornitori', fornitore:'in una scheda fornitore', archivio:'nelle Impostazioni'};
   return u.vista==='gruppo' ? `nel gruppo ${u.gruppo||''}` : (n[u.vista]||'nell\'app');
 }
 function presStart(){
