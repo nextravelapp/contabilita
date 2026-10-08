@@ -380,15 +380,94 @@ table.t tr.flash td{animation:flashRow 2.6s ease-out}
   .card,.kpi,table.t{box-shadow:none}
   main{padding:0}
 }
+/* ---------- scelta iniziale + agenda ---------- */
+.scegli{max-width:960px;margin:30px auto;text-align:center}
+.scegli-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:30px}
+.scegli-c{display:flex;flex-direction:column;align-items:center;gap:10px;padding:44px 24px;border-radius:22px;border:2px solid var(--line);cursor:pointer;box-shadow:var(--sh);font-size:16px;color:var(--ink2);transition:transform .12s,border-color .12s}
+.scegli-c:hover{border-color:var(--red);transform:translateY(-3px)}
+.scegli-c .ic{font-size:70px;line-height:1}
+.scegli-c b{font-size:28px;color:var(--ink)}
+.scegli-c.next{background:#FCE4D6}.scegli-c.ag{background:#D9E1F2}
+.modebtn{min-height:40px;padding:6px 14px;font-size:15px}
+.agbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.agtitle{background:#FFE699;font-weight:800;font-size:24px;padding:8px 26px;border-radius:10px;letter-spacing:.5px;min-width:300px;text-align:center;border:1px solid #e6c95a}
+.agnav{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:26px;line-height:1;cursor:pointer}
+.agnav:hover{background:var(--grey-bg)}
+.agsearch input{min-height:40px;width:260px;max-width:100%;border:1px solid var(--line);border-radius:10px;padding:6px 12px;font-size:15px}
+.agleg{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+.agleg button{display:flex;align-items:center;gap:8px;border:1px solid #c9ced6;border-radius:30px;padding:6px 14px 6px 8px;background:#fff;cursor:pointer;font-size:15px;font-weight:600}
+.agleg button i{width:22px;height:22px;border-radius:6px;border:1px solid #9aa3b0;display:block}
+.agleg button.off{opacity:.45;text-decoration:line-through}
+.agleg button.on2{background:var(--ink);color:#fff;border-color:var(--ink)}
+.agind{background:var(--orange-bg);border:1px solid #f0cf9c;border-radius:12px;margin:0 0 14px}
+.aginh{display:flex;gap:8px;align-items:center;width:100%;border:0;background:transparent;padding:10px 16px;cursor:pointer;font-size:16px;text-align:left}
+.aginh span{margin-left:auto;color:var(--orange);font-weight:700}
+.aginl{padding:0 16px 12px;display:flex;flex-direction:column;gap:6px;max-height:380px;overflow:auto}
+.agir{display:flex;align-items:center;gap:10px}
+.agir .agv{flex:0 1 380px}
+.agir.clk{cursor:pointer;padding:4px 6px;border-radius:8px}.agir.clk:hover{background:var(--grey-bg)}
+.agid{width:96px;flex:none;font-weight:700;font-size:15px}
+.agrn{color:var(--mute);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}
+.agres{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 14px;max-height:420px;overflow:auto}
+.agresh{display:flex;align-items:center;gap:10px;margin-bottom:6px}.agresh .btn{margin-left:auto}
+.agcal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-left:1px solid #b9c0ca;border-top:1px solid #b9c0ca;background:#fff}
+.agcal .wdh{background:#f0f1f4;font-weight:800;text-align:center;padding:6px;border-right:1px solid #b9c0ca;border-bottom:1px solid #b9c0ca;font-size:14px;letter-spacing:.5px}
+.agcal .wdh.dom{color:#d00}
+.agd{min-height:118px;border-right:1px solid #b9c0ca;border-bottom:1px solid #b9c0ca;padding:4px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.agd.vuoto{background:#f4f5f7}
+.agd.oggi{box-shadow:inset 0 0 0 3px var(--red);background:#fffaf8}
+.agd.over,.agx td.over{background:#fff3b8}
+.agn{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--ink2);min-height:26px}
+.agn b{font-size:18px;color:var(--ink);padding-left:2px}
+.agn em{font-style:normal;background:var(--red);color:#fff;font-size:11px;font-weight:800;border-radius:6px;padding:1px 6px}
+.agd.fest .agn b,.agx th.fest{color:#d00}
+.agadd{margin-left:auto;border:0;background:transparent;font-size:20px;line-height:1;color:var(--mute);cursor:pointer;opacity:.25;padding:2px 6px;border-radius:6px}
+.agd:hover .agadd,.agx th:hover .agadd{opacity:1}.agadd:hover{background:var(--grey-bg);color:var(--ink)}
+.agv{position:relative;display:flex;align-items:flex-start;gap:6px;border:1px solid #8e98a6;padding:3px 7px 3px 5px;font-size:14px;line-height:1.25;cursor:grab;border-radius:2px;min-width:0}
+.agv .agt{flex:1;cursor:pointer;overflow-wrap:anywhere}
+.agv.fatto .agt{text-decoration:line-through}
+.agv.rossa .agt{color:#d00;font-weight:700}
+.agv.hasn::after{content:'';position:absolute;top:0;right:0;border-top:9px solid #d00;border-left:9px solid transparent}
+.agck{flex:none;width:17px;height:17px;margin-top:1px;border:1.5px solid #5b6472;border-radius:4px;background:#fff;font-size:13px;line-height:13px;padding:0;cursor:pointer;color:var(--green);font-weight:900}
+.agck:hover{border-color:var(--green);background:var(--green-bg)}
+.agv.flash{animation:agfl .8s 3}
+@keyframes agfl{50%{box-shadow:0 0 0 4px var(--red)}}
+.agxw{width:100%}
+table.agx{width:100%;table-layout:fixed;border-collapse:collapse;background:#fff}
+table.agx td,table.agx th{border:1px solid #b9c0ca;padding:2px;vertical-align:top}
+table.agx th{font-size:11px;background:#f6f7f9}
+table.agx th.agxt{background:#FFE699;font-size:18px;padding:6px}
+table.agx th.oggi,table.agx td.oggi{background:#ffe9e4}
+table.agx .agxn{font-size:14px}.agx .agxn b{display:block}
+.agx .agadd{display:block;margin:0 auto;font-size:15px;padding:0 4px}
+table.agx{margin-bottom:14px}table.agx td{height:150px}table.agx .agxv{background:#f4f5f7}
+table.agx td>.agv{margin-bottom:2px;font-size:12.5px;padding:2px 4px;gap:4px}
+.agx .agck{width:14px;height:14px;font-size:11px;line-height:11px;border-width:1px}
+.agcats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px}
+.agcats button{min-height:52px;border:2px solid #9aa3b0;border-radius:12px;font-weight:700;cursor:pointer;font-size:16px}
+.agcats button.on{border-color:var(--ink);box-shadow:0 0 0 3px var(--ink)}
+.agchk{display:flex;align-items:center;gap:8px;cursor:pointer}.agchk input{width:20px;height:20px}
+.print-only{display:none}
+@media print{
+  .print-only{display:block}
+  .agptitle{background:#FFE699;font-weight:800;font-size:20px;text-align:center;padding:6px;margin-bottom:6px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .agv,.agcal .wdh,.agx th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .agadd,.agck{display:none}
+  .agd{min-height:70px}
+  .agv{font-size:11px}
+  @page{size:A4 landscape;margin:8mm}
+}
+
 .print-logo{display:none}
 </style>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <img class="logo" id="logo" alt="Nextravel Tour Operator" onclick="go('home')">
-    <div class="app-name"><b>Contabilità Gruppi</b>Entrate · Uscite · Guadagni</div>
+    <img class="logo" id="logo" alt="Nextravel Tour Operator" onclick="go('scegli')" title="Torna alla scelta Gestionale / Agenda">
+    <div class="app-name" id="appName"><b>Contabilità Gruppi</b>Entrate · Uscite · Guadagni</div>
     <div class="top-right">
+      <button class="btn modebtn hidden" id="modeBtn" onclick="cambiaModo()"></button>
       <button class="btn cerca-btn" onclick="apriCerca()" title="Cerca ovunque (Ctrl+K)">🔍 <span>Cerca</span></button>
       <span class="online hidden" id="onlineBox"></span>
       <span class="savestate" id="savestate"><span class="dot"></span><span id="savetxt">Salvato</span></span>
@@ -404,6 +483,10 @@ table.t tr.flash td{animation:flashRow 2.6s ease-out}
     <a href="#riepilogo" data-v="riepilogo">📊 Riepilogo anno</a>
     <a href="#registro" data-v="registro">🕘 Chi ha fatto cosa</a>
     <a href="#archivio" data-v="archivio" id="tabArch">💾 Salvataggio</a>
+  </nav>
+  <nav class="tabs hidden" id="tabsAg">
+    <a href="#agenda" data-v="agenda">🗓️ Agenda</a>
+    <a href="#agregistro" data-v="agregistro">🕘 Chi ha fatto cosa</a>
   </nav>
 </header>
 <div id="lock" class="lock hidden"></div>
@@ -427,8 +510,8 @@ const SB_URL = 'https://jofzimnrgkzvlawuuivp.supabase.co', SB_KEY = 'eyJhbGciOiJ
 const EMAILS = {Jessica:'jessica@nextravel.app', Roberto:'roberto@nextravel.app', Alessandro:'alessandro@nextravel.app', Lia:'lia@nextravel.app', Letizia:'letizia@nextravel.app'};
 const PINLEN = SB ? 6 : 4;
 /* ---------------- AVVISO AGGIORNAMENTI ---------------- */
-const APP_VERSION = '20261008-090433';
-const APP_NOVITA = ["Presenze: le note del mese restano interne e non vanno più nella copia e nel PDF per il consulente.","Presenze: nel PDF compaiono solo i giorni veri del mese (niente colonna 31 nei mesi da 30 giorni)."];
+const APP_VERSION = '20261008-092039';
+const APP_NOVITA = ["NUOVA AGENDA: dopo il PIN scegli se entrare nel Gestionale Next o nell\u0027Agenda di Jessica e Lia.","Agenda: stessi colori dell\u0027Excel (azzurro Diodoro bus, pesca Next, verde Diodoro agenzia, bianco extra). Clicca il quadratino per barrare una cosa fatta.","Agenda: trascina una voce su un altro giorno per spostarla; il triangolino rosso indica una nota."];
 let UPDATE = null;   // {version, novita} quando sul sito c'è una versione più nuova
 async function checkUpdate(){
   if(!SB || location.protocol==='file:') return;
@@ -640,7 +723,7 @@ function applyPending(){
   if(modalOpen()) return;
   let ch=false;
   if(FPENDING){ DB.fornitori=FPENDING; FPENDING=null; DB.fornitori.forEach(fSetBase); ch=true; }
-  if(APENDING){ DB.presenze=APENDING; APENDING=null; Object.keys(DB.presenze).forEach(pSetBase); ch=true; }
+  if(APENDING){ DB.presenze=APENDING.pres; DB.agenda=APENDING.ag; APENDING=null; Object.keys(DB.presenze).forEach(pSetBase); Object.keys(DB.agenda).forEach(aSetBase); ch=true; }
   if(PENDING){ DB.gruppi=PENDING; PENDING=null; DB.gruppi.forEach(setBase); ONLINE_STATE='ok'; ch=true; }
   if(ch) render();
 }
@@ -973,6 +1056,7 @@ function cercaTutto(q){
 let CERCA_RES=[];
 function apriCerca(){
   if(!USER) return;
+  if($('#agQ')){ $('#agQ').focus(); return; }
   FORM=null; SOLL=null;
   $('#modalBox').innerHTML=`<div class="ov cerca-ov" onmousedown="if(event.target===this)closeConfirm()"><div class="modal cerca">
     <div class="cerca-top"><span class="cerca-ic">🔍</span><input id="cercaIn" type="search" autocomplete="off" placeholder="Cerca fornitore, cliente, gruppo, fattura, importo, IBAN…" value="${esc(CERCA_Q)}" oninput="CERCA_Q=this.value;disegnaRisultati()"><button class="x" onclick="closeConfirm()" aria-label="Chiudi">×</button></div>
@@ -1072,9 +1156,9 @@ function salvaMese(key, azione, det){
   } else if(!ONLINE){ lsSet(LS_KEY, JSON.stringify(DB)); setSave('pending'); scheduleFileSave(); }
 }
 function aApply(){
-  const pres={};
-  for(const [id,d] of Object.entries(RAWA)) if(id.startsWith('presenze-')) pres[id.slice(9)]=presFromDoc(d);
-  APENDING=pres; applyPending();
+  const pres={}, ag={};
+  for(const [id,d] of Object.entries(RAWA)){ if(id.startsWith('presenze-')) pres[id.slice(9)]=presFromDoc(d); else if(id.startsWith('agenda-')) ag[id.slice(7)]=agFromDoc(d); }
+  APENDING={pres, ag}; applyPending();
 }
 async function sbLoadArch(){
   const r=await SBC.from('archivio').select('id,data');
@@ -1249,6 +1333,280 @@ document.addEventListener('keydown', e=>{
     else { const i=Math.max(0,Math.min(n-1,psel.i1+mv[0])), d=Math.max(1,Math.min(nd,psel.d1+mv[1])); psel={i1:i,d1:d,i2:i,d2:d}; }
     paintPSel(); }
 });
+/* =========================================================
+   AGENDA (Jessica e Lia · Next e Diodoro)
+   ========================================================= */
+const AGCAT = {
+  bus:{l:'Diodoro noleggio bus', bg:'#D9E1F2'},
+  next:{l:'Next', bg:'#FCE4D6'},
+  agenzia:{l:'Diodoro agenzia', bg:'#E2EFDA'},
+  extra:{l:'Extra', bg:'#FFFFFF'},
+  ferie:{l:'Ferie / assenze', bg:'#F04A3E', fg:'#fff'}
+};
+const WDN = ['DOM','LUN','MAR','MER','GIOV','VEN','SAB'];
+const ABASE = {};
+if(!DB.agenda) DB.agenda = {};
+let AGY = new Date().getFullYear(), AGM = new Date().getMonth()+1;
+let AGVISTA = lsGet('nx_ag_vista')||'cal', AGOFF = {}, AGSOLO = false, AGIND = false, AGF = null, AGFLASH = '';
+try{ AGOFF = JSON.parse(lsGet('nx_ag_off')||'{}')||{}; }catch(e){ AGOFF = {}; }
+
+function agFromDoc(d){
+  const o=JSON.parse(JSON.stringify(d||{}));
+  o.voci=o.voci||{}; o.storico=o.storico||{};
+  for(const k of Object.keys(o.voci)) if(!o.voci[k]) delete o.voci[k];
+  for(const k of Object.keys(o.storico)) if(!o.storico[k]) delete o.storico[k];
+  return o;
+}
+function aSetBase(key){ ABASE[key]=JSON.stringify(DB.agenda[key]); }
+function agMese(key){ return DB.agenda[key] || (DB.agenda[key]={voci:{}, storico:{}}); }
+function agVoci(key){ const m=DB.agenda[key]; return m ? Object.entries(m.voci||{}).filter(([,v])=>v).map(([id,v])=>({...v, id})) : []; }
+const agIso = (key,g) => key+'-'+String(g).padStart(2,'0');
+const agMeseNome = key => MESI_N[+key.slice(5)-1]+' '+key.slice(0,4);
+function agPasqua(y){ const a=y%19,b=Math.floor(y/100),c=y%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451); return new Date(y, Math.floor((h+l-7*m+114)/31)-1, ((h+l-7*m+114)%31)+1); }
+function agFestivo(y,m,d){
+  if(new Date(y,m-1,d).getDay()===0) return true;
+  if(['1-1','1-6','4-25','5-1','6-2','8-15','11-1','12-8','12-25','12-26'].includes(m+'-'+d)) return true;
+  const p=agPasqua(y); p.setDate(p.getDate()+1); return p.getMonth()+1===m && p.getDate()===d;
+}
+
+/* ---- salvataggio (tabella archivio, id "agenda-AAAA-MM") ---- */
+function agSalva(key, azione, det){
+  const mo=agMese(key); mo.storico=mo.storico||{};
+  if(azione){
+    mo.storico[uid('a')]={quando:nowIso(), chi:USER||'—', azione, dettaglio:det||'', n:Date.now()};
+    const ks=Object.keys(mo.storico); if(ks.length>300) ks.sort((a,b)=>mo.storico[a].n-mo.storico[b].n).slice(0,ks.length-300).forEach(k=>delete mo.storico[k]);
+  }
+  mo.modificato=nowIso(); mo.modificatoDa=USER||'—';
+  if(SB){
+    if(!SBC){ ONLINE_ERR='Archivio online non collegato: la modifica non è stata salvata. Ricarica la pagina.'; setSave('err'); renderBanner(); return; }
+    const id='agenda-'+key, doc=JSON.parse(JSON.stringify(mo)), base=ABASE[key]?JSON.parse(ABASE[key]):null;
+    const patch = base ? diffDoc(doc, base) : null;
+    ABASE[key]=JSON.stringify(doc);
+    if(base && !patch) return;
+    setSave('pending');
+    const chk = r => { if(r && r.error){ const m=String(r.error.message||''); throw {code:/JWT|auth|permission|policy|row-level/i.test(m)?'invalid_argument':'unavailable', message:m}; } return r; };
+    const write = () => base ? SBC.rpc('patch_archivio',{aid:id, patch}).then(chk) : SBC.from('archivio').upsert({id, data:doc}).then(chk);
+    const run=async()=>{ try{ await write(); }catch(e){ if(e&&e.code==='unavailable'){ await new Promise(r=>setTimeout(r,800)); try{ await write(); }catch(e2){ return fail(e2); } } else return fail(e); } ONLINE_ERR=''; lastSaveAt=new Date(); setSave('ok'); renderBanner(); };
+    const fail=e=>{ console.error(e); ONLINE_ERR=dbErrMsg(e); setSave('err'); renderBanner(); };
+    writeQ['a:'+id]=(writeQ['a:'+id]||Promise.resolve()).then(run);
+  } else if(!ONLINE){ lsSet(LS_KEY, JSON.stringify(DB)); setSave('pending'); scheduleFileSave(); }
+}
+function agDesc(v, key){ return `${v.t} — ${fdate(agIso(key, v.g))}`; }
+
+/* ---- pagina ---- */
+function agFiltro(v){ return !AGOFF[v.c||'extra'] && !(AGSOLO && v.x); }
+function agVoceHtml(v, key){
+  const c=AGCAT[v.c]||AGCAT.extra, nota=v.nota?((v.notaDa?v.notaDa+': ':'')+v.nota):'';
+  return `<div class="agv ${v.x?'fatto':''} ${v.rossa?'rossa':''} ${nota?'hasn':''} ${AGFLASH===v.id?'flash':''}" style="background:${c.bg};${c.fg?'color:'+c.fg:''}" draggable="true" data-k="${key}" data-id="${esc(v.id)}" ondragstart="agDrag(event)" title="${esc(nota)}">
+    <button class="agck" onclick="event.stopPropagation();agFatto('${key}','${esc(v.id)}')" title="${v.x?'Rimetti da fare':'Segna come fatto'}">${v.x?'✓':''}</button>
+    <span class="agt" onclick="agApri('${key}','${esc(v.id)}')">${esc(v.t)}</span></div>`;
+}
+function agIndietro(){
+  const oggi=todayIso(), da=addDays(oggi,-45), out=[];
+  for(const key of Object.keys(DB.agenda)) for(const v of agVoci(key)){
+    const iso=agIso(key,v.g); if(!v.x && v.c!=='ferie' && iso<oggi && iso>=da) out.push({...v, key, iso});
+  }
+  return out.sort((a,b)=>b.iso.localeCompare(a.iso)||a.ord-b.ord);
+}
+function viewAgenda(arg){
+  if(SB && !ARCH_READY) return `<h1>Agenda</h1><div class="empty">⏳ Caricamento dell'agenda…</div>`;
+  if(arg && /^\d{4}-\d{2}$/.test(arg)){ AGY=+arg.slice(0,4); AGM=+arg.slice(5); }
+  const key=pKey(AGY,AGM), nd=giorniMese(AGY,AGM), oggi=todayIso();
+  const byDay={}; agVoci(key).filter(agFiltro).sort((a,b)=>a.g-b.g||(a.ord||0)-(b.ord||0)).forEach(v=>(byDay[v.g]=byDay[v.g]||[]).push(v));
+  const ind=agIndietro();
+  const dayHead=(d,wd)=>`<b>${d}</b>${wd?`<span>${WDN[new Date(AGY,AGM-1,d).getDay()]}</span>`:''}<button class="agadd" onclick="agNuova('${key}',${d})" title="Aggiungi una cosa da fare il ${d}">＋</button>`;
+  let h=`<div class="agbar noprint">
+    <button class="agnav" onclick="agVai(-1)" title="Mese prima">‹</button>
+    <div class="agtitle">${AGY} - ${MESI_N[AGM-1].toUpperCase()}</div>
+    <button class="agnav" onclick="agVai(1)" title="Mese dopo">›</button>
+    <button class="btn small" onclick="agOggi()">Oggi</button>
+    <button class="btn small primary" onclick="agNuova('${key}', ${pKey(new Date().getFullYear(),new Date().getMonth()+1)===key?new Date().getDate():1})">＋ Nuova cosa da fare</button>
+    <span class="spacer"></span>
+    <div class="agsearch"><input id="agQ" type="search" placeholder="🔍 Cerca nell'agenda…" oninput="agCerca(this.value)" autocomplete="off"></div>
+    <div class="seg"><button class="${AGVISTA==='cal'?'on':''}" onclick="agVista('cal')">Calendario</button><button class="${AGVISTA==='excel'?'on':''}" onclick="agVista('excel')">Come Excel</button></div>
+    <button class="btn small" onclick="window.print()">🖨️ Stampa</button>
+  </div>
+  <div class="print-only agptitle">${AGY} - ${MESI_N[AGM-1].toUpperCase()}</div>
+  <div id="agRes"></div>
+  <div class="agleg noprint">${Object.entries(AGCAT).map(([k,c])=>`<button class="${AGOFF[k]?'off':''}" onclick="agTogCat('${k}')" title="${AGOFF[k]?'Mostra':'Nascondi'} ${esc(c.l)}"><i style="background:${c.bg}"></i>${esc(c.l)}</button>`).join('')}
+    <button class="${AGSOLO?'on2':''}" onclick="AGSOLO=!AGSOLO;render()">${AGSOLO?'☑':'☐'} Nascondi le cose già fatte</button></div>`;
+  if(ind.length) h+=`<div class="agind noprint"><button class="aginh" onclick="AGIND=!AGIND;render()">⚠️ <b>${ind.length} ${ind.length===1?'cosa':'cose'}</b> dei giorni passati non ${ind.length===1?'è segnata':'sono segnate'} come fatt${ind.length===1?'a':'e'} <span>${AGIND?'▲ Chiudi':'▼ Vedi quali'}</span></button>
+    ${AGIND?`<div class="aginl">${ind.map(v=>`<div class="agir"><span class="agid">${esc(fdate(v.iso))}</span>${agVoceHtml(v, v.key)}<button class="btn small" onclick="agSposta('${v.key}','${esc(v.id)}',todayIso())">➜ Sposta a oggi</button></div>`).join('')}</div>`:''}</div>`;
+  if(AGVISTA==='excel'){
+    h+=`<div class="agxw">`;
+    for(const [d1,d2] of [[1,16],[17,nd]]){
+      const n=d2-d1+1, pad=16-n;
+      h+=`<table class="agx"><thead>${d1===1?`<tr><th colspan="16" class="agxt">${AGY} - ${MESI_N[AGM-1].toUpperCase()}</th></tr>`:''}<tr>`;
+      for(let d=d1; d<=d2; d++) h+=`<th class="${agFestivo(AGY,AGM,d)?'fest':''} ${agIso(key,d)===oggi?'oggi':''}">${WDN[new Date(AGY,AGM-1,d).getDay()]}</th>`;
+      if(pad) h+=`<th colspan="${pad}" class="agxv"></th>`;
+      h+=`</tr><tr>`;
+      for(let d=d1; d<=d2; d++) h+=`<th class="agxn ${agFestivo(AGY,AGM,d)?'fest':''} ${agIso(key,d)===oggi?'oggi':''}">${dayHead(d,false)}</th>`;
+      if(pad) h+=`<th colspan="${pad}" class="agxv"></th>`;
+      h+=`</tr></thead><tbody><tr>`;
+      for(let d=d1; d<=d2; d++) h+=`<td class="${agIso(key,d)===oggi?'oggi':''}" data-g="${d}" ondragover="agOver(event)" ondragleave="this.classList.remove('over')" ondrop="agDrop(event,'${key}',${d})" ondblclick="if(event.target===this)agNuova('${key}',${d})">${(byDay[d]||[]).map(v=>agVoceHtml(v,key)).join('')}</td>`;
+      if(pad) h+=`<td colspan="${pad}" class="agxv"></td>`;
+      h+=`</tr></tbody></table>`;
+    }
+    h+=`</div>`;
+  } else {
+    h+=`<div class="agcal">${['LUN','MAR','MER','GIOV','VEN','SAB','DOM'].map(w=>`<div class="wdh ${w==='DOM'?'dom':''}">${w}</div>`).join('')}`;
+    const lead=(new Date(AGY,AGM-1,1).getDay()+6)%7;
+    for(let i=0;i<lead;i++) h+=`<div class="agd vuoto"></div>`;
+    for(let d=1; d<=nd; d++){
+      const iso=agIso(key,d);
+      h+=`<div class="agd ${agFestivo(AGY,AGM,d)?'fest':''} ${iso===oggi?'oggi':''} ${iso<oggi?'pass':''}" data-g="${d}" ondragover="agOver(event)" ondragleave="this.classList.remove('over')" ondrop="agDrop(event,'${key}',${d})" ondblclick="if(event.target===this)agNuova('${key}',${d})">
+        <div class="agn">${dayHead(d,false)}${iso===oggi?'<em>OGGI</em>':''}</div>${(byDay[d]||[]).map(v=>agVoceHtml(v,key)).join('')}</div>`;
+    }
+    const tail=(7-((lead+nd)%7))%7; for(let i=0;i<tail;i++) h+=`<div class="agd vuoto"></div>`;
+    h+=`</div>`;
+  }
+  h+=`<p class="sub noprint" style="margin-top:12px">Clicca il quadratino per segnare una cosa come <b>fatta</b> (viene barrata). Clicca sulla scritta per modificarla, aggiungere una nota o spostarla. Puoi anche trascinarla su un altro giorno. Il triangolino rosso indica che c'è una nota: passaci sopra col mouse per leggerla.</p>`;
+  if(AGFLASH) setTimeout(()=>{ AGFLASH=''; }, 3500);
+  return h;
+}
+function agVai(n){ let y=AGY, m=AGM+n; if(m<1){m=12;y--;} if(m>12){m=1;y++;} go('agenda/'+pKey(y,m)); }
+function agOggi(){ const d=new Date(); go('agenda/'+pKey(d.getFullYear(), d.getMonth()+1)); render(); setTimeout(()=>{ const el=document.querySelector('.agd.oggi,.agx th.oggi'); if(el) el.scrollIntoView({block:'center',inline:'center',behavior:'smooth'}); },60); }
+function agVista(v){ AGVISTA=v; lsSet('nx_ag_vista', v); render(); }
+function agTogCat(k){ AGOFF[k]=!AGOFF[k]; if(!AGOFF[k]) delete AGOFF[k]; lsSet('nx_ag_off', JSON.stringify(AGOFF)); render(); }
+function agCerca(q){
+  const box=$('#agRes'); if(!box) return; q=String(q||'').trim().toLowerCase();
+  if(q.length<2){ box.innerHTML=''; return; }
+  const out=[];
+  for(const key of Object.keys(DB.agenda)) for(const v of agVoci(key)) if((v.t+' '+(v.nota||'')).toLowerCase().includes(q)) out.push({...v, key, iso:agIso(key,v.g)});
+  out.sort((a,b)=>b.iso.localeCompare(a.iso));
+  box.innerHTML=`<div class="agres"><div class="agresh"><b>${out.length?out.length+' risultat'+(out.length===1?'o':'i'):'Nessun risultato'}</b> per "${esc(q)}"<button class="btn small ghost" onclick="$('#agQ').value='';agCerca('')">✕ Chiudi</button></div>
+    ${out.slice(0,80).map(v=>`<div class="agir clk" onclick="AGFLASH='${esc(v.id)}';go('agenda/${v.key}');render()"><span class="agid">${esc(fdate(v.iso))}</span><div class="agv ${v.x?'fatto':''}" style="background:${(AGCAT[v.c]||AGCAT.extra).bg};${(AGCAT[v.c]||{}).fg?'color:#fff':''}"><span class="agt">${esc(v.t)}</span></div>${v.nota?`<span class="agrn">${esc(v.nota)}</span>`:''}</div>`).join('')}</div>`;
+}
+
+/* ---- azioni ---- */
+function agFatto(key, id){
+  const mo=agMese(key), v=mo.voci[id]; if(!v) return;
+  const prima={x:v.x, xda:v.xda, xq:v.xq};
+  v.x=!v.x; if(v.x){ v.xda=USER||'—'; v.xq=nowIso(); } else { v.xda=null; v.xq=null; }
+  agSalva(key, v.x?'Agenda: segnato come FATTO':'Agenda: rimesso DA FARE', agDesc(v,key)); render();
+  toast(v.x?'✓ Segnato come fatto':'Rimesso da fare', ()=>{ const w=agMese(key).voci[id]; if(!w) return; Object.assign(w, prima); agSalva(key, 'Agenda: annullato', agDesc(w,key)); render(); });
+}
+function agDrag(e){ const el=e.target.closest('.agv'); e.dataTransfer.setData('text/plain', el.dataset.k+'|'+el.dataset.id); e.dataTransfer.effectAllowed='move'; }
+function agOver(e){ e.preventDefault(); e.currentTarget.classList.add('over'); }
+function agDrop(e, key, g){
+  e.preventDefault(); e.currentTarget.classList.remove('over');
+  const [k,id]=String(e.dataTransfer.getData('text/plain')||'').split('|'); if(!k||!id) return;
+  agSposta(k, id, agIso(key,g));
+}
+function agSposta(key, id, iso){
+  const v=agMese(key).voci[id]; if(!v) return;
+  const nk=iso.slice(0,7), ng=+iso.slice(8,10), daIso=agIso(key,v.g);
+  if(daIso===iso) return;
+  const vecchia=JSON.parse(JSON.stringify(v));
+  const ord=Math.max(0,...agVoci(nk).filter(x=>x.g===ng).map(x=>x.ord||0))+1;
+  if(nk===key){ v.g=ng; v.ord=ord; agSalva(key, 'Agenda: spostato', `${v.t} — dal ${fdate(daIso)} al ${fdate(iso)}`); }
+  else {
+    delete agMese(key).voci[id];
+    agMese(nk).voci[id]={...v, g:ng, ord};
+    agSalva(key, 'Agenda: spostato in un altro mese', `${v.t} — dal ${fdate(daIso)} al ${fdate(iso)}`);
+    agSalva(nk, 'Agenda: arrivato da un altro mese', `${v.t} — dal ${fdate(daIso)} al ${fdate(iso)}`);
+  }
+  render(); toast(`Spostato al ${fdate(iso)}`, ()=>{ delete agMese(nk).voci[id]; agMese(key).voci[id]=vecchia; if(nk!==key) agSalva(nk,'Agenda: annullato spostamento',vecchia.t); agSalva(key,'Agenda: annullato spostamento',agDesc(vecchia,key)); render(); });
+}
+
+/* ---- finestra nuova / modifica ---- */
+function agNuova(key, g){
+  const nd=giorniMese(+key.slice(0,4), +key.slice(5)); g=Math.min(Math.max(1,g||1),nd);
+  AGF={key, id:null, t:'', c:'',data:agIso(key,g), nota:'', rossa:false, rip:0};
+  agDraw(); setTimeout(()=>{ const i=$('#agT'); if(i) i.focus(); }, 30);
+}
+function agApri(key, id){
+  const v=agMese(key).voci[id]; if(!v) return;
+  AGF={key, id, t:v.t, c:v.c||'extra', data:agIso(key,v.g), nota:v.nota||'', rossa:!!v.rossa, rip:0, v};
+  agDraw();
+}
+function agDraw(){
+  const F=AGF; if(!F){ $('#modalBox').innerHTML=''; return; }
+  const v=F.v;
+  $('#modalBox').innerHTML=`<div class="ov" onmousedown="if(event.target===this)agChiudi()"><div class="modal" role="dialog" aria-modal="true">
+    <div class="mh"><h3>${F.id?'Cosa da fare':'＋ Nuova cosa da fare'}</h3><button class="x" onclick="agChiudi()" aria-label="Chiudi">×</button></div>
+    <div class="mb">
+      <div class="f"><label class="l" for="agT">Cosa c'è da fare</label><input id="agT" type="text" value="${esc(F.t)}" oninput="AGF.t=this.value" placeholder="es. PAG.GRP 260019, AFFITTO NEXT, SCAD. OPZIONE HTL…" onkeydown="if(event.key==='Enter')agOk()"></div>
+      <div class="f"><span class="l">Di chi è? (colore)</span><div class="agcats">${Object.entries(AGCAT).map(([k,c])=>`<button type="button" class="${F.c===k?'on':''}" style="background:${c.bg};${c.fg?'color:'+c.fg:''}" onclick="AGF.c='${k}';agDraw()">${F.c===k?'✓ ':''}${esc(c.l)}</button>`).join('')}</div>${F.err==='c'?'<div class="err">Scegli il colore.</div>':''}</div>
+      <div class="f"><label class="l" for="agD">Giorno</label><div class="row"><input id="agD" type="date" value="${esc(F.data)}" style="flex:1" onchange="AGF.data=this.value"><button type="button" class="btn small" onclick="AGF.data=todayIso();agDraw()">Oggi</button><button type="button" class="btn small" onclick="AGF.data=addDays(todayIso(),1);agDraw()">Domani</button></div></div>
+      <div class="f"><label class="l" for="agN">Nota <span class="sub" style="font-weight:400">(facoltativa: importi, riferimenti, mail…)</span></label><textarea id="agN" rows="3" oninput="AGF.nota=this.value">${esc(F.nota)}</textarea>${v&&v.nota&&v.notaDa?`<div class="sub" style="margin:4px 0 0;font-size:14px">Nota scritta da <b>${esc(v.notaDa)}</b></div>`:''}</div>
+      <div class="f"><label class="agchk"><input type="checkbox" ${F.rossa?'checked':''} onchange="AGF.rossa=this.checked"> <span style="color:#d00;font-weight:700">Scritta rossa</span> (importante)</label></div>
+      ${F.id?'':`<div class="f"><span class="l">Ripeti ogni mese, stesso giorno</span><div class="choice">${[[0,'No'],[3,'Per 3 mesi'],[6,'Per 6 mesi'],[12,'Per 12 mesi']].map(([n,l])=>`<button type="button" class="${F.rip===n?'on':''}" onclick="AGF.rip=${n};agDraw()">${l}</button>`).join('')}</div></div>`}
+      ${v?`<p class="sub" style="margin:10px 0 0;font-size:14px">${v.da?`Scritta da <b>${esc(v.da)}</b>${v.q?' il '+esc(new Date(v.q).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})):''}. `:''}${v.x?`✓ Fatta${v.xda?` — segnata da <b>${esc(v.xda)}</b>`:''}${v.xq?' il '+esc(new Date(v.xq).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})):''}.`:''}</p>`:''}
+    </div>
+    <div class="mf">
+      <button class="btn big primary" onclick="agOk()">${F.id?'Salva':'＋ Aggiungi'}</button>
+      ${F.id?`<button class="btn big" onclick="const k=AGF.key,i=AGF.id;agChiudi();agFatto(k,i)">${v.x?'↶ Rimetti da fare':'✓ Fatto'}</button>`:''}
+      <button class="btn big ghost" onclick="agChiudi()">Annulla</button>
+      ${F.id?`<span class="spacer"></span><button class="btn danger" onclick="agElimina()">🗑️ Elimina</button>`:''}
+    </div></div></div>`;
+}
+function agChiudi(){ AGF=null; $('#modalBox').innerHTML=''; applyPending(); }
+function agOk(){
+  const F=AGF; F.t=String(F.t||'').trim(); F.nota=String(F.nota||'').trim();
+  if(!F.t){ toast('Scrivi cosa c\'è da fare'); const i=$('#agT'); if(i) i.focus(); return; }
+  if(!F.c){ F.err='c'; agDraw(); return; }
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(F.data||'')){ toast('Scegli il giorno'); return; }
+  const nk=F.data.slice(0,7), ng=+F.data.slice(8,10);
+  if(!F.id){
+    const [y0,m0]=[+nk.slice(0,4), +nk.slice(5)], fatti=[];
+    for(let i=0;i<=F.rip;i++){
+      let y=y0, m=m0+i; while(m>12){ m-=12; y++; }
+      const k=pKey(y,m), g=Math.min(ng, giorniMese(y,m)), id=uid('v');
+      const ord=Math.max(0,...agVoci(k).filter(x=>x.g===g).map(x=>x.ord||0))+1;
+      agMese(k).voci[id]={g, t:F.t, c:F.c, ord, x:false, nota:F.nota, notaDa:F.nota?(USER||'—'):'', rossa:!!F.rossa, da:USER||'—', q:nowIso()};
+      agSalva(k, 'Agenda: aggiunto', `${F.t} — ${fdate(agIso(k,g))}${F.nota?' · nota: '+F.nota:''}`);
+      fatti.push([k,id]);
+    }
+    AGF=null; $('#modalBox').innerHTML=''; AGFLASH=fatti[0][1];
+    if(nk!==pKey(AGY,AGM)) go('agenda/'+nk);
+    applyPending(); render();
+    toast(F.rip?`Aggiunto in ${F.rip+1} mesi`:'Aggiunto in agenda', ()=>{ fatti.forEach(([k,id])=>{ delete agMese(k).voci[id]; agSalva(k,'Agenda: annullato inserimento',F.t); }); render(); });
+    return;
+  }
+  const v=agMese(F.key).voci[F.id]; if(!v){ agChiudi(); return; }
+  const ch=[];
+  if(v.t!==F.t) ch.push(`testo: "${v.t}" → "${F.t}"`);
+  if((v.c||'extra')!==F.c) ch.push(`colore: ${(AGCAT[v.c]||AGCAT.extra).l} → ${AGCAT[F.c].l}`);
+  if((v.nota||'')!==F.nota) ch.push(F.nota?`nota: "${F.nota}"`:'nota cancellata');
+  if(!!v.rossa!==!!F.rossa) ch.push(F.rossa?'scritta rossa':'tolta scritta rossa');
+  const spost = agIso(F.key,v.g)!==F.data;
+  if(ch.length){
+    v.t=F.t; v.c=F.c; v.rossa=!!F.rossa;
+    if((v.nota||'')!==F.nota){ v.nota=F.nota; v.notaDa=F.nota?(USER||'—'):''; }
+    agSalva(F.key, 'Agenda: modificato', `${v.t} (${fdate(agIso(F.key,v.g))}) — ${ch.join('; ')}`);
+  }
+  const k=F.key, id=F.id; AGF=null; $('#modalBox').innerHTML='';
+  if(spost) agSposta(k, id, F.data); else { applyPending(); render(); if(ch.length) toast('Salvato'); }
+}
+function agElimina(){
+  const k=AGF.key, id=AGF.id, v=agMese(k).voci[id]; if(!v) return;
+  const copia=JSON.parse(JSON.stringify(v));
+  AGF=null;
+  askConfirm(`Eliminare "${v.t}" del ${fdate(agIso(k,v.g))}?`, 'Sì, elimina', ()=>{
+    delete agMese(k).voci[id]; agSalva(k, 'Agenda: eliminato', agDesc(copia,k)); render();
+    toast('Eliminato', ()=>{ agMese(k).voci[id]=copia; agSalva(k,'Agenda: ripristinato',agDesc(copia,k)); render(); });
+  });
+}
+function viewAgRegistro(){
+  const out=[];
+  for(const [k,mo] of Object.entries(DB.agenda||{})) for(const a of Object.values(mo.storico||{})) if(a) out.push({...a, gid:null, gruppo:agMeseNome(k)});
+  out.sort((a,b)=>String(b.quando).localeCompare(String(a.quando)));
+  const chi=[...new Set(out.map(a=>a.chi))].sort();
+  const list=logFilter==='tutti'?out:out.filter(a=>a.chi===logFilter);
+  return `<h1>Chi ha fatto cosa nell'agenda</h1>
+  <p class="sub">Ogni modifica all'agenda viene annotata con il nome, la data e l'ora.</p>
+  <div class="seg" style="margin-bottom:16px"><button class="${logFilter==='tutti'?'on':''}" onclick="logFilter='tutti';render()">Tutti</button>${chi.map(c=>`<button class="${logFilter===c?'on':''}" onclick="logFilter=${esc(JSON.stringify(c))};render()">${esc(c)}</button>`).join('')}</div>
+  ${list.length?logTable(list, true):'<div class="empty">Ancora nessuna modifica all\'agenda.</div>'}`;
+}
+function viewScegli(){
+  return `<div class="scegli"><h1>Ciao ${esc(USER||'')}! 👋 Dove vuoi entrare?</h1>
+  <div class="scegli-g">
+    <button class="scegli-c next" onclick="go('home')"><span class="ic">📒</span><b>Gestionale Next</b><span>Gruppi · Pagamenti e incassi · Fornitori · Presenze</span></button>
+    <button class="scegli-c ag" onclick="go('agenda')"><span class="ic">🗓️</span><b>Agenda</b><span>Le cose da fare di Next e Diodoro</span></button>
+  </div></div>`;
+}
+
 /* ---------- Supabase ---------- */
 const RAW={};
 function sbApply(){ PENDING=Object.entries(RAW).map(([id,d])=>fromDoc(id,d)); if(ONLINE_STATE!=='ok' && !modalOpen()){ DB.gruppi=PENDING; PENDING=null; DB.gruppi.forEach(setBase); ONLINE_STATE='ok'; render(); } else applyPending(); }
@@ -1273,7 +1631,7 @@ async function sbStart(){
   }).subscribe();
   clearInterval(sbPoll); sbPoll=setInterval(()=>{ if(USER && document.visibilityState==='visible' && !modalOpen()) sbLoad(); }, 60000);
 }
-function sbStop(){ if(sbChan){ SBC.removeChannel(sbChan); sbChan=null; } clearInterval(sbPoll); for(const k of Object.keys(RAW)) delete RAW[k]; DB.gruppi=[]; PENDING=null; for(const k of Object.keys(RAWF)) delete RAWF[k]; DB.fornitori=[]; FPENDING=null; for(const k of Object.keys(RAWA)) delete RAWA[k]; DB.presenze={}; APENDING=null; ONLINE_STATE='loading'; }
+function sbStop(){ if(sbChan){ SBC.removeChannel(sbChan); sbChan=null; } clearInterval(sbPoll); for(const k of Object.keys(RAW)) delete RAW[k]; DB.gruppi=[]; PENDING=null; for(const k of Object.keys(RAWF)) delete RAWF[k]; DB.fornitori=[]; FPENDING=null; for(const k of Object.keys(RAWA)) delete RAWA[k]; DB.presenze={}; DB.agenda={}; APENDING=null; ONLINE_STATE='loading'; }
 async function sbProfili(){
   if(!SBC){ PINS_READY=true; renderLock(); return; }
   const r=await SBC.rpc('profili_attivi');
@@ -1336,7 +1694,7 @@ function lockNow(auto){
 function unlockAs(who){
   USER=who; lastAct=Date.now(); sessSet(who);
   $('#lock').classList.add('hidden'); $('#lock').innerHTML='';
-  paintUser(); render(); toast(`Ciao ${who}! 👋`); setTimeout(showNovita, 1500);
+  paintUser(); location.hash='scegli'; render(); setTimeout(showNovita, 1500);
   if(SB && ONLINE_STATE!=='ok') sbStart();
   if(SB) presStart();
 }
@@ -1588,6 +1946,7 @@ function allTodos(){
 
 /* ---------------- routing ---------------- */
 function go(v){ location.hash = v; }
+function cambiaModo(){ const v=(location.hash||'').slice(1).split('/')[0]; go(v==='agenda'||v==='agregistro' ? 'home' : 'agenda'); }
 window.addEventListener('hashchange', ()=>{ render(); presTrack(); });
 let groupFilter = {q:'', anno:new Date().getFullYear(), stato:'tutti'};
 const EMBED = (()=>{ try{ return window.top!==window.self; }catch(e){ return true; } })();
@@ -1607,15 +1966,22 @@ let riepAnno = null;
 function render(){
   const h = (location.hash||'#home').slice(1);
   const [v,arg] = h.split('/');
-  document.querySelectorAll('#tabs a').forEach(a=>a.classList.toggle('on', a.dataset.v===v || (v==='gruppo'&&a.dataset.v==='gruppi')||(v==='fornitore'&&a.dataset.v==='fornitori')));
+  const AGV = v==='agenda'||v==='agregistro';
+  $('#tabs').classList.toggle('hidden', AGV||v==='scegli'); $('#tabsAg').classList.toggle('hidden', !AGV);
+  $('#appName').innerHTML = AGV ? '<b>Agenda</b>Jessica e Lia · Next e Diodoro' : '<b>Contabilità Gruppi</b>Entrate · Uscite · Guadagni';
+  const mb=$('#modeBtn'); mb.classList.toggle('hidden', !USER||v==='scegli'); mb.textContent = AGV ? '📒 Vai al Gestionale Next' : '🗓️ Vai all\'Agenda';
+  document.querySelectorAll('nav.tabs a').forEach(a=>a.classList.toggle('on', a.dataset.v===v || (v==='gruppo'&&a.dataset.v==='gruppi')||(v==='fornitore'&&a.dataset.v==='fornitori')));
   const todos = allTodos();
   const urgent = todos.filter(t=>t.state==='late'||t.state==='soon').length;
   const b=$('#badgeScad'); b.textContent=urgent; b.classList.toggle('hidden',!urgent);
-  document.title = (urgent?`(${urgent}) `:'')+'Nextravel Contabilità Gruppi';
+  document.title = AGV ? 'Agenda Nextravel' : (urgent?`(${urgent}) `:'')+'Nextravel Contabilità Gruppi';
   renderBanner();
   const view=$('#view');
   if(ONLINE && ONLINE_STATE!=='ok'){ view.innerHTML = ONLINE_STATE==='loading' ? `<div class="empty">⏳ Caricamento dei dati dall'archivio online…</div>` : `<div class="empty">⚠️ ${esc(ONLINE_ERR||'Archivio online non disponibile.')}<br><br><button class="btn" onclick="location.reload()">Ricarica la pagina</button></div>`; return; }
-  if(v==='gruppi') view.innerHTML=viewGruppi();
+  if(v==='scegli') view.innerHTML=viewScegli();
+  else if(v==='agenda') view.innerHTML=viewAgenda(decodeURIComponent(arg||''));
+  else if(v==='agregistro') view.innerHTML=viewAgRegistro();
+  else if(v==='gruppi') view.innerHTML=viewGruppi();
   else if(v==='gruppo') view.innerHTML=viewGruppo(decodeURIComponent(arg||''));
   else if(v==='scadenze') view.innerHTML=viewScadenze(todos);
   else if(v==='riepilogo') view.innerHTML=viewRiepilogo();
@@ -2410,7 +2776,7 @@ function presWhere(){
   return {vista:v||'home', gid:g?g.id:'', gruppo:g?(g.numero||''):''};
 }
 function presDesc(u){
-  const n={home:'nella pagina Oggi', gruppi:'nell\'elenco gruppi', scadenze:'in Pagamenti e incassi', riepilogo:'nel Riepilogo anno', registro:'in Chi ha fatto cosa', presenze:'nelle Presenze', fornitori:'nell\'anagrafica fornitori', fornitore:'in una scheda fornitore', archivio:'nelle Impostazioni'};
+  const n={home:'nella pagina Oggi', gruppi:'nell\'elenco gruppi', scadenze:'in Pagamenti e incassi', riepilogo:'nel Riepilogo anno', registro:'in Chi ha fatto cosa', presenze:'nelle Presenze', agenda:'nell\'Agenda', agregistro:'nel registro dell\'Agenda', scegli:'nella scelta iniziale', fornitori:'nell\'anagrafica fornitori', fornitore:'in una scheda fornitore', archivio:'nelle Impostazioni'};
   return u.vista==='gruppo' ? `nel gruppo ${u.gruppo||''}` : (n[u.vista]||'nell\'app');
 }
 function presStart(){
