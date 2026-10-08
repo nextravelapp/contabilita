@@ -447,7 +447,14 @@ table.agx td>.agv{margin-bottom:2px;font-size:12.5px;padding:2px 4px;gap:4px}
 .agcats button{min-height:52px;border:2px solid #9aa3b0;border-radius:12px;font-weight:700;cursor:pointer;font-size:16px}
 .agcats button.on{border-color:var(--ink);box-shadow:0 0 0 3px var(--ink)}
 .agchk{display:flex;align-items:center;gap:8px;cursor:pointer}.agchk input{width:20px;height:20px}
-.print-only{display:none}
+.agbar{position:sticky;top:var(--hh,0);z-index:12;background:var(--bg);padding:10px 0;margin-top:-10px;border-bottom:1px solid var(--line)}
+.agsel{min-height:46px;font-size:20px;font-weight:800;background:#FFE699;border:1px solid #e6c95a;border-radius:10px;padding:4px 14px;cursor:pointer}
+.agmese{margin:0 0 34px}
+.agmt{background:#FFE699;font-weight:800;font-size:22px;text-align:center;padding:8px;border:1px solid #e6c95a;border-bottom:0;letter-spacing:.5px}
+.agclk{cursor:pointer}
+.agd.agclk:hover,.agx td.agclk:hover{background:#fffbe6}
+.agd.oggi.agclk:hover{background:#fff3ee}
+@media print{.agmese.agnoprint{display:none}.agmt{-webkit-print-color-adjust:exact;print-color-adjust:exact}.agmese{margin:0}}.print-only{display:none}
 @media print{
   .print-only{display:block}
   .agptitle{background:#FFE699;font-weight:800;font-size:20px;text-align:center;padding:6px;margin-bottom:6px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -510,8 +517,8 @@ const SB_URL = 'https://jofzimnrgkzvlawuuivp.supabase.co', SB_KEY = 'eyJhbGciOiJ
 const EMAILS = {Jessica:'jessica@nextravel.app', Roberto:'roberto@nextravel.app', Alessandro:'alessandro@nextravel.app', Lia:'lia@nextravel.app', Letizia:'letizia@nextravel.app'};
 const PINLEN = SB ? 6 : 4;
 /* ---------------- AVVISO AGGIORNAMENTI ---------------- */
-const APP_VERSION = '20261008-092039';
-const APP_NOVITA = ["NUOVA AGENDA: dopo il PIN scegli se entrare nel Gestionale Next o nell\u0027Agenda di Jessica e Lia.","Agenda: stessi colori dell\u0027Excel (azzurro Diodoro bus, pesca Next, verde Diodoro agenzia, bianco extra). Clicca il quadratino per barrare una cosa fatta.","Agenda: trascina una voce su un altro giorno per spostarla; il triangolino rosso indica una nota."];
+const APP_VERSION = '20261008-094415';
+const APP_NOVITA = ["Agenda: ora tutti i mesi sono nella stessa pagina, uno sotto l\u0027altro: scorri in giù e in su. Si apre sul mese corrente.","Agenda: per aggiungere una cosa da fare basta cliccare sul giorno.","Agenda: in alto il menu giallo porta subito a un mese, \"Oggi\" riporta al giorno di oggi."];
 let UPDATE = null;   // {version, novita} quando sul sito c'è una versione più nuova
 async function checkUpdate(){
   if(!SB || location.protocol==='file:') return;
@@ -1408,64 +1415,96 @@ function agIndietro(){
   }
   return out.sort((a,b)=>b.iso.localeCompare(a.iso)||a.ord-b.ord);
 }
+function agMesiRange(){
+  const d=new Date(), cur=pKey(d.getFullYear(), d.getMonth()+1);
+  const ks=Object.keys(DB.agenda).filter(k=>agVoci(k).length).sort();
+  let a=ks[0]&&ks[0]<cur?ks[0]:cur, b=pKey(d.getFullYear()+1, d.getMonth()+1);
+  if(ks.length && ks[ks.length-1]>b) b=ks[ks.length-1];
+  if(a===cur){ let y=d.getFullYear(), m=d.getMonth(); if(m<1){m=12;y--;} a=pKey(y,m); }
+  const out=[]; let y=+a.slice(0,4), m=+a.slice(5);
+  while(pKey(y,m)<=b){ out.push(pKey(y,m)); m++; if(m>12){m=1;y++;} }
+  return out;
+}
+function agMeseHtml(key){
+  const Y=+key.slice(0,4), M=+key.slice(5), nd=giorniMese(Y,M), oggi=todayIso(), tit=`${Y} - ${MESI_N[M-1].toUpperCase()}`;
+  const byDay={}; agVoci(key).filter(agFiltro).sort((a,b)=>a.g-b.g||(a.ord||0)-(b.ord||0)).forEach(v=>(byDay[v.g]=byDay[v.g]||[]).push(v));
+  const dayHead=d=>`<b>${d}</b><button class="agadd" onclick="event.stopPropagation();agNuova('${key}',${d})" title="Aggiungi una cosa da fare il ${d}">＋</button>`;
+  const cellAttr=d=>`data-g="${d}" ondragover="agOver(event)" ondragleave="this.classList.remove('over')" ondrop="agDrop(event,'${key}',${d})" onclick="agClickGiorno(event,'${key}',${d})" title="Clicca per aggiungere una cosa da fare il ${d}"`;
+  let h=`<section class="agmese" id="agm-${key}" data-k="${key}">`;
+  if(AGVISTA==='excel'){
+    for(const [d1,d2] of [[1,16],[17,nd]]){
+      const n=d2-d1+1, pad=16-n;
+      h+=`<table class="agx"><thead>${d1===1?`<tr><th colspan="16" class="agxt">${tit}</th></tr>`:''}<tr>`;
+      for(let d=d1; d<=d2; d++) h+=`<th class="${agFestivo(Y,M,d)?'fest':''} ${agIso(key,d)===oggi?'oggi':''}">${WDN[new Date(Y,M-1,d).getDay()]}</th>`;
+      if(pad) h+=`<th colspan="${pad}" class="agxv"></th>`;
+      h+=`</tr><tr>`;
+      for(let d=d1; d<=d2; d++) h+=`<th class="agxn agclk ${agFestivo(Y,M,d)?'fest':''} ${agIso(key,d)===oggi?'oggi':''}" onclick="agNuova('${key}',${d})">${dayHead(d)}</th>`;
+      if(pad) h+=`<th colspan="${pad}" class="agxv"></th>`;
+      h+=`</tr></thead><tbody><tr>`;
+      for(let d=d1; d<=d2; d++) h+=`<td class="agclk ${agIso(key,d)===oggi?'oggi':''}" ${cellAttr(d)}>${(byDay[d]||[]).map(v=>agVoceHtml(v,key)).join('')}</td>`;
+      if(pad) h+=`<td colspan="${pad}" class="agxv"></td>`;
+      h+=`</tr></tbody></table>`;
+    }
+  } else {
+    h+=`<div class="agmt">${tit}</div><div class="agcal">${['LUN','MAR','MER','GIOV','VEN','SAB','DOM'].map(w=>`<div class="wdh ${w==='DOM'?'dom':''}">${w}</div>`).join('')}`;
+    const lead=(new Date(Y,M-1,1).getDay()+6)%7;
+    for(let i=0;i<lead;i++) h+=`<div class="agd vuoto"></div>`;
+    for(let d=1; d<=nd; d++){
+      const iso=agIso(key,d);
+      h+=`<div class="agd agclk ${agFestivo(Y,M,d)?'fest':''} ${iso===oggi?'oggi':''} ${iso<oggi?'pass':''}" ${cellAttr(d)}>
+        <div class="agn">${dayHead(d)}${iso===oggi?'<em>OGGI</em>':''}</div>${(byDay[d]||[]).map(v=>agVoceHtml(v,key)).join('')}</div>`;
+    }
+    const tail=(7-((lead+nd)%7))%7; for(let i=0;i<tail;i++) h+=`<div class="agd vuoto"></div>`;
+    h+=`</div>`;
+  }
+  return h+`</section>`;
+}
+let AGIN=false, AGGOTO='';
 function viewAgenda(arg){
   if(SB && !ARCH_READY) return `<h1>Agenda</h1><div class="empty">⏳ Caricamento dell'agenda…</div>`;
-  if(arg && /^\d{4}-\d{2}$/.test(arg)){ AGY=+arg.slice(0,4); AGM=+arg.slice(5); }
-  const key=pKey(AGY,AGM), nd=giorniMese(AGY,AGM), oggi=todayIso();
-  const byDay={}; agVoci(key).filter(agFiltro).sort((a,b)=>a.g-b.g||(a.ord||0)-(b.ord||0)).forEach(v=>(byDay[v.g]=byDay[v.g]||[]).push(v));
-  const ind=agIndietro();
-  const dayHead=(d,wd)=>`<b>${d}</b>${wd?`<span>${WDN[new Date(AGY,AGM-1,d).getDay()]}</span>`:''}<button class="agadd" onclick="agNuova('${key}',${d})" title="Aggiungi una cosa da fare il ${d}">＋</button>`;
+  const d0=new Date(), cur=pKey(d0.getFullYear(), d0.getMonth()+1);
+  if(arg && /^\d{4}-\d{2}$/.test(arg)){ AGGOTO=arg; AGIN=true; history.replaceState(null,'','#agenda'); }
+  if(!AGIN){ AGIN=true; AGGOTO=cur; }
+  const mesi=agMesiRange(), ind=agIndietro();
   let h=`<div class="agbar noprint">
-    <button class="agnav" onclick="agVai(-1)" title="Mese prima">‹</button>
-    <div class="agtitle">${AGY} - ${MESI_N[AGM-1].toUpperCase()}</div>
-    <button class="agnav" onclick="agVai(1)" title="Mese dopo">›</button>
-    <button class="btn small" onclick="agOggi()">Oggi</button>
-    <button class="btn small primary" onclick="agNuova('${key}', ${pKey(new Date().getFullYear(),new Date().getMonth()+1)===key?new Date().getDate():1})">＋ Nuova cosa da fare</button>
+    <select class="agsel" onchange="agVaiMese(this.value)" title="Vai al mese">${mesi.map(k=>`<option value="${k}" ${k===cur?'selected':''}>${MESI_N[+k.slice(5)-1]} ${k.slice(0,4)}</option>`).join('')}</select>
+    <button class="btn small" onclick="agOggi()">📍 Oggi</button>
+    <button class="btn small primary" onclick="agNuova('${cur}', ${d0.getDate()})">＋ Nuova cosa da fare</button>
     <span class="spacer"></span>
     <div class="agsearch"><input id="agQ" type="search" placeholder="🔍 Cerca nell'agenda…" oninput="agCerca(this.value)" autocomplete="off"></div>
     <div class="seg"><button class="${AGVISTA==='cal'?'on':''}" onclick="agVista('cal')">Calendario</button><button class="${AGVISTA==='excel'?'on':''}" onclick="agVista('excel')">Come Excel</button></div>
-    <button class="btn small" onclick="window.print()">🖨️ Stampa</button>
+    <button class="btn small" onclick="agStampa()" title="Stampa il mese che stai guardando">🖨️ Stampa</button>
   </div>
-  <div class="print-only agptitle">${AGY} - ${MESI_N[AGM-1].toUpperCase()}</div>
   <div id="agRes"></div>
   <div class="agleg noprint">${Object.entries(AGCAT).map(([k,c])=>`<button class="${AGOFF[k]?'off':''}" onclick="agTogCat('${k}')" title="${AGOFF[k]?'Mostra':'Nascondi'} ${esc(c.l)}"><i style="background:${c.bg}"></i>${esc(c.l)}</button>`).join('')}
     <button class="${AGSOLO?'on2':''}" onclick="AGSOLO=!AGSOLO;render()">${AGSOLO?'☑':'☐'} Nascondi le cose già fatte</button></div>`;
   if(ind.length) h+=`<div class="agind noprint"><button class="aginh" onclick="AGIND=!AGIND;render()">⚠️ <b>${ind.length} ${ind.length===1?'cosa':'cose'}</b> dei giorni passati non ${ind.length===1?'è segnata':'sono segnate'} come fatt${ind.length===1?'a':'e'} <span>${AGIND?'▲ Chiudi':'▼ Vedi quali'}</span></button>
     ${AGIND?`<div class="aginl">${ind.map(v=>`<div class="agir"><span class="agid">${esc(fdate(v.iso))}</span>${agVoceHtml(v, v.key)}<button class="btn small" onclick="agSposta('${v.key}','${esc(v.id)}',todayIso())">➜ Sposta a oggi</button></div>`).join('')}</div>`:''}</div>`;
-  if(AGVISTA==='excel'){
-    h+=`<div class="agxw">`;
-    for(const [d1,d2] of [[1,16],[17,nd]]){
-      const n=d2-d1+1, pad=16-n;
-      h+=`<table class="agx"><thead>${d1===1?`<tr><th colspan="16" class="agxt">${AGY} - ${MESI_N[AGM-1].toUpperCase()}</th></tr>`:''}<tr>`;
-      for(let d=d1; d<=d2; d++) h+=`<th class="${agFestivo(AGY,AGM,d)?'fest':''} ${agIso(key,d)===oggi?'oggi':''}">${WDN[new Date(AGY,AGM-1,d).getDay()]}</th>`;
-      if(pad) h+=`<th colspan="${pad}" class="agxv"></th>`;
-      h+=`</tr><tr>`;
-      for(let d=d1; d<=d2; d++) h+=`<th class="agxn ${agFestivo(AGY,AGM,d)?'fest':''} ${agIso(key,d)===oggi?'oggi':''}">${dayHead(d,false)}</th>`;
-      if(pad) h+=`<th colspan="${pad}" class="agxv"></th>`;
-      h+=`</tr></thead><tbody><tr>`;
-      for(let d=d1; d<=d2; d++) h+=`<td class="${agIso(key,d)===oggi?'oggi':''}" data-g="${d}" ondragover="agOver(event)" ondragleave="this.classList.remove('over')" ondrop="agDrop(event,'${key}',${d})" ondblclick="if(event.target===this)agNuova('${key}',${d})">${(byDay[d]||[]).map(v=>agVoceHtml(v,key)).join('')}</td>`;
-      if(pad) h+=`<td colspan="${pad}" class="agxv"></td>`;
-      h+=`</tr></tbody></table>`;
-    }
-    h+=`</div>`;
-  } else {
-    h+=`<div class="agcal">${['LUN','MAR','MER','GIOV','VEN','SAB','DOM'].map(w=>`<div class="wdh ${w==='DOM'?'dom':''}">${w}</div>`).join('')}`;
-    const lead=(new Date(AGY,AGM-1,1).getDay()+6)%7;
-    for(let i=0;i<lead;i++) h+=`<div class="agd vuoto"></div>`;
-    for(let d=1; d<=nd; d++){
-      const iso=agIso(key,d);
-      h+=`<div class="agd ${agFestivo(AGY,AGM,d)?'fest':''} ${iso===oggi?'oggi':''} ${iso<oggi?'pass':''}" data-g="${d}" ondragover="agOver(event)" ondragleave="this.classList.remove('over')" ondrop="agDrop(event,'${key}',${d})" ondblclick="if(event.target===this)agNuova('${key}',${d})">
-        <div class="agn">${dayHead(d,false)}${iso===oggi?'<em>OGGI</em>':''}</div>${(byDay[d]||[]).map(v=>agVoceHtml(v,key)).join('')}</div>`;
-    }
-    const tail=(7-((lead+nd)%7))%7; for(let i=0;i<tail;i++) h+=`<div class="agd vuoto"></div>`;
-    h+=`</div>`;
-  }
-  h+=`<p class="sub noprint" style="margin-top:12px">Clicca il quadratino per segnare una cosa come <b>fatta</b> (viene barrata). Clicca sulla scritta per modificarla, aggiungere una nota o spostarla. Puoi anche trascinarla su un altro giorno. Il triangolino rosso indica che c'è una nota: passaci sopra col mouse per leggerla.</p>`;
+  h+=`<p class="sub noprint" style="margin:0 0 12px">Clicca su un <b>giorno</b> per aggiungere una cosa da fare. Clicca il quadratino per segnarla come <b>fatta</b> (viene barrata); clicca sulla scritta per modificarla o aggiungere una nota; trascinala per spostarla. Scorri in giù e in su per vedere tutti i mesi.</p>`;
+  h+=mesi.map(agMeseHtml).join('');
+  if(AGGOTO){ const k=AGGOTO; AGGOTO=''; setTimeout(()=>agScrollMese(k,false), 30); }
   if(AGFLASH) setTimeout(()=>{ AGFLASH=''; }, 3500);
   return h;
 }
-function agVai(n){ let y=AGY, m=AGM+n; if(m<1){m=12;y--;} if(m>12){m=1;y++;} go('agenda/'+pKey(y,m)); }
-function agOggi(){ const d=new Date(); go('agenda/'+pKey(d.getFullYear(), d.getMonth()+1)); render(); setTimeout(()=>{ const el=document.querySelector('.agd.oggi,.agx th.oggi'); if(el) el.scrollIntoView({block:'center',inline:'center',behavior:'smooth'}); },60); }
+function agClickGiorno(e, key, d){ if(e.target.closest('.agv,.agadd,button,a,input')) return; agNuova(key, d); }
+function agOffset(){ const b=document.querySelector('.agbar'); return (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hh'))||0) + (b?b.offsetHeight:0) + 8; }
+function agScrollMese(key, smooth){
+  let el=document.getElementById('agm-'+key);
+  const fl=AGFLASH && document.querySelector(`.agv[data-id="${CSS.escape(AGFLASH)}"]`);
+  if(fl){ const r=fl.getBoundingClientRect(); window.scrollTo({top:r.top+scrollY-agOffset()-120, behavior:smooth?'smooth':'auto'}); return; }
+  if(!el) return;
+  window.scrollTo({top:el.getBoundingClientRect().top+scrollY-agOffset(), behavior:smooth?'smooth':'auto'});
+}
+function agVaiMese(key){ if(!document.getElementById('agm-'+key)){ AGGOTO=key; render(); return; } agScrollMese(key, false); }
+function agOggi(){ const el=document.querySelector('.agd.oggi,.agx th.oggi'); if(!el) return; const r=el.getBoundingClientRect(); window.scrollTo({top:r.top+scrollY-agOffset()-40, behavior:'smooth'}); }
+function agMeseVisibile(){ const off=agOffset(); let best=null; document.querySelectorAll('.agmese').forEach(s=>{ if(s.getBoundingClientRect().bottom>off+60 && !best) best=s; }); return best; }
+function agStampa(){
+  const s=agMeseVisibile(); if(!s){ window.print(); return; }
+  document.querySelectorAll('.agmese').forEach(x=>x.classList.toggle('agnoprint', x!==s));
+  window.print(); setTimeout(()=>document.querySelectorAll('.agmese').forEach(x=>x.classList.remove('agnoprint')), 500);
+}
+let agSelT=null;
+window.addEventListener('scroll', ()=>{ if(!document.querySelector('.agsel')) return; clearTimeout(agSelT); agSelT=setTimeout(()=>{ const s=agMeseVisibile(), sel=document.querySelector('.agsel'); if(s && sel && sel.value!==s.dataset.k) sel.value=s.dataset.k; }, 120); }, {passive:true});
 function agVista(v){ AGVISTA=v; lsSet('nx_ag_vista', v); render(); }
 function agTogCat(k){ AGOFF[k]=!AGOFF[k]; if(!AGOFF[k]) delete AGOFF[k]; lsSet('nx_ag_off', JSON.stringify(AGOFF)); render(); }
 function agCerca(q){
@@ -1475,7 +1514,7 @@ function agCerca(q){
   for(const key of Object.keys(DB.agenda)) for(const v of agVoci(key)) if((v.t+' '+(v.nota||'')).toLowerCase().includes(q)) out.push({...v, key, iso:agIso(key,v.g)});
   out.sort((a,b)=>b.iso.localeCompare(a.iso));
   box.innerHTML=`<div class="agres"><div class="agresh"><b>${out.length?out.length+' risultat'+(out.length===1?'o':'i'):'Nessun risultato'}</b> per "${esc(q)}"<button class="btn small ghost" onclick="$('#agQ').value='';agCerca('')">✕ Chiudi</button></div>
-    ${out.slice(0,80).map(v=>`<div class="agir clk" onclick="AGFLASH='${esc(v.id)}';go('agenda/${v.key}');render()"><span class="agid">${esc(fdate(v.iso))}</span><div class="agv ${v.x?'fatto':''}" style="background:${(AGCAT[v.c]||AGCAT.extra).bg};${(AGCAT[v.c]||{}).fg?'color:#fff':''}"><span class="agt">${esc(v.t)}</span></div>${v.nota?`<span class="agrn">${esc(v.nota)}</span>`:''}</div>`).join('')}</div>`;
+    ${out.slice(0,80).map(v=>`<div class="agir clk" onclick="AGFLASH='${esc(v.id)}';AGGOTO='${v.key}';render()"><span class="agid">${esc(fdate(v.iso))}</span><div class="agv ${v.x?'fatto':''}" style="background:${(AGCAT[v.c]||AGCAT.extra).bg};${(AGCAT[v.c]||{}).fg?'color:#fff':''}"><span class="agt">${esc(v.t)}</span></div>${v.nota?`<span class="agrn">${esc(v.nota)}</span>`:''}</div>`).join('')}</div>`;
 }
 
 /* ---- azioni ---- */
@@ -1559,7 +1598,6 @@ function agOk(){
       fatti.push([k,id]);
     }
     AGF=null; $('#modalBox').innerHTML=''; AGFLASH=fatti[0][1];
-    if(nk!==pKey(AGY,AGM)) go('agenda/'+nk);
     applyPending(); render();
     toast(F.rip?`Aggiunto in ${F.rip+1} mesi`:'Aggiunto in agenda', ()=>{ fatti.forEach(([k,id])=>{ delete agMese(k).voci[id]; agSalva(k,'Agenda: annullato inserimento',F.t); }); render(); });
     return;
@@ -1978,6 +2016,7 @@ function render(){
   renderBanner();
   const view=$('#view');
   if(ONLINE && ONLINE_STATE!=='ok'){ view.innerHTML = ONLINE_STATE==='loading' ? `<div class="empty">⏳ Caricamento dei dati dall'archivio online…</div>` : `<div class="empty">⚠️ ${esc(ONLINE_ERR||'Archivio online non disponibile.')}<br><br><button class="btn" onclick="location.reload()">Ricarica la pagina</button></div>`; return; }
+  if(v!=='agenda') AGIN=false;
   if(v==='scegli') view.innerHTML=viewScegli();
   else if(v==='agenda') view.innerHTML=viewAgenda(decodeURIComponent(arg||''));
   else if(v==='agregistro') view.innerHTML=viewAgRegistro();
