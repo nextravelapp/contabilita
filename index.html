@@ -394,7 +394,7 @@ table.t tr.flash td{animation:flashRow 2.6s ease-out}
 .agnav{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:26px;line-height:1;cursor:pointer}
 .agnav:hover{background:var(--grey-bg)}
 .agsearch input{min-height:40px;width:260px;max-width:100%;border:1px solid var(--line);border-radius:10px;padding:6px 12px;font-size:15px}
-.agleg{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+.agleg{display:flex;gap:8px;flex-wrap:wrap;margin:0;flex-basis:100%}.agbar .agleg button{padding:4px 12px 4px 6px;font-size:14px}.agleg .agsolo{margin-left:auto}
 .agleg button{display:flex;align-items:center;gap:8px;border:1px solid #c9ced6;border-radius:30px;padding:6px 14px 6px 8px;background:#fff;cursor:pointer;font-size:15px;font-weight:600}
 .agleg button i{width:22px;height:22px;border-radius:6px;border:1px solid #9aa3b0;display:block}
 .agleg button.off{opacity:.45;text-decoration:line-through}
@@ -517,8 +517,8 @@ const SB_URL = 'https://jofzimnrgkzvlawuuivp.supabase.co', SB_KEY = 'eyJhbGciOiJ
 const EMAILS = {Jessica:'jessica@nextravel.app', Roberto:'roberto@nextravel.app', Alessandro:'alessandro@nextravel.app', Lia:'lia@nextravel.app', Letizia:'letizia@nextravel.app'};
 const PINLEN = SB ? 6 : 4;
 /* ---------------- AVVISO AGGIORNAMENTI ---------------- */
-const APP_VERSION = '20261008-094415';
-const APP_NOVITA = ["Agenda: ora tutti i mesi sono nella stessa pagina, uno sotto l\u0027altro: scorri in giù e in su. Si apre sul mese corrente.","Agenda: per aggiungere una cosa da fare basta cliccare sul giorno.","Agenda: in alto il menu giallo porta subito a un mese, \"Oggi\" riporta al giorno di oggi."];
+const APP_VERSION = '20261008-094943';
+const APP_NOVITA = ["Agenda: \"Nascondi le cose già fatte\" e i colori per filtrare ora restano sempre visibili in alto mentre scorri i mesi."];
 let UPDATE = null;   // {version, novita} quando sul sito c'è una versione più nuova
 async function checkUpdate(){
   if(!SB || location.protocol==='file:') return;
@@ -1354,7 +1354,7 @@ const WDN = ['DOM','LUN','MAR','MER','GIOV','VEN','SAB'];
 const ABASE = {};
 if(!DB.agenda) DB.agenda = {};
 let AGY = new Date().getFullYear(), AGM = new Date().getMonth()+1;
-let AGVISTA = lsGet('nx_ag_vista')||'cal', AGOFF = {}, AGSOLO = false, AGIND = false, AGF = null, AGFLASH = '';
+let AGVISTA = lsGet('nx_ag_vista')||'cal', AGOFF = {}, AGSOLO = !!lsGet('nx_ag_solo'), AGIND = false, AGF = null, AGFLASH = '';
 try{ AGOFF = JSON.parse(lsGet('nx_ag_off')||'{}')||{}; }catch(e){ AGOFF = {}; }
 
 function agFromDoc(d){
@@ -1474,10 +1474,10 @@ function viewAgenda(arg){
     <div class="agsearch"><input id="agQ" type="search" placeholder="🔍 Cerca nell'agenda…" oninput="agCerca(this.value)" autocomplete="off"></div>
     <div class="seg"><button class="${AGVISTA==='cal'?'on':''}" onclick="agVista('cal')">Calendario</button><button class="${AGVISTA==='excel'?'on':''}" onclick="agVista('excel')">Come Excel</button></div>
     <button class="btn small" onclick="agStampa()" title="Stampa il mese che stai guardando">🖨️ Stampa</button>
+    <div class="agleg">${Object.entries(AGCAT).map(([k,c])=>`<button class="${AGOFF[k]?'off':''}" onclick="agTogCat('${k}')" title="${AGOFF[k]?'Mostra':'Nascondi'} ${esc(c.l)}"><i style="background:${c.bg}"></i>${esc(c.l)}</button>`).join('')}
+    <button class="agsolo ${AGSOLO?'on2':''}" onclick="AGSOLO=!AGSOLO;lsSet('nx_ag_solo',AGSOLO?'1':'');agRifai()">${AGSOLO?'☑':'☐'} Nascondi le cose già fatte</button></div>
   </div>
-  <div id="agRes"></div>
-  <div class="agleg noprint">${Object.entries(AGCAT).map(([k,c])=>`<button class="${AGOFF[k]?'off':''}" onclick="agTogCat('${k}')" title="${AGOFF[k]?'Mostra':'Nascondi'} ${esc(c.l)}"><i style="background:${c.bg}"></i>${esc(c.l)}</button>`).join('')}
-    <button class="${AGSOLO?'on2':''}" onclick="AGSOLO=!AGSOLO;render()">${AGSOLO?'☑':'☐'} Nascondi le cose già fatte</button></div>`;
+  <div id="agRes"></div>`;
   if(ind.length) h+=`<div class="agind noprint"><button class="aginh" onclick="AGIND=!AGIND;render()">⚠️ <b>${ind.length} ${ind.length===1?'cosa':'cose'}</b> dei giorni passati non ${ind.length===1?'è segnata':'sono segnate'} come fatt${ind.length===1?'a':'e'} <span>${AGIND?'▲ Chiudi':'▼ Vedi quali'}</span></button>
     ${AGIND?`<div class="aginl">${ind.map(v=>`<div class="agir"><span class="agid">${esc(fdate(v.iso))}</span>${agVoceHtml(v, v.key)}<button class="btn small" onclick="agSposta('${v.key}','${esc(v.id)}',todayIso())">➜ Sposta a oggi</button></div>`).join('')}</div>`:''}</div>`;
   h+=`<p class="sub noprint" style="margin:0 0 12px">Clicca su un <b>giorno</b> per aggiungere una cosa da fare. Clicca il quadratino per segnarla come <b>fatta</b> (viene barrata); clicca sulla scritta per modificarla o aggiungere una nota; trascinala per spostarla. Scorri in giù e in su per vedere tutti i mesi.</p>`;
@@ -1505,8 +1505,9 @@ function agStampa(){
 }
 let agSelT=null;
 window.addEventListener('scroll', ()=>{ if(!document.querySelector('.agsel')) return; clearTimeout(agSelT); agSelT=setTimeout(()=>{ const s=agMeseVisibile(), sel=document.querySelector('.agsel'); if(s && sel && sel.value!==s.dataset.k) sel.value=s.dataset.k; }, 120); }, {passive:true});
-function agVista(v){ AGVISTA=v; lsSet('nx_ag_vista', v); render(); }
-function agTogCat(k){ AGOFF[k]=!AGOFF[k]; if(!AGOFF[k]) delete AGOFF[k]; lsSet('nx_ag_off', JSON.stringify(AGOFF)); render(); }
+function agRifai(){ const s=agMeseVisibile(), k=s?s.dataset.k:''; render(); if(k) agScrollMese(k,false); }
+function agVista(v){ AGVISTA=v; lsSet('nx_ag_vista', v); agRifai(); }
+function agTogCat(k){ AGOFF[k]=!AGOFF[k]; if(!AGOFF[k]) delete AGOFF[k]; lsSet('nx_ag_off', JSON.stringify(AGOFF)); agRifai(); }
 function agCerca(q){
   const box=$('#agRes'); if(!box) return; q=String(q||'').trim().toLowerCase();
   if(q.length<2){ box.innerHTML=''; return; }
