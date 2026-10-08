@@ -427,8 +427,8 @@ const SB_URL = 'https://jofzimnrgkzvlawuuivp.supabase.co', SB_KEY = 'eyJhbGciOiJ
 const EMAILS = {Jessica:'jessica@nextravel.app', Roberto:'roberto@nextravel.app', Alessandro:'alessandro@nextravel.app', Lia:'lia@nextravel.app', Letizia:'letizia@nextravel.app'};
 const PINLEN = SB ? 6 : 4;
 /* ---------------- AVVISO AGGIORNAMENTI ---------------- */
-const APP_VERSION = '20261008-090129';
-const APP_NOVITA = ["Presenze: tolta la colonna Riepilogo, i giorni hanno più spazio."];
+const APP_VERSION = '20261008-090433';
+const APP_NOVITA = ["Presenze: le note del mese restano interne e non vanno più nella copia e nel PDF per il consulente.","Presenze: nel PDF compaiono solo i giorni veri del mese (niente colonna 31 nei mesi da 30 giorni)."];
 let UPDATE = null;   // {version, novita} quando sul sito c'è una versione più nuova
 async function checkUpdate(){
   if(!SB || location.protocol==='file:') return;
@@ -1142,7 +1142,7 @@ function viewPresenze(){
   h+=`</tbody></table></div>
   <div class="row" style="margin-top:12px"><input class="pin" id="pAddName" list="pNomi" placeholder="Aggiungi dipendente…"><datalist id="pNomi">${nomiDipendenti().map(n=>`<option value="${esc(n)}">`).join('')}</datalist><button class="btn" onclick="aggiungiDip()">＋ Aggiungi</button></div>
   <div class="pbottom">
-    <div><h2>📝 Note del mese</h2><textarea id="pNotes" class="pnotes" placeholder="Acconti, certificati, rimborsi…" onchange="salvaNote(this.value)">${esc(v.notes||'')}</textarea></div>
+    <div><h2>📝 Note del mese</h2>${PVER==='cons'?`<div class="alert blue" style="margin:0">🔒 Le note non vanno al consulente: si scrivono solo nella versione <b>Originale</b>.</div>`:`<textarea id="pNotes" class="pnotes" placeholder="Acconti, certificati, rimborsi… (restano interne, non vanno al consulente)" onchange="salvaNote(this.value)">${esc(v.notes||'')}</textarea>`}</div>
     <div><h2>Come funziona</h2><p class="s" style="line-height:1.7;margin:0">Casella vuota = ha lavorato. <b>Clicca</b> una casella o <b>trascina</b> per selezionarne tante, poi premi una sigla qui sopra (o sulla tastiera: F, M, P, R, D = DP, X, E = FE, A = AI; Canc per svuotare). <b>Doppio clic</b> per scrivere a mano, es. <b>P=4</b> per 4 ore di permesso. Le frecce spostano la selezione.</p></div>
   </div>
   <div class="sec noprint"><h2>🕘 Chi ha modificato questo mese</h2>${logTable((mo.storico||[]).map(a=>({...a,gruppo:''})), false)}</div>`;
@@ -1159,7 +1159,7 @@ function creaRegistro(){
 }
 function copiaConsulente(){
   const key=pKey(PY,PMN), mo=DB.presenze[key];
-  const fai=()=>{ mo.cons=JSON.parse(JSON.stringify(mo.orig)); mo.cons.rows.forEach(r=>r.id=uid('d')); PVER='cons'; salvaMese(key,'Creata la copia per il consulente',''); render(); toast('✓ Copia per il consulente creata: ora puoi sistemarla'); };
+  const fai=()=>{ mo.cons=JSON.parse(JSON.stringify(mo.orig)); mo.cons.notes=''; mo.cons.rows.forEach(r=>r.id=uid('d')); PVER='cons'; salvaMese(key,'Creata la copia per il consulente',''); render(); toast('✓ Copia per il consulente creata: ora puoi sistemarla'); };
   if(mo.cons) askConfirm('La versione "Per il consulente" verrà sostituita con una copia dell\'originale.', 'Sì, rifai la copia', fai); else fai();
 }
 const pSelBox = () => ({i1:Math.min(psel.i1,psel.i2), i2:Math.max(psel.i1,psel.i2), d1:Math.min(psel.d1,psel.d2), d2:Math.max(psel.d1,psel.d2)});
@@ -1208,7 +1208,7 @@ function salvaNote(t){ const v=pVers(); if(!v) return; v.notes=t; salvaMese(pKey
 function stampaPresenze(){
   const mo=pMese(), v=pVers(); if(!v) return; const nd=giorniMese(PY,PMN);
   const leg=PCODES.filter(c=>!['MA','AI'].includes(c[0])).map(([c,n,col])=>`<span style="color:${col}">${c}= ${n}</span>`).join('');
-  const righe=v.rows.map(r=>{ let x=`<tr><td class="n">${esc(r.n)}</td>`; for(let d=1; d<=31; d++){ const c=d<=nd?((r.d||{})[d]||''):''; const red=d<=nd&&r.red&&r.red[d]; x+=`<td style="color:${red?'#fff':pCodeColor(c)};${red?'background:#e00000;':''}${c.length>2?'font-size:7pt;':''}">${esc(c)}</td>`; } const t=totRiga(r); return x+`<td class="m">${r.base!=null&&r.base!==''?eur(r.base):''}</td><td class="m">${r.rimb!=null&&r.rimb!==''?eur(r.rimb):''}</td><td class="m">${t!==null?eur(t):''}</td></tr>`; }).join('');
+  const righe=v.rows.map(r=>{ let x=`<tr><td class="n">${esc(r.n)}</td>`; for(let d=1; d<=nd; d++){ const c=d<=nd?((r.d||{})[d]||''):''; const red=d<=nd&&r.red&&r.red[d]; x+=`<td style="color:${red?'#fff':pCodeColor(c)};${red?'background:#e00000;':''}${c.length>2?'font-size:7pt;':''}">${esc(c)}</td>`; } const t=totRiga(r); return x+`<td class="m">${r.base!=null&&r.base!==''?eur(r.base):''}</td><td class="m">${r.rimb!=null&&r.rimb!==''?eur(r.rimb):''}</td><td class="m">${t!==null?eur(t):''}</td></tr>`; }).join('');
   const html=`<!doctype html><html><head><meta charset="utf-8"><title>Presenze Nextravel ${MESI_N[PMN-1]} ${PY}</title><style>
     @page{size:A4 landscape;margin:9mm} body{font-family:Calibri,Arial,sans-serif;margin:0}
     .head{display:flex;align-items:center;gap:18px;border:1.5px solid #000;padding:6px 10px 4px}.head img{height:50px}
@@ -1220,8 +1220,7 @@ function stampaPresenze(){
     .notes{margin-top:10px;font-size:9.5pt;white-space:pre-wrap}</style></head><body>
     <div class="head"><img src="${LOGO}"><div class="t">REGISTRO PRESENZA DIPENDENTI ${MESI_N[PMN-1].toUpperCase()} ${PY}</div></div>
     <div class="leg">${leg}</div>
-    <table><tr><th class="n">DIPENDENTI</th>${Array.from({length:31},(_,i)=>`<th>${i+1}</th>`).join('')}<th class="m" style="text-align:center">BASE</th><th class="m" style="text-align:center">RIMB. SPESE</th><th class="m" style="text-align:center">TOT.</th></tr>${righe}</table>
-    ${v.notes?`<div class="notes"><b>NOTE:</b>\n${esc(v.notes)}</div>`:''}
+    <table><tr><th class="n">DIPENDENTI</th>${Array.from({length:nd},(_,i)=>`<th>${i+1}</th>`).join('')}<th class="m" style="text-align:center">BASE</th><th class="m" style="text-align:center">RIMB. SPESE</th><th class="m" style="text-align:center">TOT.</th></tr>${righe}</table>
     <script>window.onload=()=>setTimeout(()=>window.print(),300)<\/script></body></html>`;
   const w=window.open('', '_blank'); if(!w) return toast('Il browser ha bloccato la finestra di stampa: consenti i popup per questo sito.');
   w.document.open(); w.document.write(html); w.document.close();
