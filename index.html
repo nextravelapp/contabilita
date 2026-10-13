@@ -454,7 +454,41 @@ table.agx td>.agv{margin-bottom:2px;font-size:12.5px;padding:2px 4px;gap:4px}
 .agclk{cursor:pointer}
 .agd.agclk:hover,.agx td.agclk:hover{background:#fffbe6}
 .agd.oggi.agclk:hover{background:#fff3ee}
-@media print{.agmese.agnoprint{display:none}.agmt{-webkit-print-color-adjust:exact;print-color-adjust:exact}.agmese{margin:0}}.print-only{display:none}
+@media print{.agmese.agnoprint{display:none}.agmt{-webkit-print-color-adjust:exact;print-color-adjust:exact}.agmese{margin:0}}.agwd,.agnm,.aghelpm,.agfbtn{display:none}
+.agdot{position:absolute;top:4px;right:4px;width:9px;height:9px;border-radius:50%;background:var(--red)}
+@media (max-width:700px){
+  body.agmode header.top{position:static}
+  body.agmode .agbar{top:0;margin:-18px -16px 12px;padding:8px 16px;gap:8px;flex-wrap:wrap}
+  .agbar .agsel{flex:1;min-width:0;font-size:18px;padding:4px 8px}
+  .agbar .spacer,.agbar .seg,.agbar .agstampa,.agbar .agnl,.agbar .agopt{display:none}
+  .agbar .btn.small{min-height:46px;padding:6px 12px;font-size:18px}
+  .agfbtn{display:inline-flex;position:relative}
+  .agbar.fopen .agopt{display:flex}
+  .agbar.fopen .agsearch{flex-basis:100%}.agsearch input{width:100%;min-height:44px;font-size:16px}
+  .agbar .agleg button{font-size:14px}.agleg .agsolo{margin-left:0}
+  .aghelp{display:none}.aghelpm{display:block;font-size:15px}
+  .agcal{grid-template-columns:1fr}
+  .agcal .wdh,.agd.vuoto{display:none}
+  .agd{display:block;position:relative;min-height:58px;padding:8px 10px 2px 70px}
+  .agd .agn{position:absolute;left:6px;top:8px;width:56px;flex-direction:column;align-items:center;gap:2px;min-height:0}
+  .agd .agv{margin-bottom:6px}
+  .agn b{font-size:24px;line-height:1;padding:0}
+  .agwd{display:block;font-size:12px;font-weight:800;color:var(--mute);letter-spacing:.3px}
+  .agd.fest .agwd{color:#d00}
+  .agn em{font-size:10px;padding:1px 5px}
+  .agadd{display:none}
+  .agd.oggi{box-shadow:inset 4px 0 0 var(--red);background:#fff5f2;min-height:86px}
+  .agd.pass:not(.oggi){background:#fbfbfc}
+  .agv{font-size:16px;padding:8px 10px 8px 8px;flex-wrap:wrap;gap:4px 8px;border-radius:6px}
+  .agck{width:26px;height:26px;font-size:18px;line-height:22px;border-width:2px;border-radius:6px;margin-top:-2px}
+  .agnm{display:block;flex-basis:100%;padding-left:34px;font-size:13.5px;line-height:1.3;opacity:.8;white-space:pre-line;cursor:pointer}
+  .agv.hasn::after{display:none}
+  .agmt{font-size:19px;position:static}
+  .agmese{margin-bottom:24px}
+  .agind .aginh{font-size:15px;flex-wrap:wrap}
+  .agir{flex-wrap:wrap;gap:6px}.agir .agv{flex:1 1 100%}
+  .agcats{grid-template-columns:1fr 1fr}
+}.print-only{display:none}
 @media print{
   .print-only{display:block}
   .agptitle{background:#FFE699;font-weight:800;font-size:20px;text-align:center;padding:6px;margin-bottom:6px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -517,8 +551,8 @@ const SB_URL = 'https://jofzimnrgkzvlawuuivp.supabase.co', SB_KEY = 'eyJhbGciOiJ
 const EMAILS = {Jessica:'jessica@nextravel.app', Roberto:'roberto@nextravel.app', Alessandro:'alessandro@nextravel.app', Lia:'lia@nextravel.app', Letizia:'letizia@nextravel.app'};
 const PINLEN = SB ? 6 : 4;
 /* ---------------- AVVISO AGGIORNAMENTI ---------------- */
-const APP_VERSION = '20261008-094943';
-const APP_NOVITA = ["Agenda: \"Nascondi le cose già fatte\" e i colori per filtrare ora restano sempre visibili in alto mentre scorri i mesi."];
+const APP_VERSION = '20261013-102616';
+const APP_NOVITA = ["Agenda sul telefono: i giorni sono in elenco, uno sotto l\u0027altro, con le note leggibili subito sotto ogni voce.","Agenda sul telefono: tocca un giorno per aggiungere, tocca il quadratino per barrare. La lente 🔍 in alto apre ricerca e filtri."];
 let UPDATE = null;   // {version, novita} quando sul sito c'è una versione più nuova
 async function checkUpdate(){
   if(!SB || location.protocol==='file:') return;
@@ -1406,7 +1440,7 @@ function agVoceHtml(v, key){
   const c=AGCAT[v.c]||AGCAT.extra, nota=v.nota?((v.notaDa?v.notaDa+': ':'')+v.nota):'';
   return `<div class="agv ${v.x?'fatto':''} ${v.rossa?'rossa':''} ${nota?'hasn':''} ${AGFLASH===v.id?'flash':''}" style="background:${c.bg};${c.fg?'color:'+c.fg:''}" draggable="true" data-k="${key}" data-id="${esc(v.id)}" ondragstart="agDrag(event)" title="${esc(nota)}">
     <button class="agck" onclick="event.stopPropagation();agFatto('${key}','${esc(v.id)}')" title="${v.x?'Rimetti da fare':'Segna come fatto'}">${v.x?'✓':''}</button>
-    <span class="agt" onclick="agApri('${key}','${esc(v.id)}')">${esc(v.t)}</span></div>`;
+    <span class="agt" onclick="agApri('${key}','${esc(v.id)}')">${esc(v.t)}</span>${nota?`<span class="agnm" onclick="agApri('${key}','${esc(v.id)}')">${esc(nota)}</span>`:''}</div>`;
 }
 function agIndietro(){
   const oggi=todayIso(), da=addDays(oggi,-45), out=[];
@@ -1428,10 +1462,10 @@ function agMesiRange(){
 function agMeseHtml(key){
   const Y=+key.slice(0,4), M=+key.slice(5), nd=giorniMese(Y,M), oggi=todayIso(), tit=`${Y} - ${MESI_N[M-1].toUpperCase()}`;
   const byDay={}; agVoci(key).filter(agFiltro).sort((a,b)=>a.g-b.g||(a.ord||0)-(b.ord||0)).forEach(v=>(byDay[v.g]=byDay[v.g]||[]).push(v));
-  const dayHead=d=>`<b>${d}</b><button class="agadd" onclick="event.stopPropagation();agNuova('${key}',${d})" title="Aggiungi una cosa da fare il ${d}">＋</button>`;
+  const dayHead=d=>`<span class="agwd">${WDN[new Date(Y,M-1,d).getDay()]}</span><b>${d}</b><button class="agadd" onclick="event.stopPropagation();agNuova('${key}',${d})" title="Aggiungi una cosa da fare il ${d}">＋</button>`;
   const cellAttr=d=>`data-g="${d}" ondragover="agOver(event)" ondragleave="this.classList.remove('over')" ondrop="agDrop(event,'${key}',${d})" onclick="agClickGiorno(event,'${key}',${d})" title="Clicca per aggiungere una cosa da fare il ${d}"`;
   let h=`<section class="agmese" id="agm-${key}" data-k="${key}">`;
-  if(AGVISTA==='excel'){
+  if(agVistaEff()==='excel'){
     for(const [d1,d2] of [[1,16],[17,nd]]){
       const n=d2-d1+1, pad=16-n;
       h+=`<table class="agx"><thead>${d1===1?`<tr><th colspan="16" class="agxt">${tit}</th></tr>`:''}<tr>`;
@@ -1459,35 +1493,40 @@ function agMeseHtml(key){
   }
   return h+`</section>`;
 }
-let AGIN=false, AGGOTO='';
+let AGIN=false, AGGOTO='', AGFOPEN=false;
+const agTel = () => window.matchMedia('(max-width:700px)').matches;
+const agVistaEff = () => agTel() ? 'cal' : AGVISTA;
+function agFiltri(){ AGFOPEN=!AGFOPEN; const b=document.querySelector('.agbar'); if(b) b.classList.toggle('fopen', AGFOPEN); if(AGFOPEN){ const q=document.getElementById('agQ'); if(q) setTimeout(()=>q.focus(),50); } }
+let agTelPrima=null; window.addEventListener('resize', ()=>{ const t=agTel(); if(agTelPrima!==null && t!==agTelPrima && document.querySelector('.agbar')) agRifai(); agTelPrima=t; });
 function viewAgenda(arg){
   if(SB && !ARCH_READY) return `<h1>Agenda</h1><div class="empty">⏳ Caricamento dell'agenda…</div>`;
   const d0=new Date(), cur=pKey(d0.getFullYear(), d0.getMonth()+1);
   if(arg && /^\d{4}-\d{2}$/.test(arg)){ AGGOTO=arg; AGIN=true; history.replaceState(null,'','#agenda'); }
   if(!AGIN){ AGIN=true; AGGOTO=cur; }
   const mesi=agMesiRange(), ind=agIndietro();
-  let h=`<div class="agbar noprint">
+  let h=`<div class="agbar noprint ${AGFOPEN?'fopen':''}">
     <select class="agsel" onchange="agVaiMese(this.value)" title="Vai al mese">${mesi.map(k=>`<option value="${k}" ${k===cur?'selected':''}>${MESI_N[+k.slice(5)-1]} ${k.slice(0,4)}</option>`).join('')}</select>
-    <button class="btn small" onclick="agOggi()">📍 Oggi</button>
-    <button class="btn small primary" onclick="agNuova('${cur}', ${d0.getDate()})">＋ Nuova cosa da fare</button>
+    <button class="btn small" onclick="agOggi()" title="Vai a oggi">📍<span class="agnl"> Oggi</span></button>
+    <button class="btn small primary" onclick="agNuova('${cur}', ${d0.getDate()})">＋<span class="agnl"> Nuova cosa da fare</span></button>
+    <button class="btn small agfbtn" onclick="agFiltri()" title="Cerca e filtri">🔍${(AGSOLO||Object.keys(AGOFF).length)?'<i class="agdot"></i>':''}</button>
     <span class="spacer"></span>
-    <div class="agsearch"><input id="agQ" type="search" placeholder="🔍 Cerca nell'agenda…" oninput="agCerca(this.value)" autocomplete="off"></div>
+    <div class="agsearch agopt"><input id="agQ" type="search" placeholder="🔍 Cerca nell'agenda…" oninput="agCerca(this.value)" autocomplete="off"></div>
     <div class="seg"><button class="${AGVISTA==='cal'?'on':''}" onclick="agVista('cal')">Calendario</button><button class="${AGVISTA==='excel'?'on':''}" onclick="agVista('excel')">Come Excel</button></div>
-    <button class="btn small" onclick="agStampa()" title="Stampa il mese che stai guardando">🖨️ Stampa</button>
-    <div class="agleg">${Object.entries(AGCAT).map(([k,c])=>`<button class="${AGOFF[k]?'off':''}" onclick="agTogCat('${k}')" title="${AGOFF[k]?'Mostra':'Nascondi'} ${esc(c.l)}"><i style="background:${c.bg}"></i>${esc(c.l)}</button>`).join('')}
+    <button class="btn small agstampa" onclick="agStampa()" title="Stampa il mese che stai guardando">🖨️ Stampa</button>
+    <div class="agleg agopt">${Object.entries(AGCAT).map(([k,c])=>`<button class="${AGOFF[k]?'off':''}" onclick="agTogCat('${k}')" title="${AGOFF[k]?'Mostra':'Nascondi'} ${esc(c.l)}"><i style="background:${c.bg}"></i>${esc(c.l)}</button>`).join('')}
     <button class="agsolo ${AGSOLO?'on2':''}" onclick="AGSOLO=!AGSOLO;lsSet('nx_ag_solo',AGSOLO?'1':'');agRifai()">${AGSOLO?'☑':'☐'} Nascondi le cose già fatte</button></div>
   </div>
   <div id="agRes"></div>`;
   if(ind.length) h+=`<div class="agind noprint"><button class="aginh" onclick="AGIND=!AGIND;render()">⚠️ <b>${ind.length} ${ind.length===1?'cosa':'cose'}</b> dei giorni passati non ${ind.length===1?'è segnata':'sono segnate'} come fatt${ind.length===1?'a':'e'} <span>${AGIND?'▲ Chiudi':'▼ Vedi quali'}</span></button>
     ${AGIND?`<div class="aginl">${ind.map(v=>`<div class="agir"><span class="agid">${esc(fdate(v.iso))}</span>${agVoceHtml(v, v.key)}<button class="btn small" onclick="agSposta('${v.key}','${esc(v.id)}',todayIso())">➜ Sposta a oggi</button></div>`).join('')}</div>`:''}</div>`;
-  h+=`<p class="sub noprint" style="margin:0 0 12px">Clicca su un <b>giorno</b> per aggiungere una cosa da fare. Clicca il quadratino per segnarla come <b>fatta</b> (viene barrata); clicca sulla scritta per modificarla o aggiungere una nota; trascinala per spostarla. Scorri in giù e in su per vedere tutti i mesi.</p>`;
+  h+=`<p class="sub noprint aghelpm" style="margin:0 0 12px">Tocca un <b>giorno</b> per aggiungere una cosa da fare. Tocca il quadratino per <b>barrarla</b> (fatta); tocca la scritta per modificarla, spostarla o aggiungere una nota.</p><p class="sub noprint aghelp" style="margin:0 0 12px">Clicca su un <b>giorno</b> per aggiungere una cosa da fare. Clicca il quadratino per segnarla come <b>fatta</b> (viene barrata); clicca sulla scritta per modificarla o aggiungere una nota; trascinala per spostarla. Scorri in giù e in su per vedere tutti i mesi.</p>`;
   h+=mesi.map(agMeseHtml).join('');
   if(AGGOTO){ const k=AGGOTO; AGGOTO=''; setTimeout(()=>agScrollMese(k,false), 30); }
   if(AGFLASH) setTimeout(()=>{ AGFLASH=''; }, 3500);
   return h;
 }
 function agClickGiorno(e, key, d){ if(e.target.closest('.agv,.agadd,button,a,input')) return; agNuova(key, d); }
-function agOffset(){ const b=document.querySelector('.agbar'); return (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hh'))||0) + (b?b.offsetHeight:0) + 8; }
+function agOffset(){ const st=e=>e&&getComputedStyle(e).position==='sticky'?e.offsetHeight:0; return st(document.querySelector('header.top')) + st(document.querySelector('.agbar')) + 8; }
 function agScrollMese(key, smooth){
   let el=document.getElementById('agm-'+key);
   const fl=AGFLASH && document.querySelector(`.agv[data-id="${CSS.escape(AGFLASH)}"]`);
@@ -2009,6 +2048,7 @@ function render(){
   $('#tabs').classList.toggle('hidden', AGV||v==='scegli'); $('#tabsAg').classList.toggle('hidden', !AGV);
   $('#appName').innerHTML = AGV ? '<b>Agenda</b>Jessica e Lia · Next e Diodoro' : '<b>Contabilità Gruppi</b>Entrate · Uscite · Guadagni';
   const mb=$('#modeBtn'); mb.classList.toggle('hidden', !USER||v==='scegli'); mb.textContent = AGV ? '📒 Vai al Gestionale Next' : '🗓️ Vai all\'Agenda';
+  document.body.classList.toggle('agmode', AGV);
   document.querySelectorAll('nav.tabs a').forEach(a=>a.classList.toggle('on', a.dataset.v===v || (v==='gruppo'&&a.dataset.v==='gruppi')||(v==='fornitore'&&a.dataset.v==='fornitori')));
   const todos = allTodos();
   const urgent = todos.filter(t=>t.state==='late'||t.state==='soon').length;
