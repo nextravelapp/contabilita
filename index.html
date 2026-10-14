@@ -488,7 +488,8 @@ table.agx td>.agv{margin-bottom:2px;font-size:12.5px;padding:2px 4px;gap:4px}
   .agind .aginh{font-size:15px;flex-wrap:wrap}
   .agir{flex-wrap:wrap;gap:6px}.agir .agv{flex:1 1 100%}
   .agcats{grid-template-columns:1fr 1fr}
-}.print-only{display:none}
+}.agv.agauto{border-style:dashed;border-color:#c98a6a;cursor:default}.agv.agauto .agt{font-weight:600}
+.print-only{display:none}
 @media print{
   .print-only{display:block}
   .agptitle{background:#FFE699;font-weight:800;font-size:20px;text-align:center;padding:6px;margin-bottom:6px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -551,8 +552,8 @@ const SB_URL = 'https://jofzimnrgkzvlawuuivp.supabase.co', SB_KEY = 'eyJhbGciOiJ
 const EMAILS = {Jessica:'jessica@nextravel.app', Roberto:'roberto@nextravel.app', Alessandro:'alessandro@nextravel.app', Lia:'lia@nextravel.app', Letizia:'letizia@nextravel.app'};
 const PINLEN = SB ? 6 : 4;
 /* ---------------- AVVISO AGGIORNAMENTI ---------------- */
-const APP_VERSION = '20261013-102616';
-const APP_NOVITA = ["Agenda sul telefono: i giorni sono in elenco, uno sotto l\u0027altro, con le note leggibili subito sotto ogni voce.","Agenda sul telefono: tocca un giorno per aggiungere, tocca il quadratino per barrare. La lente 🔍 in alto apre ricerca e filtri."];
+const APP_VERSION = '20261014-100104';
+const APP_NOVITA = ["Agenda: i pagamenti ai fornitori registrati nel Gestionale con una data di scadenza compaiono da soli nell\u0027agenda (💶, bordo tratteggiato), nel giorno giusto.","Agenda: il quadratino di un pagamento lo segna come pagato anche nel Gestionale (chiede la data); cliccando la scritta si apre il gruppo."];
 let UPDATE = null;   // {version, novita} quando sul sito c'è una versione più nuova
 async function checkUpdate(){
   if(!SB || location.protocol==='file:') return;
@@ -1436,7 +1437,28 @@ function agDesc(v, key){ return `${v.t} — ${fdate(agIso(key, v.g))}`; }
 
 /* ---- pagina ---- */
 function agFiltro(v){ return !AGOFF[v.c||'extra'] && !(AGSOLO && v.x); }
-function agVoceHtml(v, key){
+/* pagamenti del gestionale con una data: compaiono da soli in agenda (sempre allineati, non sono copie) */
+function agAuto(key){
+  const out=[];
+  if(AGOFF.next) return out;
+  for(const g of groups()){
+    if(g.stato==='annullato') continue;
+    for(const p of g.pagamenti||[]){
+      if(!p.scadenza || String(p.scadenza).slice(0,7)!==key) continue;
+      if(AGSOLO && p.pagato) continue;
+      out.push({_auto:1, g:+String(p.scadenza).slice(8,10), gid:g.id, pid:p.id, x:!!p.pagato,
+        t:`💶 PAG.GRP ${g.numero||''} · ${p.fornitore||'fornitore'} · ${+p.importo?eur(p.importo):'importo da inserire'}`,
+        nota:`${gName(g)}${p.note?' · '+p.note:''}${p.pagato?` · pagato${p.dataPagamento?' il '+fdate(p.dataPagamento):''}`:''}`});
+    }
+  }
+  return out;
+}
+function agAutoHtml(a){
+  return `<div class="agv agauto ${a.x?'fatto':''}" style="background:${AGCAT.next.bg}" title="Dal Gestionale Next · ${esc(a.nota)}">
+    <button class="agck" onclick="event.stopPropagation();togglePaid('${esc(a.gid)}','${esc(a.pid)}')" title="${a.x?'Rimetti da pagare':'Segna come pagato'}">${a.x?'✓':''}</button>
+    <span class="agt" onclick="event.stopPropagation();go('gruppo/${esc(a.gid)}')">${esc(a.t)}</span><span class="agnm" onclick="event.stopPropagation();go('gruppo/${esc(a.gid)}')">${esc(a.nota)}</span></div>`;
+}function agVoceHtml(v, key){
+  if(v._auto) return agAutoHtml(v);
   const c=AGCAT[v.c]||AGCAT.extra, nota=v.nota?((v.notaDa?v.notaDa+': ':'')+v.nota):'';
   return `<div class="agv ${v.x?'fatto':''} ${v.rossa?'rossa':''} ${nota?'hasn':''} ${AGFLASH===v.id?'flash':''}" style="background:${c.bg};${c.fg?'color:'+c.fg:''}" draggable="true" data-k="${key}" data-id="${esc(v.id)}" ondragstart="agDrag(event)" title="${esc(nota)}">
     <button class="agck" onclick="event.stopPropagation();agFatto('${key}','${esc(v.id)}')" title="${v.x?'Rimetti da fare':'Segna come fatto'}">${v.x?'✓':''}</button>
@@ -1462,6 +1484,7 @@ function agMesiRange(){
 function agMeseHtml(key){
   const Y=+key.slice(0,4), M=+key.slice(5), nd=giorniMese(Y,M), oggi=todayIso(), tit=`${Y} - ${MESI_N[M-1].toUpperCase()}`;
   const byDay={}; agVoci(key).filter(agFiltro).sort((a,b)=>a.g-b.g||(a.ord||0)-(b.ord||0)).forEach(v=>(byDay[v.g]=byDay[v.g]||[]).push(v));
+  agAuto(key).reverse().forEach(a=>(byDay[a.g]=byDay[a.g]||[]).unshift(a));
   const dayHead=d=>`<span class="agwd">${WDN[new Date(Y,M-1,d).getDay()]}</span><b>${d}</b><button class="agadd" onclick="event.stopPropagation();agNuova('${key}',${d})" title="Aggiungi una cosa da fare il ${d}">＋</button>`;
   const cellAttr=d=>`data-g="${d}" ondragover="agOver(event)" ondragleave="this.classList.remove('over')" ondrop="agDrop(event,'${key}',${d})" onclick="agClickGiorno(event,'${key}',${d})" title="Clicca per aggiungere una cosa da fare il ${d}"`;
   let h=`<section class="agmese" id="agm-${key}" data-k="${key}">`;
