@@ -552,8 +552,8 @@ const SB_URL = 'https://jofzimnrgkzvlawuuivp.supabase.co', SB_KEY = 'eyJhbGciOiJ
 const EMAILS = {Jessica:'jessica@nextravel.app', Roberto:'roberto@nextravel.app', Alessandro:'alessandro@nextravel.app', Lia:'lia@nextravel.app', Letizia:'letizia@nextravel.app'};
 const PINLEN = SB ? 6 : 4;
 /* ---------------- AVVISO AGGIORNAMENTI ---------------- */
-const APP_VERSION = '20261014-100849';
-const APP_NOVITA = ["Agenda: ora compaiono da soli anche gli INCASSI dai clienti (acconti e saldi) che nel Gestionale hanno una data: 💰 con bordo verde tratteggiato.","Agenda: il quadratino di un incasso lo segna come arrivato anche nel Gestionale (chiede la data); cliccando la scritta si apre il gruppo."];
+const APP_VERSION = '20261014-101935';
+const APP_NOVITA = ["Prima di eliminare qualsiasi cosa (voce dell\u0027agenda, entrata, uscita, rimborso, gruppo, fornitore) l\u0027app chiede sempre la conferma.","Dopo ogni azione compare in basso il tasto \"↶ Annulla azione\" per 15 secondi: anche dopo aver eliminato, barrato, spostato o modificato una voce dell\u0027agenda."];
 let UPDATE = null;   // {version, novita} quando sul sito c'è una versione più nuova
 async function checkUpdate(){
   if(!SB || location.protocol==='file:') return;
@@ -1684,13 +1684,14 @@ function agOk(){
   if((v.nota||'')!==F.nota) ch.push(F.nota?`nota: "${F.nota}"`:'nota cancellata');
   if(!!v.rossa!==!!F.rossa) ch.push(F.rossa?'scritta rossa':'tolta scritta rossa');
   const spost = agIso(F.key,v.g)!==F.data;
+  const primaMod=JSON.parse(JSON.stringify(v));
   if(ch.length){
     v.t=F.t; v.c=F.c; v.rossa=!!F.rossa;
     if((v.nota||'')!==F.nota){ v.nota=F.nota; v.notaDa=F.nota?(USER||'—'):''; }
     agSalva(F.key, 'Agenda: modificato', `${v.t} (${fdate(agIso(F.key,v.g))}) — ${ch.join('; ')}`);
   }
   const k=F.key, id=F.id; AGF=null; $('#modalBox').innerHTML='';
-  if(spost) agSposta(k, id, F.data); else { applyPending(); render(); if(ch.length) toast('Salvato'); }
+  if(spost) agSposta(k, id, F.data); else { applyPending(); render(); if(ch.length) toast('Salvato', ()=>{ const w=agMese(k).voci[id]; if(!w) return; agMese(k).voci[id]=primaMod; agSalva(k,'Agenda: annullata modifica',agDesc(primaMod,k)); render(); }); }
 }
 function agElimina(){
   const k=AGF.key, id=AGF.id, v=agMese(k).voci[id]; if(!v) return;
@@ -2562,7 +2563,7 @@ function editIncasso(gid,iid,preset){
       const dd = i ? conCambi(iDesc(data), chI) : iDesc(data)+(data.ricevuto?' · arrivata':' · attesa');
       withUndo(g,()=>{ if(i) Object.assign(i,data); else (g.incassi=g.incassi||[]).push({id:uid('i'),...data}); }, tt, dd);
     },
-    onDelete: i ? ()=>{ closeForm(); withUndo(g,()=>{ g.incassi=g.incassi.filter(x=>x.id!==i.id); },'Entrata eliminata', iDesc(i)); } : null
+    onDelete: i ? ()=>{ askConfirm(`Eliminare questa entrata?\n${iDesc(i)} · gruppo ${g.numero||''}`, '🗑️ Sì, elimina', ()=>{ FORM=null; withUndo(g,()=>{ g.incassi=g.incassi.filter(x=>x.id!==i.id); },'Entrata eliminata', iDesc(i)); }); } : null
   });
 }
 
@@ -2613,7 +2614,7 @@ function editPagamento(gid,pid,preset){
       const dd = p ? conCambi(pDesc(data), chP) : pDesc(data)+(data.pagato?' · pagata':' · da pagare');
       withUndo(g,()=>{ if(p) Object.assign(p,data); else (g.pagamenti=g.pagamenti||[]).push({id:uid('p'),...data}); }, tt, dd);
     },
-    onDelete: p ? ()=>{ closeForm(); withUndo(g,()=>{ g.pagamenti=g.pagamenti.filter(x=>x.id!==p.id); },'Uscita eliminata', pDesc(p)); } : null
+    onDelete: p ? ()=>{ askConfirm(`Eliminare questa uscita?\n${pDesc(p)} · gruppo ${g.numero||''}`, '🗑️ Sì, elimina', ()=>{ FORM=null; withUndo(g,()=>{ g.pagamenti=g.pagamenti.filter(x=>x.id!==p.id); },'Uscita eliminata', pDesc(p)); }); } : null
   });
 }
 
@@ -2653,7 +2654,7 @@ function editRimborso(gid,rid){
       const dd = r ? conCambi(`${data.descrizione} · ${eur(data.importo)}`, chR) : `${data.descrizione} · ${eur(data.importo)}${data.ricevuto?' · arrivato':' · da ricevere'}`;
       withUndo(g,()=>{ if(r) Object.assign(r,data); else (g.rimborsi=g.rimborsi||[]).push({id:uid('r'),...data}); }, tt, dd);
     },
-    onDelete: r ? ()=>{ closeForm(); withUndo(g,()=>{ g.rimborsi=g.rimborsi.filter(x=>x.id!==r.id); },'Rimborso eliminato', `${r.descrizione} · ${eur(r.importo)}`); } : null
+    onDelete: r ? ()=>{ askConfirm(`Eliminare questo rimborso?\n${r.descrizione} · ${eur(r.importo)}`, '🗑️ Sì, elimina', ()=>{ FORM=null; withUndo(g,()=>{ g.rimborsi=g.rimborsi.filter(x=>x.id!==r.id); },'Rimborso eliminato', `${r.descrizione} · ${eur(r.importo)}`); }); } : null
   });
 }
 
@@ -2927,8 +2928,8 @@ function paintUser(){ $('#whoAv').textContent=USER?USER[0]:'?'; $('#whoName').te
 let toastT=null, toastUndo=null;
 function toast(msg, undo){
   const t=$('#toast'); toastUndo=undo||null;
-  t.innerHTML=`<span>${esc(msg)}</span>${undo?'<button onclick="doUndo()">↶ Annulla</button>':''}`;
-  t.classList.remove('hidden'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.add('hidden'), undo?8000:4000);
+  t.innerHTML=`<span>${esc(msg)}</span>${undo?'<button onclick="doUndo()">↶ Annulla azione</button>':''}`;
+  t.classList.remove('hidden'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.add('hidden'), undo?15000:4000);
 }
 function doUndo(){ const f=toastUndo; toastUndo=null; $('#toast').classList.add('hidden'); if(f) f(); }
 
