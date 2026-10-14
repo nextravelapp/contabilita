@@ -243,16 +243,18 @@ table.t tr.forn-tot td{font-size:14px;color:var(--ink2);font-weight:700;backgrou
 .choice.dq button{flex:0 1 auto;min-width:110px}
 .choice.dq button.nodate{border-style:dashed;color:var(--ink2)}
 
-/* ---------- avviso aggiornamento (fisso in basso) ---------- */
-#updBox{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:58;width:min(680px,calc(100% - 32px));background:var(--ink);color:#fff;border-radius:16px;box-shadow:0 14px 40px rgba(0,0,0,.35);display:flex;align-items:center;gap:14px;padding:14px 16px 14px 18px;flex-wrap:wrap}
-#updBox .upd-ic{font-size:28px}
-#updBox .upd-tx{flex:1;min-width:200px;display:flex;flex-direction:column;gap:2px}
-#updBox .upd-tx span{font-size:14px;opacity:.85}
-#updBox .btn{background:var(--red);border-color:var(--red);color:#fff}
+/* ---------- avviso aggiornamento (in alto a destra, sparisce mentre c'è una finestra aperta) ---------- */
+#updBox{position:fixed;right:16px;top:calc(var(--hh,80px) + 10px);z-index:45;width:min(380px,calc(100% - 32px));background:var(--ink);color:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.3);display:flex;align-items:center;gap:10px;padding:10px 10px 10px 14px}
+#updBox .upd-ic{font-size:22px}
+#updBox .upd-tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px;font-size:15px;line-height:1.25}
+#updBox .upd-tx span{font-size:13px;opacity:.8;display:none}
+#updBox .btn{background:var(--red);border-color:var(--red);color:#fff;min-height:42px;padding:8px 14px;font-size:15px}
 #updBox .btn:hover{background:var(--red-d)}
+#updBox .upd-x{background:transparent;border:0;color:#fff;opacity:.7;font-size:22px;cursor:pointer;padding:0 4px}
+body:has(#modalBox .ov) #updBox{display:none!important}
+@media (max-width:700px){#updBox{top:auto;bottom:calc(14px + env(safe-area-inset-bottom,0px));right:50%;transform:translateX(50%)}@keyframes updIn{from{opacity:0}to{opacity:1}}}
 @media (prefers-reduced-motion:no-preference){#updBox:not(.hidden){animation:updIn .35s ease-out}}
-@keyframes updIn{from{transform:translate(-50%,20px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
-#updBox:not(.hidden) ~ #toast{bottom:130px}
+@keyframes updIn{from{transform:translateY(-12px);opacity:0}to{transform:translateY(0);opacity:1}}
 /* ---------- avviso aggiornamento (vecchio) ---------- */
 .banner .in.upd{background:var(--ink);border-color:var(--ink);color:#fff}
 .banner .in.upd .btn.dark{background:var(--red);border-color:var(--red)}
@@ -552,8 +554,8 @@ const SB_URL = 'https://jofzimnrgkzvlawuuivp.supabase.co', SB_KEY = 'eyJhbGciOiJ
 const EMAILS = {Jessica:'jessica@nextravel.app', Roberto:'roberto@nextravel.app', Alessandro:'alessandro@nextravel.app', Lia:'lia@nextravel.app', Letizia:'letizia@nextravel.app'};
 const PINLEN = SB ? 6 : 4;
 /* ---------------- AVVISO AGGIORNAMENTI ---------------- */
-const APP_VERSION = '20261014-101935';
-const APP_NOVITA = ["Prima di eliminare qualsiasi cosa (voce dell\u0027agenda, entrata, uscita, rimborso, gruppo, fornitore) l\u0027app chiede sempre la conferma.","Dopo ogni azione compare in basso il tasto \"↶ Annulla azione\" per 15 secondi: anche dopo aver eliminato, barrato, spostato o modificato una voce dell\u0027agenda."];
+const APP_VERSION = '20261014-102248';
+const APP_NOVITA = ["L\u0027avviso \"Aggiorna ora\" ora sta in alto a destra, più piccolo, e sparisce mentre stai compilando una finestra (spesa, incasso, voce dell\u0027agenda): non copre più il tasto Salva.","Con la × puoi rimandare l\u0027aggiornamento: l\u0027avviso ricompare dopo 10 minuti."];
 let UPDATE = null;   // {version, novita} quando sul sito c'è una versione più nuova
 async function checkUpdate(){
   if(!SB || location.protocol==='file:') return;
@@ -570,7 +572,7 @@ function paintUpdate(){
   const el=$('#updBox'); if(!el) return;
   if(!UPDATE){ el.classList.add('hidden'); el.innerHTML=''; return; }
   const txt = UPDATE.novita && UPDATE.novita.length ? esc(UPDATE.novita.slice(0,2).join(' · '))+(UPDATE.novita.length>2?' …':'') : 'Premi il pulsante per avere l\'ultima versione.';
-  el.innerHTML=`<span class="upd-ic">🆕</span><div class="upd-tx"><b>È disponibile un aggiornamento dell'app</b><span>${txt}</span></div><button class="btn big" onclick="doUpdate()">Aggiorna ora</button>`;
+  el.innerHTML=`<span class="upd-ic">🆕</span><div class="upd-tx"><b>Aggiornamento disponibile</b><span>${txt}</span></div><button class="btn" onclick="doUpdate()">Aggiorna ora</button><button class="upd-x" onclick="$('#updBox').classList.add('hidden');setTimeout(paintUpdate,600000)" title="Più tardi (ricompare tra 10 minuti)">×</button>`;
   el.classList.remove('hidden');
 }
 function doUpdate(){
