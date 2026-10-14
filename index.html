@@ -488,7 +488,7 @@ table.agx td>.agv{margin-bottom:2px;font-size:12.5px;padding:2px 4px;gap:4px}
   .agind .aginh{font-size:15px;flex-wrap:wrap}
   .agir{flex-wrap:wrap;gap:6px}.agir .agv{flex:1 1 100%}
   .agcats{grid-template-columns:1fr 1fr}
-}.agv.agauto{border-style:dashed;border-color:#c98a6a;cursor:default}.agv.agauto .agt{font-weight:600}
+}.agv.agauto{border-style:dashed;border-color:#c98a6a;cursor:default}.agv.agauto .agt{font-weight:600}.agv.aginc{border-color:#3a9a5b}
 .print-only{display:none}
 @media print{
   .print-only{display:block}
@@ -552,8 +552,8 @@ const SB_URL = 'https://jofzimnrgkzvlawuuivp.supabase.co', SB_KEY = 'eyJhbGciOiJ
 const EMAILS = {Jessica:'jessica@nextravel.app', Roberto:'roberto@nextravel.app', Alessandro:'alessandro@nextravel.app', Lia:'lia@nextravel.app', Letizia:'letizia@nextravel.app'};
 const PINLEN = SB ? 6 : 4;
 /* ---------------- AVVISO AGGIORNAMENTI ---------------- */
-const APP_VERSION = '20261014-100104';
-const APP_NOVITA = ["Agenda: i pagamenti ai fornitori registrati nel Gestionale con una data di scadenza compaiono da soli nell\u0027agenda (💶, bordo tratteggiato), nel giorno giusto.","Agenda: il quadratino di un pagamento lo segna come pagato anche nel Gestionale (chiede la data); cliccando la scritta si apre il gruppo."];
+const APP_VERSION = '20261014-100849';
+const APP_NOVITA = ["Agenda: ora compaiono da soli anche gli INCASSI dai clienti (acconti e saldi) che nel Gestionale hanno una data: 💰 con bordo verde tratteggiato.","Agenda: il quadratino di un incasso lo segna come arrivato anche nel Gestionale (chiede la data); cliccando la scritta si apre il gruppo."];
 let UPDATE = null;   // {version, novita} quando sul sito c'è una versione più nuova
 async function checkUpdate(){
   if(!SB || location.protocol==='file:') return;
@@ -1450,12 +1450,24 @@ function agAuto(key){
         t:`💶 PAG.GRP ${g.numero||''} · ${p.fornitore||'fornitore'} · ${+p.importo?eur(p.importo):'importo da inserire'}`,
         nota:`${gName(g)}${p.note?' · '+p.note:''}${p.pagato?` · pagato${p.dataPagamento?' il '+fdate(p.dataPagamento):''}`:''}`});
     }
+    for(const i of g.incassi||[]){
+      if(!i.scadenza || String(i.scadenza).slice(0,7)!==key) continue;
+      if(AGSOLO && i.ricevuto) continue;
+      out.push({_auto:1, inc:1, g:+String(i.scadenza).slice(8,10), gid:g.id, pid:i.id, x:!!i.ricevuto,
+        t:`💰 INCASSO GRP ${g.numero||''} · ${i.tipo==='saldo'?'Saldo':'Acconto'} · ${+i.importo?eur(i.importo):'importo da inserire'}`,
+        nota:`da ${gName(g)}${i.note?' · '+i.note:''}${i.ricevuto?` · arrivato${i.dataIncasso?' il '+fdate(i.dataIncasso):''}`:''}`});
+    }
   }
   return out;
 }
+function agToggleInc(gid,iid){
+  const g=G(gid), i=g&&(g.incassi||[]).find(x=>x.id===iid); if(!i) return;
+  if(!i.ricevuto){ quickReceived(gid,iid); return; }
+  withUndo(g, ()=>{ i.ricevuto=false; i.dataIncasso=null; }, 'Incasso segnato come NON ARRIVATO', iDesc(i));
+}
 function agAutoHtml(a){
-  return `<div class="agv agauto ${a.x?'fatto':''}" style="background:${AGCAT.next.bg}" title="Dal Gestionale Next · ${esc(a.nota)}">
-    <button class="agck" onclick="event.stopPropagation();togglePaid('${esc(a.gid)}','${esc(a.pid)}')" title="${a.x?'Rimetti da pagare':'Segna come pagato'}">${a.x?'✓':''}</button>
+  return `<div class="agv agauto ${a.inc?'aginc':''} ${a.x?'fatto':''}" style="background:${AGCAT.next.bg}" title="Dal Gestionale Next · ${esc(a.nota)}">
+    <button class="agck" onclick="event.stopPropagation();${a.inc?'agToggleInc':'togglePaid'}('${esc(a.gid)}','${esc(a.pid)}')" title="${a.inc?(a.x?'Rimetti come non arrivato':'Segna come arrivato'):(a.x?'Rimetti da pagare':'Segna come pagato')}">${a.x?'✓':''}</button>
     <span class="agt" onclick="event.stopPropagation();go('gruppo/${esc(a.gid)}')">${esc(a.t)}</span><span class="agnm" onclick="event.stopPropagation();go('gruppo/${esc(a.gid)}')">${esc(a.nota)}</span></div>`;
 }function agVoceHtml(v, key){
   if(v._auto) return agAutoHtml(v);
