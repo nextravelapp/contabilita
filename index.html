@@ -260,6 +260,8 @@ body:has(#modalBox .ov) #updBox{display:none!important}
 .banner .in.upd .btn.dark{background:var(--red);border-color:var(--red)}
 ul.novita{margin:6px 0 4px;padding-left:22px;line-height:1.6}
 ul.novita li{margin:6px 0}
+.nov-d{font-weight:800;text-transform:capitalize;margin:14px 0 0;color:var(--ink2);font-size:15px}
+.modal .mb:has(.nov-d){max-height:60vh;overflow-y:auto}
 
 .orange-t{color:var(--orange)!important;font-weight:600}
 table.t.riep th,table.t.riep td{padding:10px 8px}
@@ -554,8 +556,8 @@ const SB_URL = 'https://jofzimnrgkzvlawuuivp.supabase.co', SB_KEY = 'eyJhbGciOiJ
 const EMAILS = {Jessica:'jessica@nextravel.app', Roberto:'roberto@nextravel.app', Alessandro:'alessandro@nextravel.app', Lia:'lia@nextravel.app', Letizia:'letizia@nextravel.app'};
 const PINLEN = SB ? 6 : 4;
 /* ---------------- AVVISO AGGIORNAMENTI ---------------- */
-const APP_VERSION = '20261014-102248';
-const APP_NOVITA = ["L\u0027avviso \"Aggiorna ora\" ora sta in alto a destra, più piccolo, e sparisce mentre stai compilando una finestra (spesa, incasso, voce dell\u0027agenda): non copre più il tasto Salva.","Con la × puoi rimandare l\u0027aggiornamento: l\u0027avviso ricompare dopo 10 minuti."];
+const APP_VERSION = '20261014-102431';
+const APP_NOVITA = [{"v":"20261008-092039","d":"2026-10-08","n":["NUOVA AGENDA: dopo il PIN scegli se entrare nel Gestionale Next o nell\u0027Agenda di Jessica e Lia.","Agenda: stessi colori dell\u0027Excel (azzurro Diodoro bus, pesca Next, verde Diodoro agenzia, bianco extra). Clicca il quadratino per barrare una cosa fatta.","Agenda: trascina una voce su un altro giorno per spostarla; il triangolino rosso indica una nota."]},{"v":"20261008-094415","d":"2026-10-08","n":["Agenda: tutti i mesi sono nella stessa pagina, uno sotto l\u0027altro: scorri in giù e in su. Si apre sul mese corrente.","Agenda: per aggiungere una cosa da fare basta cliccare sul giorno.","Agenda: in alto il menu giallo porta subito a un mese, \"Oggi\" riporta al giorno di oggi."]},{"v":"20261008-094943","d":"2026-10-08","n":["Agenda: \"Nascondi le cose già fatte\" e i colori per filtrare restano sempre visibili in alto mentre scorri i mesi."]},{"v":"20261013-102616","d":"2026-10-13","n":["Agenda sul telefono: i giorni sono in elenco, uno sotto l\u0027altro, con le note leggibili subito sotto ogni voce.","Agenda sul telefono: tocca un giorno per aggiungere, tocca il quadratino per barrare. La lente 🔍 in alto apre ricerca e filtri."]},{"v":"20261014-100104","d":"2026-10-14","n":["Agenda: i pagamenti ai fornitori registrati nel Gestionale con una data di scadenza compaiono da soli nell\u0027agenda (💶, bordo tratteggiato), nel giorno giusto.","Agenda: il quadratino di un pagamento lo segna come pagato anche nel Gestionale (chiede la data); cliccando la scritta si apre il gruppo."]},{"v":"20261014-100849","d":"2026-10-14","n":["Agenda: compaiono da soli anche gli INCASSI dai clienti (acconti e saldi) che nel Gestionale hanno una data: 💰 con bordo verde tratteggiato."]},{"v":"20261014-101935","d":"2026-10-14","n":["Prima di eliminare qualsiasi cosa (voce dell\u0027agenda, entrata, uscita, rimborso, gruppo, fornitore) l\u0027app chiede sempre la conferma.","Dopo ogni azione compare in basso il tasto \"↶ Annulla azione\" per 15 secondi: anche dopo aver eliminato, barrato, spostato o modificato una voce dell\u0027agenda."]},{"v":"20261014-102248","d":"2026-10-14","n":["L\u0027avviso \"Aggiorna ora\" sta in alto a destra, più piccolo, e sparisce mentre stai compilando una finestra: non copre più il tasto Salva.","Con la × puoi rimandare l\u0027aggiornamento: l\u0027avviso ricompare dopo 10 minuti."]},{"v":"20261014-102431","d":"2026-10-14","n":["Chi non apre l\u0027app da qualche giorno ora vede, all\u0027apertura, la raccolta di TUTTE le novità che si è perso, divise per giorno (prima vedeva solo le ultime)."]}];
 let UPDATE = null;   // {version, novita} quando sul sito c'è una versione più nuova
 async function checkUpdate(){
   if(!SB || location.protocol==='file:') return;
@@ -591,17 +593,22 @@ function backupReminder(){
     <div class="mf"><button class="btn big dark" onclick="closeConfirm();exportExcel('tutti',true)">💾 Salva copia adesso</button><button class="btn big ghost" onclick="lsSet('nx_backup_rimanda',todayIso());closeConfirm()">Più tardi</button></div></div></div>`;
 }
 function showNovita(){
+  // APP_NOVITA = storico [{v,d,n:[...]}]: mostra TUTTE le novità che questa persona (su questo dispositivo) non ha ancora visto
   if(!SB || !APP_NOVITA || !APP_NOVITA.length) return;
-  let seen=null; try{ seen=localStorage.getItem('nx_versione_vista'); }catch(e){}
-  if(seen===APP_VERSION){ setTimeout(backupReminder, 800); return; }
-  try{ localStorage.setItem('nx_versione_vista', APP_VERSION); }catch(e){}
-  if(!seen){ setTimeout(backupReminder, 800); return; }
+  const key='nx_versione_vista_'+(USER||''); let seen=null;
+  try{ seen=localStorage.getItem(key) || localStorage.getItem('nx_versione_vista'); }catch(e){}
+  try{ localStorage.setItem(key, APP_VERSION); localStorage.setItem('nx_versione_vista', APP_VERSION); }catch(e){}
+  if(!seen || seen>=APP_VERSION){ setTimeout(backupReminder, 800); return; }
+  const nuove=APP_NOVITA.filter(x=>x && x.v>seen && x.v<=APP_VERSION);
+  if(!nuove.length){ setTimeout(backupReminder, 800); return; }
+  const perGiorno={}; nuove.forEach(x=>(perGiorno[x.d]=perGiorno[x.d]||[]).push(...x.n));
+  const giorni=Object.keys(perGiorno).sort().reverse(), tot=nuove.reduce((s,x)=>s+x.n.length,0);
   $('#modalBox').innerHTML=`<div class="ov" onmousedown="if(event.target===this)closeConfirm()"><div class="modal" role="dialog" aria-modal="true">
-    <div class="mh"><h3>🆕 Novità nell'app</h3><button class="x" onclick="closeConfirm()" aria-label="Chiudi">×</button></div>
-    <div class="mb"><ul class="novita">${APP_NOVITA.map(n=>`<li>${esc(n)}</li>`).join('')}</ul></div>
+    <div class="mh"><h3>🆕 Novità nell'app${tot>1?` (${tot})`:''}</h3><button class="x" onclick="closeConfirm()" aria-label="Chiudi">×</button></div>
+    <div class="mb">${giorni.length>1?`<p class="sub" style="margin:0 0 6px">Ecco tutto quello che è cambiato dall'ultima volta che hai aperto l'app:</p>`:''}
+      ${giorni.map(d=>`${giorni.length>1?`<div class="nov-d">${esc(fdateLong(d))}</div>`:''}<ul class="novita">${perGiorno[d].map(n=>`<li>${esc(n)}</li>`).join('')}</ul>`).join('')}</div>
     <div class="mf"><button class="btn big dark" onclick="closeConfirm()">Ho capito</button></div></div></div>`;
-}
-let SBC = null;   // client Supabase
+}let SBC = null;   // client Supabase
 const PEOPLE = ['Jessica','Roberto','Alessandro','Lia','Letizia'];
 const LS_KEY = 'nextravel_contabilita_v1';
 const LS_USER = 'nextravel_utente';
