@@ -493,6 +493,9 @@ table.agx td>.agv{margin-bottom:2px;font-size:12.5px;padding:2px 4px;gap:4px}
   .agir{flex-wrap:wrap;gap:6px}.agir .agv{flex:1 1 100%}
   .agcats{grid-template-columns:1fr 1fr}
 }.agv.agauto{border-style:dashed;border-color:#c98a6a;cursor:default}.agv.agauto .agt{font-weight:600}.agv.aginc{border-color:#3a9a5b}
+.lk-keep{display:flex;gap:12px;align-items:flex-start;margin:18px auto 0;max-width:320px;text-align:left;cursor:pointer;font-size:16px;background:var(--grey-bg);border-radius:12px;padding:12px 14px}
+.lk-keep input{width:24px;height:24px;flex:none;margin-top:1px;accent-color:var(--red)}
+.lk-keep small{display:block;color:var(--mute);font-size:13px;margin-top:2px;line-height:1.3}
 .print-only{display:none}
 @media print{
   .print-only{display:block}
@@ -556,8 +559,8 @@ const SB_URL = 'https://jofzimnrgkzvlawuuivp.supabase.co', SB_KEY = 'eyJhbGciOiJ
 const EMAILS = {Jessica:'jessica@nextravel.app', Roberto:'roberto@nextravel.app', Alessandro:'alessandro@nextravel.app', Lia:'lia@nextravel.app', Letizia:'letizia@nextravel.app'};
 const PINLEN = SB ? 6 : 4;
 /* ---------------- AVVISO AGGIORNAMENTI ---------------- */
-const APP_VERSION = '20261015-113623';
-const APP_NOVITA = [{"v":"20261008-092039","d":"2026-10-08","n":["NUOVA AGENDA: dopo il PIN scegli se entrare nel Gestionale Next o nell\u0027Agenda di Jessica e Lia.","Agenda: stessi colori dell\u0027Excel (azzurro Diodoro bus, pesca Next, verde Diodoro agenzia, bianco extra). Clicca il quadratino per barrare una cosa fatta.","Agenda: trascina una voce su un altro giorno per spostarla; il triangolino rosso indica una nota."]},{"v":"20261008-094415","d":"2026-10-08","n":["Agenda: tutti i mesi sono nella stessa pagina, uno sotto l\u0027altro: scorri in giù e in su. Si apre sul mese corrente.","Agenda: per aggiungere una cosa da fare basta cliccare sul giorno.","Agenda: in alto il menu giallo porta subito a un mese, \"Oggi\" riporta al giorno di oggi."]},{"v":"20261008-094943","d":"2026-10-08","n":["Agenda: \"Nascondi le cose già fatte\" e i colori per filtrare restano sempre visibili in alto mentre scorri i mesi."]},{"v":"20261013-102616","d":"2026-10-13","n":["Agenda sul telefono: i giorni sono in elenco, uno sotto l\u0027altro, con le note leggibili subito sotto ogni voce.","Agenda sul telefono: tocca un giorno per aggiungere, tocca il quadratino per barrare. La lente 🔍 in alto apre ricerca e filtri."]},{"v":"20261014-100104","d":"2026-10-14","n":["Agenda: i pagamenti ai fornitori registrati nel Gestionale con una data di scadenza compaiono da soli nell\u0027agenda (💶, bordo tratteggiato), nel giorno giusto.","Agenda: il quadratino di un pagamento lo segna come pagato anche nel Gestionale (chiede la data); cliccando la scritta si apre il gruppo."]},{"v":"20261014-100849","d":"2026-10-14","n":["Agenda: compaiono da soli anche gli INCASSI dai clienti (acconti e saldi) che nel Gestionale hanno una data: 💰 con bordo verde tratteggiato."]},{"v":"20261014-101935","d":"2026-10-14","n":["Prima di eliminare qualsiasi cosa (voce dell\u0027agenda, entrata, uscita, rimborso, gruppo, fornitore) l\u0027app chiede sempre la conferma.","Dopo ogni azione compare in basso il tasto \"↶ Annulla azione\" per 15 secondi: anche dopo aver eliminato, barrato, spostato o modificato una voce dell\u0027agenda."]},{"v":"20261014-102248","d":"2026-10-14","n":["L\u0027avviso \"Aggiorna ora\" sta in alto a destra, più piccolo, e sparisce mentre stai compilando una finestra: non copre più il tasto Salva.","Con la × puoi rimandare l\u0027aggiornamento: l\u0027avviso ricompare dopo 10 minuti."]},{"v":"20261014-102553","d":"2026-10-14","n":["Chi non apre l\u0027app da qualche giorno ora vede, all\u0027apertura, la raccolta di TUTTE le novità che si è perso, divise per giorno (prima vedeva solo le ultime)."]},{"v":"20261015-113623","d":"2026-10-15","n":["Agenda: i colori ora si chiamano \"Diodoro Viaggi noleggio bus\" (azzurro), \"Nextravel\" (pesca) e \"Diodoro Viaggi agenzia\" (verde)."]}];
+const APP_VERSION = '20261016-122517';
+const APP_NOVITA = [{"v":"20261008-092039","d":"2026-10-08","n":["NUOVA AGENDA: dopo il PIN scegli se entrare nel Gestionale Next o nell\u0027Agenda di Jessica e Lia.","Agenda: stessi colori dell\u0027Excel (azzurro Diodoro bus, pesca Next, verde Diodoro agenzia, bianco extra). Clicca il quadratino per barrare una cosa fatta.","Agenda: trascina una voce su un altro giorno per spostarla; il triangolino rosso indica una nota."]},{"v":"20261008-094415","d":"2026-10-08","n":["Agenda: tutti i mesi sono nella stessa pagina, uno sotto l\u0027altro: scorri in giù e in su. Si apre sul mese corrente.","Agenda: per aggiungere una cosa da fare basta cliccare sul giorno.","Agenda: in alto il menu giallo porta subito a un mese, \"Oggi\" riporta al giorno di oggi."]},{"v":"20261008-094943","d":"2026-10-08","n":["Agenda: \"Nascondi le cose già fatte\" e i colori per filtrare restano sempre visibili in alto mentre scorri i mesi."]},{"v":"20261013-102616","d":"2026-10-13","n":["Agenda sul telefono: i giorni sono in elenco, uno sotto l\u0027altro, con le note leggibili subito sotto ogni voce.","Agenda sul telefono: tocca un giorno per aggiungere, tocca il quadratino per barrare. La lente 🔍 in alto apre ricerca e filtri."]},{"v":"20261014-100104","d":"2026-10-14","n":["Agenda: i pagamenti ai fornitori registrati nel Gestionale con una data di scadenza compaiono da soli nell\u0027agenda (💶, bordo tratteggiato), nel giorno giusto.","Agenda: il quadratino di un pagamento lo segna come pagato anche nel Gestionale (chiede la data); cliccando la scritta si apre il gruppo."]},{"v":"20261014-100849","d":"2026-10-14","n":["Agenda: compaiono da soli anche gli INCASSI dai clienti (acconti e saldi) che nel Gestionale hanno una data: 💰 con bordo verde tratteggiato."]},{"v":"20261014-101935","d":"2026-10-14","n":["Prima di eliminare qualsiasi cosa (voce dell\u0027agenda, entrata, uscita, rimborso, gruppo, fornitore) l\u0027app chiede sempre la conferma.","Dopo ogni azione compare in basso il tasto \"↶ Annulla azione\" per 15 secondi: anche dopo aver eliminato, barrato, spostato o modificato una voce dell\u0027agenda."]},{"v":"20261014-102248","d":"2026-10-14","n":["L\u0027avviso \"Aggiorna ora\" sta in alto a destra, più piccolo, e sparisce mentre stai compilando una finestra: non copre più il tasto Salva.","Con la × puoi rimandare l\u0027aggiornamento: l\u0027avviso ricompare dopo 10 minuti."]},{"v":"20261014-102553","d":"2026-10-14","n":["Chi non apre l\u0027app da qualche giorno ora vede, all\u0027apertura, la raccolta di TUTTE le novità che si è perso, divise per giorno (prima vedeva solo le ultime)."]},{"v":"20261015-113623","d":"2026-10-15","n":["Agenda: i colori ora si chiamano \"Diodoro Viaggi noleggio bus\" (azzurro), \"Nextravel\" (pesca) e \"Diodoro Viaggi agenzia\" (verde)."]},{"v":"20261016-122517","d":"2026-10-16","n":["Nella schermata del PIN c\u0027è la casella \"Mantieni l\u0027accesso su questo dispositivo\": se la spunti, l\u0027app non ti chiede più il PIN (e non si blocca da sola) finché non premi \"Esci\"."]}];
 let UPDATE = null;   // {version, novita} quando sul sito c'è una versione più nuova
 async function checkUpdate(){
   if(!SB || location.protocol==='file:') return;
@@ -1801,20 +1804,24 @@ async function sha(s){
   return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('');
 }
 const pinHash = (who,pin) => sha('nextravel·'+who+'·'+pin);
-function sessGet(){ try{ const s=JSON.parse(sessionStorage.getItem('nx_sess')||'null'); if(s && Date.now()-s.at < LOCK_MIN*60000) return s; }catch(e){} return null; }
+function keepGet(){ try{ const k=JSON.parse(localStorage.getItem('nx_keep')||'null'); return k&&k.user?k.user:''; }catch(e){ return ''; } }
+function keepSet(u){ try{ if(u) localStorage.setItem('nx_keep', JSON.stringify({user:u, da:new Date().toISOString()})); else localStorage.removeItem('nx_keep'); }catch(e){} }
+function sessGet(){ const ku=keepGet(); if(ku) return {user:ku, at:Date.now(), keep:true}; try{ const s=JSON.parse(sessionStorage.getItem('nx_sess')||'null'); if(s && Date.now()-s.at < LOCK_MIN*60000) return s; }catch(e){} return null; }
 function sessSet(u){ try{ sessionStorage.setItem('nx_sess', JSON.stringify({user:u, at:Date.now()})); }catch(e){} }
 function sessClear(){ try{ sessionStorage.removeItem('nx_sess'); }catch(e){} }
 let lastAct=Date.now();
 ['click','keydown','touchstart','scroll'].forEach(ev=>document.addEventListener(ev,()=>{ if(USER && Date.now()-lastAct>15000){ lastAct=Date.now(); sessSet(USER); } else if(USER) lastAct=Date.now(); },{passive:true}));
-setInterval(()=>{ if(USER && Date.now()-lastAct > LOCK_MIN*60000) lockNow(true); }, 30000);
+setInterval(()=>{ if(USER && !keepGet() && Date.now()-lastAct > LOCK_MIN*60000) lockNow(true); }, 30000);
 
 function lockNow(auto){
+  if(!auto) keepSet('');
   USER=''; sessClear(); FORM=null; SOLL=null; $('#modalBox').innerHTML='';
   if(SB && SBC){ presStop(); SBC.auth.signOut().catch(()=>{}); sbStop(); render(); }
   LOCK={step:'who', who:'', entered:'', first:'', err:auto?'Per sicurezza l\'app si è bloccata dopo '+LOCK_MIN+' minuti senza uso.':'', tries:0, waitUntil:0};
   paintUser(); renderLock();
 }
 function unlockAs(who){
+  keepSet(LOCK.keep ? who : '');
   USER=who; lastAct=Date.now(); sessSet(who);
   $('#lock').classList.add('hidden'); $('#lock').innerHTML='';
   paintUser(); location.hash='scegli'; render(); setTimeout(showNovita, 1500);
@@ -1844,13 +1851,14 @@ function renderLock(){
       <div class="pinpad">${[1,2,3,4,5,6,7,8,9].map(n=>`<button ${wait?'disabled':''} onclick="pinKey('${n}')">${n}</button>`).join('')}
         <button class="ghostk" onclick="LOCK={step:'who',who:'',entered:'',first:'',err:'',tries:0,waitUntil:0};renderLock()">← Indietro</button>
         <button ${wait?'disabled':''} onclick="pinKey('0')">0</button>
-        <button class="ghostk" onclick="pinKey('del')" aria-label="Cancella">⌫</button></div>`;
+        <button class="ghostk" onclick="pinKey('del')" aria-label="Cancella">⌫</button></div>
+      ${L.change?'':`<label class="lk-keep"><input type="checkbox" ${L.keep?'checked':''} onchange="LOCK.keep=this.checked;lsSet('nx_keep_scelta',this.checked?'1':'')"> <span><b>Mantieni l'accesso</b> su questo dispositivo<small>Non ti chiede più il PIN finché non premi "Esci". Usalo solo sul tuo computer o telefono.</small></span></label>`}`;
   }
   if(!(!PINS_READY || L.step==='who')) {}
   el.innerHTML=`<div class="lk-box"><img class="lk-logo" src="${LOGO}" alt="Nextravel Tour Operator"><div class="lk-app">Contabilità Gruppi</div>
     ${L.step==='who'&&L.err?`<div class="lk-msg">${esc(L.err)}</div>`:''}${body}</div>`;
 }
-function pickWho(p){ LOCK={step: DB.pins[p]?'pin':'new1', who:p, entered:'', first:'', err:'', tries:0, waitUntil:0}; renderLock(); }
+function pickWho(p){ LOCK={step: DB.pins[p]?'pin':'new1', who:p, entered:'', first:'', err:'', tries:0, waitUntil:0, keep: lsGet('nx_keep_scelta')==='1'}; renderLock(); }
 async function pinKey(k){
   const L=LOCK; if(!L.who) return;
   if(L.waitUntil>Date.now()) return;
