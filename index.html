@@ -496,6 +496,54 @@ table.agx td>.agv{margin-bottom:2px;font-size:12.5px;padding:2px 4px;gap:4px}
 .lk-keep{display:flex;gap:12px;align-items:flex-start;margin:18px auto 0;max-width:320px;text-align:left;cursor:pointer;font-size:16px;background:var(--grey-bg);border-radius:12px;padding:12px 14px}
 .lk-keep input{width:24px;height:24px;flex:none;margin-top:1px;accent-color:var(--red)}
 .lk-keep small{display:block;color:var(--mute);font-size:13px;margin-top:2px;line-height:1.3}
+  .modhead { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; } .modhead label:not(.btn) { display: flex; flex-direction: column; font-size: 13px; color: var(--mute); flex: 1; min-width: 220px; } .modhead input { font: inherit; font-size: 15px; padding: 7px 9px; border: 1px solid var(--line); border-radius: 8px; color: var(--ink, #222); }
+  .modcard { margin-top: 12px; background: #fbfcff; } .modt { width: 100%; border-collapse: collapse; font-size: 14px; } .modt th { text-align: left; font-size: 12px; color: var(--mute); padding: 4px 6px; border-bottom: 1px solid var(--line); }
+  .modt td { padding: 4px 6px; border-bottom: 1px solid #eef0f4; vertical-align: middle; } .modt td.mctx { width: 38%; color: #333; } .modt td.mval { width: 28%; color: #10306b; font-weight: 600; } .modt select { font: inherit; font-size: 14px; max-width: 100%; } .modt td input { display: block; margin-top: 4px; width: 100%; font: inherit; font-size: 14px; padding: 4px 6px; border: 1px solid var(--line); border-radius: 6px; }
+  .modt tr.mnew td { background: #fff8db; } .mtag { font-size: 12px; } .modchk { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; } .modchk label { display: flex; gap: 8px; align-items: flex-start; padding: 5px 8px; border-radius: 8px; } .modchk label.mnew { background: #fff8db; } .modchk input { margin-top: 3px; }
+  .modrow { display: flex; gap: 8px; align-items: center; padding: 8px 10px; margin-top: 8px; border: 1px solid var(--line); border-radius: 10px; background: #fbfcff; } .modrow .modname { flex: 1; }
+  .medit { position: relative; background: #eef1f6; border-radius: 14px; width: min(1100px, 100%); height: 94vh; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.3); }
+  .mtop { display: flex; align-items: flex-end; gap: 8px; padding: 10px 12px 0; background: #fff; } .mtabs { flex: 1; display: flex; gap: 4px; overflow-x: auto; }
+  .mtab { border: 1px solid var(--line); border-bottom: none; background: #f3f5f9; border-radius: 9px 9px 0 0; padding: 7px 12px; font: inherit; font-size: 14px; cursor: pointer; white-space: nowrap; max-width: 260px; overflow: hidden; text-overflow: ellipsis; } .mtab.on { background: #eef1f6; font-weight: 700; }
+  .mclose { border: none; background: none; font-size: 22px; cursor: pointer; padding: 4px 8px; align-self: center; }
+  .mbar { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; padding: 10px 14px 4px; } .mbar label { display: flex; flex-direction: column; font-size: 12px; color: var(--mute); flex: 1; min-width: 200px; } .mbar input { font: inherit; font-size: 15px; padding: 6px 9px; border: 1px solid var(--line); border-radius: 8px; }
+  .mlegend { padding: 4px 14px 8px; font-size: 13px; color: #444; } .mlegend .mchip { cursor: default; }
+  .mscroll { flex: 1; overflow: auto; padding: 0 14px 20px; }
+  .msheet { background: #fff; max-width: 820px; margin: 0 auto; padding: 46px 56px; box-shadow: 0 2px 12px rgba(0,0,0,.12); font: 15px/1.55 Calibri, Arial, sans-serif; color: #222; }
+  .mpara { margin: 0 0 6px; white-space: pre-wrap; } .mcheck { display: flex; gap: 8px; align-items: flex-start; border-radius: 6px; padding: 2px 4px; } .mcheck input { margin-top: 5px; transform: scale(1.25); } .mcheck.mnew { background: #fff3c4; }
+  .mchip { display: inline-block; padding: 0 6px; margin: 1px 1px; border-radius: 5px; cursor: pointer; font-weight: 600; line-height: 1.45; border: 1.5px solid; white-space: normal; }
+  .mchip.mok { background: #e3f6e8; border-color: #3b9a57; color: #135c2a; } .mchip.mnew { background: #fff3c4; border-color: #d4a400; color: #6b5200; } .mchip.mkeep { background: #f0f1f4; border-color: #b8bdc8; color: #777; font-weight: 400; } .mchip.msign { cursor: default; }
+  .mchip:hover { filter: brightness(.95); }
+  .mpdf { display: flex; flex-direction: column; align-items: center; gap: 14px; } .mpdfpage { position: relative; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,.12); } .mpdfpage canvas { width: 100%; height: 100%; display: block; }
+  .mpos { position: absolute; font: 12px/1.3 Arial, sans-serif; } .mpos .mchip { font-size: 12px; padding: 0 4px; } .mpck { position: absolute; margin: 0; width: 14px; height: 14px; background: #fff; } .mpck.mnew { outline: 3px solid #f0c000; }
+  #modPop .mfind { width: 100%; margin: 0 0 6px; padding: 6px 9px; font-size: 14.5px; border: 1px solid var(--line); border-radius: 7px; box-sizing: border-box; }
+  #modPop .mlist { max-height: 280px; overflow: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+  #modPop .mgrp { position: sticky; top: 0; background: #eef1f8; color: #c2361f; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .4px; padding: 4px 9px; }
+  #modPop .mopt { padding: 5px 9px; font-size: 14.5px; cursor: pointer; line-height: 1.3; } #modPop .mopt b { color: #000; }
+  #modPop .mopt:hover { background: #f0f4ff; } #modPop .mopt.on { background: #dfe9ff; box-shadow: inset 3px 0 0 #2f6fd6; }
+  .mpop { position: absolute; z-index: 5; width: 400px; background: #fff; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.2); padding: 12px; } .mpop select, .mpop input { width: 100%; font: inherit; font-size: 15px; padding: 6px; border: 1px solid var(--line); border-radius: 8px; } .mpop input { margin-top: 6px; }
+  .dtcalc { background: #f1f4f8 !important; color: #46506a; } 
+  .lted { width: min(1400px, 100%); } .ltbody { flex: 1; display: flex; gap: 14px; padding: 0 14px 14px; min-height: 0; }
+  .ltform { width: 430px; flex: none; overflow: auto; display: flex; flex-direction: column; gap: 4px; padding-right: 4px; } .ltform > label:not(.tgtile) { display: flex; flex-direction: column; font-size: 13px; color: var(--mute); margin-top: 6px; }
+  .ltform input, .ltform textarea { font: inherit; font-size: 15px; padding: 7px 9px; border: 1px solid var(--line); border-radius: 8px; color: var(--ink, #222); background: #fff; } .ltform textarea { resize: vertical; }
+  .lttools { display: flex; gap: 4px; flex-wrap: wrap; } .lttools button { border: 1px solid var(--line); background: #fff; border-radius: 6px; padding: 3px 9px; font: inherit; font-size: 14px; cursor: pointer; } .lttools button:hover { background: #eef1f6; }
+  .ltbodyed { min-height: 260px; flex: 1; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font-size: 15px; line-height: 1.5; overflow: auto; outline: none; } .ltbodyed:focus { border-color: var(--red); }
+  .ltact { display: flex; gap: 8px; margin-top: 10px; } .ltprev { flex: 1; min-width: 0; background: #dfe3ea; border-radius: 10px; overflow: hidden; } .ltprev iframe { width: 100%; height: 100%; border: 0; background: #dfe3ea; }
+  .srvt b.srvext { color: #d00000; }
+  .dtgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 8px 14px; } .dtf.wide { grid-column: 1 / -1; }
+  .dtf label { font-size: 13px; margin: 0 0 2px; } .dtrow { display: flex; gap: 4px; } .dtrow input, .dtrow textarea { flex: 1; min-width: 0; font-size: 16px; } .dtrow .tb { flex: 0 0 auto; }
+  .dtimg .dtbox { height: 110px; border: 1px dashed var(--line); border-radius: 8px; display: flex; align-items: center; justify-content: center; background: #fff; margin: 4px 0 6px; } .dtimg img { max-height: 100px; max-width: 100%; }
+  .pvsec { border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px 6px; margin: 0 0 12px; background: #fff; }
+  .pvsec > h4 { margin: 0 0 8px; font-size: 13px; color: #c2361f; letter-spacing: .6px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .pvsec > h4 > span:first-child { background: #c2361f; color: #fff; border-radius: 50%; width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; }
+.dlg-back{position:fixed;inset:0;z-index:60;background:rgba(20,22,28,.45);display:flex;align-items:center;justify-content:center;padding:14px}
+.dlg{background:#fff;border-radius:16px;padding:18px 20px;width:min(520px,100%);max-height:94vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.25)}.dlg h3{margin:0 0 10px;font-size:20px}
+.mini{font-size:14px;color:var(--mute)}.intro{color:var(--ink2)}.row{display:flex;align-items:center}
+.btn.pri{background:var(--red);border-color:var(--red);color:#fff}.btn.pri:hover{background:var(--red-d)}
+#viewDocumenti .btn,.medit .btn,.dlg .btn{min-height:38px;padding:6px 14px;font-size:15px}
+#viewDocumenti .tb{border:1px solid var(--line);background:#fff;border-radius:8px;cursor:pointer;padding:0 8px}
+#viewDocumenti input,#viewDocumenti textarea{border:1px solid var(--line);border-radius:8px;padding:6px 9px;background:#fff}
+.tgtile{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;flex-wrap:wrap}.tgtile input{width:20px;height:20px;flex:none;padding:0}.tgtile span{font-weight:600;color:var(--ink);font-size:15px}.tgtile small{flex-basis:100%;color:var(--mute)}.tgtile .onoff{display:none}
+@media (max-width:760px){.ltbody{flex-direction:column;overflow:auto}.ltform{width:100%}.ltprev{min-height:60vh}.medit{height:100vh;border-radius:0}.mpop{width:calc(100% - 16px)}}
 .print-only{display:none}
 @media print{
   .print-only{display:block}
@@ -528,6 +576,7 @@ table.agx td>.agv{margin-bottom:2px;font-size:12.5px;padding:2px 4px;gap:4px}
     <a href="#gruppi" data-v="gruppi">👥 Gruppi</a>
     <a href="#fornitori" data-v="fornitori">🏢 Fornitori</a>
     <a href="#presenze" data-v="presenze">🗓️ Presenze</a>
+    <a href="#documenti" data-v="documenti">📑 Compilaz. doc.</a>
     <a href="#scadenze" data-v="scadenze">📅 Pagamenti e incassi <span class="badge hidden" id="badgeScad"></span></a>
     <a href="#riepilogo" data-v="riepilogo">📊 Riepilogo anno</a>
     <a href="#registro" data-v="registro">🕘 Chi ha fatto cosa</a>
@@ -559,8 +608,8 @@ const SB_URL = 'https://jofzimnrgkzvlawuuivp.supabase.co', SB_KEY = 'eyJhbGciOiJ
 const EMAILS = {Jessica:'jessica@nextravel.app', Roberto:'roberto@nextravel.app', Alessandro:'alessandro@nextravel.app', Lia:'lia@nextravel.app', Letizia:'letizia@nextravel.app'};
 const PINLEN = SB ? 6 : 4;
 /* ---------------- AVVISO AGGIORNAMENTI ---------------- */
-const APP_VERSION = '20261016-122517';
-const APP_NOVITA = [{"v":"20261008-092039","d":"2026-10-08","n":["NUOVA AGENDA: dopo il PIN scegli se entrare nel Gestionale Next o nell\u0027Agenda di Jessica e Lia.","Agenda: stessi colori dell\u0027Excel (azzurro Diodoro bus, pesca Next, verde Diodoro agenzia, bianco extra). Clicca il quadratino per barrare una cosa fatta.","Agenda: trascina una voce su un altro giorno per spostarla; il triangolino rosso indica una nota."]},{"v":"20261008-094415","d":"2026-10-08","n":["Agenda: tutti i mesi sono nella stessa pagina, uno sotto l\u0027altro: scorri in giù e in su. Si apre sul mese corrente.","Agenda: per aggiungere una cosa da fare basta cliccare sul giorno.","Agenda: in alto il menu giallo porta subito a un mese, \"Oggi\" riporta al giorno di oggi."]},{"v":"20261008-094943","d":"2026-10-08","n":["Agenda: \"Nascondi le cose già fatte\" e i colori per filtrare restano sempre visibili in alto mentre scorri i mesi."]},{"v":"20261013-102616","d":"2026-10-13","n":["Agenda sul telefono: i giorni sono in elenco, uno sotto l\u0027altro, con le note leggibili subito sotto ogni voce.","Agenda sul telefono: tocca un giorno per aggiungere, tocca il quadratino per barrare. La lente 🔍 in alto apre ricerca e filtri."]},{"v":"20261014-100104","d":"2026-10-14","n":["Agenda: i pagamenti ai fornitori registrati nel Gestionale con una data di scadenza compaiono da soli nell\u0027agenda (💶, bordo tratteggiato), nel giorno giusto.","Agenda: il quadratino di un pagamento lo segna come pagato anche nel Gestionale (chiede la data); cliccando la scritta si apre il gruppo."]},{"v":"20261014-100849","d":"2026-10-14","n":["Agenda: compaiono da soli anche gli INCASSI dai clienti (acconti e saldi) che nel Gestionale hanno una data: 💰 con bordo verde tratteggiato."]},{"v":"20261014-101935","d":"2026-10-14","n":["Prima di eliminare qualsiasi cosa (voce dell\u0027agenda, entrata, uscita, rimborso, gruppo, fornitore) l\u0027app chiede sempre la conferma.","Dopo ogni azione compare in basso il tasto \"↶ Annulla azione\" per 15 secondi: anche dopo aver eliminato, barrato, spostato o modificato una voce dell\u0027agenda."]},{"v":"20261014-102248","d":"2026-10-14","n":["L\u0027avviso \"Aggiorna ora\" sta in alto a destra, più piccolo, e sparisce mentre stai compilando una finestra: non copre più il tasto Salva.","Con la × puoi rimandare l\u0027aggiornamento: l\u0027avviso ricompare dopo 10 minuti."]},{"v":"20261014-102553","d":"2026-10-14","n":["Chi non apre l\u0027app da qualche giorno ora vede, all\u0027apertura, la raccolta di TUTTE le novità che si è perso, divise per giorno (prima vedeva solo le ultime)."]},{"v":"20261015-113623","d":"2026-10-15","n":["Agenda: i colori ora si chiamano \"Diodoro Viaggi noleggio bus\" (azzurro), \"Nextravel\" (pesca) e \"Diodoro Viaggi agenzia\" (verde)."]},{"v":"20261016-122517","d":"2026-10-16","n":["Nella schermata del PIN c\u0027è la casella \"Mantieni l\u0027accesso su questo dispositivo\": se la spunti, l\u0027app non ti chiede più il PIN (e non si blocca da sola) finché non premi \"Esci\"."]}];
+const APP_VERSION = '20261105-090352';
+const APP_NOVITA = [{"v":"20261008-092039","d":"2026-10-08","n":["NUOVA AGENDA: dopo il PIN scegli se entrare nel Gestionale Next o nell\u0027Agenda di Jessica e Lia.","Agenda: stessi colori dell\u0027Excel (azzurro Diodoro bus, pesca Next, verde Diodoro agenzia, bianco extra). Clicca il quadratino per barrare una cosa fatta.","Agenda: trascina una voce su un altro giorno per spostarla; il triangolino rosso indica una nota."]},{"v":"20261008-094415","d":"2026-10-08","n":["Agenda: tutti i mesi sono nella stessa pagina, uno sotto l\u0027altro: scorri in giù e in su. Si apre sul mese corrente.","Agenda: per aggiungere una cosa da fare basta cliccare sul giorno.","Agenda: in alto il menu giallo porta subito a un mese, \"Oggi\" riporta al giorno di oggi."]},{"v":"20261008-094943","d":"2026-10-08","n":["Agenda: \"Nascondi le cose già fatte\" e i colori per filtrare restano sempre visibili in alto mentre scorri i mesi."]},{"v":"20261013-102616","d":"2026-10-13","n":["Agenda sul telefono: i giorni sono in elenco, uno sotto l\u0027altro, con le note leggibili subito sotto ogni voce.","Agenda sul telefono: tocca un giorno per aggiungere, tocca il quadratino per barrare. La lente 🔍 in alto apre ricerca e filtri."]},{"v":"20261014-100104","d":"2026-10-14","n":["Agenda: i pagamenti ai fornitori registrati nel Gestionale con una data di scadenza compaiono da soli nell\u0027agenda (💶, bordo tratteggiato), nel giorno giusto.","Agenda: il quadratino di un pagamento lo segna come pagato anche nel Gestionale (chiede la data); cliccando la scritta si apre il gruppo."]},{"v":"20261014-100849","d":"2026-10-14","n":["Agenda: compaiono da soli anche gli INCASSI dai clienti (acconti e saldi) che nel Gestionale hanno una data: 💰 con bordo verde tratteggiato."]},{"v":"20261014-101935","d":"2026-10-14","n":["Prima di eliminare qualsiasi cosa (voce dell\u0027agenda, entrata, uscita, rimborso, gruppo, fornitore) l\u0027app chiede sempre la conferma.","Dopo ogni azione compare in basso il tasto \"↶ Annulla azione\" per 15 secondi: anche dopo aver eliminato, barrato, spostato o modificato una voce dell\u0027agenda."]},{"v":"20261014-102248","d":"2026-10-14","n":["L\u0027avviso \"Aggiorna ora\" sta in alto a destra, più piccolo, e sparisce mentre stai compilando una finestra: non copre più il tasto Salva.","Con la × puoi rimandare l\u0027aggiornamento: l\u0027avviso ricompare dopo 10 minuti."]},{"v":"20261014-102553","d":"2026-10-14","n":["Chi non apre l\u0027app da qualche giorno ora vede, all\u0027apertura, la raccolta di TUTTE le novità che si è perso, divise per giorno (prima vedeva solo le ultime)."]},{"v":"20261015-113623","d":"2026-10-15","n":["Agenda: i colori ora si chiamano \"Diodoro Viaggi noleggio bus\" (azzurro), \"Nextravel\" (pesca) e \"Diodoro Viaggi agenzia\" (verde)."]},{"v":"20261016-122517","d":"2026-10-16","n":["Nella schermata del PIN c\u0027è la casella \"Mantieni l\u0027accesso su questo dispositivo\": se la spunti, l\u0027app non ti chiede più il PIN (e non si blocca da sola) finché non premi \"Esci\"."]},{"v":"20261105-090352","d":"2026-11-05","n":["NUOVA SEZIONE \"📑 Compilaz. doc.\": i dati di Nextravel sempre pronti, le lettere su carta intestata Nextravel in PDF e i moduli di scuole e gare (Word o PDF) compilati in pochi clic."]}];
 let UPDATE = null;   // {version, novita} quando sul sito c'è una versione più nuova
 async function checkUpdate(){
   if(!SB || location.protocol==='file:') return;
@@ -682,6 +731,7 @@ function allLog(){
   for(const g of DB.gruppi) for(const a of (g.storico||[])) out.push({...a, gid:g.id, gruppo:g.numero||a.gruppo});
   for(const f of (DB.fornitori||[])) for(const a of (f.storico||[])) out.push({...a, gid:null, gruppo:'🏢 '+(f.nome||'')});
   for(const [k,mo] of Object.entries(DB.presenze||{})) for(const a of (mo.storico||[])) out.push({...a, gid:null, gruppo:'🗓️ Presenze '+k.slice(5)+'/'+k.slice(0,4)});
+  if(window.docStorico) for(const a of docStorico()) out.push({...a, gid:null, gruppo:'📑 Documenti'});
   return out;
 }
 function commit(msg, undoFn, g, dettaglio){
@@ -772,12 +822,12 @@ function saveGroupOnline(g){
   const fail=e=>{ console.error(e); ONLINE_ERR=dbErrMsg(e); setSave('err'); renderBanner(); };
   writeQ[g.id]=(writeQ[g.id]||Promise.resolve()).then(run);
 }
-function modalOpen(){ return !!(FORM||SOLL||$('#modalBox').innerHTML); }
+function modalOpen(){ return !!(FORM||SOLL||$('#modalBox').innerHTML||(window.docEditorAperto&&docEditorAperto())); }
 function applyPending(){
   if(modalOpen()) return;
   let ch=false;
   if(FPENDING){ DB.fornitori=FPENDING; FPENDING=null; DB.fornitori.forEach(fSetBase); ch=true; }
-  if(APENDING){ DB.presenze=APENDING.pres; DB.agenda=APENDING.ag; APENDING=null; Object.keys(DB.presenze).forEach(pSetBase); Object.keys(DB.agenda).forEach(aSetBase); ch=true; }
+  if(APENDING){ DB.presenze=APENDING.pres; DB.agenda=APENDING.ag; if(APENDING.doc) docApply(APENDING.doc); APENDING=null; Object.keys(DB.presenze).forEach(pSetBase); Object.keys(DB.agenda).forEach(aSetBase); ch=true; }
   if(PENDING){ DB.gruppi=PENDING; PENDING=null; DB.gruppi.forEach(setBase); ONLINE_STATE='ok'; ch=true; }
   if(ch) render();
 }
@@ -1212,10 +1262,10 @@ function salvaMese(key, azione, det){
 function aApply(){
   const pres={}, ag={};
   for(const [id,d] of Object.entries(RAWA)){ if(id.startsWith('presenze-')) pres[id.slice(9)]=presFromDoc(d); else if(id.startsWith('agenda-')) ag[id.slice(7)]=agFromDoc(d); }
-  APENDING={pres, ag}; applyPending();
+  APENDING={pres, ag, doc:RAWA['doc-dati']}; applyPending();
 }
 async function sbLoadArch(){
-  const r=await SBC.from('archivio').select('id,data');
+  const r=await SBC.from('archivio').select('id,data').not('id','like','docfile-%').not('id','like','bozza-%');
   if(r.error){ ARCH_READY=false; return; }
   ARCH_READY=true;
   for(const k of Object.keys(RAWA)) delete RAWA[k];
@@ -1733,6 +1783,1117 @@ function viewScegli(){
   </div></div>`;
 }
 
+/* =========================================================
+   📑 COMPILAZIONE DOCUMENTI (dal gestionale Diodoro, con i dati e la carta intestata Nextravel)
+   Dati ditta, moduli delle scuole / MEPA, lettere su carta intestata.
+   Archivio: doc-dati (testi e regole), docfile-ditta (firma, timbro, documento d'identità), bozza-<id>.
+   ========================================================= */
+(function(){
+const $ = id => document.getElementById(id);
+const NEXT_FOOTER = ['Sede legale: Via Nereo, 4 Carini 90044 PA – Sede operativa: Via Vittorio Emanuele, 150 Capaci 90040 PA', 'P. Iva 07157940821 - Tel: 091 685 04 05 – E-mail: direzione@nextravel.org', 'Pec Fatturazione: fatture@pec.nextravel.org PEC: nextravelsrl@pec.it'];
+/* ---- archivio ---- */
+const FILEK = ['firma', 'timbro', 'doc_id'];
+let DOCS = (DB && DB.documenti) || { ditta: {}, moduli: { rules: {}, checks: {} }, lettere: [], storico: {} };
+let DOCBASE = null, DFILEBASE = null, DFILES_OK = !SB, DOCPEND = null;
+const prevStore = () => DOCS;
+function docToDoc() {
+  const d = JSON.parse(JSON.stringify(DOCS)); FILEK.forEach(k => delete d.ditta[k]);
+  const m = {}; (d.lettere || []).forEach(l => { m[l.id] = l; }); d.lettere = m; return d;
+}
+function docFrom(x) {
+  const o = JSON.parse(JSON.stringify(x || {})); o.ditta = o.ditta || {}; o.moduli = o.moduli || {}; o.moduli.rules = o.moduli.rules || {}; o.moduli.checks = o.moduli.checks || {}; o.storico = o.storico || {};
+  o.lettere = Object.values(o.lettere || {}).filter(Boolean); FILEK.forEach(k => { if (DOCS.ditta[k] !== undefined) o.ditta[k] = DOCS.ditta[k]; }); return o;
+}
+window.docApply = x => { DOCS = docFrom(x); DOCBASE = JSON.stringify(docToDoc()); };
+window.docStorico = () => Object.values(DOCS.storico || {}).filter(Boolean);
+const docChk = r => { if (r && r.error) { const m = String(r.error.message || ''); throw { code: /JWT|auth|permission|policy|row-level/i.test(m) ? 'invalid_argument' : 'unavailable', message: m }; } return r; };
+function docWrite(id, write) {
+  setSave('pending');
+  const fail = e => { console.error(e); ONLINE_ERR = dbErrMsg(e); setSave('err'); renderBanner(); };
+  const run = async () => { try { await write(); } catch (e) { if (e && e.code === 'unavailable') { await new Promise(r => setTimeout(r, 800)); try { await write(); } catch (e2) { return fail(e2); } } else return fail(e); } ONLINE_ERR = ''; lastSaveAt = new Date(); setSave('ok'); renderBanner(); };
+  writeQ['a:' + id] = (writeQ['a:' + id] || Promise.resolve()).then(run);
+}
+function save() {
+  if (SB) {
+    if (!SBC) { ONLINE_ERR = 'Archivio online non collegato: la modifica non è stata salvata. Ricarica la pagina.'; setSave('err'); renderBanner(); return; }
+    const doc = docToDoc(), base = DOCBASE ? JSON.parse(DOCBASE) : null, patch = base ? diffDoc(doc, base) : null; DOCBASE = JSON.stringify(doc);
+    if (!base || patch) docWrite('doc-dati', () => (base ? SBC.rpc('patch_archivio', { aid: 'doc-dati', patch }) : SBC.from('archivio').upsert({ id: 'doc-dati', data: doc })).then(docChk));
+    if (DFILES_OK) { const f = {}; FILEK.forEach(k => { if (DOCS.ditta[k] !== undefined) f[k] = DOCS.ditta[k]; }); const s = JSON.stringify(f);
+      if (s !== DFILEBASE) { DFILEBASE = s; docWrite('docfile-ditta', () => SBC.from('archivio').upsert({ id: 'docfile-ditta', data: f }).then(docChk)); } }
+  } else if (!ONLINE) { DB.documenti = DOCS; lsSet(LS_KEY, JSON.stringify(DB)); setSave('pending'); scheduleFileSave(); }
+}
+function docLog(azione, det) {
+  const s = DOCS.storico = DOCS.storico || {}; s[uid('a')] = { quando: nowIso(), chi: USER || '—', azione, dettaglio: det || '', n: Date.now() };
+  const ks = Object.keys(s); if (ks.length > 300) ks.sort((a, b) => s[a].n - s[b].n).slice(0, ks.length - 300).forEach(k => delete s[k]);
+}
+async function docFilesLoad() {
+  if (DFILES_OK || !SBC) return; const r = await SBC.from('archivio').select('data').eq('id', 'docfile-ditta').maybeSingle(); if (r.error) return;
+  DFILES_OK = true; const f = (r.data && r.data.data) || {}; DFILEBASE = JSON.stringify(f); FILEK.forEach(k => { if (f[k] !== undefined) DOCS.ditta[k] = f[k]; });
+}
+/* the big files (bozze) stay in their own rows, read only when you open them; rows cannot be deleted, a deleted bozza is emptied */
+async function archGet(id) { const r = await SBC.from('archivio').select('data').eq('id', id).maybeSingle(); docChk(r); return r.data ? r.data.data : null; }
+async function archPut(id, data) { docChk(await SBC.from('archivio').upsert({ id, data })); }
+/* ---- finestre ---- */
+function dlg({ title, message, ok = 'OK', cancel, input, value, area }) {
+  return new Promise(res => { const back = document.createElement('div'); back.className = 'dlg-back'; back.style.zIndex = 1300;
+    back.innerHTML = `<div class="dlg"><h3>${esc(title)}</h3><p style="margin:0 0 12px;white-space:pre-line">${esc(message || '')}</p>${input ? `<input id="dlgIn" value="${esc(value || '')}" style="width:100%;margin-bottom:12px">` : ''}${area ? `<textarea id="dlgIn" rows="12" style="width:100%;font:13px/1.4 monospace;margin-bottom:12px"></textarea>` : ''}<div class="row" style="justify-content:flex-end;gap:8px">${cancel ? `<button type="button" class="btn" data-d="0">${esc(cancel)}</button>` : ''}<button type="button" class="btn pri" data-d="1">${esc(ok)}</button></div></div>`;
+    document.body.appendChild(back); const inp = back.querySelector('#dlgIn'); if (inp) setTimeout(() => { inp.focus(); if (inp.select) inp.select(); }, 30);
+    back.addEventListener('click', e => { const b = e.target.closest('[data-d]'); if (!b) return; const yes = b.dataset.d === '1'; const v = inp ? inp.value : true; back.remove(); res(yes ? v : (inp ? null : false)); }); });
+}
+const info = (title, message) => dlg({ title, message });
+const sure = (title, message, ok) => dlg({ title, message, ok, cancel: 'Annulla' });
+/* ---- librerie (si caricano solo quando servono) ---- */
+const scriptOnce = (src, get) => get() ? Promise.resolve(get()) : new Promise((ok, ko) => { const sc = document.createElement('script'); sc.src = src; sc.onload = () => ok(get()); sc.onerror = () => ko(new Error('Serve la connessione a internet')); document.head.appendChild(sc); });
+const loadPdfJs = async () => { const l = await scriptOnce('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js', () => window.pdfjsLib); l.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'; return l; };
+const loadH2C = () => scriptOnce('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js', () => window.html2canvas);
+const loadDocxView = async () => { await loadJsZip(); return scriptOnce('https://cdn.jsdelivr.net/npm/docx-preview@0.3.5/dist/docx-preview.min.js', () => window.docx); };
+/* ---- salvare: sul PC si sceglie la cartella (anche quella di Dropbox, e la volta dopo riapre lì); altrove si scarica ---- */
+async function salvaFile(bytes, nome, tipo) {
+  const blob = bytes instanceof Blob ? bytes : new Blob([bytes], { type: tipo });
+  if (window.showSaveFilePicker) {
+    const ext = nome.split('.').pop().toLowerCase();
+    try { const h = await window.showSaveFilePicker({ id: 'nxdoc', suggestedName: nome, types: [{ description: ext === 'pdf' ? 'PDF' : 'Word', accept: { [tipo]: ['.' + ext] } }] });
+      const w = await h.createWritable(); await w.write(blob); await w.close(); return h.name; }
+    catch (e) { if (e && e.name === 'AbortError') return null; }
+  }
+  const u = URL.createObjectURL(blob), a = document.createElement('a'); a.href = u; a.download = nome; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(u), 5000); return nome;
+}
+const PDF_T = 'application/pdf', DOCX_T = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+const nomeOk = s => String(s).replace(/[\\/:*?"<>|\n]/g, '-').replace(/\s+/g, ' ').trim();
+/* the top and the bottom of what is written on a page image (0..1), to put it under the logo */
+function inkBox(cv) {
+  const w = 300, h = Math.round(cv.height * w / cv.width), c = document.createElement('canvas'); c.width = w; c.height = h; const x = c.getContext('2d', { willReadFrequently: true }); x.drawImage(cv, 0, 0, w, h); const d = x.getImageData(0, 0, w, h).data;
+  let t = -1, b = -1; for (let y = 0; y < h; y++) { let ink = false; for (let i = 0; i < w; i++) { const k = (y * w + i) * 4; if (d[k] < 200 || d[k + 1] < 200 || d[k + 2] < 200) { ink = true; break; } } if (ink) { if (t < 0) t = y; b = y; } }
+  return t < 0 ? null : { top: t / h, bot: (b + 1) / h };
+}
+/* Word → PDF here in the browser: the pages drawn as in Word, one image each */
+async function docxToPdf(blob, M) {
+  const dv = await loadDocxView(), h2c = await loadH2C(), PL = await loadPdfLib();
+  const host = document.createElement('div'); host.style.cssText = 'position:fixed;left:-4000px;top:0;background:#fff;color:#000'; document.body.appendChild(host);
+  try {
+    await dv.renderAsync(blob, host, host, { inWrapper: false, breakPages: true, ignoreLastRenderedPageBreak: false, renderHeaders: true, renderFooters: true, useBase64URL: true, experimental: true });
+    if (M.lh) host.querySelectorAll('section.docx p').forEach(p => { const t = p.textContent.trim(); if (t.length < 90 && MOD_LH_RE.test(t)) p.style.visibility = 'hidden'; });
+    try { await document.fonts.ready; } catch (e) {}
+    const pdf = await PL.PDFDocument.create(), W = 595.28, H = 841.89, SC = 2; M.crops = [];
+    for (const sec of host.querySelectorAll('section.docx')) {
+      const sw = sec.offsetWidth, pageH = sw * H / W, top0 = sec.getBoundingClientRect().top, cv = await h2c(sec, { scale: SC, backgroundColor: '#fff', logging: false, useCORS: true });
+      // a section longer than a page: cut between two lines, never through one
+      const ends = [...sec.querySelectorAll('p, tr, li')].map(e => { const r = e.getBoundingClientRect(); return { a: r.top - top0, b: r.bottom - top0 }; }).sort((x, y) => x.b - y.b);
+      const pad = parseFloat(getComputedStyle(sec).paddingBottom) || 0; let from = 0;
+      while (from < sec.offsetHeight - 2) { let to = sec.offsetHeight;
+        if (to - from > pageH + 2) { const lim = from + pageH - pad; const fit = ends.filter(e => e.b <= lim && e.b > from + 40).pop(); to = fit ? fit.b + 2 : from + pageH; }
+        else if (from > 0 && !ends.some(e => e.b > from + 2)) break;
+        const pc = document.createElement('canvas'); pc.width = cv.width; pc.height = Math.round(pageH * SC); const x = pc.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0, 0, pc.width, pc.height);
+        const off = from ? parseFloat(getComputedStyle(sec).paddingTop) || 0 : 0; x.drawImage(cv, 0, from * SC, cv.width, (to - from) * SC, 0, off * SC, cv.width, (to - from) * SC);
+        M.crops.push(inkBox(pc)); const im = await pdf.embedJpg(pc.toDataURL('image/jpeg', 0.92)); pdf.addPage([W, H]).drawImage(im, { x: 0, y: 0, width: W, height: H }); from = to; if (to >= sec.offsetHeight) break; }
+    }
+    if (!pdf.getPageCount()) throw new Error('il file Word sembra vuoto');
+    return await pdf.save();
+  } finally { host.remove(); }
+}
+
+const DITTA_FIELDS = [
+  ['Legale rappresentante', [['lr_nome', 'Cognome e nome'], ['lr_cognome_c', 'Solo cognome', '@lr_cognome', 'calc'], ['lr_nomep_c', 'Solo nome', '@lr_nomeproprio', 'calc'], ['lr_qualita', 'In qualità di', 'Legale rappresentante'], ['lr_nato_a', 'Nato a'], ['lr_nato_prov', 'Provincia di nascita'], ['lr_nato_il', 'Nato il'], ['lr_cf', 'Codice fiscale'],
+    ['lr_res_comune', 'Residente a'], ['lr_res_prov', 'Provincia di residenza'], ['lr_res_via', 'Via e numero'], ['lr_res_strada_c', 'Residenza: solo la via', '@res_strada', 'calc'], ['lr_res_civico_c', 'Residenza: numero civico', '@res_civico', 'calc'], ['lr_res_cap', 'CAP'], ['lr_tel', 'Telefono'], ['lr_cell', 'Cellulare'], ['lr_email', 'E-mail'],
+    ['lr_doc_tipo', 'Documento d\'identità: tipo', 'Carta d\'identità'], ['lr_doc_num', 'Documento d\'identità: numero'], ['lr_doc_il', 'Documento d\'identità: rilasciato il'], ['lr_doc_da', 'Documento d\'identità: rilasciato da (es. Comune di Carini)']]],
+  ['Impresa', [['ragione', 'Ragione sociale', 'NEXTRAVEL S.R.L.'], ['sede_via', 'Sede legale: via e numero', 'Via Nereo, 4'], ['sede_strada_c', 'Sede: solo la via', '@sede_strada', 'calc'], ['sede_civico_c', 'Sede: numero civico', '@sede_civico', 'calc'], ['sede_comprov_c', 'Sede: comune e provincia', '@sede_comprov', 'calc'], ['sede_cap', 'CAP', '90044'], ['sede_comune', 'Comune', 'Carini'], ['sede_prov', 'Provincia', 'PA'],
+    ['sede_op', 'Sede operativa', 'Via Vittorio Emanuele, 150 – 90040 Capaci (PA)'], ['insegna', 'Insegna agenzia', 'NEXTRAVEL SICILY'],
+    ['cf', 'Codice fiscale impresa', '07157940821'], ['piva', 'Partita IVA', '07157940821'], ['tel', 'Telefono', '091 685 04 05'], ['cell', 'Cellulare', '371 4157323'], ['fax', 'Fax'], ['email', 'E-mail', 'direzione@nextravel.org'], ['pec', 'PEC', 'nextravelsrl@pec.it'], ['pec_fatt', 'PEC fatturazione', 'fatture@pec.nextravel.org'], ['cod_univoco', 'Codice univoco'],
+    ['forma', 'Forma giuridica', 'Società a responsabilità limitata'], ['capitale', 'Capitale sociale', '10.000,00 €'], ['costituzione', 'Data atto di costituzione', '04/09/2023'], ['ateco', 'Codice ATECO / attività', '79.11.00 – Attività di agenzie di viaggio']]],
+  ['Registri e lavoro', [['cciaa_prov', 'CCIAA: provincia di iscrizione', 'Palermo ed Enna'], ['cciaa_anno', 'CCIAA: anno di iscrizione', '2023'], ['rea', 'Numero REA', 'PA-440708'], ['licenza', 'Autorizzazione regionale agenzia di viaggi', 'D.D.S. n. 1003/S7 del 01/04/2026'], ['fondo', 'Fondo di garanzia: certificato', 'Top Secure Srl n. 2025/1112/2/0775'], ['polizza_rc', 'Polizza RC: compagnia e numero', 'Europ Assistance Italia S.p.A. n. 2693328'],
+    ['inps', 'Matricola INPS'], ['inail', 'Codice INAIL'], ['ccnl', 'CCNL applicato'], ['n_dip', 'Numero dipendenti'], ['pmi', 'Micro, piccola o media impresa', 'Sì'], ['mepa', 'Iscrizione MEPA'], ['iso', 'Certificazione di qualità'], ['tipo_ditta', 'Tipo di ditta (per INPS / DURC)', 'Datore di lavoro'], ['inail_sede', 'INAIL: sede di', 'Palermo'], ['inps_sede', 'INPS: sede di', 'Palermo']]],
+  ['Cariche', [['dir_tecnico', 'Direttore tecnico: cognome e nome'], ['dt_carica', 'Direttore tecnico: carica', 'Direttrice tecnica'], ['dt_nato_a', 'Direttore tecnico: nato a'], ['dt_nato_il', 'Direttore tecnico: nato il'], ['dt_cf', 'Direttore tecnico: codice fiscale'], ['tit_effettivo', 'Titolare effettivo'], ['tit_quota', 'Titolare effettivo: percentuale di proprietà'], ['tit_dal', 'Titolare effettivo: titolare dal (data di inizio)'], ['tit_al', 'Titolare effettivo: titolare fino al (es. FINO ALLA REVOCA)'], ['soci', 'Soci / amministratori (uno per riga: carica — nome — CF)', '', 'area']]],
+  ['Conto dedicato (tracciabilità)', [['iban', 'IBAN', 'IT24 L 0200843210000106881708'], ['iban_paese_c', 'IBAN: sigla paese', '@iban_paese', 'calc'], ['iban_check_c', 'IBAN: numeri di controllo', '@iban_check', 'calc'], ['iban_cin_c', 'IBAN: CIN', '@iban_cin', 'calc'],
+    ['iban_abi_c', 'IBAN: ABI', '@iban_abi', 'calc'], ['iban_cab_c', 'IBAN: CAB', '@iban_cab', 'calc'], ['iban_cc_c', 'IBAN: conto corrente', '@iban_cc', 'calc'],
+    ['banca', 'Banca', 'Unicredit S.p.A.'], ['banca_ag', 'Agenzia / filiale', 'Filiale di Capaci'], ['banca_full_c', 'Banca e agenzia insieme', '@banca_full', 'calc'], ['delegati', 'Persone delegate a operare (una per riga: nome — CF)', '', 'area']]],
+  ['Scadenze', [['durc_scad', 'DURC valido fino al', '', 'date'], ['assic_scad', 'Polizza RC valida fino al', '', 'date'], ['fondo_scad', 'Fondo di garanzia valido fino al', '', 'date'], ['doc_scad', 'Documento d\'identità del legale rappr.: scadenza (valido fino al)', '', 'date'], ['visura_scad', 'Visura camerale valida fino al', '', 'date']]],
+];
+const ditta = () => { const P = prevStore(); return P.ditta || (P.ditta = {}); };
+const dittaVal = (k, def) => { const v = ditta()[k]; return v !== undefined && v !== '' ? v : (def || ''); };
+const dittaLabel = k => (DITTA_FIELDS.flatMap(x => x[1]).find(f => f[0] === k) || [k, k])[1];
+function dittaScadenze() {
+  const t = todayIso(), out = [];
+  DITTA_FIELDS.find(s => s[0] === 'Scadenze')[1].forEach(([k, l]) => { const v = ditta()[k]; if (!v) return; if (daysBetween(t, v) <= 30) out.push({ l: l.replace(/ valid[oa] fino al$/, ''), d: v, past: v < t }); });
+  return out;
+}
+
+function renderDocumenti() {
+  try { modTitMigrate(); } catch (e) {}
+  const el = $('viewDocumenti'); const D = ditta();
+  // banca and agenzia were one field: separated once ("Unicredit S.p.A. – Agenzia di Capaci" → Unicredit S.p.A. | Filiale di Capaci)
+  if (D.banca && !D.banca_ag && /\s[–-]\s/.test(D.banca)) { const [b, ...a] = D.banca.split(/\s+[–-]\s+/); D.banca = b.trim(); D.banca_ag = a.join(' – ').replace(/^agenzia di\s+/i, 'Filiale di ').trim(); save(); }
+  const field = ([k, l, def, type]) => `<div class="dtf ${type === 'area' ? 'wide' : ''}"><label>${esc(l)}</label><div class="dtrow">${type === 'calc' ? `<input data-dk="${k}" class="dtcalc" readonly title="Lo ricavo dagli altri dati: cambia quelli" value="${esc(modValue(def, MODV) || '')}">` : type === 'area' ? `<textarea data-dk="${k}" rows="3">${esc(dittaVal(k, def))}</textarea>` : `<input data-dk="${k}" ${type === 'date' ? 'type="date"' : ''} value="${esc(dittaVal(k, def))}">`}<button type="button" class="tb" data-dcopy="${k}" title="Copia">📋</button></div></div>`;
+  const img = (k, l) => `<div class="dtimg"><label>${l}</label><div class="dtbox">${D[k] ? `<img src="${D[k]}">` : '<span class="mini">non caricato</span>'}</div><div class="row" style="justify-content:flex-start;gap:6px"><button type="button" class="btn" data-dimg="${k}">📷 Carica</button>${D[k] ? `<button type="button" class="btn" data-dimgx="${k}">✕ Togli</button>` : ''}</div></div>`;
+  const sc = dittaScadenze();
+  el.innerHTML = `<h2 style="margin-bottom:4px">📑 Documenti <span style="font-weight:400;color:var(--muted);font-size:17px">— lettere, moduli delle scuole e delle gare (MEPA)</span></h2>
+    <p class="intro" style="margin:0 0 12px">Qui scrivi una volta i dati di Nextravel che le scuole chiedono in ogni modulo (si salvano da soli e valgono per tutti). Le caselle grigie le ricavo io dagli altri dati (es. l'IBAN a pezzi): per cambiarle cambia il dato da cui vengono.</p>
+    ${sc.length ? `<div style="margin:0 0 12px;padding:9px 14px;border-radius:10px;background:#fdecea;border:1.5px solid #c0392b;color:#8a1010;font-size:16px">⚠️ ${sc.map(x => `<b>${esc(x.l)}</b> ${x.past ? 'scaduto il' : 'scade il'} ${fdate(x.d)}`).join(' · ')}</div>` : ''}
+    <div class="pvsec modbox"><h4 style="display:flex;align-items:center;gap:10px"><span>✉️</span><span style="flex:1">Lettere su carta intestata</span><button type="button" class="btn pri" data-lnew="1">＋ Nuova lettera</button></h4>
+      <p class="mini" style="margin:0">Un testo sulla carta intestata di Nextravel (logo e piè di pagina su ogni pagina): destinatario, titolo, testo, firma e timbro. Poi il PDF.</p>
+      <div id="letList"></div></div>
+    <div class="pvsec modbox"><h4><span>✍️</span> Compila un modulo</h4>
+      <div class="modhead"><p class="mini" style="margin:0;flex:1">Carica i moduli della scuola (Word o PDF, anche più di uno): li apro e li compili guardandoli, con i dati qui sotto già al loro posto. Prima di salvarli li vedi in anteprima.</p>
+        <label class="btn pri" style="cursor:pointer">📄 Carica moduli<input type="file" id="modFile" accept=".docx,.pdf" multiple style="display:none"></label></div>
+      <div id="modList"></div></div>
+    <h3 style="margin:16px 0 8px;display:flex;align-items:center;gap:10px">🏢 Dati Nextravel <span class="mini" style="font-weight:400;flex:1">· con 📋 li copi per incollarli in un modulo</span><button type="button" class="btn" data-dpaste="1" title="Inserisce in un colpo un blocco di dati preparato (es. dai documenti)">📥 Incolla dati</button></h3>
+    ${DITTA_FIELDS.map(([t, fs]) => `<div class="pvsec"><h4>${esc(t)}</h4><div class="dtgrid">${fs.map(field).join('')}</div></div>`).join('')}
+    <div class="pvsec"><h4>Firma e timbro</h4><div class="dtgrid">${img('firma', 'Firma del legale rappresentante')}${img('timbro', 'Timbro')}</div><p class="mini">Un'immagine (foto o scansione, meglio su sfondo bianco): la metto nei moduli dove serve.</p></div>
+    <div class="pvsec"><h4>🪪 Documento d'identità del legale rappresentante</h4>
+      <div style="display:flex;flex-direction:column;gap:6px">${(D.doc_id || []).map((f, i) => `<div style="display:flex;align-items:center;gap:8px">${/^data:image/.test(f.data) ? `<img src="${f.data}" style="height:46px;border:1px solid var(--line);border-radius:4px">` : '<span style="font-size:26px">📕</span>'}<span style="flex:1">${esc(f.name)} <span class="mini">(${Math.round(f.data.length * 0.75 / 1024)} KB)</span></span><button type="button" class="btn" data-didx="${i}">✕ Togli</button></div>`).join('') || '<span class="mini">non caricato</span>'}</div>
+      <div class="row" style="justify-content:flex-start;gap:6px;margin-top:8px"><button type="button" class="btn" data-didadd="1">📎 Carica (PDF o foto)</button></div>
+      <p class="mini">Un PDF oppure le foto di fronte e retro (puoi sceglierne più di una). Quando un modulo chiede di allegare la copia del documento lo aggiungo in fondo al PDF.</p></div>
+    <input type="file" id="dIdFile" accept="application/pdf,image/*" multiple style="display:none">
+    <input type="file" id="dImgFile" accept="image/*" style="display:none">`;
+  renderModuli(); renderLettere();
+}
+// ---- ✍️ Compila un modulo (Documenti): the form of a school (Word or PDF) filled with the Dati Nextravel ----
+// every blank of the form (……… / ____ / underlined tab) gets a "label" (the words before it); what goes there comes from what you
+// chose the last time for the same label (DB.prev.moduli.rules, learned), else from a first guess. Same for the boxes to tick.
+// Word → filled docx → PDF on the server (LibreOffice); PDF → text written over it (pdf-lib). You see the PDF before saving it.
+const MOD_SPECIAL = [['@oggi', 'Data di oggi'], ['@luogodata', 'Luogo e data (Carini, oggi)'], ['@luogo', 'Luogo (Carini)'], ['@scuola', 'Nome della scuola'], ['@oggetto', 'Oggetto / gara / progetto'],
+  ['@sede', 'Sede completa (via, CAP, comune, prov.)'], ['@sede_comprov', 'Sede: comune e provincia (Carini (PA))'], ['@sede_strada', 'Sede: solo la via (senza numero)'], ['@sede_civico', 'Sede: solo il numero civico'],
+  ['@res_strada', 'Residenza: solo la via (senza numero)'], ['@res_civico', 'Residenza: solo il numero civico'],
+  ['@iban_paese', 'IBAN: sigla paese'], ['@iban_check', 'IBAN: numeri di controllo'], ['@iban_cin', 'IBAN: CIN'], ['@iban_abi', 'IBAN: ABI'], ['@iban_cab', 'IBAN: CAB'], ['@iban_cc', 'IBAN: conto corrente'],
+  ['@tit_cognome', 'Titolare effettivo: cognome'], ['@tit_nome', 'Titolare effettivo: nome'], ['@tit_cf', 'Titolare effettivo: codice fiscale'], ['@tit_nato_a', 'Titolare effettivo: nato a'],
+  ['@tit_nato_prov', 'Titolare effettivo: provincia di nascita'], ['@tit_nato_il', 'Titolare effettivo: nato il'], ['@tit_res_comune', 'Titolare effettivo: residente a'], ['@tit_res_prov', 'Titolare effettivo: provincia di residenza'],
+  ['@tit_res_via', 'Titolare effettivo: via e numero'], ['@tit_res_cap', 'Titolare effettivo: CAP'],
+  ['@lr_cognome', 'Legale rappresentante: solo cognome'], ['@lr_nomeproprio', 'Legale rappresentante: solo nome'], ['@banca_full', 'Banca e agenzia insieme'],
+  ['@doc_scad', 'Documento d\'identità: scadenza'], ['@firma', '✍️ Firma e timbro']];
+// the titolare effettivo (Dati Nextravel › Titolare effettivo): when he is the legale rappresentante all his data, else name and CF from the soci
+function modTitolare() {
+  const name = String(dittaVal('tit_effettivo') || dittaVal('lr_nome') || '').trim(); if (!name) return {};
+  const split = n => { const w = n.split(/\s+/); return { cognome: w[0] || '', nome: w.slice(1).join(' ') }; };
+  if (modNorm(name) === modNorm(dittaVal('lr_nome'))) return { ...split(name), cf: dittaVal('lr_cf'), nato_a: dittaVal('lr_nato_a'), nato_prov: dittaVal('lr_nato_prov'), nato_il: dittaVal('lr_nato_il'),
+    res_comune: dittaVal('lr_res_comune'), res_prov: dittaVal('lr_res_prov'), res_via: dittaVal('lr_res_via'), res_cap: dittaVal('lr_res_cap') };
+  const soc = modLines('soci').find(l => l.some(x => modNorm(x) === modNorm(name))) || [];
+  return { ...split(name), cf: soc.find(x => /^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/i.test(x)) || '' };
+}
+// the IBAN in its pieces (IT 18 U 02008 43200 000105592185), from the one written in the Dati Nextravel
+const modIban = () => { const s = String(dittaVal('iban', 'IT24 L 0200843210000106881708')).replace(/\s+/g, '').toUpperCase();
+  return { paese: s.slice(0, 2), check: s.slice(2, 4), cin: s.slice(4, 5), abi: s.slice(5, 10), cab: s.slice(10, 15), cc: s.slice(15) }; };
+const modStore = () => { const P = prevStore(); return P.moduli || (P.moduli = { rules: {}, checks: {} }); };
+const modNorm = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[’']/g, ' ').replace(/[^a-z0-9/ ]+/g, ' ').replace(/\s+/g, ' ').trim();
+const modToday = () => { const t = new Date(); return `${String(t.getDate()).padStart(2, '0')}/${String(t.getMonth() + 1).padStart(2, '0')}/${t.getFullYear()}`; };
+// first guesses (only when you never chose for that label): [test on "mode:label", value]  · x = cancel the dots, '' = leave it as it is
+const MOD_TITQ = [[/percentuale (di |della )?(proprieta|partecipazione|possesso)|quota (di |della )?(proprieta|partecipazione|possesso)|percentuale$/, 'tit_quota'],
+  [/(data (di |della )?inizio|decorrenza).*titolarit|titolar[ei] (effettiv[oi] )?(dal|a partire dal)$/, 'tit_dal'], [/(data (di |della )?fine|fine (della |dell )?(attuale )?titolarit|scadenza).*titolarit|titolarit.*prevista per il$/, 'tit_al']];
+const MOD_GUESS = [
+  [/tipo (di )?(ditta|impresa)|tipologia (di |della )?(ditta|impresa)|datore di lavoro.*lavoratore autonomo|lavoratore autonomo.*gestione separata/, 'tipo_ditta'], [/\be ?mail pec\b|pec.*alternativa al fax/, 'pec'],
+  [/indirizzo (di )?(e ?)?mail$|indirizzo (di )?posta elettronica$/, 'email'], [/telefono ?\/ ?fax$|telefono e fax$/, 'tel'], [/e ?mail pec$|^(imp:)?pec$/, 'pec'], [/n ?(°|o|um(ero)?)? ?dipendenti$/, 'n_dip'], [/\bc ?c ?n ?l\b/, 'ccnl'],
+  [/inail.{0,25}sede|sede (inail|di competenza inail)/, 'inail_sede'], [/inps.{0,25}sede|sede (inps|di competenza inps)/, 'inps_sede'],
+  ...MOD_TITQ,
+  [/confermato e sottoscritto|sottoscritt[oa] (il|in data)( giorno)?$/, '@oggi'],
+  // the identity document of the legale rappresentante
+  [/^doc:(tipo|tipo documento)$/, 'lr_doc_tipo'], [/avente (il )?n(umero)?$|^doc:(numero|n|nr)$|numero (del )?documento$/, 'lr_doc_num'], [/^doc:(rilasciat[oa] )?(il|in data)$|data (di |del )?rilascio$/, 'lr_doc_il'],
+  [/^doc:(da|rilasciat[oa] da|dal|ente)$|rilasciat[oa] dal?$/, 'lr_doc_da'], [/^doc:(scadenza|data di scadenza|scade il|valid[oa] fino al)$|scadenza (del )?documento$/, '@doc_scad'], [/^doc:.*(altro|specificare)/, 'x'],
+  // the section of the titolare effettivo (a person: cognome, nome, nascita, CF, residenza)
+  [/^tit:cognome$/, '@tit_cognome'], [/^tit:nome$/, '@tit_nome'], [/^tit:.*\bnat[oa]/, '@tit_nato_a'], [/^tit:prov/, '@tit_nato_prov'], [/^tit:(il|nato il|data di nascita)$/, '@tit_nato_il'],
+  [/^tit(res)?:(cod fiscale|c f|codice fiscale)$/, '@tit_cf'], [/^titres:residente (a|in)$/, '@tit_res_comune'], [/^titres:prov/, '@tit_res_prov'], [/^titres:(in )?via/, '@tit_res_via'], [/^titres:cap$/, '@tit_res_cap'],
+  // the person (lr) / his residence (res) / the company (imp) written with short words
+  [/^lr:cognome$/, '@lr_cognome'], [/^lr:nome$/, '@lr_nomeproprio'], [/^lr:prov/, 'lr_nato_prov'],
+  [/^(lr|res):cod(ice)? ?fisc(ale)?$|^(lr|res):c ?f$/, 'lr_cf'], [/^imp:cod(ice)? ?fisc(ale)?$/, 'cf'],
+  [/^res:(in|via|in via)$/, '@res_strada'], [/^res:c ?a ?p$/, 'lr_res_cap'], [/^imp:(in|via|in via)$/, '@sede_strada'], [/^imp:c ?a ?p$/, 'sede_cap'],
+  [/^(lr|res):tel(efono)?$/, 'lr_tel'], [/^(lr|res):cell(ulare)?$/, 'lr_cell'], [/^imp:cell(ulare)?$/, 'cell'],
+  [/(societa|ditta|impresa) denominata$/, 'ragione'], [/\bsit[ao] (a|in)$/, 'sede_comune'],
+  // a blank with no words before it: by the words around it (‹line above›line below)
+  [/:↵li\b/, '@luogo'], [/↵.*firma/, '@firma'], [/↵‹[^›]*progetto/, '@oggetto'], [/↵‹[^›]*denominat[ao]›/, 'ragione'], [/↵.*›\s?il legale rappresentante/, 'lr_nome'], [/↵/, 'x'],
+  [/sottoscritt|rappresentata da|il dichiarante sig|cognome e nome/, 'lr_nome'], [/\bnat[oa](\/a)?\s?a$|luogo di nascita/, 'lr_nato_a'], [/^lr:(il|data di nascita)$|\bnat.* il$/, 'lr_nato_il'],
+  [/^(lr|res):(c ?f|cod(ice)? fiscale)$/, 'lr_cf'], [/fiscale (dell |della )?(impresa|ditta|societa)|^imp:(c ?f|cod(ice)? fiscale)$/, 'cf'], [/residente (a|in)$|^res:(comune|citta)$/, 'lr_res_comune'], [/^res:prov/, 'lr_res_prov'], [/^res:(via|in via|indirizzo)/, 'lr_res_via'],
+  [/^res:n$/, 'x'], [/^res:cap$/, 'lr_res_cap'], [/qualita di|in qualita$|carica/, 'lr_qualita'],
+  [/(dell |della |la )?(impresa|ditta|societa)( denominata)?$|denominat|ragione sociale|operatore economico$/, 'ragione'],
+  [/sede (legale )?in via|situata in via|^imp:(via|in via|indirizzo)/, 'sede_via'], [/sede (legale )?(in|a)$|^imp:sede$/, '@sede_comprov'], [/^imp:(citta|comune|localita)$/, 'sede_comune'],
+  [/^imp:n$/, 'x'], [/^imp:cap$/, 'sede_cap'], [/^imp:prov/, 'sede_prov'], [/partita iva|p iva/, 'piva'],
+  [/(^|:)tel(efono)?$/, 'tel'], [/(^|:)fax$/, 'fax'], [/(^|:)e ?mail$/, 'email'], [/(^|:)pec$/, 'pec'], [/iban/, 'iban'], [/(agenzia|filiale)$/, 'banca_ag'], [/(banca|istituto di credito|istituto bancario)$/, 'banca'], [/rea$/, 'rea'], [/inps/, 'inps'], [/inail/, 'inail'],
+  [/luogo e data$/, '@luogodata'], [/(^|:)(data|li)$/, '@oggi'], [/(^|:)luogo$/, '@luogo'], [/firma|il dichiarante$|timbro/, '@firma'],
+  [/estremi della gara|progetto|oggetto|cig$/, '@oggetto'],
+];
+// boxes ticked at first sight (Nextravel: 9 dipendenti, micro impresa)
+const MOD_CHECK_YES = /inferiore a quindici|meno di 15 |meno di 15$|^(di )?essere una micro|^legale rappresentante$/;
+// the nearest line with words above (d = -1) / below (d = 1)
+const modNear = (arr, i, d) => { for (let j = i + d; j >= 0 && j < arr.length; j += d) { const t = String(arr[j].text || '').replace(/[_.…\t]+/g, ' ').trim(); if (t) return t; } return ''; };
+const modAround = (arr, i) => '‹' + modNorm(modNear(arr, i, -1)).slice(-24) + '›' + modNorm(modNear(arr, i, 1)).slice(0, 24);
+const modLines = k => String(dittaVal(k) || '').split('\n').map(l => l.split(/\s+[—–-]\s+|\s*;\s*|\t/).map(x => x.trim()).filter(Boolean)).filter(l => l.length);
+// the list of the Dati Nextravel for the free writing on the page (the same as the boxes, plus each person of soci / delegati)
+function modFieldOpts(cur) {
+  const o = (v, l, val) => `<option value="${esc(v)}" ${v === cur ? 'selected' : ''}>${esc(l)}${val ? ' — ' + esc(String(val).slice(0, 30)) : ''}</option>`;
+  const sp = MOD_SPECIAL.filter(([k]) => k !== '@firma');
+  const people = ['soci', 'delegati'].map(k => { const L = modLines(k); if (!L.length) return ''; const name = k === 'soci' ? 'Soci / amministratori' : 'Persone delegate';
+    const isCf = x => /^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/i.test(x.replace(/\s/g, '')), isRole = x => /amministrat|socio|presidente|legale|direttore|consigliere|titolare|procurator|delegat/i.test(x);
+    return `<optgroup label="${name}">${L.map((l, i) => { const who = l.find(x => !isCf(x) && !isRole(x)) || l[0];
+      return l.map((x, j) => o(`@${k}:${i}:${j}`, `${who}: ${isCf(x) ? 'codice fiscale' : isRole(x) ? 'carica' : 'cognome e nome'}`, isCf(x) || isRole(x) ? x : '')).join(''); }).join('')}</optgroup>`; }).join('');
+  return `<optgroup label="Speciali">${sp.map(([k, l]) => o(k, l, modValue(k, MODV))).join('')}</optgroup>`
+    + DITTA_FIELDS.filter(s => s[0] !== 'Scadenze').map(([t, fs]) => `<optgroup label="${esc(t)}">${fs.filter(f => f[3] !== 'area' && f[3] !== 'calc').map(f => o(f[0], f[1], dittaVal(f[0], f[2]))).join('')}</optgroup>`).join('') + people;
+}
+function modFieldList(cur, to) {
+  const t = document.createElement('select'); t.innerHTML = modFieldOpts(cur); let h = '';
+  [...t.children].forEach(g => { if (g.tagName !== 'OPTGROUP') return; h += `<div class="mgrp">${esc(g.label)}</div>`;
+    [...g.children].forEach(o => { const tx = o.textContent, k = tx.indexOf(' — '); const lab = k >= 0 ? tx.slice(0, k) : tx, val = k >= 0 ? tx.slice(k + 3) : '';
+      h += `<div class="mopt ${o.value === cur ? 'on' : ''}" data-mfpick="${esc(to)}" data-v="${esc(o.value)}">${esc(lab)}${val ? ` — <b>${esc(val)}</b>` : ''}</div>`; }); });
+  return `<input class="mfind" data-mfind placeholder="🔍 cerca un dato…" autocomplete="off"><div class="mlist">${h}</div>`;
+}
+document.addEventListener('click', e => { const p = e.target.closest('[data-mfpick]'); if (!p) return; const to = p.dataset.mfpick, v = p.dataset.v; if (MOD_CUR >= 0 && MODS[MOD_CUR]) MODS[MOD_CUR].dirty = true;
+  if (to === 'put') { if (!MOD_PEND) return; const M = MODS[MOD_PEND.mi]; (M.extra = M.extra || []).push({ ...modPendAt(), k: 't', f: v, t: '' }); MOD_PEND = null; $('modPop').hidden = true; return modRefresh(); }
+  const m = /^ext:(\d+):(\d+)$/.exec(to); if (m) { MODS[+m[1]].extra[+m[2]].f = v; modRefresh(); p.parentNode.querySelectorAll('.mopt.on').forEach(x => x.classList.remove('on')); p.classList.add('on'); } });
+function modValue(v, vars) {
+  const D = ditta(); if (v === undefined || v === null) return null;
+  if (typeof v === 'object') return v.t !== undefined ? v.t : v.x ? '' : null;
+  if (v === 'x') return ''; if (v === '') return null;
+  const sedeCom = dittaVal('sede_comune', 'Carini');
+  if (v === '@doc_scad') { const d = String(dittaVal('doc_scad') || ''); const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(d); return m ? `${m[3]}/${m[2]}/${m[1]}` : d; }
+  if (v === '@oggi') return modToday(); if (v === '@luogo') return sedeCom; if (v === '@luogodata') return `${sedeCom}, ${modToday()}`;
+  if (v === '@scuola') return vars.scuola || ''; if (v === '@oggetto') return vars.oggetto || ''; if (v === '@firma') return '@firma';
+  const via = (k, part) => modSplitVia(dittaVal(k, k === 'sede_via' ? 'Via Nereo, 4' : ''))[part];
+  if (v === '@sede_strada') return via('sede_via', 'strada'); if (v === '@sede_civico') return via('sede_via', 'civico');
+  if (v === '@res_strada') return via('lr_res_via', 'strada'); if (v === '@res_civico') return via('lr_res_via', 'civico');
+  // a piece of a line of "Soci / amministratori" or "Persone delegate" (carica — nome — CF): @soci:<line>:<piece>
+  const pm = /^@(soci|delegati):(\d+):(\d+)$/.exec(v); if (pm) return (modLines(pm[1])[+pm[2]] || [])[+pm[3]] || '';
+  if (/^@iban_/.test(v)) return modIban()[v.slice(6)] || '';
+  if (/^@tit_/.test(v)) return modTitolare()[v.slice(5)] || '';
+  if (v === '@lr_cognome' || v === '@lr_nomeproprio') { const w = String(dittaVal('lr_nome') || '').trim().split(/\s+/); return v === '@lr_cognome' ? w[0] || '' : w.slice(1).join(' '); }
+  if (v === '@banca_full') return [dittaVal('banca', 'Unicredit S.p.A.'), dittaVal('banca_ag', 'Filiale di Capaci')].filter(Boolean).join(' – ');
+  if (v === '@sede_comprov') return `${sedeCom} (${dittaVal('sede_prov', 'PA')})`;
+  if (v === '@sede') return `${dittaVal('sede_via', 'Via Nereo, 4')} – ${dittaVal('sede_cap', '90044')} ${sedeCom} (${dittaVal('sede_prov', 'PA')})`;
+  const def = (DITTA_FIELDS.flatMap(x => x[1]).find(f => f[0] === v) || [])[2]; return dittaVal(v, def);
+}
+// the "mode" (whose data the next short labels are: lr = the person, res = his residence, imp = the company) + the key of a label
+// a line of the form (also without blanks) that opens the section of the titolare effettivo
+// ("il/i titolare/i effettivo/i dell'Ente è/sono…"; not the notes "(ripetere … come titolare effettivo)" of the other options)
+const modModeLine = (text, st) => { if (/document[oi]\s+(di\s+)?(identit|riconoscimento)/i.test(text)) st.mode = 'doc'; if (/^\s*(il\/la|il|la)\s+sottoscritt[oa](\/a)?\s*:?\s*$/i.test(text)) st.mode = 'lr'; if (/titolar[ei]\/?[ei]? effettiv[oi]\/?[oi]?\s+(dell|della|del|è|e\/|sono|da individuar)/i.test(text) && !/allega|ripetere/i.test(text)) st.mode = 'tit'; };
+function modKey(label, st, after) {
+  const n = modNorm(label);
+  if (/sottoscritt|rappresentata da|dichiarante|cognome e nome/.test(n)) st.mode = 'lr'; else if (/resident/.test(n)) st.mode = /^tit/.test(st.mode || '') ? 'titres' : 'res';
+  else if (/^tit/.test(st.mode || '') && /^(cognome|nome)$/.test(n)) st.mode = 'tit';
+  else if (/impresa|ditta|societa|sede|denominat|operatore economico|ragione sociale/.test(n)) st.mode = 'imp';
+  else if (/document|avente numero|rilasciat/.test(n)) st.mode = 'doc';
+  if (!n) return (st.mode || '') + ':↵' + after;
+  return n.length <= 18 ? (st.mode || '') + ':' + n : n.slice(-60);
+}
+function modTitMigrate() {
+  if (modTitMigrate.done) return; modTitMigrate.done = 1; const R = modStore().rules, D = ditta(); let ch = 0;
+  Object.entries(R).forEach(([k, v]) => { if (!v || typeof v !== 'object' || !String(v.t || '').trim()) return; const g = MOD_TITQ.find(([re]) => re.test(k));
+    if (g && !String(D[g[1]] || '').trim()) { D[g[1]] = String(v.t).trim(); delete R[k]; ch++; } });
+  if (ch) save();
+}
+function modRule(key) {
+  modTitMigrate();
+  const R = modStore().rules; const g = MOD_GUESS.find(([re]) => re.test(key));
+  // a rule "leave it empty" does not beat a guess (it came from a section of a form you did not fill)
+  if (Object.prototype.hasOwnProperty.call(R, key) && !(R[key] === '' && g && g[1])) return { v: R[key], known: true };
+  return { v: g ? g[1] : '', known: false };
+}
+// "via ……  n. ……": the street in the first, the number in the second (Via Nereo, 4 → Via Nereo | 4)
+const modSplitVia = v => { const m = /^(.*?)[,\s]+(?:n\.?\s*|n°\s*)?(\d+\s*[a-z]?(?:\/\s*\w+)?)\s*$/i.exec(String(v || '').trim()); return m ? { strada: m[1].trim(), civico: m[2].replace(/\s+/g, '') } : { strada: String(v || '').trim(), civico: '' }; };
+function modPairVia(M) {
+  M.slots.forEach((s, i) => { const n = M.slots[i + 1]; if (s.choice === '@sede_comprov' && n && /:prov/.test(n.key) && (M.kind === 'docx' ? n.pi === s.pi : n.p === s.p && Math.abs(n.y - s.y) < 3)) s.choice = 'sede_comune'; });
+  const of = { sede_via: '@sede', lr_res_via: '@res', '@sede_strada': '@sede', '@res_strada': '@res' };
+  M.slots.forEach((s, i) => { const k = of[s.choice]; if (!k) return; const n = M.slots[i + 1];
+    const hasN = n && (M.kind === 'docx' ? n.pi === s.pi : n.p === s.p && Math.abs(n.y - s.y) < 3) && /:(n|n civico|civico|numero)$/.test(n.key);
+    if (hasN) { s.choice = k + '_strada'; if (n.choice === 'x' || n.choice === '' || /_civico$/.test(n.choice)) n.choice = k + '_civico'; }
+    else s.choice = k === '@sede' ? 'sede_via' : 'lr_res_via'; });
+}
+// ---------- Word (.docx)
+const W_NS = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main';
+const loadJsZip = () => window.JSZip ? Promise.resolve(window.JSZip) : new Promise((ok, ko) => { const sc = document.createElement('script'); sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js'; sc.onload = () => ok(window.JSZip); sc.onerror = () => ko(new Error('Serve la connessione a internet')); document.head.appendChild(sc); });
+const loadPdfLib = () => window.PDFLib ? Promise.resolve(window.PDFLib) : new Promise((ok, ko) => { const sc = document.createElement('script'); sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js'; sc.onload = () => ok(window.PDFLib); sc.onerror = () => ko(new Error('Serve la connessione a internet')); document.head.appendChild(sc); });
+const BLANK_RE = /[_.\u2026][_.\u2026\s\u00a0]*[_.\u2026]|\u2026/g;   /* dots, "…", "___" (also a single "…") */
+// a blank: at least 2 "_", or dots worth 3 ("…" counts as 3 dots: "(…..)" is a blank)
+// three dots right after a word ("etc...", "ecc...") are not a blank
+const modEtc = (text, a, s) => /^(\.\.\.|…)$/.test(s.trim()) && /(etc|ecc|ecc\.)$/i.test(text.slice(0, a).trimEnd());
+const isBlankText = m => (m.match(/_/g) || []).length >= 2 || (m.match(/\./g) || []).length + 3 * (m.match(/…/g) || []).length >= 3;
+// the paragraphs of the document as lists of "atoms" (one per character / tab) pointing to the XML
+function docxParas(xml) {
+  const ps = [...xml.getElementsByTagNameNS(W_NS, 'p')].filter(p => !p.parentNode.closest || !p.parentNode.closest('txbxContent'));
+  return ps.map(p => {
+    const atoms = [];
+    [...p.getElementsByTagNameNS(W_NS, 'r')].forEach(r => {
+      const u = [...r.getElementsByTagNameNS(W_NS, 'u')].some(x => (x.getAttributeNS(W_NS, 'val') || 'single') !== 'none');
+      [...r.childNodes].forEach(c => {
+        if (c.localName === 't') [...c.textContent].forEach((ch, i) => atoms.push({ ch, node: c, i, r }));
+        else if (c.localName === 'tab') atoms.push({ ch: '\t', node: c, tab: true, u, r });
+        else if (c.localName === 'br') atoms.push({ ch: ' ', node: c, br: true, r });
+      });
+    });
+    return { p, atoms, text: atoms.map(a => a.ch).join('') };
+  });
+}
+// the numbering of the paragraph, when it is a box to tick (☐ ○ ❑ … not • - 1.)
+function docxBoxNums(numXml) {
+  const box = new Set(); if (!numXml) return box;
+  const abs = {}; [...numXml.getElementsByTagNameNS(W_NS, 'abstractNum')].forEach(a => { const l0 = [...a.getElementsByTagNameNS(W_NS, 'lvl')].find(l => l.getAttributeNS(W_NS, 'ilvl') === '0'); if (!l0) return;
+    const t = l0.getElementsByTagNameNS(W_NS, 'lvlText')[0], f = l0.getElementsByTagNameNS(W_NS, 'numFmt')[0]; const tx = t ? t.getAttributeNS(W_NS, 'val') : '', fm = f ? f.getAttributeNS(W_NS, 'val') : '';
+    abs[a.getAttributeNS(W_NS, 'abstractNumId')] = fm === 'bullet' && /^(o|[]|[☐□❑○❍▢])$/.test(tx); });
+  [...numXml.getElementsByTagNameNS(W_NS, 'num')].forEach(n => { const a = n.getElementsByTagNameNS(W_NS, 'abstractNumId')[0]; if (a && abs[a.getAttributeNS(W_NS, 'val')]) box.add(n.getAttributeNS(W_NS, 'numId')); });
+  return box;
+}
+async function modReadDocx(buf) {
+  const JSZip = await loadJsZip(); const zip = await JSZip.loadAsync(buf);
+  const xml = new DOMParser().parseFromString(await zip.file('word/document.xml').async('string'), 'application/xml');
+  const numF = zip.file('word/numbering.xml'); const boxNums = docxBoxNums(numF ? new DOMParser().parseFromString(await numF.async('string'), 'application/xml') : null);
+  const paras = docxParas(xml); const slots = [], checks = [], st = {};
+  paras.forEach((P, pi) => {
+    modModeLine(P.text, st);
+    const blanks = []; let m; BLANK_RE.lastIndex = 0;
+    while ((m = BLANK_RE.exec(P.text))) { let a = m.index, s = m[0]; if (!isBlankText(s.replace(/\t/g, '')) || modEtc(P.text, a, s)) continue;
+      if (s[0] === '.' && /[A-Za-z]/.test(P.text[a - 1] || '') && /\s/.test(s[1] || '')) { a++; s = s.slice(1); }
+      blanks.push([a, a + s.replace(/\s+$/, '').length]); }
+    P.atoms.forEach((x, i) => { if (x.tab && x.u && !blanks.some(([a, b]) => i >= a && i < b)) { const last = blanks[blanks.length - 1]; if (last && last[1] === i && P.atoms[i - 1].tab) last[1] = i + 1; else blanks.push([i, i + 1]); } });
+    blanks.sort((a, b) => a[0] - b[0]);
+    // "Data" / "Luogo e data" followed only by tabs: the date goes right after the words
+    const dm = /^\s*(luogo e data|data)[  ]*:?[  ]*(?=\t)/i.exec(P.text); if (dm && !blanks.some(([a]) => a <= dm[0].length + 1)) slots.push({ pi, ins: dm[0].length, label: dm[1], ctx: dm[1], key: modKey(dm[1], st, '') });
+    let prevEnd = 0;
+    blanks.forEach(([a, b]) => { const label = P.text.slice(prevEnd, a).replace(/[\t:]+/g, ' ').trim(); const after = P.text.slice(b, b + 30).replace(/^[\s.,;:_…]+/, '');
+      const ex = modNorm(after).slice(0, 18) || modAround(paras, pi);
+      slots.push({ pi, a, b, label, ctx: label || (after ? '… ' + after : `riga da sola, sotto «${modNear(paras, pi, -1).slice(-40)}»`), key: modKey(label, st, ex) }); prevEnd = b; });
+    const pPr = P.p.getElementsByTagNameNS(W_NS, 'pPr')[0]; const nid = pPr && pPr.getElementsByTagNameNS(W_NS, 'numId')[0];
+    const boxCh = /^\s*[☐□❑○❍▢]\s*/.exec(P.text);
+    if ((nid && boxNums.has(nid.getAttributeNS(W_NS, 'val')) && P.text.trim()) || boxCh) checks.push({ pi, text: P.text.replace(/^\s*[☐□❑○❍▢]\s*/, '').trim(), inline: !!boxCh, key: modNorm(P.text).slice(0, 160) });
+  });
+  // what the editor shows: the text of each paragraph, its alignment, bold
+  const view = paras.map(P => { const pPr = P.p.getElementsByTagNameNS(W_NS, 'pPr')[0]; const jc = pPr && [...pPr.childNodes].find(x => x.localName === 'jc');
+    const r = P.atoms.find(a => a.ch.trim()); const rp = r && r.r.getElementsByTagNameNS(W_NS, 'rPr')[0];
+    return { text: P.text, jc: jc ? jc.getAttributeNS(W_NS, 'val') : '', b: !!(rp && [...rp.childNodes].some(x => x.localName === 'b' && x.getAttributeNS(W_NS, 'val') !== '0')) }; });
+  return { kind: 'docx', buf, slots, checks, view };
+}
+// timbro + firma in one image (the white made transparent, the firma over the right side of the timbro)
+async function modSignImg() {
+  const D = ditta(); if (!D.firma && !D.timbro) return null;
+  const load = src => new Promise(ok => { if (!src) return ok(null); const im = new Image(); im.onload = () => ok(im); im.onerror = () => ok(null); im.src = src; });
+  const clear = (im, w, h) => { const c = document.createElement('canvas'); c.width = w; c.height = h; const x = c.getContext('2d'); x.drawImage(im, 0, 0, w, h); const d = x.getImageData(0, 0, w, h);
+    const ms = []; for (let i = 0; i < d.data.length; i += 4 * 97) ms.push(Math.min(d.data[i], d.data[i + 1], d.data[i + 2])); ms.sort((a, b) => a - b); const hi = Math.min(225, ms[Math.floor(ms.length * 0.6)] - 22), lo = hi - 45;
+    for (let i = 0; i < d.data.length; i += 4) { const m = Math.min(d.data[i], d.data[i + 1], d.data[i + 2]); if (m > hi) d.data[i + 3] = 0; else if (m > lo) d.data[i + 3] = Math.round(255 * (hi - m) / 45); } x.putImageData(d, 0, 0); return c; };
+  const t = await load(D.timbro), f = await load(D.firma); const H = 260;
+  const tw = t ? Math.round(t.width * H / t.height) : 0, fw = f ? 440 : 0, fh = f ? Math.min(H, Math.round(f.height * 440 / f.width)) : 0;
+  const W = t && f ? Math.round(tw * 0.55) + fw : tw || fw; const c = document.createElement('canvas'); c.width = W; c.height = H; const x = c.getContext('2d');
+  if (t) x.drawImage(clear(t, tw, H), 0, 0); if (f) x.drawImage(clear(f, fw, fh), t ? Math.round(tw * 0.55) : 0, Math.round((H - fh) / 2 + (t ? 20 : 0)));
+  return { url: c.toDataURL('image/png'), w: W, h: H };
+}
+// the image as a Word run, floating over the page (the text does not move): here = on the blank, else at the right just under the line
+function docxImgRun(xml, rid, id, cx, cy, here) {
+  const pos = here ? `<wp:positionH relativeFrom="character"><wp:posOffset>${-Math.round(cx * 0.05)}</wp:posOffset></wp:positionH><wp:positionV relativeFrom="paragraph"><wp:posOffset>${-Math.round(cy * 0.5)}</wp:posOffset></wp:positionV>`
+    : `<wp:positionH relativeFrom="margin"><wp:align>right</wp:align></wp:positionH><wp:positionV relativeFrom="paragraph"><wp:posOffset>${-Math.round(cy * 0.1)}</wp:posOffset></wp:positionV>`;
+  const s = `<w:r xmlns:w="${W_NS}" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><w:drawing><wp:anchor distT="0" distB="0" distL="0" distR="0" simplePos="0" relativeHeight="251660000" behindDoc="0" locked="0" layoutInCell="1" allowOverlap="1"><wp:simplePos x="0" y="0"/>${pos}<wp:extent cx="${cx}" cy="${cy}"/><wp:effectExtent l="0" t="0" r="0" b="0"/><wp:wrapNone/><wp:docPr id="${id}" name="Firma${id}"/><wp:cNvGraphicFramePr/><a:graphic><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic><pic:nvPicPr><pic:cNvPr id="${id}" name="firma${id}.png"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="${rid}"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill><pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="${cx}" cy="${cy}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:anchor></w:drawing></w:r>`;
+  return xml.importNode(new DOMParser().parseFromString(s, 'application/xml').documentElement, true);
+}
+// "in Via ……" + "Via Nereo, 4" → "in Via Nereo, 4" (not "Via Via")
+const modNoVia = (label, v) => typeof v === 'string' && /\b(via|piazza|via\/piazza)\s*$/i.test(String(label || '').replace(/[.:]+$/, '')) ? v.replace(/^(via|viale|v\.le|piazza|p\.zza)\s+/i, '') : v;
+const imgSize = src => new Promise(ok => { const im = new Image(); im.onload = () => ok({ w: im.width, h: im.height }); im.onerror = () => ok({ w: 3, h: 1 }); im.src = src; });
+async function modFillDocx(M, vals, ticks) {
+  const zip = await (await loadJsZip()).loadAsync(M.buf); const xml = new DOMParser().parseFromString(await zip.file('word/document.xml').async('string'), 'application/xml');
+  const paras = docxParas(xml); const D = ditta();
+  // firma + timbro in the package (media, relationships, content type)
+  const imgs = []; let relsXml = null;
+  const addImgs = async () => { if (imgs.length || !(D.firma || D.timbro)) return imgs;
+    relsXml = await zip.file('word/_rels/document.xml.rels').async('string');
+    let ct = await zip.file('[Content_Types].xml').async('string'); if (!/Extension="png"/i.test(ct)) ct = ct.replace('<Types ', '<Types ').replace(/(<Types[^>]*>)/, '$1<Default Extension="png" ContentType="image/png"/>'); zip.file('[Content_Types].xml', ct);
+    const g = await modSignImg(); const rid = 'rIdNextravelFirma';
+    zip.file('word/media/diodoro_firma.png', g.url.split(',')[1], { base64: true });
+    if (!relsXml.includes(`Id="${rid}"`)) relsXml = relsXml.replace('</Relationships>', `<Relationship Id="${rid}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/diodoro_firma.png"/></Relationships>`);
+    const cx = Math.round(5.6 * 360000); imgs.push({ rid, cx, cy: Math.round(cx * g.h / g.w) });
+    zip.file('word/_rels/document.xml.rels', relsXml); return imgs; };
+  let idn = 9100; const imgRuns = async here => (await addImgs()).map(g => docxImgRun(xml, g.rid, idn++, g.cx, g.cy, here));
+  let firmaDone = false;
+  const mkRun = (likeRun, text) => { const r = xml.createElementNS(W_NS, 'w:r'); const rp = likeRun && likeRun.getElementsByTagNameNS(W_NS, 'rPr')[0]; if (rp) r.appendChild(rp.cloneNode(true));
+    const t = xml.createElementNS(W_NS, 'w:t'); t.setAttributeNS('http://www.w3.org/XML/1998/namespace', 'xml:space', 'preserve'); t.textContent = text; r.appendChild(t); return r; };
+  // the slots, from the last one (so the positions of the others do not move)
+  const bySlot = M.slots.map((s, i) => ({ s, v: vals[i] })).filter(x => x.v !== null && x.v !== undefined);
+  // what you put with a click in the text (a data, X, ✓, firma): written at that point
+  (M.extra || []).forEach(x => { const v = modExtText(x); if (v && x.pi !== undefined) bySlot.push({ s: { pi: x.pi, ins: x.at, label: '' }, v }); });
+  bySlot.sort((x, y) => y.s.pi - x.s.pi || (y.s.a ?? y.s.ins) - (x.s.a ?? x.s.ins));
+  for (const { s, v } of bySlot) {
+    const P = paras[s.pi]; const at = P.atoms;
+    if (s.ins !== undefined && v === '@firma') { const a = at[Math.max(0, s.ins - 1)]; if (a) { let ref = a.r; (await imgRuns(true)).forEach(rn => { ref.parentNode.insertBefore(rn, ref.nextSibling); ref = rn; }); firmaDone = true; } continue; }
+    if (s.ins !== undefined && !at[s.ins - 1]) { const r0 = P.p.getElementsByTagNameNS(W_NS, 'r')[0]; const nr = mkRun(r0, v + ' '); if (r0) r0.parentNode.insertBefore(nr, r0); else P.p.appendChild(nr); continue; }
+    if (s.ins !== undefined && (at[s.ins - 1].tab || at[s.ins - 1].br)) { const a = at[s.ins - 1]; a.r.parentNode.insertBefore(mkRun(a.r, ' ' + v), a.r.nextSibling); continue; }
+    if (s.ins !== undefined) { const a = at[s.ins - 1] || at[0]; if (!a || a.tab || a.br) continue; a.node.textContent = a.node.textContent.slice(0, a.i + 1) + (a.ch === ' ' ? '' : ' ') + v + a.node.textContent.slice(a.i + 1); a.node.setAttributeNS('http://www.w3.org/XML/1998/namespace', 'xml:space', 'preserve'); continue; }
+    const first = at[s.a]; let text = modNoVia(s.label, v);
+    if (v === '@firma') { text = ''; }
+    else if (v) { const pc = P.text[s.a - 1], nc = P.text[s.b]; if (pc && !/\s/.test(pc)) text = ' ' + text; if (nc && !/[\s,.;:)]/.test(nc)) text += ' '; }
+    // remove the atoms of the blank (from the end), the value goes where the blank begins
+    const nodes = new Map(); for (let i = s.a; i < s.b; i++) { const x = at[i]; if (x.tab || x.br) { if (x !== first) x.node.remove(); continue; } (nodes.get(x.node) || nodes.set(x.node, []).get(x.node)).push(x.i); }
+    nodes.forEach((idx, node) => { const lo = Math.min(...idx), hi = Math.max(...idx) + 1; const keep = node === first.node ? text : ''; node.textContent = node.textContent.slice(0, lo) + keep + node.textContent.slice(hi); node.setAttributeNS('http://www.w3.org/XML/1998/namespace', 'xml:space', 'preserve'); });
+    if (first.tab || first.br) { if (text) first.node.parentNode.insertBefore(mkRun(null, text).firstChild, first.node); first.node.remove(); }
+    if (v === '@firma') { const runs = await imgRuns(true); let ref = first.r; runs.forEach(rn => { ref.parentNode.insertBefore(rn, ref.nextSibling); ref = rn; }); firmaDone = true; }
+  }
+  // the boxes: the chosen ones ☒, the others ☐ (the numbering of the list is replaced by the box)
+  M.checks.forEach((c, i) => { const P = paras[c.pi]; const on = !!ticks[i];
+    if (c.inline) { const a = P.atoms.find(x => /[☐□❑○❍▢]/.test(x.ch)); if (a) a.node.textContent = a.node.textContent.slice(0, a.i) + (on ? '☒' : '☐') + a.node.textContent.slice(a.i + 1); return; }
+    const pPr = P.p.getElementsByTagNameNS(W_NS, 'pPr')[0]; const np = pPr && pPr.getElementsByTagNameNS(W_NS, 'numPr')[0]; if (np) np.remove();
+    if (pPr) { [...pPr.getElementsByTagNameNS(W_NS, 'ind')].forEach(x => x.remove()); const ind = xml.createElementNS(W_NS, 'w:ind'); ind.setAttributeNS(W_NS, 'w:left', '720'); ind.setAttributeNS(W_NS, 'w:hanging', '400');
+      const after = pPr.getElementsByTagNameNS(W_NS, 'jc')[0] || pPr.getElementsByTagNameNS(W_NS, 'rPr')[0]; if (after && after.parentNode === pPr) pPr.insertBefore(ind, after); else pPr.appendChild(ind); }
+    const r0 = P.p.getElementsByTagNameNS(W_NS, 'r')[0]; const box = mkRun(r0, (on ? '☒' : '☐')); const tab = xml.createElementNS(W_NS, 'w:tab'); box.appendChild(tab);
+    const rp = box.getElementsByTagNameNS(W_NS, 'rPr')[0]; if (rp) [...rp.getElementsByTagNameNS(W_NS, 'u')].forEach(x => x.remove());
+    if (r0) r0.parentNode.insertBefore(box, r0); else P.p.appendChild(box); });
+  // no blank for the signature: under the last "Firma / Il dichiarante / legale rappresentante"
+  if (!firmaDone && (D.firma || D.timbro)) {
+    const all = docxParas(xml); const j = all.map(x => x.text).findLastIndex(t => /firma|dichiarante|legale rappresentante/i.test(t));
+    if (j >= 0) (await imgRuns(false)).forEach(rn => all[j].p.appendChild(rn));
+  }
+  zip.file('word/document.xml', new XMLSerializer().serializeToString(xml));
+  const docx = await zip.generateAsync({ type: 'blob', mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+  M.docx = docx; return await docxToPdf(docx, M);
+}
+// ---------- PDF
+const MOD_CX = document.createElement('canvas').getContext('2d');
+// the canvas font for a piece of PDF text: its real font when the computer has it ("BCDEEE+Calibri,Bold" → bold 40px "Calibri")
+function modCxFont(it) {
+  const gen = /sans/i.test(it.fam) ? 'Arial' : /mono/i.test(it.fam) ? 'Courier New' : 'Times New Roman';
+  const nm = String(it.real || '').replace(/^[A-Z]{6}\+/, ''); const [fam0, sty = ''] = nm.split(/[,-](?=[A-Za-z]*$)/);
+  const fam = String(fam0 || '').replace(/(PSMT|MT|PS)$/, '').replace(/([a-z])([A-Z])/g, '$1 $2').trim();
+  const st = (/italic|oblique/i.test(sty + nm) ? 'italic ' : '') + (/bold|black|heavy/i.test(sty + nm) ? 'bold ' : '');
+  let ok = false; try { ok = !!fam && !/^(Times|Helvetica|Courier)$/.test(fam) && document.fonts.check(`12px "${fam}"`) && modHasFont(fam); } catch (e) {}
+  return `${st}40px ${ok ? '"' + fam + '", ' : ''}${gen}`;
+}
+// document.fonts.check says yes also for missing fonts: compare with the generic fallbacks
+const MOD_FONTOK = {};
+function modHasFont(f) {
+  if (MOD_FONTOK[f] !== undefined) return MOD_FONTOK[f]; const t = 'mmmmmmmmmmlli…  .WQ';
+  const w = g => { MOD_CX.font = '40px ' + g; return MOD_CX.measureText(t).width; };
+  return MOD_FONTOK[f] = ['monospace', 'serif', 'sans-serif'].some(g => w('"' + f + '", ' + g) !== w(g));
+}
+// the thin horizontal lines drawn on a page (filled thin rectangles or stroked segments): [{ x1, x2, y }]
+function pdfDrawnLines(lib, ol, pw) {
+  const O = lib.OPS, out = [], vert = []; let ctm = [1, 0, 0, 1, 0, 0], pend = []; const stack = [];
+  const mul = (m, n) => [m[0] * n[0] + m[1] * n[2], m[0] * n[1] + m[1] * n[3], m[2] * n[0] + m[3] * n[2], m[2] * n[1] + m[3] * n[3], m[4] * n[0] + m[5] * n[2] + n[4], m[4] * n[1] + m[5] * n[3] + n[5]];
+  const T = (x, y) => [ctm[0] * x + ctm[2] * y + ctm[4], ctm[1] * x + ctm[3] * y + ctm[5]];
+  const box = (a, b) => ({ x1: Math.min(a[0], b[0]), x2: Math.max(a[0], b[0]), y1: Math.min(a[1], b[1]), y2: Math.max(a[1], b[1]) });
+  const PAINT = new Set([O.fill, O.eoFill, O.stroke, O.closeStroke, O.fillStroke, O.eoFillStroke, O.closeFillStroke, O.closeEOFillStroke]);
+  ol.fnArray.forEach((f, i) => { const a = ol.argsArray[i];
+    if (f === O.save) stack.push(ctm); else if (f === O.restore) ctm = stack.pop() || ctm; else if (f === O.transform) ctm = mul(a, ctm);
+    else if (f === O.constructPath) { const ops = a[0], c = a[1]; let k = 0, last = null;
+      ops.forEach(o => { if (o === O.rectangle) { const [x, y, w, h] = [c[k], c[k + 1], c[k + 2], c[k + 3]]; k += 4; pend.push(box(T(x, y), T(x + w, y + h))); }
+        else if (o === O.moveTo) { last = T(c[k], c[k + 1]); k += 2; } else if (o === O.lineTo) { const q = T(c[k], c[k + 1]); k += 2; if (last) pend.push(box(last, q)); last = q; }
+        else if (o === O.curveTo) k += 6; else if (o === O.curveTo2 || o === O.curveTo3) k += 4; }); }
+    else if (PAINT.has(f)) { pend.forEach(b => { const w = b.x2 - b.x1, hh = b.y2 - b.y1; if (hh < 2.5 && w > 25 && w < pw * 0.9) out.push({ x1: b.x1, x2: b.x2, y: (b.y1 + b.y2) / 2 }); else if (w < 2.5 && hh > 6) vert.push({ x: (b.x1 + b.x2) / 2, y1: b.y1, y2: b.y2 }); }); pend = []; }
+    else if (f === O.endPath) pend = []; });
+  // the same line drawn twice (fill + stroke) once
+  const hs = out.filter((g, i) => !out.slice(0, i).some(o => Math.abs(o.y - g.y) < 1 && Math.abs(o.x1 - g.x1) < 2 && Math.abs(o.x2 - g.x2) < 2));
+  // a line that starts or ends on a vertical line is the border of a table, not a blank
+  const border = g => vert.some(v => (Math.abs(v.x - g.x1) < 3 || Math.abs(v.x - g.x2) < 3) && v.y1 - 3 <= g.y && v.y2 + 3 >= g.y);
+  const res = hs.filter(g => !border(g)); res.vert = vert; return res;
+}
+async function modReadPdf(buf) {
+  const lib = await loadPdfJs(); const doc = await lib.getDocument({ data: buf.slice(0) }).promise; const lines = [], pages = [], segs = [], vsegs = [];
+  for (let p = 1; p <= doc.numPages; p++) {
+    const page = await doc.getPage(p); const tc = await page.getTextContent(); const vp = page.getViewport({ scale: 1 }); pages.push({ w: vp.width, h: vp.height });
+    try { const dl = pdfDrawnLines(lib, await page.getOperatorList(), vp.width); dl.forEach(g => segs.push({ ...g, p })); (dl.vert || []).forEach(v => vsegs.push({ ...v, p })); } catch (e) {}
+    tc.items.filter(i => i.str && i.str.trim()).forEach(i => { const y = i.transform[5], x = i.transform[4], h = Math.abs(i.transform[3]) || 10; const fam = ((tc.styles || {})[i.fontName] || {}).fontFamily || 'serif';
+      let real = ''; try { const o = page.commonObjs.get(i.fontName); real = (o && o.name) || ''; } catch (e) {}
+      let l = lines.find(l => l.p === p && Math.abs(l.y - y) < 2.5); if (!l) lines.push(l = { p, y, items: [] }); l.items.push({ s: i.str, x, w: i.width, h, fam, real }); });
+  }
+  lines.sort((a, b) => a.p - b.p || b.y - a.y); const slots = [], checks = [], st = {};
+  lines.forEach(L => { L.items.sort((a, b) => a.x - b.x); L.text = L.items.map(i => i.s).join(' '); });
+  segs.forEach(g => { let best = null; lines.forEach(L => { const d = L.y - g.y; if (L.p === g.p && d >= -2 && d <= 9 && (!best || Math.abs(d - 2) < Math.abs(best.y - g.y - 2))) best = L; }); g.L = best; });
+  const realTxt = i => /[^_\s.…\/-]/.test(i.s);   /* the "/" of "__/__/__" are not words */
+  lines.forEach(L => {
+    modModeLine(L.text, st);
+    L.items.sort((a, b) => a.x - b.x); const parts = []; let text = '';
+    L.items.forEach(it => { if (text && !text.endsWith(' ')) text += ' '; parts.push({ it, at: text.length }); text += it.s; }); L.text = text;
+    // where a character of the line is on the page: the width of the text before it, measured with a similar font
+    const pos = k => { const pr = parts.filter(q => q.at <= k).pop() || parts[0]; const off = Math.min(pr.it.s.length, k - pr.at); if (!off) return pr.it.x;
+      MOD_CX.font = modCxFont(pr.it);
+      const all = MOD_CX.measureText(pr.it.s).width || 1; return pr.it.x + pr.it.w * MOD_CX.measureText(pr.it.s.slice(0, off)).width / all; };
+    const h = Math.max(...L.items.map(i => i.h));
+    const BOX = /^\s*([\u2610\u25a1\u2751\u25cb\u274d\u25a2\u25aa\u25ab\u25a0\u25e6\u274f\u2752\u25fb\u25fd\uf020-\uf0ff])\s*/;   /* ☐ □ ▪ ▫ ■ …, also Wingdings / Symbol ones */
+    L.items.forEach((it, k) => { const bx = BOX.exec(it.s); if (!bx || /^[\uf0b7\uf0a7\uf0d8\uf0e0]$/.test(bx[1])) return; if (k > 0 && !(it.x - (L.items[k - 1].x + L.items[k - 1].w) > 12)) return;
+      const rest = (it.s.slice(bx[0].length) + ' ' + L.items.slice(k + 1).map(q => q.s).join(' ')).replace(/\s+/g, ' ').trim(); if (!rest) return;
+      checks.push({ p: L.p, x: it.x, y: L.y, h, text: rest, key: modNorm(rest).slice(0, 160) }); });
+    let m, prevEnd = 0; BLANK_RE.lastIndex = 0;
+    while ((m = BLANK_RE.exec(text))) { let a = m.index, s = m[0]; if (!isBlankText(s) || modEtc(text, a, s)) continue;
+      if (s[0] === '.' && /[A-Za-z]/.test(text[a - 1] || '') && /\s/.test(s[1] || '')) { a++; s = s.slice(1); }
+      const b = a + s.replace(/\s+$/, '').length; const label = text.slice(prevEnd, a).replace(/:/g, ' ').trim(); const after = text.slice(b, b + 30).replace(/^[\s.,;:_…]+/, '');
+      const li = lines.indexOf(L), ex = modNorm(after).slice(0, 18) || modAround(lines, li);
+      slots.push({ p: L.p, x: pos(a), x2: pos(b), y: L.y, h, under: !/[.…]/.test(s), label, ctx: label || (after ? '… ' + after : `riga da sola, sotto «${modNear(lines, li, -1).slice(-40)}»`), key: modKey(label, st, ex) }); prevEnd = b; }
+    // the drawn lines of this row, left to right
+    let segLeft = -1e9;
+    const lsegs = segs.filter(g => g.L === L);
+    lsegs.sort((a, b) => a.x1 - b.x1).forEach(g => {
+      const mine = slots.filter(o => o.p === L.p && Math.abs(o.y - L.y) < 3);
+      const adj = mine.find(o => !o.drawn && Math.abs(o.x2 - g.x1) < 8); if (adj) { adj.x2 = Math.max(adj.x2, g.x2); segLeft = g.x2; return; }   /* "e-mail ……____": the blank goes on along the line */
+      if (mine.some(o => o.x < g.x2 - 4 && o.x2 > g.x1 + 4)) { segLeft = g.x2; return; }                       /* "____" written over it: already a blank */
+      if (L.items.some(i => realTxt(i) && i.x < g.x2 - 6 && i.x + i.w > g.x1 + 6)) { segLeft = g.x2; return; }   /* words on it: not a blank (a table, a filled field) */
+      const left = Math.max(segLeft, ...mine.filter(o => o.x2 <= g.x1 + 4).map(o => o.x2));
+      const label = L.items.filter(i => realTxt(i) && i.x >= left - 2 && i.x + i.w <= g.x1 + 4).map(i => i.s).join(' ').replace(/[:_…]+/g, ' ').replace(/\s+/g, ' ').trim();
+      const after = L.items.filter(i => realTxt(i) && i.x >= g.x2 - 2).map(i => i.s).join(' ').slice(0, 30);
+      const li = lines.indexOf(L), ex = modNorm(after).slice(0, 18) || modAround(lines, li);
+      slots.push({ p: L.p, x: g.x1 + 2, x2: g.x2, y: L.y, h, under: true, drawn: true, label, ctx: label || (after ? '… ' + after : `riga da sola, sotto «${modNear(lines, li, -1).slice(-40)}»`), key: modKey(label, st, ex) });
+      segLeft = g.x2; });
+    // the words before a written blank stop at the drawn line before it ("Tel. ___ Fax ___ e-mail ……": the label is "e-mail")
+    if (lsegs.length) slots.filter(o => !o.drawn && o.p === L.p && Math.abs(o.y - L.y) < 3).forEach(o => { const lb = Math.max(-1e9, ...lsegs.filter(g => g.x2 <= o.x + 4).map(g => g.x2)); if (lb < -1e8) return;
+      const lab = L.items.filter(i => realTxt(i) && i.x >= lb - 2 && i.x < o.x - 2).map(i => i.s).join(' ').replace(/[:_….]+/g, ' ').replace(/\s+/g, ' ').trim();
+      if (lab && lab !== o.label) { o.label = lab; o.ctx = lab; o.key = modKey(lab, st, ''); } });
+    // a table: the cells of this row between the vertical lines
+    const vx = [...new Set(vsegs.filter(v => v.p === L.p && v.y1 - 2 <= L.y && v.y2 + 2 >= L.y + 3).map(v => Math.round(v.x)))].sort((a, b) => a - b);
+    if (vx.length >= 2 && !checks.some(c => c.p === L.p && Math.abs(c.y - L.y) < 4)) {
+      const cells = vx.slice(0, -1).map((x, k) => ({ x1: x, x2: vx[k + 1], its: L.items.filter(i => realTxt(i) && i.x + i.w / 2 > x && i.x + i.w / 2 < vx[k + 1]) })).filter(c => c.x2 - c.x1 > 20);
+      const used = (x1, x2) => slots.some(o => o.p === L.p && o.y >= L.y - 3 && o.y - L.y < 12 && o.x < x2 && o.x2 > x1);
+      // the words of a cell: pieces that touch are one word ("P" + "ARTITA IVA" = "PARTITA IVA")
+      const join = its => its.reduce((t, i, j) => t + (j && i.x - (its[j - 1].x + its[j - 1].w) > 1.5 ? ' ' : '') + i.s, '');
+      cells.forEach(c => { c.its = c.its.reduce((g, i) => { const last = g[g.length - 1]; if (last && i.x - (last.x + last.w) < 8) { last.s = join([last, i]); last.w = i.x + i.w - last.x; } else g.push({ ...i }); return g; }, []); });
+      cells.forEach((c, k) => {
+        const lab = c.its.map(i => i.s).join(' ').replace(/[:_…]+/g, ' ').replace(/\s+/g, ' ').trim();
+        // the empty cell on the right of the words
+        const nx = cells[k + 1]; if (lab && nx && !nx.its.length && !used(nx.x1, nx.x2) && !/^[(\[]/.test(lab) && lab.length <= 60)
+          slots.push({ p: L.p, x: nx.x1 + 3, x2: nx.x2 - 3, y: L.y, h, under: true, cell: true, label: lab, ctx: lab + ' (casella a destra)', key: modKey(lab, st, '') });
+        // "PROV.   CAP.   " in one cell: the space after each word
+        // (also one word alone at the left of a wide cell: "INAIL: codice PAT ______", "N° DIPENDENTI ______", not a centred title)
+        // the words alone at the top of a tall cell ("TIPO DI DITTA (datore di lavoro, …)"): the space under them
+        const vL = vsegs.find(v => v.p === L.p && Math.abs(v.x - c.x1) < 3 && v.y1 - 2 <= L.y && v.y2 + 2 >= L.y + 3);
+        if (vL && c.its.length === 1 && lab && (!nx || nx.its.length) && c.its[0].x - c.x1 < 12 && L.y - vL.y1 >= 2 * h && !used(c.x1, c.x2)
+          && !lines.some(o => o !== L && o.p === L.p && o.y < L.y - 2 && o.y > vL.y1 && o.items.some(i => i.x < c.x2 && i.x + i.w > c.x1))) {
+          slots.push({ p: L.p, x: c.x1 + 4, x2: c.x2 - 4, y: L.y - h * 1.45, h, under: true, cell: true, label: lab, ctx: lab + ' (spazio sotto)', key: modKey(lab, st, '') }); return; }
+        const one = c.its.length === 1 && c.its[0].x - c.x1 < 12 && (c.its[0].s.length <= 40 || c.x2 - (c.its[0].x + c.its[0].w) > 150) && (/[.:]\s*$/.test(c.its[0].s) || c.x2 - (c.its[0].x + c.its[0].w) > 100);
+        if (c.its.length >= 2 || one) c.its.forEach((it, j) => { const end = it.x + it.w, nxt = j + 1 < c.its.length ? c.its[j + 1].x : c.x2;
+          const nIt = c.its[j + 1]; if (!nIt && nx && !nx.its.length && lab) return;   /* the words go in the empty cell on the right, not here */
+          if (nxt - end > 30 && (/[.:]\s*$/.test(it.s) || it.s.trim().length <= 5 || (nxt - end > 60 && (one || (nIt && /:\s*$/.test(nIt.s))))) && !used(end, nxt)) { let l2 = it.s.replace(/[:_…]+/g, ' ').trim();
+            /* "INAIL: codice PAT ___ | sede di: ___": the sede of INAIL, not of INPS */ if (/^sede( di)?$/i.test(l2) && k > 0) { const w = (cells[0].its.map(i => i.s).join(' ').match(/\b(INAIL|INPS)\b/i) || [])[1]; if (w) l2 = w.toUpperCase() + ' ' + l2; }
+            slots.push({ p: L.p, x: end + 3, x2: nxt - 3, y: L.y, h, under: true, cell: true, label: l2, ctx: l2, key: modKey(l2, st, '') }); } });
+      });
+    }
+    L.mode = st.mode;
+    const dm = /^\s*(luogo e data|data)\s*:?\s*$/i.exec(text); if (dm) slots.push({ p: L.p, x: pos(text.length) + 6, x2: pos(text.length) + 160, y: L.y, h, under: true, label: dm[1], ctx: dm[1], key: modKey(dm[1], st, '') });
+  });
+  // (not the borders of a table: lines that start or end where other lines just above / below do, or a page full of them)
+  const alone = segs.filter(g => !g.L && !segs.some(o => o !== g && o.p === g.p && Math.abs(o.y - g.y) < 45 && Math.abs(o.y - g.y) > 1 && (Math.abs(o.x1 - g.x1) < 3 || Math.abs(o.x2 - g.x2) < 3)));
+  alone.filter(g => alone.filter(o => o.p === g.p).length <= 6).forEach(g => {
+    if (slots.some(o => o.p === g.p && Math.abs(o.y - g.y - 2) < 6 && o.x < g.x2 - 4 && o.x2 > g.x1 + 4)) return;
+    const PL = lines.filter(L => L.p === g.p), up = PL.filter(L => L.y > g.y).pop(), dn = PL.find(L => L.y < g.y);
+    const ex = '‹' + modNorm(up ? up.text : '').slice(-24) + '›' + modNorm(dn ? dn.text : '').slice(0, 24);
+    slots.push({ p: g.p, x: g.x1 + 2, x2: g.x2, y: g.y + 2, h: 10, under: true, drawn: true, label: '', ctx: `riga da sola, sotto «${(up ? up.text : '').slice(-40)}»`, key: modKey('', { mode: up ? up.mode : '' }, ex) });
+  });
+  // forms made as a table: the words on the left ("Il sottoscritto", "dell'impresa", "con sede in"…), the empty cell on the right.
+  // The column of the cells = where several lines begin in the middle of the page (e.g. "☐ titolare", "☐ procuratore")
+  const tst = {};
+  pages.forEach((pg, pi) => { const P = pi + 1, PL = lines.filter(L => L.p === P);
+    const starts = {}; PL.forEach(L => { const x0 = L.items[0].x; if (x0 > pg.w * 0.25 && x0 < pg.w * 0.6) { const k = Math.round(x0 / 4); starts[k] = (starts[k] || 0) + 1; } });
+    const best = Object.entries(starts).sort((x, y) => y[1] - x[1])[0]; if (!best || best[1] < 3) return;
+    const colX = +best[0] * 4 - 4;
+    PL.forEach(L => {
+      const t = L.text.trim(); if (!t || /^[(\[]/.test(t) || t.length > 45 || /[.;]$/.test(t)) return;
+      if (L.items.some(i => i.x + i.w > colX - 2)) return;                                                   /* the words are all in the left column */
+      if (PL.some(o => o.y > L.y && o.y - L.y < 24 && o.items.some(i => i.x + i.w > colX + 50))) return;    /* the end of a paragraph above (e.g. "Lgs 36/2023") */
+      if (slots.some(s => s.p === P && Math.abs(s.y - L.y) < 3)) return;                                    /* it has its own dots */
+      if (PL.some(o => o !== L && Math.abs(o.y - L.y) < 5 && o.items.some(i => i.x >= colX - 2))) return;  /* something already in the cell */
+      if (checks.some(c => c.p === P && c.x >= colX - 8 && c.y <= L.y + 25 && c.y >= L.y - 40)) return;   /* the cell has boxes to tick */
+      slots.push({ p: P, x: colX + 6, x2: pg.w - 60, y: L.y, h: Math.min(11, Math.max(...L.items.map(i => i.h))), under: true, cell: true, label: t, ctx: t + ' (casella a destra)', key: modKey(t, tst, '') });
+    });
+  });
+  slots.sort((x, y) => x.p - y.p || y.y - x.y || x.x - y.x);
+  return { kind: 'pdf', buf, lines, slots, checks, pages };
+}
+const pdfSafe = s => String(s).replace(/[’‘]/g, "'").replace(/[“”]/g, '"').replace(/[–—]/g, '-').replace(/…/g, '...').replace(/[^\x20-\x7e -ÿ€]/g, '');
+async function modFillPdf(M, vals, ticks) {
+  const PL = await loadPdfLib(); const pdf = await PL.PDFDocument.load(M.buf.slice(0)); const font = await pdf.embedFont(PL.StandardFonts.Helvetica); const pages = pdf.getPages(); const D = ditta();
+  const g = await modSignImg(); const sim = g ? await pdf.embedPng(Uint8Array.from(atob(g.url.split(',')[1]), c => c.charCodeAt(0))) : null;
+  const SW = 158, SH = g ? SW * g.h / g.w : 0; const sign = (pg, x, y) => { if (sim) pg.drawImage(sim, { x, y, width: SW, height: SH }); };
+  let firmaDone = false;
+  M.slots.forEach((s, i) => { const v = vals[i]; if (v === null || v === undefined) return; const pg = pages[s.p - 1];
+    if (!s.under) pg.drawRectangle({ x: s.x - 0.5, y: s.y - 2.5, width: Math.max(4, s.x2 - s.x + 1), height: s.h + 3.5, color: PL.rgb(1, 1, 1) });
+    if (v === '@firma') { sign(pg, s.x, s.y - SH * 0.4); firmaDone = true; return; } if (!v) return;
+    const t = pdfSafe(modNoVia(s.label, v)); let fs = Math.min(10.5, s.h); const room = Math.max(40, s.x2 - s.x); while (fs > 6 && font.widthOfTextAtSize(t, fs) > room) fs -= 0.5;
+    pg.drawText(t, { x: s.x + (s.under ? 1 : 3), y: s.y + (s.under ? 1.5 : 0), size: fs, font, color: PL.rgb(0, 0, 0) }); });
+  M.checks.forEach((c, i) => { if (!ticks[i]) return; const pg = pages[c.p - 1]; pg.drawText('X', { x: c.x + 0.8, y: c.y + 0.5, size: c.h * 0.95, font, color: PL.rgb(0, 0, 0) }); });
+  const ink = PL.rgb(0, 0, 0);
+  (M.extra || []).forEach(x => { const pg = pages[x.p - 1]; if (!pg) return;
+    if (x.k === 'x') pg.drawText('X', { x: x.x - 3.8, y: x.y - 4.2, size: 12, font, color: ink });
+    else if (x.k === 'v') { pg.drawLine({ start: { x: x.x - 4.5, y: x.y }, end: { x: x.x - 1.2, y: x.y - 4 }, thickness: 1.7, color: ink }); pg.drawLine({ start: { x: x.x - 1.2, y: x.y - 4 }, end: { x: x.x + 5.5, y: x.y + 5.5 }, thickness: 1.7, color: ink }); }
+    else if (x.k === 'f') { sign(pg, x.x - 30, x.y - SH / 2); firmaDone = true; }
+    else { const t = x.f ? modValue(x.f, MODV) : x.t; if (t) pg.drawText(pdfSafe(t), { x: x.x, y: x.y - 4, size: 10.5, font, color: ink }); } });
+  if (!firmaDone && sim) { const L = M.lines.filter(l => /firma|dichiarante|legale rappresentante/i.test(l.text)).pop();
+    if (L) { const pg = pages[L.p - 1]; const it = L.items.find(x => /firma|dichiarante|legale/i.test(x.s)) || L.items[0]; sign(pg, Math.max(40, Math.min(it.x - 30, pg.getWidth() - SW - 30)), L.y - SH - 2); } }
+  return await pdf.save();
+}
+// ---------- the page
+const MODS = [];   /* the forms loaded now (not saved: the form is saved only when you save the PDF) */
+// ---------- the editor: you fill the form looking at the form itself; each blank is a coloured box you click
+// green = I know what goes there (from the Dati Nextravel, or what you chose last time) · yellow = never seen, check it · grey = left as it is
+const MODV = { scuola: '', oggetto: '' };
+const modVars = () => MODV;
+let MOD_CUR = -1;   /* the form open in the editor */
+const modTxt = s => esc(s).replace(/\t+/g, ' &emsp; ');
+function modChip(M, mi, i) {
+  const s = M.slots[i]; const val = modValue(s.choice, MODV);
+  const cls = !s.known ? 'mnew' : val === null ? 'mkeep' : 'mok';
+  const txt = val === '@firma' ? '✍️ firma e timbro' : val === null ? '……' : val === '' ? '(vuoto)' : val;
+  // ✕ = empty it with one click (the dots stay as they are)
+  return `<span class="mchip ${cls}" data-mchip="${mi}:${i}" title="${esc(s.ctx)} — clicca per cambiare">${esc(txt.length > 70 ? txt.slice(0, 70) + '…' : txt)}${val !== null ? `<b class="mclr" data-mclr="${mi}:${i}" title="Svuota: lascio i puntini">✕</b>` : ''}</span>`;
+}
+// Word: the paragraphs of the form with the boxes in their place
+// a piece of the text of a paragraph, with where it begins (a click on it says the exact point, for the free writing)
+const modSeg = (t, from, to) => to > from ? `<span data-o="${from}">${esc(t.slice(from, to))}</span>` : '';
+function modDocHtml(M, mi) {
+  const byP = {}; M.slots.forEach((s, i) => (byP[s.pi] = byP[s.pi] || []).push({ i, a: s.a ?? s.ins, b: s.a !== undefined ? s.b : s.ins, ins: s.ins !== undefined }));
+  (M.extra || []).forEach((x, j) => (byP[x.pi] = byP[x.pi] || []).push({ j, a: x.at, b: x.at, ins: true }));
+  const chk = {}; M.checks.forEach((c, i) => { chk[c.pi] = i; });
+  const firmaP = M.slots.some(s => s.choice === '@firma') || (M.extra || []).some(x => x.k === 'f') ? -1 : M.view.map(v => v.text).findLastIndex(t => /firma|dichiarante|legale rappresentante/i.test(t));
+  return M.view.map((v, pi) => {
+    const t = v.text; let h = '', at = 0;
+    (byP[pi] || []).sort((x, y) => x.a - y.a).forEach(o => {
+      h += modSeg(t, at, o.a) + (o.ins ? ' ' : '') + (o.j !== undefined ? modExtChip(M, mi, o.j) : modChip(M, mi, o.i)); at = Math.max(at, o.b); });
+    h += modSeg(t, at, t.length);
+    if (chk[pi] !== undefined) { const c = M.checks[chk[pi]]; h = `<label class="mcheck ${c.known ? '' : 'mnew'}"><input type="checkbox" data-mchk="${mi}:${chk[pi]}" ${c.on ? 'checked' : ''}><span>${h}</span></label>`; }
+    if (pi === firmaP && (ditta().firma || ditta().timbro)) h += ` <span class="mchip mok msign" title="Qui metto firma e timbro">✍️ firma e timbro</span>`;
+    const al = v.jc === 'center' ? 'center' : v.jc === 'right' || v.jc === 'end' ? 'right' : v.jc === 'both' ? 'justify' : 'left';
+    return `<p class="mpara" data-mpi="${pi}" style="text-align:${al};${v.b ? 'font-weight:700;' : ''}">${h.trim() ? h : '&nbsp;'}</p>`;
+  }).join('');
+}
+// PDF: the pages as images, the boxes over the blanks
+const MOD_PW = 780;
+function modPdfHtml(M, mi) {
+  return M.pages.map((pg, p) => { const sc = MOD_PW / pg.w;
+    const chips = M.slots.map((s, i) => s.p === p + 1 ? `<div class="mpos" style="left:${(s.x * sc).toFixed(1)}px;top:${((pg.h - s.y - s.h * 1.05) * sc).toFixed(1)}px;min-width:${Math.max(28, (s.x2 - s.x) * sc).toFixed(0)}px">${modChip(M, mi, i)}</div>` : '').join('');
+    const cks = M.checks.map((c, i) => c.p === p + 1 ? `<input type="checkbox" class="mpck ${c.known ? '' : 'mnew'}" data-mchk="${mi}:${i}" ${c.on ? 'checked' : ''} style="left:${(c.x * sc - 7).toFixed(1)}px;top:${((pg.h - c.y - c.h) * sc - 1).toFixed(1)}px" title="${esc(c.text)}">` : '').join('');
+    return `<div class="mpdfpage" data-mpg="${p + 1}" style="width:${MOD_PW}px;height:${(pg.h * sc).toFixed(0)}px"><canvas data-mpage="${p + 1}" style="cursor:crosshair" title="Clicca dove vuoi mettere una X, una spunta, un testo o la firma"></canvas>${chips}${cks}${modExtHtml(M, mi, p + 1)}</div>`; }).join('');
+}
+// what you put by clicking on the page (X, ✓, a text, firma e timbro): remembered for the next time the same form arrives
+function modExtHtml(M, mi, p) {
+  const pg = M.pages[p - 1], sc = MOD_PW / pg.w;
+  return (M.extra || []).map((x, j) => x.p !== p ? '' : `<div class="mpos mxt" style="left:${(x.x * sc - (x.k === 't' ? 0 : 9)).toFixed(1)}px;top:${((pg.h - x.y) * sc - 11).toFixed(1)}px">${modExtChip(M, mi, j)}</div>`).join('');
+}
+const modExtText = x => x.k === 'x' ? 'X' : x.k === 'v' ? '✓' : x.k === 'f' ? '@firma' : (x.f ? modValue(x.f, MODV) : x.t) || '';
+const modExtChip = (M, mi, j) => { const x = M.extra[j]; return `<span class="mchip mok mxchip" data-mext="${mi}:${j}" title="Messo da te: clicca per togliere o cambiare">${x.k === 'x' ? '✗' : x.k === 'v' ? '✓' : x.k === 'f' ? '✍️ firma e timbro' : esc(modExtText(x) || '…')}</span>`; };
+let MOD_PEND = null;   /* where you clicked on the page, waiting for what to put there */
+function modPopAt(cx, cy, html) {
+  const pop = $('modPop'); if (!pop) return; pop.innerHTML = html; pop.hidden = false; const ed = pop.parentNode.getBoundingClientRect();
+  pop.style.left = Math.max(8, Math.min(cx - ed.left, ed.width - 410)) + 'px'; const ph = pop.offsetHeight || 180; const below = cy - ed.top + 14; pop.style.top = (below + ph > ed.height ? Math.max(8, cy - ed.top - ph - 10) : below) + 'px'; const on = pop.querySelector('.mopt.on'); if (on) on.scrollIntoView({ block: 'center' });
+  setTimeout(() => { const inp = pop.querySelector('input'); if (inp) inp.focus(); }, 20);
+}
+async function modPaintPdf(M, box) {
+  const lib = await loadPdfJs(); const doc = await lib.getDocument({ data: M.buf.slice(0) }).promise;
+  for (const cv of box.querySelectorAll('canvas[data-mpage]')) { const pg = await doc.getPage(+cv.dataset.mpage); const w0 = pg.getViewport({ scale: 1 }).width;
+    const vp = pg.getViewport({ scale: MOD_PW / w0 * Math.min(2, window.devicePixelRatio || 1) }); cv.width = vp.width; cv.height = vp.height; await pg.render({ canvasContext: cv.getContext('2d'), viewport: vp }).promise; }
+}
+const MOD_ID_RE = /(copia|fotocopia|fotostatica)[^.;]{0,90}(document[oi]|carta) d[i'’ ]+\s*(identit|riconoscimento)|(allega|allegat|unitamente|corredat|accompagnat)[^.;]{0,120}(document[oi]|carta) d[i'’ ]+\s*(identit|riconoscimento)/i;
+const MOD_LH_RE = /carta intestata|intestazione (della |dell'|dell’)?(ditta|societ|impresa|azienda)/i;
+const modTexts = M => (M.kind === 'pdf' ? (M.lines || []).map(l => l.text) : (M.view || []).map(v => v.text)).join('\n');
+// the filled PDF put on the carta intestata of Nextravel
+// the identity document (PDF pages as they are, photos two per A4 page) after the form
+async function pdfAddIdDoc(bytes) {
+  const PL = await loadPdfLib(); const pdf = await PL.PDFDocument.load(bytes.slice(0)); const b64 = u => Uint8Array.from(atob(String(u).split(',')[1]), c => c.charCodeAt(0));
+  const imgs = [];
+  for (const f of ditta().doc_id || []) {
+    if (/^data:application\/pdf/.test(f.data) || /\.pdf$/i.test(f.name)) { try { const d = await PL.PDFDocument.load(b64(f.data), { ignoreEncryption: true }); (await pdf.copyPages(d, d.getPageIndices())).forEach(p => pdf.addPage(p)); } catch (e) { toast('Non riesco a leggere ' + f.name); } }
+    else imgs.push(/^data:image\/png/.test(f.data) ? await pdf.embedPng(b64(f.data)) : await pdf.embedJpg(b64(f.data)));
+  }
+  const W = 595.28, H = 841.89, m = 40, gap = 24, boxH = (H - 2 * m - gap) / 2;
+  for (let i = 0; i < imgs.length; i += 2) { const pg = pdf.addPage([W, H]);
+    imgs.slice(i, i + 2).forEach((im, k) => { const sc = Math.min((W - 2 * m) / im.width, boxH / im.height); const w = im.width * sc, h = im.height * sc;
+      pg.drawImage(im, { x: (W - w) / 2, y: H - m - k * (boxH + gap) - (boxH + h) / 2, width: w, height: h }); }); }
+  return await pdf.save();
+}
+async function pdfLetterhead(bytes, crops) {
+  const lib = await loadPdfJs(), PL = await loadPdfLib(); const doc = await lib.getDocument({ data: bytes.slice(0) }).promise;
+  const src = await PL.PDFDocument.load(bytes.slice(0)); const out = await PL.PDFDocument.create();
+  const b64 = u => Uint8Array.from(atob(String(u).split(',')[1]), c => c.charCodeAt(0));
+  const emb = async u => /^data:image\/png/.test(u) ? out.embedPng(b64(u)) : out.embedJpg(b64(u));
+  const logo = await emb(LOGO); const font = await out.embedFont(PL.StandardFonts.Helvetica);
+  const MM = 72 / 25.4, logoW = 70 * MM, logoH = logoW * logo.height / logo.width, topRes = 12 * MM + logoH + 16, botRes = 24 * MM;
+  for (let p = 1; p <= doc.numPages; p++) {
+    const page = await doc.getPage(p); const [vx0, vy0, vx1, vy1] = page.view; const W = vx1 - vx0, H = vy1 - vy0;
+    const tc = await page.getTextContent(); let dl = []; try { dl = pdfDrawnLines(lib, await page.getOperatorList(), W); } catch (e) {}
+    // the rows of words; the row "su carta intestata" is not part of the page any more
+    const rows = []; tc.items.filter(i => i.str && i.str.trim()).forEach(i => { const y = i.transform[5], h = Math.abs(i.transform[3]) || 10;
+      let r = rows.find(r => Math.abs(r.y - y) < 2.5); if (!r) rows.push(r = { y, h, x1: 1e9, x2: -1e9, t: '' }); r.h = Math.max(r.h, h); r.x1 = Math.min(r.x1, i.transform[4]); r.x2 = Math.max(r.x2, i.transform[4] + i.width); r.t += ' ' + i.str; });
+    const lhRows = rows.filter(r => r.t.trim().length < 90 && MOD_LH_RE.test(r.t)); const keep = rows.filter(r => !lhRows.includes(r));
+    const ys = keep.flatMap(r => [r.y + r.h, r.y - r.h * 0.3]).concat(dl.map(g => g.y), (dl.vert || []).flatMap(v => [v.y1, v.y2]));
+    const np = out.addPage([W, H]);
+    if (!ys.length) { const c = (crops && crops[p - 1]) || { top: 0, bot: 1 }, top = vy1 - H * c.top + 4, bot = vy1 - H * c.bot - 4, ch = top - bot, sc = Math.min(1, (H - topRes - botRes) / ch);
+      const e = await out.embedPage(src.getPage(p - 1), { left: vx0, bottom: bot, right: vx1, top }); np.drawPage(e, { x: (W - W * sc) / 2, y: H - topRes - ch * sc, width: W * sc, height: ch * sc }); }
+    else {
+      const top = Math.min(vy1, Math.max(...ys) + 4), bot = Math.max(vy0, Math.min(...ys) - 4), ch = top - bot;
+      const sc = Math.min(1, (H - topRes - botRes) / ch), x = (W - W * sc) / 2, y = H - topRes - ch * sc;
+      const e = await out.embedPage(src.getPage(p - 1), { left: vx0, bottom: bot, right: vx1, top });
+      np.drawPage(e, { x, y, width: W * sc, height: ch * sc });
+      lhRows.forEach(r => { if (r.y < bot || r.y > top) return; np.drawRectangle({ x: x + (r.x1 - vx0 - 3) * sc, y: y + (r.y - bot - r.h * 0.35) * sc, width: (r.x2 - r.x1 + 6) * sc, height: r.h * 1.5 * sc, color: PL.rgb(1, 1, 1) }); });
+    }
+    np.drawImage(logo, { x: 20 * MM, y: H - 12 * MM - logoH, width: logoW, height: logoH });
+    const ft = NEXT_FOOTER.map(pdfSafe); ft.forEach((t, k) => { const sz = 8, w = font.widthOfTextAtSize(t, sz); np.drawText(t, { x: (W - w) / 2, y: 9 * MM + (ft.length - 1 - k) * 10.5, size: sz, font, color: PL.rgb(0.13, 0.13, 0.13) }); });
+  }
+  return await out.save();
+}
+document.addEventListener('click', e => { const p = e.target.closest('[data-mpick]'); if (!p) return; const [mi, i] = p.dataset.mpick.split(':').map(Number); const sl = MODS[mi] && MODS[mi].slots[i]; if (!sl) return;
+  const v = p.dataset.v; sl.choice = v === '@t' ? { t: '' } : v; sl.known = true; modRefresh(); modPopFor(mi, i); });
+document.addEventListener('input', e => { if (!e.target.matches || !e.target.matches('[data-mfind]')) return; const q = modNorm(e.target.value); const L = e.target.nextElementSibling; if (!L) return;
+  let grp = null, any = false; [...L.children].forEach(c => { if (c.classList.contains('mgrp')) { if (grp) grp.style.display = any ? '' : 'none'; grp = c; any = false; return; }
+    const ok = !q || modNorm(c.textContent).includes(q); c.style.display = ok ? '' : 'none'; if (ok) any = true; }); if (grp) grp.style.display = any ? '' : 'none'; });
+function modOpen(mi) {
+  MOD_CUR = mi; let back = $('modEd');
+  if (!back) { back = document.createElement('div'); back.id = 'modEd'; back.className = 'dlg-back'; back.style.zIndex = 190; document.body.appendChild(back); }
+  const M = MODS[mi]; const nNew = M.slots.filter(s => !s.known).length + M.checks.filter(c => !c.known).length;
+  if (M.lh === undefined) { try { M.lh = MOD_LH_RE.test(modTexts(M)); } catch (e) { M.lh = false; } }
+  if (M.att === undefined) { try { M.att = MOD_ID_RE.test(modTexts(M).replace(/\s+/g, ' ')); } catch (e) { M.att = false; } }
+  back.innerHTML = `<div class="medit">
+    <div class="mtop"><div class="mtabs">${MODS.map((x, j) => `<button type="button" class="mtab ${j === mi ? 'on' : ''}" data-mopen="${j}">${x.kind === 'pdf' ? '📕' : '📘'} ${esc(x.name)}</button>`).join('')}</div>
+      <button type="button" class="mclose" data-mclose title="Chiudi">✕</button></div>
+    <div class="mbar"><label>Scuola / ente <input id="modScuola" autocomplete="off" value="${esc(MODV.scuola)}" placeholder="se il modulo lo chiede"></label><label>Oggetto / gara / progetto <input id="modOggetto" value="${esc(MODV.oggetto)}" placeholder="se il modulo lo chiede"></label>
+      <label class="mlh" title="Il PDF esce sulla carta intestata di Nextravel: logo in alto e piè di pagina, come le lettere" style="display:flex;align-items:center;gap:6px;white-space:nowrap;cursor:pointer;font-weight:600;${M.lh ? 'color:#1b3f8b' : ''}"><input type="checkbox" data-mlh="${mi}" ${M.lh ? 'checked' : ''} style="width:auto"> 🏢 Su carta intestata</label><label class="mid" title="Aggiunge in fondo al PDF il documento d'identità del legale rappresentante (lo carichi in Dati Nextravel)" style="display:flex;align-items:center;gap:6px;white-space:nowrap;cursor:pointer;font-weight:600;${M.att ? 'color:#1b3f8b' : ''}"><input type="checkbox" data-mid="${mi}" ${M.att ? 'checked' : ''} style="width:auto"> 🪪 Allega documento d'identità</label><button type="button" class="btn" data-mdraft="${mi}" title="Lo riprendi quando vuoi da Documenti › Bozze">💾 Salva bozza</button><button type="button" class="btn pri" data-mprev="${mi}">👁 Anteprima e salva</button></div>
+    <div class="mlegend"><span class="mchip mok">verde</span> già confermato da te · <span class="mchip mnew">giallo</span> te lo propongo io: controlla${nNew ? ` <b>(${nNew})</b>` : ''} · <span class="mchip mkeep">……</span> lasciato com'è &nbsp;—&nbsp; clicca un riquadro per cambiarlo${M.kind === 'pdf' ? '; clicca in un punto libero del foglio per metterci una <b>X</b>, una <b>✓</b>, un testo o la firma' : ''}. Quando fai l'anteprima mi ricordo tutto per i prossimi moduli</div>
+    <div class="mscroll"><div class="${M.kind === 'pdf' ? 'mpdf' : 'msheet'}">${M.kind === 'pdf' ? modPdfHtml(M, mi) : modDocHtml(M, mi)}</div></div>
+    <div class="mpop" id="modPop" hidden></div></div>`;
+  if (M.kind === 'pdf') modPaintPdf(M, back).catch(() => {});
+}
+// after a change: the boxes again (the PDF pages are not painted again)
+document.addEventListener('change', e => { const c = e.target.closest && e.target.closest('[data-mid]'); if (!c) return; const M = MODS[+c.dataset.mid]; if (M) M.att = c.checked; const l = c.closest('.mid'); if (l) l.style.color = c.checked ? '#1b3f8b' : ''; });
+document.addEventListener('change', e => { const c = e.target.closest && e.target.closest('[data-mlh]'); if (!c) return; const M = MODS[+c.dataset.mlh]; if (M) M.lh = c.checked; const l = c.closest('.mlh'); if (l) l.style.color = c.checked ? '#1b3f8b' : ''; });
+function modRefresh() {
+  const ed = $('modEd'); if (ed && MOD_CUR >= 0) { const M = MODS[MOD_CUR];
+    if (M.kind === 'pdf') { ed.querySelectorAll('[data-mchip]').forEach(el => { const [mi, i] = el.dataset.mchip.split(':').map(Number); el.outerHTML = modChip(MODS[mi], mi, i); });
+      ed.querySelectorAll('.mxt').forEach(el => el.remove()); ed.querySelectorAll('.mpdfpage').forEach(pg => pg.insertAdjacentHTML('beforeend', modExtHtml(M, MOD_CUR, +pg.dataset.mpg))); }
+    else ed.querySelector('.msheet').innerHTML = modDocHtml(M, MOD_CUR);
+    const n = M.slots.filter(s => !s.known).length + M.checks.filter(c => !c.known).length; const lg = ed.querySelector('.mlegend b'); if (lg) lg.textContent = n ? `(${n})` : ''; }
+  renderModuli();
+}
+function modPopFor(mi, i) {
+  const el = document.querySelector(`[data-mchip="${mi}:${i}"]`), pop = $('modPop'); if (!el || !pop) return;
+  const s = MODS[mi].slots[i]; const r = s.choice; const v = typeof r === 'object' && r ? '@t' : r;
+  pop.innerHTML = `<div class="mini" style="margin-bottom:6px">Nel modulo: <b>${esc(s.ctx)}</b></div>
+    <input class="mfind" data-mfind placeholder="🔍 cerca un dato…" autocomplete="off"><div class="mlist">${modPickList(v, mi, i)}</div>${v === '@t' ? `<input data-mtext="${mi}:${i}" value="${esc(r.t || '')}" placeholder="scrivi cosa mettere">` : ''}
+    <div style="display:flex;gap:6px;justify-content:flex-end;margin-top:8px">${s.known ? '' : `<button type="button" class="btn" data-mok="${mi}:${i}">✓ Va bene così</button>`}<button type="button" class="btn" data-mpopx>Chiudi</button></div>`;
+  pop.hidden = false; const ed = pop.parentNode.getBoundingClientRect(), b = el.getBoundingClientRect();
+  pop.style.left = Math.max(8, Math.min(b.left - ed.left, ed.width - 370)) + 'px';
+  const ph = pop.offsetHeight || 200; const below = b.bottom - ed.top + 6; pop.style.top = (below + ph > ed.height ? Math.max(8, b.top - ed.top - ph - 6) : below) + 'px';
+  const on = pop.querySelector('.mopt.on'); if (on) on.scrollIntoView({ block: 'center' });
+  if (v === '@t') setTimeout(() => { const inp = pop.querySelector('input'); if (inp) inp.focus(); }, 20);
+}
+function modPickList(cur, mi, i) {
+  const o = (v, l, val) => `<div class="mopt ${v === cur ? 'on' : ''}" data-mpick="${mi}:${i}" data-v="${esc(v)}">${esc(l)}${val ? ` — <b>${esc(String(val).replace(/\s+/g, ' ').slice(0, 45))}</b>` : ''}</div>`;
+  const sp = MOD_SPECIAL.map(([k, l]) => { let val = ''; try { val = modValue(k, MODV); } catch (e) {} return o(k, l, val === '@firma' ? '' : val); }).join('');
+  return '<div class="mgrp">Scelte</div>' + o('', '— lascia com\'è') + o('x', '✕ cancella i puntini') + o('@t', '✏️ scrivo io…') + '<div class="mgrp">Speciali</div>' + sp
+    + DITTA_FIELDS.filter(x => x[0] !== 'Scadenze').map(([t, fs]) => `<div class="mgrp">${esc(t)}</div>` + fs.filter(f => f[3] !== 'area' && f[3] !== 'calc').map(f => o(f[0], f[1], dittaVal(f[0], f[2]))).join('')).join('');
+}
+function modOptions(cur) {
+  const o = (v, l) => `<option value="${esc(v)}" ${v === cur ? 'selected' : ''}>${esc(l)}</option>`;
+  return `${o('', '— lascia com\'è')}${o('x', '✕ cancella i puntini')}${o('@t', '✏️ scrivo io…')}<optgroup label="Speciali">${MOD_SPECIAL.map(([k, l]) => o(k, l)).join('')}</optgroup>`
+    + DITTA_FIELDS.filter(s => s[0] !== 'Scadenze').map(([t, fs]) => `<optgroup label="${esc(t)}">${fs.filter(f => f[3] !== 'area' && f[3] !== 'calc').map(f => o(f[0], f[1] + (dittaVal(f[0], f[2]) ? ' — ' + String(dittaVal(f[0], f[2])).slice(0, 28) : ''))).join('')}</optgroup>`).join('');
+}
+// ---------- 💾 bozze: the form + what you chose, to go on later (also from another computer).
+// The file is in its own document on the server (bozza-<id>, not loaded at the start); the list in DB.prev.moduli.drafts
+const MOD_DRAFT_LOCAL = {};
+const b64of = u8 => { let s = ''; for (let k = 0; k < u8.length; k += 32768) s += String.fromCharCode.apply(null, u8.subarray(k, k + 32768)); return btoa(s); };
+async function modDraftSave(mi) {
+  const M = MODS[mi]; const id = M.draftId || ('bozza-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6));
+  // the choices by their words (key + which one), not by position: a bozza stays right even if the reading of the form improves
+  const byKey = {}; modSlotIds(M.slots).forEach((k, i) => { byKey[k] = { c: M.slots[i].choice, n: !!M.slots[i].known, x: !!M.slots[i].cleared }; });
+  const ticksBy = {}; modSlotIds(M.checks).forEach((k, i) => { ticksBy[k] = !!M.checks[i].on; });
+  const value = { name: M.name, kind: M.kind, file: b64of(new Uint8Array(M.buf)), vars: { ...MODV }, byKey, ticksBy, extra: M.extra || [] };
+  try {
+    if (SB) await archPut(id, value); else MOD_DRAFT_LOCAL[id] = value;
+  } catch (e) { info('Salva bozza', 'Bozza non salvata: ' + e.message); return false; }
+  M.draftId = id; M.dirty = false; const S = modStore(); S.drafts = (S.drafts || []).filter(d => d.id !== id); S.drafts.unshift({ id, name: M.name, scuola: MODV.scuola, at: Date.now() }); docLog('Modulo: bozza salvata', M.name); save();
+  renderModuli(); toast('Bozza salvata: la riprendi da Documenti › Bozze');
+}
+// the same form when it arrives again (its first lines): what you put with a click is found again in its place
+const modFormKey = M => M.kind === 'pdf' ? modNorm(M.lines.slice(0, 25).map(l => l.text).join(' ')).slice(0, 220) + ':' + M.pages.length : 'docx:' + modNorm(M.view.slice(0, 25).map(v => v.text).join(' ')).slice(0, 220) + ':' + M.view.length;
+const modSlotIds = arr => { const n = {}; return arr.map(s => { n[s.key] = (n[s.key] || 0) + 1; return s.key + '#' + n[s.key]; }); };
+async function modDraftOpen(id) {
+  let v; try { v = SB ? await archGet(id) : MOD_DRAFT_LOCAL[id]; if (!v || !v.file) throw new Error('non trovata'); }
+  catch (e) { return info('Bozza', 'Non riesco ad aprire la bozza: ' + e.message); }
+  const buf = Uint8Array.from(atob(v.file), c => c.charCodeAt(0)); const M = v.kind === 'docx' ? await modReadDocx(buf.buffer) : await modReadPdf(buf);
+  M.name = v.name; M.draftId = id;
+  // first what I would propose, then what you had chosen (by its words; the old bozze by position, only if the form reads the same)
+  M.slots.forEach(s => { const r = modRule(s.key); s.choice = r.v; s.known = r.known; }); modPairVia(M);
+  const C = modStore().checks; M.checks.forEach(c => { c.known = Object.prototype.hasOwnProperty.call(C, c.key); c.on = c.known ? !!C[c.key] : MOD_CHECK_YES.test(modNorm(c.text)); });
+  if (v.byKey) { modSlotIds(M.slots).forEach((k, i) => { const o = v.byKey[k]; if (o) { M.slots[i].choice = o.c; M.slots[i].known = o.n; M.slots[i].cleared = o.x; } });
+    modSlotIds(M.checks).forEach((k, i) => { if (k in (v.ticksBy || {})) { M.checks[i].on = v.ticksBy[k]; M.checks[i].known = true; } }); }
+  else { if ((v.choices || []).length === M.slots.length) M.slots.forEach((s, i) => { s.choice = v.choices[i]; s.known = !!(v.known || [])[i]; });
+    if ((v.ticks || []).length === M.checks.length) M.checks.forEach((c, i) => { c.on = !!v.ticks[i]; c.known = true; }); }
+  M.fkey = modFormKey(M); M.extra = v.extra || [];
+  if (v.vars) Object.assign(MODV, v.vars);
+  const j = MODS.findIndex(x => x.draftId === id); if (j >= 0) MODS.splice(j, 1, M); else MODS.push(M);
+  renderModuli(); modOpen(MODS.indexOf(M));
+}
+async function modDraftDel(id) {
+  if (SB) await archPut(id, {}); else delete MOD_DRAFT_LOCAL[id];
+  const S = modStore(); S.drafts = (S.drafts || []).filter(d => d.id !== id); save(); renderModuli();
+}
+// the list in the page: the forms loaded now, then the bozze
+function renderModuli() {
+  const box = $('modList'); if (!box) return;
+  const dr = modStore().drafts || [];
+  box.innerHTML = (dr.length ? `<div class="mini" style="margin:10px 0 0;font-weight:700">📝 Bozze</div>` + dr.map(d => `<div class="modrow"><span class="modname">📝 <b>${esc(d.name)}</b> <span class="mini">${d.scuola ? esc(d.scuola) + ' · ' : ''}salvata il ${new Date(d.at).toLocaleDateString('it-IT')} ${new Date(d.at).toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' })}</span></span>
+      <button type="button" class="btn pri" data-mdopen="${esc(d.id)}">▶️ Riprendi</button><button type="button" class="btn" data-mddel="${esc(d.id)}" title="Elimina la bozza">🗑</button></div>`).join('') + (MODS.length ? '<div class="mini" style="margin:10px 0 0;font-weight:700">Aperti adesso</div>' : '') : '') + MODS.map((M, mi) => { const n = M.slots.filter(s => !s.known).length + M.checks.filter(c => !c.known).length;
+    return `<div class="modrow"><span class="modname">${M.kind === 'pdf' ? '📕' : '📘'} <b>${esc(M.name)}</b> <span class="mini">${M.slots.length} spazi${M.checks.length ? `, ${M.checks.length} caselle` : ''} · ${n ? `🆕 ${n} da controllare` : 'tutto già conosciuto ✓'}</span></span>
+      <button type="button" class="btn pri" data-mopen="${mi}">✏️ Compila</button><button type="button" class="btn" data-mdel="${mi}" title="Togli dalla lista">✕</button></div>`; }).join('');
+}
+async function modAddFiles(files) {
+  const first = MODS.length;
+  for (const f of files) {
+    try { const buf = await f.arrayBuffer(); let M;
+      if (/\.docx$/i.test(f.name)) M = await modReadDocx(buf); else if (/\.pdf$/i.test(f.name)) M = await modReadPdf(new Uint8Array(buf));
+      else { info('Compila un modulo', `${f.name}: per ora leggo i moduli Word (.docx) e PDF. Un .doc vecchio: aprilo in Word e salvalo come .docx.`); continue; }
+      M.name = f.name.replace(/\.(docx|pdf)$/i, '');
+      M.slots.forEach(s => { const r = modRule(s.key); s.choice = r.v; s.known = r.known; }); modPairVia(M);
+      const C = modStore().checks; M.checks.forEach(c => { c.known = Object.prototype.hasOwnProperty.call(C, c.key); c.on = c.known ? !!C[c.key] : MOD_CHECK_YES.test(modNorm(c.text)); });
+      M.fkey = modFormKey(M); M.extra = JSON.parse(JSON.stringify((modStore().marks || {})[M.fkey] || []));
+      MODS.push(M);
+    } catch (e) { info('Compila un modulo', `Non riesco a leggere ${f.name}: ${e.message}`); }
+  }
+  renderModuli(); if (MODS.length > first) modOpen(first);
+}
+// what you chose is remembered (same words in the next form → same choice), also the boxes you ticked
+function modLearn(M) {
+  // the ✕ (emptied in this form only) is not a rule; the same words twice in a form: the filled one wins
+  const S = modStore(); const set = {};
+  M.slots.forEach(s => { s.known = true; if (s.cleared) return; const v = s.choice === undefined ? '' : s.choice; if (set[s.key] && v === '') return; S.rules[s.key] = v; set[s.key] = v !== ''; });
+  M.checks.forEach(c => { S.checks[c.key] = !!c.on; c.known = true; });
+  if (M.fkey) { S.marks = S.marks || {}; if ((M.extra || []).length) S.marks[M.fkey] = M.extra; else delete S.marks[M.fkey]; }
+  save();
+}
+async function modPreview(mi) {
+  const M = MODS[mi]; const vars = modVars();
+  if (M.slots.some(s => s.choice === '@scuola') && !vars.scuola) return info('Compila un modulo', 'Scrivi in alto il nome della scuola: il modulo lo chiede.');
+  modLearn(M); modRefresh(); toast('Preparo il PDF…');
+  let bytes; try { const vals = M.slots.map(s => modValue(s.choice, vars)); const ticks = M.checks.map(c => c.on);
+    bytes = M.kind === 'docx' ? await modFillDocx(M, vals, ticks) : await modFillPdf(M, vals, ticks);
+    if (M.lh) bytes = await pdfLetterhead(bytes, M.kind === 'docx' ? M.crops : null);
+    if (M.att) { if ((ditta().doc_id || []).length) bytes = await pdfAddIdDoc(bytes); else toast('Il documento d\'identità non c\'è: caricalo in Dati Nextravel e rifai l\'anteprima'); } } catch (e) { return info('Compila un modulo', 'Il PDF non è venuto: ' + e.message); }
+  const url = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
+  const back = document.createElement('div'); back.className = 'dlg-back';
+  back.innerHTML = `<div class="dlg" style="width:min(1000px,100%);height:94vh;display:flex;flex-direction:column;padding:14px 18px"><div style="display:flex;gap:8px;align-items:center;margin-bottom:8px"><h3 style="flex:1;margin:0">👁 ${esc(M.name)}</h3>
+    ${M.docx ? '<button class="btn" data-a="word" title="Il modulo compilato in Word, da aprire e ritoccare">📘 Salva in Word</button>' : ''}<button class="btn pri" data-a="save">💾 Salva PDF</button><button class="btn" data-a="x">✏️ Correggi</button></div>
+    <iframe src="${url}" style="flex:1;border:1px solid var(--line);border-radius:8px;width:100%"></iframe></div>`;
+  document.body.appendChild(back);
+  back.addEventListener('click', async e => { const a = e.target.closest('[data-a]'); if (!a && e.target !== back) return; const k = a ? a.dataset.a : 'x';
+    if (k === 'x') { back.remove(); URL.revokeObjectURL(url); return; }
+    if (k === 'word') { const n = await salvaFile(M.docx, nomeOk(M.name) + '.docx', DOCX_T); if (n) { docLog('Modulo salvato in Word', M.name); save(); toast('Salvato: ' + n); } return; }
+    if (k === 'save') {
+      try { const n = await salvaFile(bytes, nomeOk(M.name) + '.pdf', PDF_T); if (!n) return; if (M.draftId) modDraftDel(M.draftId).catch(() => {}); docLog('Modulo compilato e salvato', M.name + (MODV.scuola ? ' · ' + MODV.scuola : '')); save(); toast('Salvato: ' + n); back.remove(); URL.revokeObjectURL(url);
+        // saved: it leaves the list (and the window, if it was the last one open)
+        M.saved = true; const k = MODS.indexOf(M); if (k >= 0) MODS.splice(k, 1); renderModuli();
+        const ed = $('modEd'); if (ed) { if (MODS.length) modOpen(Math.min(k, MODS.length - 1)); else { ed.remove(); MOD_CUR = -1; applyPending(); } } }
+      catch (er) { info('Salva', 'Non salvato: ' + er.message); }
+    } });
+}
+// where the free writing goes: a point of a PDF page, or a point of the text of a Word paragraph
+const modPendAt = () => MOD_PEND.docx ? { pi: MOD_PEND.pi, at: MOD_PEND.at } : { p: MOD_PEND.p, x: MOD_PEND.x, y: MOD_PEND.y };
+const modPutHtml = () => `<div class="mini" style="margin-bottom:6px">Cosa metto qui?</div><div style="display:flex;gap:6px;flex-wrap:wrap"><button type="button" class="btn" data-mput="x">✗ Una X</button><button type="button" class="btn" data-mput="v">✓ Una spunta</button><button type="button" class="btn" data-mput="f">✍️ Firma e timbro</button></div>
+  <div style="display:flex;gap:6px;margin-top:8px"><input id="modPutT" placeholder="scrivi un testo…" style="flex:1"><button type="button" class="btn pri" data-mput="t">Metti</button></div>
+  <div class="mini" style="margin:10px 0 4px">📋 oppure scegli un dato di Nextravel:</div>${modFieldList('', 'put')}`;
+// a little window with some buttons → the key of the one clicked ('back' with Esc or a click outside)
+function modAsk(title, html, btns) {
+  return new Promise(ok => { const back = document.createElement('div'); back.className = 'dlg-back'; back.style.zIndex = 1300;
+    back.innerHTML = `<div class="dlg"><h3>${esc(title)}</h3><p style="margin:0 0 14px">${html}</p><div class="row" style="flex-wrap:wrap;gap:8px">${btns.map(([k, l, c]) => `<button type="button" class="${c || ''}" data-ask="${k}">${esc(l)}</button>`).join('')}</div></div>`;
+    document.body.appendChild(back); const end = k => { back.remove(); document.removeEventListener('keydown', key, true); ok(k); };
+    const key = e => { if (e.key === 'Escape') { e.stopPropagation(); end('back'); } }; document.addEventListener('keydown', key, true);
+    back.addEventListener('click', e => { const b = e.target.closest('[data-ask]'); if (b) end(b.dataset.ask); else if (e.target === back) end('back'); }); });
+}
+// something changed in the open form (a bozza changed is saved again only if you want: asked when you close)
+const modTouch = () => { if (MOD_CUR >= 0 && MODS[MOD_CUR]) MODS[MOD_CUR].dirty = true; };
+document.addEventListener('change', e => { if (e.target.closest('#modEd')) modTouch(); }, true);
+document.addEventListener('input', e => { if (e.target.closest('#modEd')) modTouch(); }, true);
+document.addEventListener('click', e => { if (e.target.closest('#modEd [data-mclr], #modEd [data-mput], #modEd [data-mextdel], #modEd [data-mok]')) modTouch(); }, true);
+document.addEventListener('change', e => {
+  // free writing on the PDF page: a data of Nextravel chosen from the list (it stays linked: if you change the data, the form follows)
+  if (e.target.id === 'modPutF' && e.target.value && MOD_PEND) { const M = MODS[MOD_PEND.mi]; (M.extra = M.extra || []).push({ ...modPendAt(), k: 't', f: e.target.value, t: '' }); MOD_PEND = null; $('modPop').hidden = true; return modRefresh(); }
+  const xf = e.target.closest('[data-mextf]'); if (xf) { const [mi, j] = xf.dataset.mextf.split(':').map(Number); MODS[mi].extra[j].f = xf.value; return modRefresh(); }
+  const s = e.target.closest('[data-mslot]'); if (s) { const [mi, i] = s.dataset.mslot.split(':').map(Number); const sl = MODS[mi].slots[i]; sl.choice = s.value === '@t' ? { t: '' } : s.value; sl.known = true; modRefresh(); modPopFor(mi, i); return; }
+  const c = e.target.closest('[data-mchk]'); if (c) { const [mi, i] = c.dataset.mchk.split(':').map(Number); MODS[mi].checks[i].on = c.checked; MODS[mi].checks[i].known = true; c.closest('.mnew') && c.closest('.mnew').classList.remove('mnew'); c.classList.remove('mnew'); renderModuli(); return; }
+  if (e.target.id === 'modFile') { const fs = [...e.target.files]; e.target.value = ''; modAddFiles(fs); return; }
+  if (e.target.id === 'modScuola' || e.target.id === 'modOggetto') { MODV[e.target.id === 'modScuola' ? 'scuola' : 'oggetto'] = e.target.value.trim(); modRefresh(); }
+});
+document.addEventListener('input', e => { const xt = e.target.closest('[data-mextt]'); if (xt) { const [mi, j] = xt.dataset.mextt.split(':').map(Number); MODS[mi].extra[j].t = xt.value; const el = document.querySelector(`[data-mext="${mi}:${j}"]`); if (el) el.textContent = xt.value || '…'; return; }
+  const t = e.target.closest('[data-mtext]'); if (!t) return; const [mi, i] = t.dataset.mtext.split(':').map(Number); MODS[mi].slots[i].choice = { t: t.value }; MODS[mi].slots[i].known = true;
+  const el = document.querySelector(`[data-mchip="${mi}:${i}"]`); if (el) el.outerHTML = modChip(MODS[mi], mi, i); });
+document.addEventListener('click', e => {
+  const dsv = e.target.closest('[data-mdraft]'); if (dsv) return modDraftSave(+dsv.dataset.mdraft);
+  const dop = e.target.closest('[data-mdopen]'); if (dop) return modDraftOpen(dop.dataset.mdopen);
+  const ddl = e.target.closest('[data-mddel]'); if (ddl) { const id = ddl.dataset.mddel; return dlg({ title: 'Elimina bozza', message: 'Elimino questa bozza?', ok: 'Elimina' }).then(ok => { if (ok) modDraftDel(id).catch(er => info('Bozza', er.message)); }); }
+  if (e.target.closest('#modEd .mcheck [data-mchip], #modEd .mcheck [data-mext], #modEd .mcheck .msign')) e.preventDefault();   /* a box inside the line of a casella: it does not tick the casella */
+  const cl = e.target.closest('[data-mclr]'); if (cl) { const [mi, i] = cl.dataset.mclr.split(':').map(Number); MODS[mi].slots[i].choice = ''; MODS[mi].slots[i].known = true; MODS[mi].slots[i].cleared = true; const pop = $('modPop'); if (pop) pop.hidden = true; return modRefresh(); }
+  const ch = e.target.closest('[data-mchip]'); if (ch) { const [mi, i] = ch.dataset.mchip.split(':').map(Number); return modPopFor(mi, i); }
+  // PDF: a click on the page → what to put there
+  const put = e.target.closest('[data-mput]'); if (put && MOD_PEND) { const k = put.dataset.mput, t = k === 't' ? ($('modPutT').value || '').trim() : ''; if (k === 't' && !t) return $('modPutT').focus();
+    const M = MODS[MOD_PEND.mi]; (M.extra = M.extra || []).push({ ...modPendAt(), k, t }); MOD_PEND = null; $('modPop').hidden = true; return modRefresh(); }
+  const xc = e.target.closest('[data-mext]'); if (xc) { const [mi, j] = xc.dataset.mext.split(':').map(Number); const x = MODS[mi].extra[j]; const b = xc.getBoundingClientRect();
+    return modPopAt(b.left, b.bottom, `${x.k === 't' ? `<div class="mini">${x.f ? 'Dato di Nextravel' : 'Testo'}</div>${x.f ? modFieldList(x.f, `ext:${mi}:${j}`) : `<input data-mextt="${mi}:${j}" value="${esc(x.t)}">`}` : `<div class="mini">${x.k === 'f' ? 'Firma e timbro' : x.k === 'x' ? 'Una X' : 'Una spunta'} messa qui da te</div>`}
+      <div style="display:flex;gap:6px;justify-content:flex-end;margin-top:8px"><button type="button" class="btn" data-mextdel="${mi}:${j}">🗑 Togli</button><button type="button" class="btn" data-mpopx>Chiudi</button></div>`); }
+  const xd = e.target.closest('[data-mextdel]'); if (xd) { const [mi, j] = xd.dataset.mextdel.split(':').map(Number); MODS[mi].extra.splice(j, 1); $('modPop').hidden = true; return modRefresh(); }
+  const cv = e.target.closest('.mpdfpage canvas'); if (cv && MOD_CUR >= 0) { const M = MODS[MOD_CUR], p = +cv.dataset.mpage, pg = M.pages[p - 1], r = cv.getBoundingClientRect(), sc = r.width / pg.w;
+    MOD_PEND = { mi: MOD_CUR, p, x: (e.clientX - r.left) / sc, y: pg.h - (e.clientY - r.top) / sc };
+    return modPopAt(e.clientX, e.clientY, modPutHtml()); }
+  // Word: a click in the text → the exact point (between two words) where to put something
+  const para = e.target.closest('.msheet .mpara'); if (para && MOD_CUR >= 0 && !e.target.closest('.mcheck, #modPop')) { const M = MODS[MOD_CUR], pi = +para.dataset.mpi, t = M.view[pi].text;
+    let at = t.length; const rng = document.caretRangeFromPoint ? document.caretRangeFromPoint(e.clientX, e.clientY) : null;
+    if (rng) { const el = rng.startContainer.nodeType === 3 ? rng.startContainer.parentElement : rng.startContainer; const sp = el && el.closest('[data-o]'); if (sp && para.contains(sp)) at = +sp.dataset.o + rng.startOffset; }
+    while (at < t.length && /[\wà-ù]/i.test(t[at]) && /[\wà-ù]/i.test(t[at - 1] || '')) at++;     /* not in the middle of a word */
+    MOD_PEND = { mi: MOD_CUR, docx: true, pi, at }; return modPopAt(e.clientX, e.clientY, modPutHtml()); }
+  const ok = e.target.closest('[data-mok]'); if (ok) { const [mi, i] = ok.dataset.mok.split(':').map(Number); MODS[mi].slots[i].known = true; $('modPop').hidden = true; return modRefresh(); }
+  const pop = $('modPop'); if (pop && !pop.hidden && (e.target.closest('[data-mpopx]') || !e.target.closest('#modPop'))) pop.hidden = true;
+  const o = e.target.closest('[data-mopen]'); if (o) return modOpen(+o.dataset.mopen);
+  // close: the forms not saved go away (the bozze stay in their list); asked first if something would be lost
+  if (e.target.closest('[data-mclose]')) { const close = () => { const ed = $('modEd'); if (ed) ed.remove(); MOD_CUR = -1; MODS.length = 0; renderModuli(); applyPending(); };
+    // never saved, or a bozza changed after its last saving
+    const todo = MODS.filter(M => !M.draftId || M.dirty); if (!todo.length) return close();
+    const msg = todo.map(M => `• <b>${esc(M.name)}</b>: ${M.draftId ? 'hai modificato la bozza dopo l\'ultimo salvataggio' : 'non è salvato né come PDF né come bozza'}`).join('<br>');
+    return modAsk('Chiudi', `${msg}<br><br>Cosa faccio?`, [['save', `💾 ${todo.some(M => M.draftId) ? 'Aggiorna' : 'Salva'} ${todo.length > 1 ? 'le bozze' : 'la bozza'} e chiudi`, 'pri'], ['close', 'Chiudi senza salvare'], ['back', 'Torna al modulo']]).then(async a => {
+      if (a === 'close') return close();
+      if (a === 'save') { for (const M of todo) { if (await modDraftSave(MODS.indexOf(M)) === false) return; } close(); } }); }
+  const p = e.target.closest('[data-mprev]'); if (p) return modPreview(+p.dataset.mprev);
+  const d = e.target.closest('[data-mdel]'); if (d) { MODS.splice(+d.dataset.mdel, 1); renderModuli(); }
+});
+// ---- ✉️ Carta intestata: a text on the Nextravel letterhead (logo at the top and the footer of every page, as the quotes) → PDF.
+// Destinatario at the top right, luogo e data, a centred title, the text, firma e timbro of the legale rappresentante: all optional.
+// The letters stay in DB.prev.lettere (to open again, to copy); the PDF is downloaded or saved in Dropbox (Lettere/<anno>/…)
+const lettere = () => { const P = prevStore(); return P.lettere || (P.lettere = []); };
+const letToday = () => modToday();
+// "luogo e data": with "sempre la data di oggi" you write only the place and the date is the one of the day you open / print it
+const letWhen = L => L.auto === false ? String(L.when || '').trim() : [String(L.place ?? dittaVal('sede_comune', 'Carini')).trim(), letToday()].filter(Boolean).join(', ');
+// what is written in the text (from the editor): only simple formatting is kept (bold, italic, underline, lists, line breaks)
+function letClean(html) {
+  const d = document.createElement('div'); d.innerHTML = html || '';
+  const ok = { B: 1, STRONG: 1, I: 1, EM: 1, U: 1, BR: 1, P: 1, DIV: 1, UL: 1, OL: 1, LI: 1, SPAN: 1 };
+  const walk = n => [...n.childNodes].forEach(c => { if (c.nodeType === 1) { if (!ok[c.tagName]) { c.replaceWith(...c.childNodes); return walk(n); }
+    const al = c.style && c.style.textAlign; [...c.attributes].forEach(a => c.removeAttribute(a.name)); if (al && /^(left|center|right|justify)$/.test(al)) c.style.textAlign = al; walk(c); } });
+  walk(d); return d.innerHTML;
+}
+// the preview: the whole width of the page in sight (smaller when the window is narrow)
+const LET_FIT = '<script>(function(){function f(){var w=document.documentElement.clientWidth;document.body.style.zoom=Math.min(1,(w-24)/800);}f();addEventListener("resize",f);})();<' + '/script>';
+function letBlocks(L, sign) {
+  const to = String(L.to || '').trim(), when = letWhen(L), title = String(L.title || '').trim(), body = letClean(L.body || '');
+  const lr = dittaVal('lr_nome'), q = dittaVal('lr_qualita', 'Legale rappresentante');
+  const blocks = [];
+  if (to) blocks.push(`<div class="to">${esc(to).replace(/\n/g, '<br>')}</div>`);
+  if (title) blocks.push(`<h1>${esc(title).replace(/\n/g, '<br>')}</h1>`);
+  if (body.replace(/<[^>]+>|&nbsp;|\s/g, '')) { const tmp = document.createElement('div'); tmp.innerHTML = body;
+    const parts = []; let line = ''; [...tmp.childNodes].forEach(c => { if (c.nodeType === 1 && /^(P|DIV|UL|OL)$/.test(c.tagName)) { if (line) { parts.push(`<p>${line}</p>`); line = ''; } parts.push(c.tagName === 'DIV' ? `<p${c.getAttribute('style') ? ` style="${c.getAttribute('style')}"` : ''}>${c.innerHTML || '&nbsp;'}</p>` : c.outerHTML); } else line += c.nodeType === 1 ? c.outerHTML : esc(c.textContent); });
+    if (line) parts.push(`<p>${line}</p>`); parts.forEach(p => blocks.push(`<div class="txt">${p}</div>`)); }
+  if (when) blocks.push(`<div class="when">${esc(when)}</div>`);
+  if (L.sign) blocks.push(`<div class="sig">${q ? `<div>${esc(q)}</div>` : ''}${lr ? `<div class="nm">${esc(lr)}</div>` : ''}${sign ? `<img src="${sign}">` : ''}</div>`);
+  return blocks;
+}
+/* the Nextravel letterhead: the logo at the top left, the three lines of the footer, as in "CARTA INTESTATA NEXTRAVEL.docx" */
+function letterHtml(L, sign, mode, only) {
+  const img = mode === 'img', blocks = only || letBlocks(L, sign);
+  return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${esc(String(L.title || '').trim() || 'Lettera')}</title><style>
+    html, body { margin: 0; } html { background: ${img ? '#fff' : '#dfe3ea'}; } body { font-family: Calibri, Carlito, Arial, sans-serif; font-size: 11.5pt; color: #000; box-sizing: content-box; width: 170mm; position: relative; background: #fff; padding: 14mm 20mm 10mm; ${img ? 'height: 273mm; overflow: hidden;' : 'margin: 14px auto; min-height: 273mm; box-shadow: 0 2px 14px rgba(0,0,0,.18);'} }
+    .lh { position: absolute; top: 12mm; left: 20mm; } .lh img { width: 70mm; display: block; }
+    .ft { position: absolute; bottom: 9mm; left: 20mm; right: 20mm; font-size: 8.5pt; line-height: 1.35; text-align: center; color: #222; }
+    table.pg { width: 100%; border-collapse: collapse; } table.pg td { padding: 0; vertical-align: top; } .sp-top { height: 24mm; } .sp-bot { height: 18mm; }
+    .to { margin-left: auto; width: 82mm; line-height: 1.45; font-size: 12pt; } .when { margin-top: 7mm; }
+    h1 { text-align: center; font-size: 14pt; margin: 9mm 0 6mm; } .txt p { margin: 0 0 3mm; text-align: justify; line-height: 1.5; } .txt ul, .txt ol { margin: 0 0 3mm; padding-left: 7mm; line-height: 1.5; }
+    .sig { margin: 6mm 0 0 auto; width: 70mm; text-align: center; line-height: 1.35; } .sig .nm { font-weight: 700; } .sig img { width: 56mm; display: block; margin: 1mm auto 0; }
+  </style></head><body>
+  <div class="lh"><img src="${LOGO}"></div>
+  <table class="pg"><thead><tr><td><div class="sp-top"></div></td></tr></thead><tfoot><tr><td><div class="sp-bot"></div></td></tr></tfoot>
+  <tbody>${blocks.map(b => `<tr><td>${b}</td></tr>`).join('')}</tbody></table>
+  <div class="ft">${NEXT_FOOTER.map(esc).join('<br>')}</div>
+  ${img ? '' : LET_FIT}
+  </body></html>`;
+}
+/* the letter → PDF here in the browser: the blocks divided in pages, logo and footer on each one */
+async function letterPdf(L, sign) {
+  const h2c = await loadH2C(), PL = await loadPdfLib();
+  const fr = document.createElement('iframe'); fr.style.cssText = 'position:fixed;left:-4000px;top:0;width:794px;height:1123px;border:0'; document.body.appendChild(fr);
+  const show = html => new Promise(ok => { fr.onload = async () => { const d = fr.contentDocument; try { await d.fonts.ready; } catch (e) {} await Promise.all([...d.images].map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; }))); ok(d); }; fr.srcdoc = html; });
+  try {
+    const blocks = letBlocks(L, sign), MM = 96 / 25.4, cap = (297 - 14 - 10 - 24 - 18) * MM;
+    if (!blocks.length) blocks.push('<div>&nbsp;</div>');
+    const d0 = await show(letterHtml(L, sign, 'img', blocks)); const hs = [...d0.querySelectorAll('tbody tr')].map(r => r.getBoundingClientRect().height);
+    const pages = [[]]; let used = 0; blocks.forEach((b, i) => { if (used + hs[i] > cap && pages[pages.length - 1].length) { pages.push([]); used = 0; } pages[pages.length - 1].push(b); used += hs[i]; });
+    const pdf = await PL.PDFDocument.create(), W = 595.28, H = 841.89;
+    for (const pg of pages) { const d = await show(letterHtml(L, sign, 'img', pg));
+      const cv = await h2c(d.body, { scale: 3, backgroundColor: '#fff', logging: false, width: 794, height: 1123, windowWidth: 794, windowHeight: 1123 });
+      const im = await pdf.embedJpg(cv.toDataURL('image/jpeg', 0.9)); pdf.addPage([W, H]).drawImage(im, { x: 0, y: 0, width: W, height: H }); }
+    return await pdf.save();
+  } finally { fr.remove(); }
+}
+// the list in Compilazione documenti
+function renderLettere() {
+  const box = $('letList'); if (!box) return; const L = lettere().slice().sort((a, b) => (b.at || 0) - (a.at || 0));
+  box.innerHTML = L.length ? L.map(x => `<div class="modrow"><span class="modname">✉️ <b>${esc(x.title || '(senza titolo)')}</b> <span class="mini">${esc(String(x.to || '').split('\n')[0].slice(0, 50))}${x.to ? ' · ' : ''}${x.pdfAt ? `<b style="color:#135c2a">PDF creato il ${new Date(x.pdfAt).toLocaleDateString('it-IT')}</b>` : '<b style="color:#8a5a00">bozza</b>'} · modificata il ${new Date(x.at || Date.now()).toLocaleDateString('it-IT')}</span></span>
+    <button type="button" class="btn pri" data-lopen="${x.id}">✏️ Apri</button><button type="button" class="btn" data-lcopy="${x.id}" title="Una nuova lettera uguale a questa">⧉ Duplica</button><button type="button" class="btn" data-ldel="${x.id}" title="Elimina">🗑</button></div>`).join('')
+    : '<p class="mini" style="margin:6px 0 0">Nessuna lettera ancora.</p>';
+}
+let LET_CUR = null;
+async function letOpen(id) {
+  let L = id ? lettere().find(x => x.id === id) : null;
+  if (!L) { L = { id: 'l' + Date.now().toString(36), to: '', auto: true, place: dittaVal('sede_comune', 'Carini'), when: '', title: '', body: '', sign: true, at: Date.now() }; lettere().push(L); docLog('Lettera: nuova', ''); }
+  if (L.auto === undefined) L.auto = false;
+  LET_CUR = L; const sign = (ditta().firma || ditta().timbro) ? (await modSignImg() || {}).url : null;
+  const back = document.createElement('div'); back.className = 'dlg-back'; back.id = 'letEd'; back.style.zIndex = 190;
+  back.innerHTML = `<div class="medit lted"><div class="mtop" style="padding-bottom:8px"><h3 style="flex:1;margin:0">✉️ Lettera su carta intestata</h3><button type="button" class="mclose" data-lclose title="Chiudi">✕</button></div>
+    <div class="ltbody"><div class="ltform">
+      <label>Destinatario <span class="mini">(in alto a destra)</span><textarea id="ltTo" rows="4" placeholder="Spett.le …&#10;Via …&#10;90100 Palermo">${esc(L.to)}</textarea></label>
+      <label>Titolo <span class="mini">(al centro)</span><input id="ltTitle" value="${esc(L.title)}" placeholder="es. DICHIARAZIONE / OGGETTO: …"></label>
+      <label>Testo</label><div class="lttools"><button type="button" data-lcmd="bold" title="Grassetto"><b>G</b></button><button type="button" data-lcmd="italic" title="Corsivo"><i>C</i></button><button type="button" data-lcmd="underline" title="Sottolineato"><u>S</u></button><button type="button" data-lcmd="insertUnorderedList" title="Elenco puntato">• elenco</button><button type="button" data-lcmd="insertOrderedList" title="Elenco numerato">1. elenco</button><button type="button" data-lcmd="justifyLeft" title="A sinistra">⯇</button><button type="button" data-lcmd="justifyCenter" title="Al centro">≡</button><button type="button" data-lcmd="justifyFull" title="Giustificato">☰</button></div>
+      <div id="ltBody" class="ltbodyed" contenteditable="true">${letClean(L.body)}</div>
+      <label>Luogo e data <span class="mini">(in fondo, prima della firma)</span><input id="ltWhen" value="${esc(L.auto === false ? L.when : (L.place ?? ''))}" placeholder="${L.auto === false ? 'Carini, ' + letToday() : 'Carini'}"></label>
+      <label class="tgtile rbt" style="margin-top:6px"><input type="checkbox" id="ltAuto" ${L.auto !== false ? 'checked' : ''}><b class="spmk" style="margin:0">📅</b><span>Sempre la data di oggi</span><small>scrivi solo il luogo: la data si aggiorna da sola</small><i class="onoff"></i></label>
+      <label class="tgtile gdt" style="margin-top:10px"><input type="checkbox" id="ltSign" ${L.sign ? 'checked' : ''}><b class="spmk gd" style="margin:0">✍️</b><span>Firma e timbro</span><small>${esc(dittaVal('lr_nome') || 'legale rappresentante')}${sign ? '' : ' · carica firma e timbro in Dati Nextravel'}</small><i class="onoff"></i></label>
+      <div class="ltact"><button type="button" class="btn" data-lbozza>📝 Salva bozza</button><button type="button" class="btn pri" data-lpdf="save">💾 Salva PDF</button></div>
+      <p class="mini" style="margin:6px 0 0">Tutto è facoltativo. La bozza si salva anche da sola mentre scrivi: la ritrovi in Compilaz. doc. › Lettere su carta intestata. Con Salva PDF scegli tu la cartella (per esempio Dropbox › Nextravel › Nextravel Documenti).</p>
+    </div><div class="ltprev"><iframe id="ltFrame"></iframe></div></div></div>`;
+  document.body.appendChild(back);
+  const get = () => { L.to = $('ltTo').value; const au = $('ltAuto').checked; if (au) { L.place = $('ltWhen').value; } else L.when = $('ltWhen').value; L.title = $('ltTitle').value; L.body = letClean($('ltBody').innerHTML); L.sign = $('ltSign').checked; L.at = Date.now(); };
+  const draw = () => { $('ltFrame').srcdoc = letterHtml(L, sign, false); };
+  let t; const changed = () => { get(); clearTimeout(t); t = setTimeout(() => { draw(); save(); renderLettere(); }, 350); };
+  back.addEventListener('input', changed); back.addEventListener('change', changed);
+  $('ltAuto').addEventListener('change', () => { const w = $('ltWhen'), au = $('ltAuto').checked;
+    if (au) { L.auto = true; L.place = w.value.split(',')[0].trim(); w.value = L.place; w.placeholder = 'Carini'; } else { L.auto = false; L.when = [w.value.trim(), letToday()].filter(Boolean).join(', '); w.value = L.when; w.placeholder = 'Carini, ' + letToday(); } changed(); });
+  $('ltBody').addEventListener('paste', e => { e.preventDefault(); const tx = (e.clipboardData || window.clipboardData).getData('text/plain'); document.execCommand('insertText', false, tx); });
+  back.addEventListener('click', async e => {
+    const c = e.target.closest('[data-lcmd]'); if (c) { e.preventDefault(); $('ltBody').focus(); document.execCommand(c.dataset.lcmd, false, null); return changed(); }
+    if (e.target.closest('[data-lbozza]')) { get(); save(); renderLettere(); return toast('Bozza salvata'); }
+    if (e.target.closest('[data-lclose]')) { get(); save(); renderLettere(); back.remove(); LET_CUR = null; applyPending(); return; }
+    const p = e.target.closest('[data-lpdf]'); if (!p) return; get(); save(); renderLettere();
+    const name = (`Lettera${L.title ? ' - ' + L.title : ''}${L.to ? ' - ' + L.to.split('\n')[0] : ''} - ${letToday().replace(/\//g, '.')}`).replace(/[\\/:*?"<>|\n]/g, '-').replace(/\s+/g, ' ').slice(0, 120).trim();
+    toast('Preparo il PDF…');
+    try { const bytes = await letterPdf(L, sign); const n = await salvaFile(bytes, name + '.pdf', PDF_T); if (!n) return;
+      L.pdfAt = Date.now(); L.pdfName = n; docLog('Lettera: PDF creato', L.title || name); save(); renderLettere(); toast('Salvato: ' + n); }
+    catch (er) { info('Salva PDF', 'Il PDF non è venuto: ' + er.message); }
+  });
+  draw();
+}
+document.addEventListener('click', e => {
+  const n = e.target.closest('[data-lnew]'); if (n) return letOpen(null);
+  const o = e.target.closest('[data-lopen]'); if (o) return letOpen(o.dataset.lopen);
+  const c = e.target.closest('[data-lcopy]'); if (c) { const x = lettere().find(y => y.id === c.dataset.lcopy); if (!x) return; const nx = Object.assign({}, x, { id: 'l' + Date.now().toString(36), at: Date.now(), auto: true, place: x.auto === false ? String(x.when || '').split(',')[0].trim() : x.place }); delete nx.pdfAt; delete nx.pdfName; lettere().push(nx); docLog('Lettera: duplicata', x.title || ''); save(); renderLettere(); return letOpen(nx.id); }
+  const d = e.target.closest('[data-ldel]'); if (d) { const x = lettere().find(y => y.id === d.dataset.ldel); if (!x) return; return dlg({ title: '🗑 Elimina', message: `Elimino la lettera «${x.title || '(senza titolo)'}»? (i PDF già salvati restano)`, ok: 'Elimina', cancel: 'Annulla' }).then(ok => { if (!ok) return; const P = prevStore(); P.lettere = lettere().filter(y => y !== x); docLog('Lettera: eliminata', x.title || ''); save(); renderLettere(); }); }
+});
+/* ---- la pagina: i campi dei dati ---- */
+document.addEventListener('change', e => { if (!e.target.closest || !e.target.closest('#viewDocumenti')) return; const k = e.target.dataset.dk; if (!k) return; const v = e.target.value.trim();
+  if (e.target.type === 'date' && v && +v.slice(0, 4) < 2000) return;   /* still typing the year */
+  const old = ditta()[k] || ''; if (old === v) return; ditta()[k] = v; docLog('Dati Nextravel: modificato', `${dittaLabel(k)}: ${old ? `"${old}" → ` : ''}"${v}"`); save(); });
+document.addEventListener('focusout', e => { const el = $('viewDocumenti'); if (!el || !el.contains(e.target)) return; if (e.target.type === 'date' && /_scad$/.test(e.target.dataset.dk || '')) setTimeout(() => { if (!el.contains(document.activeElement) || document.activeElement.type !== 'date') renderDocumenti(); }, 0); });
+document.addEventListener('click', async e => {
+  const el = $('viewDocumenti'); if (!el || !el.contains(e.target)) return; const D = ditta();
+  const c = e.target.closest('[data-dcopy]'); if (c) { const k = c.dataset.dcopy; const inp = el.querySelector(`[data-dk="${k}"]`); let v = inp ? inp.value : ''; if (inp && inp.type === 'date' && v) v = fdate(v);
+    try { await navigator.clipboard.writeText(v); toast('Copiato: ' + (v.length > 40 ? v.slice(0, 40) + '…' : v)); } catch (er) { inp.select(); toast('Premi Ctrl+C'); } return; }
+  if (e.target.closest('[data-dpaste]')) { const t = await dlg({ title: '📥 Incolla dati', message: 'Incolla qui il blocco di dati preparato (inizia con { e finisce con }). I campi vuoti del blocco non cancellano quelli che hai già scritto.', ok: 'Inserisci', cancel: 'Annulla', area: true });
+    if (!t) return; let o; try { o = JSON.parse(t.trim()); } catch (er) { return info('Incolla dati', 'Il blocco non è completo: copialo tutto, dalla { alla }.'); }
+    const known = new Set(DITTA_FIELDS.flatMap(x => x[1].map(y => y[0]))); let n = 0;
+    Object.entries(o).forEach(([k, v]) => { if (!known.has(k) || v === null || String(v).trim() === '') return; D[k] = String(v).trim(); n++; });
+    docLog('Dati Nextravel: incollati', n + ' dati'); save(); renderDocumenti(); return toast(`Inseriti ${n} dati`); }
+  const ix = e.target.closest('[data-dimgx]'); if (ix) { const k = ix.dataset.dimgx; if (!await sure('Togliere?', k === 'firma' ? 'Tolgo la firma dai Dati Nextravel.' : 'Tolgo il timbro dai Dati Nextravel.', 'Togli')) return; delete D[k]; docLog('Dati Nextravel: tolto', k); save(); return renderDocumenti(); }
+  const dx = e.target.closest('[data-didx]'); if (dx) { if (!await sure('Togliere il documento?', 'Lo tolgo dai Dati Nextravel (non lo allego più ai moduli).', 'Togli')) return; (D.doc_id || []).splice(+dx.dataset.didx, 1); if (!(D.doc_id || []).length) delete D.doc_id; docLog('Dati Nextravel: tolto', 'documento d\'identità'); save(); return renderDocumenti(); }
+  if (e.target.closest('[data-didadd]')) { const inp = el.querySelector('#dIdFile');
+    inp.onchange = async () => { const files = [...inp.files]; inp.value = ''; if (!files.length) return; const L = D.doc_id = D.doc_id || [];
+      for (const f of files) {
+        const url = await new Promise(ok => { const rd = new FileReader(); rd.onload = () => ok(rd.result); rd.readAsDataURL(f); });
+        if (/pdf/i.test(f.type) || /\.pdf$/i.test(f.name)) { if (url.length > 6e6) { info('Documento d\'identità', f.name + ' è troppo grande (più di 4 MB): fai una scansione più leggera.'); continue; } L.push({ name: f.name, data: url }); continue; }
+        const im = await new Promise(ok => { const x = new Image(); x.onload = () => ok(x); x.onerror = () => ok(null); x.src = url; }); if (!im) continue;
+        const W = Math.min(1600, im.width), H = Math.round(im.height * W / im.width); const cv = document.createElement('canvas'); cv.width = W; cv.height = H; const cx = cv.getContext('2d'); cx.fillStyle = '#fff'; cx.fillRect(0, 0, W, H); cx.drawImage(im, 0, 0, W, H);
+        L.push({ name: f.name, data: cv.toDataURL('image/jpeg', 0.85) }); }
+      docLog('Dati Nextravel: caricato', 'documento d\'identità'); save(); renderDocumenti(); toast('Documento d\'identità caricato'); };
+    inp.click(); return; }
+  const ic = e.target.closest('[data-dimg]'); if (ic) { const k = ic.dataset.dimg, inp = el.querySelector('#dImgFile');
+    inp.onchange = () => { const f = inp.files[0]; inp.value = ''; if (!f) return; const rd = new FileReader(); rd.onload = () => { const im = new Image(); im.onload = () => {
+      const W = Math.min(900, im.width), H = Math.round(im.height * W / im.width); const cv = document.createElement('canvas'); cv.width = W; cv.height = H; const cx = cv.getContext('2d'); cx.fillStyle = '#fff'; cx.fillRect(0, 0, W, H); cx.drawImage(im, 0, 0, W, H);
+      D[k] = cv.toDataURL('image/png'); docLog('Dati Nextravel: caricato', k); save(); renderDocumenti(); toast(k === 'firma' ? 'Firma caricata' : 'Timbro caricato'); }; im.src = rd.result; }; rd.readAsDataURL(f); };
+    inp.click(); }
+});
+/* ---- dal resto dell'app ---- */
+window.docView = view => {
+  if (SB && !ARCH_READY) { view.innerHTML = `<div class="empty">⏳ Caricamento…</div>`; return; }
+  if (!$('viewDocumenti')) view.innerHTML = '<div id="viewDocumenti"></div>';
+  const a = document.activeElement; if (a && $('viewDocumenti').contains(a) && /^(INPUT|TEXTAREA)$/.test(a.tagName) && $('viewDocumenti').innerHTML) return;   /* you are writing: not redrawn under your hands */
+  if (DFILES_OK) return renderDocumenti();
+  $('viewDocumenti').innerHTML = `<div class="empty">⏳ Caricamento dei documenti…</div>`;
+  docFilesLoad().finally(() => { if ($('viewDocumenti')) renderDocumenti(); });
+};
+window.docReset = () => { DOCS = { ditta: {}, moduli: { rules: {}, checks: {} }, lettere: [], storico: {} }; DOCBASE = null; DFILEBASE = null; DFILES_OK = !SB; };
+window.docEditorAperto = () => !!document.querySelector('#modEd,#letEd');
+})();
+
 /* ---------- Supabase ---------- */
 const RAW={};
 function sbApply(){ PENDING=Object.entries(RAW).map(([id,d])=>fromDoc(id,d)); if(ONLINE_STATE!=='ok' && !modalOpen()){ DB.gruppi=PENDING; PENDING=null; DB.gruppi.forEach(setBase); ONLINE_STATE='ok'; render(); } else applyPending(); }
@@ -1753,11 +2914,11 @@ async function sbStart(){
   }).on('postgres_changes',{event:'*',schema:'public',table:'fornitori'},pl=>{
     const row=pl.new; if(row && row.id){ RAWF[row.id]=row.data; FORN_READY=true; fApply(); }
   }).on('postgres_changes',{event:'*',schema:'public',table:'archivio'},pl=>{
-    const row=pl.new; if(row && row.id){ RAWA[row.id]=row.data; ARCH_READY=true; aApply(); }
+    const row=pl.new; if(row && row.id && !/^(docfile-|bozza-)/.test(row.id)){ RAWA[row.id]=row.data; ARCH_READY=true; aApply(); }
   }).subscribe();
   clearInterval(sbPoll); sbPoll=setInterval(()=>{ if(USER && document.visibilityState==='visible' && !modalOpen()) sbLoad(); }, 60000);
 }
-function sbStop(){ if(sbChan){ SBC.removeChannel(sbChan); sbChan=null; } clearInterval(sbPoll); for(const k of Object.keys(RAW)) delete RAW[k]; DB.gruppi=[]; PENDING=null; for(const k of Object.keys(RAWF)) delete RAWF[k]; DB.fornitori=[]; FPENDING=null; for(const k of Object.keys(RAWA)) delete RAWA[k]; DB.presenze={}; DB.agenda={}; APENDING=null; ONLINE_STATE='loading'; }
+function sbStop(){ if(sbChan){ SBC.removeChannel(sbChan); sbChan=null; } clearInterval(sbPoll); for(const k of Object.keys(RAW)) delete RAW[k]; DB.gruppi=[]; PENDING=null; for(const k of Object.keys(RAWF)) delete RAWF[k]; DB.fornitori=[]; FPENDING=null; for(const k of Object.keys(RAWA)) delete RAWA[k]; DB.presenze={}; DB.agenda={}; if(window.docReset) docReset(); APENDING=null; ONLINE_STATE='loading'; }
 async function sbProfili(){
   if(!SBC){ PINS_READY=true; renderLock(); return; }
   const r=await SBC.rpc('profili_attivi');
@@ -2122,6 +3283,7 @@ function render(){
   else if(v==='registro') view.innerHTML=viewRegistro();
   else if(v==='fornitori') view.innerHTML=viewFornitori();
   else if(v==='presenze') view.innerHTML=viewPresenze();
+  else if(v==='documenti') docView(view);
   else if(v==='fornitore') view.innerHTML=viewFornitore(decodeURIComponent(arg||''));
   else view.innerHTML=viewHome(todos);
   paintPeers();
@@ -2909,7 +4071,7 @@ function presWhere(){
   return {vista:v||'home', gid:g?g.id:'', gruppo:g?(g.numero||''):''};
 }
 function presDesc(u){
-  const n={home:'nella pagina Oggi', gruppi:'nell\'elenco gruppi', scadenze:'in Pagamenti e incassi', riepilogo:'nel Riepilogo anno', registro:'in Chi ha fatto cosa', presenze:'nelle Presenze', agenda:'nell\'Agenda', agregistro:'nel registro dell\'Agenda', scegli:'nella scelta iniziale', fornitori:'nell\'anagrafica fornitori', fornitore:'in una scheda fornitore', archivio:'nelle Impostazioni'};
+  const n={home:'nella pagina Oggi', gruppi:'nell\'elenco gruppi', scadenze:'in Pagamenti e incassi', riepilogo:'nel Riepilogo anno', registro:'in Chi ha fatto cosa', presenze:'nelle Presenze', documenti:'in Compilazione documenti', agenda:'nell\'Agenda', agregistro:'nel registro dell\'Agenda', scegli:'nella scelta iniziale', fornitori:'nell\'anagrafica fornitori', fornitore:'in una scheda fornitore', archivio:'nelle Impostazioni'};
   return u.vista==='gruppo' ? `nel gruppo ${u.gruppo||''}` : (n[u.vista]||'nell\'app');
 }
 function presStart(){
