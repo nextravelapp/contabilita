@@ -544,6 +544,8 @@ table.agx td>.agv{margin-bottom:2px;font-size:12.5px;padding:2px 4px;gap:4px}
 #viewDocumenti input,#viewDocumenti textarea{border:1px solid var(--line);border-radius:8px;padding:6px 9px;background:#fff}
 .tgtile{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;flex-wrap:wrap}.tgtile input{width:20px;height:20px;flex:none;padding:0}.tgtile span{font-weight:600;color:var(--ink);font-size:15px}.tgtile small{flex-basis:100%;color:var(--mute)}.tgtile .onoff{display:none}
 @media (max-width:760px){.ltbody{flex-direction:column;overflow:auto}.ltform{width:100%}.ltprev{min-height:60vh}.medit{height:100vh;border-radius:0}.mpop{width:calc(100% - 16px)}}
+.modbox.moddrop{outline:3px dashed var(--red);outline-offset:2px;background:#fff5f2}
+.ltsm{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 0}.ltsm label{display:flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:8px;padding:5px 9px;background:#fff;cursor:pointer;font-size:14px}.ltsm input{width:16px;height:16px;margin:0}
 .print-only{display:none}
 @media print{
   .print-only{display:block}
@@ -608,8 +610,8 @@ const SB_URL = 'https://jofzimnrgkzvlawuuivp.supabase.co', SB_KEY = 'eyJhbGciOiJ
 const EMAILS = {Jessica:'jessica@nextravel.app', Roberto:'roberto@nextravel.app', Alessandro:'alessandro@nextravel.app', Lia:'lia@nextravel.app', Letizia:'letizia@nextravel.app'};
 const PINLEN = SB ? 6 : 4;
 /* ---------------- AVVISO AGGIORNAMENTI ---------------- */
-const APP_VERSION = '20261118-092449';
-const APP_NOVITA = [{"v":"20261008-092039","d":"2026-10-08","n":["NUOVA AGENDA: dopo il PIN scegli se entrare nel Gestionale Next o nell\u0027Agenda di Jessica e Lia.","Agenda: stessi colori dell\u0027Excel (azzurro Diodoro bus, pesca Next, verde Diodoro agenzia, bianco extra). Clicca il quadratino per barrare una cosa fatta.","Agenda: trascina una voce su un altro giorno per spostarla; il triangolino rosso indica una nota."]},{"v":"20261008-094415","d":"2026-10-08","n":["Agenda: tutti i mesi sono nella stessa pagina, uno sotto l\u0027altro: scorri in giù e in su. Si apre sul mese corrente.","Agenda: per aggiungere una cosa da fare basta cliccare sul giorno.","Agenda: in alto il menu giallo porta subito a un mese, \"Oggi\" riporta al giorno di oggi."]},{"v":"20261008-094943","d":"2026-10-08","n":["Agenda: \"Nascondi le cose già fatte\" e i colori per filtrare restano sempre visibili in alto mentre scorri i mesi."]},{"v":"20261013-102616","d":"2026-10-13","n":["Agenda sul telefono: i giorni sono in elenco, uno sotto l\u0027altro, con le note leggibili subito sotto ogni voce.","Agenda sul telefono: tocca un giorno per aggiungere, tocca il quadratino per barrare. La lente 🔍 in alto apre ricerca e filtri."]},{"v":"20261014-100104","d":"2026-10-14","n":["Agenda: i pagamenti ai fornitori registrati nel Gestionale con una data di scadenza compaiono da soli nell\u0027agenda (💶, bordo tratteggiato), nel giorno giusto.","Agenda: il quadratino di un pagamento lo segna come pagato anche nel Gestionale (chiede la data); cliccando la scritta si apre il gruppo."]},{"v":"20261014-100849","d":"2026-10-14","n":["Agenda: compaiono da soli anche gli INCASSI dai clienti (acconti e saldi) che nel Gestionale hanno una data: 💰 con bordo verde tratteggiato."]},{"v":"20261014-101935","d":"2026-10-14","n":["Prima di eliminare qualsiasi cosa (voce dell\u0027agenda, entrata, uscita, rimborso, gruppo, fornitore) l\u0027app chiede sempre la conferma.","Dopo ogni azione compare in basso il tasto \"↶ Annulla azione\" per 15 secondi: anche dopo aver eliminato, barrato, spostato o modificato una voce dell\u0027agenda."]},{"v":"20261014-102248","d":"2026-10-14","n":["L\u0027avviso \"Aggiorna ora\" sta in alto a destra, più piccolo, e sparisce mentre stai compilando una finestra: non copre più il tasto Salva.","Con la × puoi rimandare l\u0027aggiornamento: l\u0027avviso ricompare dopo 10 minuti."]},{"v":"20261014-102553","d":"2026-10-14","n":["Chi non apre l\u0027app da qualche giorno ora vede, all\u0027apertura, la raccolta di TUTTE le novità che si è perso, divise per giorno (prima vedeva solo le ultime)."]},{"v":"20261015-113623","d":"2026-10-15","n":["Agenda: i colori ora si chiamano \"Diodoro Viaggi noleggio bus\" (azzurro), \"Nextravel\" (pesca) e \"Diodoro Viaggi agenzia\" (verde)."]},{"v":"20261016-122517","d":"2026-10-16","n":["Nella schermata del PIN c\u0027è la casella \"Mantieni l\u0027accesso su questo dispositivo\": se la spunti, l\u0027app non ti chiede più il PIN (e non si blocca da sola) finché non premi \"Esci\"."]},{"v":"20261105-090352","d":"2026-11-05","n":["NUOVA SEZIONE \"📑 Compilaz. doc.\": i dati di Nextravel sempre pronti, le lettere su carta intestata Nextravel in PDF e i moduli di scuole e gare (Word o PDF) compilati in pochi clic."]},{"v":"20261110-130358","d":"2026-11-10","n":["Presenze: quando scrivi a mano in una casella (es. P=2) la tabella si aggiorna subito, e premere Invio salva."]},{"v":"20261113-101706","d":"2026-11-13","n":["Le modifiche fatte dalle colleghe ora arrivano da sole, in pochi secondi, senza dover aggiornare la pagina. Quando torni sull\u0027app (o torna internet) si rimette subito in pari."]},{"v":"20261118-092449","d":"2026-11-18","n":["Agenda: dopo aver aggiunto o modificato una cosa, il menu giallo del mese resta sul mese che stai guardando."]}];
+const APP_VERSION = '20261123-134324';
+const APP_NOVITA = [{"v":"20261008-092039","d":"2026-10-08","n":["NUOVA AGENDA: dopo il PIN scegli se entrare nel Gestionale Next o nell\u0027Agenda di Jessica e Lia.","Agenda: stessi colori dell\u0027Excel (azzurro Diodoro bus, pesca Next, verde Diodoro agenzia, bianco extra). Clicca il quadratino per barrare una cosa fatta.","Agenda: trascina una voce su un altro giorno per spostarla; il triangolino rosso indica una nota."]},{"v":"20261008-094415","d":"2026-10-08","n":["Agenda: tutti i mesi sono nella stessa pagina, uno sotto l\u0027altro: scorri in giù e in su. Si apre sul mese corrente.","Agenda: per aggiungere una cosa da fare basta cliccare sul giorno.","Agenda: in alto il menu giallo porta subito a un mese, \"Oggi\" riporta al giorno di oggi."]},{"v":"20261008-094943","d":"2026-10-08","n":["Agenda: \"Nascondi le cose già fatte\" e i colori per filtrare restano sempre visibili in alto mentre scorri i mesi."]},{"v":"20261013-102616","d":"2026-10-13","n":["Agenda sul telefono: i giorni sono in elenco, uno sotto l\u0027altro, con le note leggibili subito sotto ogni voce.","Agenda sul telefono: tocca un giorno per aggiungere, tocca il quadratino per barrare. La lente 🔍 in alto apre ricerca e filtri."]},{"v":"20261014-100104","d":"2026-10-14","n":["Agenda: i pagamenti ai fornitori registrati nel Gestionale con una data di scadenza compaiono da soli nell\u0027agenda (💶, bordo tratteggiato), nel giorno giusto.","Agenda: il quadratino di un pagamento lo segna come pagato anche nel Gestionale (chiede la data); cliccando la scritta si apre il gruppo."]},{"v":"20261014-100849","d":"2026-10-14","n":["Agenda: compaiono da soli anche gli INCASSI dai clienti (acconti e saldi) che nel Gestionale hanno una data: 💰 con bordo verde tratteggiato."]},{"v":"20261014-101935","d":"2026-10-14","n":["Prima di eliminare qualsiasi cosa (voce dell\u0027agenda, entrata, uscita, rimborso, gruppo, fornitore) l\u0027app chiede sempre la conferma.","Dopo ogni azione compare in basso il tasto \"↶ Annulla azione\" per 15 secondi: anche dopo aver eliminato, barrato, spostato o modificato una voce dell\u0027agenda."]},{"v":"20261014-102248","d":"2026-10-14","n":["L\u0027avviso \"Aggiorna ora\" sta in alto a destra, più piccolo, e sparisce mentre stai compilando una finestra: non copre più il tasto Salva.","Con la × puoi rimandare l\u0027aggiornamento: l\u0027avviso ricompare dopo 10 minuti."]},{"v":"20261014-102553","d":"2026-10-14","n":["Chi non apre l\u0027app da qualche giorno ora vede, all\u0027apertura, la raccolta di TUTTE le novità che si è perso, divise per giorno (prima vedeva solo le ultime)."]},{"v":"20261015-113623","d":"2026-10-15","n":["Agenda: i colori ora si chiamano \"Diodoro Viaggi noleggio bus\" (azzurro), \"Nextravel\" (pesca) e \"Diodoro Viaggi agenzia\" (verde)."]},{"v":"20261016-122517","d":"2026-10-16","n":["Nella schermata del PIN c\u0027è la casella \"Mantieni l\u0027accesso su questo dispositivo\": se la spunti, l\u0027app non ti chiede più il PIN (e non si blocca da sola) finché non premi \"Esci\"."]},{"v":"20261105-090352","d":"2026-11-05","n":["NUOVA SEZIONE \"📑 Compilaz. doc.\": i dati di Nextravel sempre pronti, le lettere su carta intestata Nextravel in PDF e i moduli di scuole e gare (Word o PDF) compilati in pochi clic."]},{"v":"20261110-130358","d":"2026-11-10","n":["Presenze: quando scrivi a mano in una casella (es. P=2) la tabella si aggiorna subito, e premere Invio salva."]},{"v":"20261113-101706","d":"2026-11-13","n":["Le modifiche fatte dalle colleghe ora arrivano da sole, in pochi secondi, senza dover aggiornare la pagina. Quando torni sull\u0027app (o torna internet) si rimette subito in pari."]},{"v":"20261118-092449","d":"2026-11-18","n":["Agenda: dopo aver aggiunto o modificato una cosa, il menu giallo del mese resta sul mese che stai guardando."]},{"v":"20261123-134324","d":"2026-11-23","n":["Compilaz. doc.: puoi trascinare i moduli Word o PDF direttamente nella pagina per aprirli.","Compilaz. doc.: firma e timbro si possono mettere anche separati (solo firma, solo timbro), nei moduli e nelle lettere."]}];
 let UPDATE = null;   // {version, novita} quando sul sito c'è una versione più nuova
 async function checkUpdate(){
   if(!SB || location.protocol==='file:') return;
@@ -1934,7 +1936,7 @@ function renderDocumenti() {
       <p class="mini" style="margin:0">Un testo sulla carta intestata di Nextravel (logo e piè di pagina su ogni pagina): destinatario, titolo, testo, firma e timbro. Poi il PDF.</p>
       <div id="letList"></div></div>
     <div class="pvsec modbox"><h4><span>✍️</span> Compila un modulo</h4>
-      <div class="modhead"><p class="mini" style="margin:0;flex:1">Carica i moduli della scuola (Word o PDF, anche più di uno): li apro e li compili guardandoli, con i dati qui sotto già al loro posto. Prima di salvarli li vedi in anteprima.</p>
+      <div class="modhead"><p class="mini" style="margin:0;flex:1"><b>Trascina qui i moduli</b> oppure caricali con il pulsante: i moduli della scuola (Word o PDF, anche più di uno): li apro e li compili guardandoli, con i dati qui sotto già al loro posto. Prima di salvarli li vedi in anteprima.</p>
         <label class="btn pri" style="cursor:pointer">📄 Carica moduli<input type="file" id="modFile" accept=".docx,.pdf" multiple style="display:none"></label></div>
       <div id="modList"></div></div>
     <h3 style="margin:16px 0 8px;display:flex;align-items:center;gap:10px">🏢 Dati Nextravel <span class="mini" style="font-weight:400;flex:1">· con 📋 li copi per incollarli in un modulo</span><button type="button" class="btn" data-dpaste="1" title="Inserisce in un colpo un blocco di dati preparato (es. dai documenti)">📥 Incolla dati</button></h3>
@@ -1960,7 +1962,11 @@ const MOD_SPECIAL = [['@oggi', 'Data di oggi'], ['@luogodata', 'Luogo e data (Ca
   ['@tit_nato_prov', 'Titolare effettivo: provincia di nascita'], ['@tit_nato_il', 'Titolare effettivo: nato il'], ['@tit_res_comune', 'Titolare effettivo: residente a'], ['@tit_res_prov', 'Titolare effettivo: provincia di residenza'],
   ['@tit_res_via', 'Titolare effettivo: via e numero'], ['@tit_res_cap', 'Titolare effettivo: CAP'],
   ['@lr_cognome', 'Legale rappresentante: solo cognome'], ['@lr_nomeproprio', 'Legale rappresentante: solo nome'], ['@banca_full', 'Banca e agenzia insieme'],
-  ['@doc_scad', 'Documento d\'identità: scadenza'], ['@firma', '✍️ Firma e timbro']];
+  ['@doc_scad', 'Documento d\'identità: scadenza'], ['@firma', '✍️ Firma e timbro'], ['@firma_sola', '✍️ Solo la firma'], ['@timbro_solo', '🔖 Solo il timbro']];
+/* firma e timbro insieme, oppure uno solo dei due */
+const SIGNK = { '@firma': 'both', '@firma_sola': 'firma', '@timbro_solo': 'timbro' };
+const SIGNL = { both: '✍️ firma e timbro', firma: '✍️ solo firma', timbro: '🔖 solo timbro' };
+const EXTK = { f: '@firma', ff: '@firma_sola', ft: '@timbro_solo' };
 // the titolare effettivo (Dati Nextravel › Titolare effettivo): when he is the legale rappresentante all his data, else name and CF from the soci
 function modTitolare() {
   const name = String(dittaVal('tit_effettivo') || dittaVal('lr_nome') || '').trim(); if (!name) return {};
@@ -2018,7 +2024,7 @@ const modLines = k => String(dittaVal(k) || '').split('\n').map(l => l.split(/\s
 // the list of the Dati Nextravel for the free writing on the page (the same as the boxes, plus each person of soci / delegati)
 function modFieldOpts(cur) {
   const o = (v, l, val) => `<option value="${esc(v)}" ${v === cur ? 'selected' : ''}>${esc(l)}${val ? ' — ' + esc(String(val).slice(0, 30)) : ''}</option>`;
-  const sp = MOD_SPECIAL.filter(([k]) => k !== '@firma');
+  const sp = MOD_SPECIAL.filter(([k]) => !SIGNK[k]);
   const people = ['soci', 'delegati'].map(k => { const L = modLines(k); if (!L.length) return ''; const name = k === 'soci' ? 'Soci / amministratori' : 'Persone delegate';
     const isCf = x => /^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/i.test(x.replace(/\s/g, '')), isRole = x => /amministrat|socio|presidente|legale|direttore|consigliere|titolare|procurator|delegat/i.test(x);
     return `<optgroup label="${name}">${L.map((l, i) => { const who = l.find(x => !isCf(x) && !isRole(x)) || l[0];
@@ -2043,7 +2049,7 @@ function modValue(v, vars) {
   const sedeCom = dittaVal('sede_comune', 'Carini');
   if (v === '@doc_scad') { const d = String(dittaVal('doc_scad') || ''); const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(d); return m ? `${m[3]}/${m[2]}/${m[1]}` : d; }
   if (v === '@oggi') return modToday(); if (v === '@luogo') return sedeCom; if (v === '@luogodata') return `${sedeCom}, ${modToday()}`;
-  if (v === '@scuola') return vars.scuola || ''; if (v === '@oggetto') return vars.oggetto || ''; if (v === '@firma') return '@firma';
+  if (v === '@scuola') return vars.scuola || ''; if (v === '@oggetto') return vars.oggetto || ''; if (SIGNK[v]) return v;
   const via = (k, part) => modSplitVia(dittaVal(k, k === 'sede_via' ? 'Via Nereo, 4' : ''))[part];
   if (v === '@sede_strada') return via('sede_via', 'strada'); if (v === '@sede_civico') return via('sede_via', 'civico');
   if (v === '@res_strada') return via('lr_res_via', 'strada'); if (v === '@res_civico') return via('lr_res_via', 'civico');
@@ -2157,8 +2163,8 @@ async function modReadDocx(buf) {
   return { kind: 'docx', buf, slots, checks, view };
 }
 // timbro + firma in one image (the white made transparent, the firma over the right side of the timbro)
-async function modSignImg() {
-  const D = ditta(); if (!D.firma && !D.timbro) return null;
+async function modSignImg(kind) {
+  kind = kind || 'both'; const D0 = ditta(); const D = { firma: kind === 'timbro' ? null : D0.firma, timbro: kind === 'firma' ? null : D0.timbro }; if (!D.firma && !D.timbro) return null;
   const load = src => new Promise(ok => { if (!src) return ok(null); const im = new Image(); im.onload = () => ok(im); im.onerror = () => ok(null); im.src = src; });
   const clear = (im, w, h) => { const c = document.createElement('canvas'); c.width = w; c.height = h; const x = c.getContext('2d'); x.drawImage(im, 0, 0, w, h); const d = x.getImageData(0, 0, w, h);
     const ms = []; for (let i = 0; i < d.data.length; i += 4 * 97) ms.push(Math.min(d.data[i], d.data[i + 1], d.data[i + 2])); ms.sort((a, b) => a - b); const hi = Math.min(225, ms[Math.floor(ms.length * 0.6)] - 22), lo = hi - 45;
@@ -2183,16 +2189,17 @@ async function modFillDocx(M, vals, ticks) {
   const zip = await (await loadJsZip()).loadAsync(M.buf); const xml = new DOMParser().parseFromString(await zip.file('word/document.xml').async('string'), 'application/xml');
   const paras = docxParas(xml); const D = ditta();
   // firma + timbro in the package (media, relationships, content type)
-  const imgs = []; let relsXml = null;
-  const addImgs = async () => { if (imgs.length || !(D.firma || D.timbro)) return imgs;
+  const imgsBy = {}; let relsXml = null;
+  const addImgs = async kind => { kind = kind || 'both'; if (imgsBy[kind]) return imgsBy[kind]; const imgs = imgsBy[kind] = [];
+    const g = await modSignImg(kind); if (!g) return imgs;
     relsXml = await zip.file('word/_rels/document.xml.rels').async('string');
     let ct = await zip.file('[Content_Types].xml').async('string'); if (!/Extension="png"/i.test(ct)) ct = ct.replace('<Types ', '<Types ').replace(/(<Types[^>]*>)/, '$1<Default Extension="png" ContentType="image/png"/>'); zip.file('[Content_Types].xml', ct);
-    const g = await modSignImg(); const rid = 'rIdNextravelFirma';
-    zip.file('word/media/diodoro_firma.png', g.url.split(',')[1], { base64: true });
-    if (!relsXml.includes(`Id="${rid}"`)) relsXml = relsXml.replace('</Relationships>', `<Relationship Id="${rid}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/diodoro_firma.png"/></Relationships>`);
-    const cx = Math.round(5.6 * 360000); imgs.push({ rid, cx, cy: Math.round(cx * g.h / g.w) });
+    const rid = 'rIdNextravelFirma_' + kind;
+    zip.file('word/media/nextravel_' + kind + '.png', g.url.split(',')[1], { base64: true });
+    if (!relsXml.includes(`Id="${rid}"`)) relsXml = relsXml.replace('</Relationships>', `<Relationship Id="${rid}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/nextravel_${kind}.png"/></Relationships>`);
+    const cx = Math.round((kind === 'both' ? 5.6 : 4.4) * 360000); imgs.push({ rid, cx, cy: Math.round(cx * g.h / g.w) });
     zip.file('word/_rels/document.xml.rels', relsXml); return imgs; };
-  let idn = 9100; const imgRuns = async here => (await addImgs()).map(g => docxImgRun(xml, g.rid, idn++, g.cx, g.cy, here));
+  let idn = 9100; const imgRuns = async (here, kind) => (await addImgs(kind)).map(g => docxImgRun(xml, g.rid, idn++, g.cx, g.cy, here));
   let firmaDone = false;
   const mkRun = (likeRun, text) => { const r = xml.createElementNS(W_NS, 'w:r'); const rp = likeRun && likeRun.getElementsByTagNameNS(W_NS, 'rPr')[0]; if (rp) r.appendChild(rp.cloneNode(true));
     const t = xml.createElementNS(W_NS, 'w:t'); t.setAttributeNS('http://www.w3.org/XML/1998/namespace', 'xml:space', 'preserve'); t.textContent = text; r.appendChild(t); return r; };
@@ -2203,18 +2210,18 @@ async function modFillDocx(M, vals, ticks) {
   bySlot.sort((x, y) => y.s.pi - x.s.pi || (y.s.a ?? y.s.ins) - (x.s.a ?? x.s.ins));
   for (const { s, v } of bySlot) {
     const P = paras[s.pi]; const at = P.atoms;
-    if (s.ins !== undefined && v === '@firma') { const a = at[Math.max(0, s.ins - 1)]; if (a) { let ref = a.r; (await imgRuns(true)).forEach(rn => { ref.parentNode.insertBefore(rn, ref.nextSibling); ref = rn; }); firmaDone = true; } continue; }
+    if (s.ins !== undefined && SIGNK[v]) { const a = at[Math.max(0, s.ins - 1)]; if (a) { let ref = a.r; (await imgRuns(true, SIGNK[v])).forEach(rn => { ref.parentNode.insertBefore(rn, ref.nextSibling); ref = rn; }); firmaDone = true; } continue; }
     if (s.ins !== undefined && !at[s.ins - 1]) { const r0 = P.p.getElementsByTagNameNS(W_NS, 'r')[0]; const nr = mkRun(r0, v + ' '); if (r0) r0.parentNode.insertBefore(nr, r0); else P.p.appendChild(nr); continue; }
     if (s.ins !== undefined && (at[s.ins - 1].tab || at[s.ins - 1].br)) { const a = at[s.ins - 1]; a.r.parentNode.insertBefore(mkRun(a.r, ' ' + v), a.r.nextSibling); continue; }
     if (s.ins !== undefined) { const a = at[s.ins - 1] || at[0]; if (!a || a.tab || a.br) continue; a.node.textContent = a.node.textContent.slice(0, a.i + 1) + (a.ch === ' ' ? '' : ' ') + v + a.node.textContent.slice(a.i + 1); a.node.setAttributeNS('http://www.w3.org/XML/1998/namespace', 'xml:space', 'preserve'); continue; }
     const first = at[s.a]; let text = modNoVia(s.label, v);
-    if (v === '@firma') { text = ''; }
+    if (SIGNK[v]) { text = ''; }
     else if (v) { const pc = P.text[s.a - 1], nc = P.text[s.b]; if (pc && !/\s/.test(pc)) text = ' ' + text; if (nc && !/[\s,.;:)]/.test(nc)) text += ' '; }
     // remove the atoms of the blank (from the end), the value goes where the blank begins
     const nodes = new Map(); for (let i = s.a; i < s.b; i++) { const x = at[i]; if (x.tab || x.br) { if (x !== first) x.node.remove(); continue; } (nodes.get(x.node) || nodes.set(x.node, []).get(x.node)).push(x.i); }
     nodes.forEach((idx, node) => { const lo = Math.min(...idx), hi = Math.max(...idx) + 1; const keep = node === first.node ? text : ''; node.textContent = node.textContent.slice(0, lo) + keep + node.textContent.slice(hi); node.setAttributeNS('http://www.w3.org/XML/1998/namespace', 'xml:space', 'preserve'); });
     if (first.tab || first.br) { if (text) first.node.parentNode.insertBefore(mkRun(null, text).firstChild, first.node); first.node.remove(); }
-    if (v === '@firma') { const runs = await imgRuns(true); let ref = first.r; runs.forEach(rn => { ref.parentNode.insertBefore(rn, ref.nextSibling); ref = rn; }); firmaDone = true; }
+    if (SIGNK[v]) { const runs = await imgRuns(true, SIGNK[v]); let ref = first.r; runs.forEach(rn => { ref.parentNode.insertBefore(rn, ref.nextSibling); ref = rn; }); firmaDone = true; }
   }
   // the boxes: the chosen ones ☒, the others ☐ (the numbering of the list is replaced by the box)
   M.checks.forEach((c, i) => { const P = paras[c.pi]; const on = !!ticks[i];
@@ -2385,12 +2392,13 @@ async function modReadPdf(buf) {
 const pdfSafe = s => String(s).replace(/[’‘]/g, "'").replace(/[“”]/g, '"').replace(/[–—]/g, '-').replace(/…/g, '...').replace(/[^\x20-\x7e -ÿ€]/g, '');
 async function modFillPdf(M, vals, ticks) {
   const PL = await loadPdfLib(); const pdf = await PL.PDFDocument.load(M.buf.slice(0)); const font = await pdf.embedFont(PL.StandardFonts.Helvetica); const pages = pdf.getPages(); const D = ditta();
-  const g = await modSignImg(); const sim = g ? await pdf.embedPng(Uint8Array.from(atob(g.url.split(',')[1]), c => c.charCodeAt(0))) : null;
-  const SW = 158, SH = g ? SW * g.h / g.w : 0; const sign = (pg, x, y) => { if (sim) pg.drawImage(sim, { x, y, width: SW, height: SH }); };
+  const SIMS = {}; for (const kind of ['both', 'firma', 'timbro']) { const g = await modSignImg(kind); if (g) { const w = kind === 'both' ? 158 : 125; SIMS[kind] = { im: await pdf.embedPng(Uint8Array.from(atob(g.url.split(',')[1]), c => c.charCodeAt(0))), w, h: w * g.h / g.w }; } }
+  const sim = SIMS.both || SIMS.firma || SIMS.timbro, SW = sim ? sim.w : 0, SH = sim ? sim.h : 0;
+  const sign = (pg, x, y, kind) => { const s = SIMS[kind || 'both'] || sim; if (s) pg.drawImage(s.im, { x, y: y + (SH - s.h) / 2, width: s.w, height: s.h }); };
   let firmaDone = false;
   M.slots.forEach((s, i) => { const v = vals[i]; if (v === null || v === undefined) return; const pg = pages[s.p - 1];
     if (!s.under) pg.drawRectangle({ x: s.x - 0.5, y: s.y - 2.5, width: Math.max(4, s.x2 - s.x + 1), height: s.h + 3.5, color: PL.rgb(1, 1, 1) });
-    if (v === '@firma') { sign(pg, s.x, s.y - SH * 0.4); firmaDone = true; return; } if (!v) return;
+    if (SIGNK[v]) { sign(pg, s.x, s.y - SH * 0.4, SIGNK[v]); firmaDone = true; return; } if (!v) return;
     const t = pdfSafe(modNoVia(s.label, v)); let fs = Math.min(10.5, s.h); const room = Math.max(40, s.x2 - s.x); while (fs > 6 && font.widthOfTextAtSize(t, fs) > room) fs -= 0.5;
     pg.drawText(t, { x: s.x + (s.under ? 1 : 3), y: s.y + (s.under ? 1.5 : 0), size: fs, font, color: PL.rgb(0, 0, 0) }); });
   M.checks.forEach((c, i) => { if (!ticks[i]) return; const pg = pages[c.p - 1]; pg.drawText('X', { x: c.x + 0.8, y: c.y + 0.5, size: c.h * 0.95, font, color: PL.rgb(0, 0, 0) }); });
@@ -2398,7 +2406,7 @@ async function modFillPdf(M, vals, ticks) {
   (M.extra || []).forEach(x => { const pg = pages[x.p - 1]; if (!pg) return;
     if (x.k === 'x') pg.drawText('X', { x: x.x - 3.8, y: x.y - 4.2, size: 12, font, color: ink });
     else if (x.k === 'v') { pg.drawLine({ start: { x: x.x - 4.5, y: x.y }, end: { x: x.x - 1.2, y: x.y - 4 }, thickness: 1.7, color: ink }); pg.drawLine({ start: { x: x.x - 1.2, y: x.y - 4 }, end: { x: x.x + 5.5, y: x.y + 5.5 }, thickness: 1.7, color: ink }); }
-    else if (x.k === 'f') { sign(pg, x.x - 30, x.y - SH / 2); firmaDone = true; }
+    else if (EXTK[x.k]) { sign(pg, x.x - 30, x.y - SH / 2, SIGNK[EXTK[x.k]]); firmaDone = true; }
     else { const t = x.f ? modValue(x.f, MODV) : x.t; if (t) pg.drawText(pdfSafe(t), { x: x.x, y: x.y - 4, size: 10.5, font, color: ink }); } });
   if (!firmaDone && sim) { const L = M.lines.filter(l => /firma|dichiarante|legale rappresentante/i.test(l.text)).pop();
     if (L) { const pg = pages[L.p - 1]; const it = L.items.find(x => /firma|dichiarante|legale/i.test(x.s)) || L.items[0]; sign(pg, Math.max(40, Math.min(it.x - 30, pg.getWidth() - SW - 30)), L.y - SH - 2); } }
@@ -2415,7 +2423,7 @@ const modTxt = s => esc(s).replace(/\t+/g, ' &emsp; ');
 function modChip(M, mi, i) {
   const s = M.slots[i]; const val = modValue(s.choice, MODV);
   const cls = !s.known ? 'mnew' : val === null ? 'mkeep' : 'mok';
-  const txt = val === '@firma' ? '✍️ firma e timbro' : val === null ? '……' : val === '' ? '(vuoto)' : val;
+  const txt = SIGNK[val] ? SIGNL[SIGNK[val]] : val === null ? '……' : val === '' ? '(vuoto)' : val;
   // ✕ = empty it with one click (the dots stay as they are)
   return `<span class="mchip ${cls}" data-mchip="${mi}:${i}" title="${esc(s.ctx)} — clicca per cambiare">${esc(txt.length > 70 ? txt.slice(0, 70) + '…' : txt)}${val !== null ? `<b class="mclr" data-mclr="${mi}:${i}" title="Svuota: lascio i puntini">✕</b>` : ''}</span>`;
 }
@@ -2426,7 +2434,7 @@ function modDocHtml(M, mi) {
   const byP = {}; M.slots.forEach((s, i) => (byP[s.pi] = byP[s.pi] || []).push({ i, a: s.a ?? s.ins, b: s.a !== undefined ? s.b : s.ins, ins: s.ins !== undefined }));
   (M.extra || []).forEach((x, j) => (byP[x.pi] = byP[x.pi] || []).push({ j, a: x.at, b: x.at, ins: true }));
   const chk = {}; M.checks.forEach((c, i) => { chk[c.pi] = i; });
-  const firmaP = M.slots.some(s => s.choice === '@firma') || (M.extra || []).some(x => x.k === 'f') ? -1 : M.view.map(v => v.text).findLastIndex(t => /firma|dichiarante|legale rappresentante/i.test(t));
+  const firmaP = M.slots.some(s => SIGNK[s.choice]) || (M.extra || []).some(x => EXTK[x.k]) ? -1 : M.view.map(v => v.text).findLastIndex(t => /firma|dichiarante|legale rappresentante/i.test(t));
   return M.view.map((v, pi) => {
     const t = v.text; let h = '', at = 0;
     (byP[pi] || []).sort((x, y) => x.a - y.a).forEach(o => {
@@ -2451,8 +2459,8 @@ function modExtHtml(M, mi, p) {
   const pg = M.pages[p - 1], sc = MOD_PW / pg.w;
   return (M.extra || []).map((x, j) => x.p !== p ? '' : `<div class="mpos mxt" style="left:${(x.x * sc - (x.k === 't' ? 0 : 9)).toFixed(1)}px;top:${((pg.h - x.y) * sc - 11).toFixed(1)}px">${modExtChip(M, mi, j)}</div>`).join('');
 }
-const modExtText = x => x.k === 'x' ? 'X' : x.k === 'v' ? '✓' : x.k === 'f' ? '@firma' : (x.f ? modValue(x.f, MODV) : x.t) || '';
-const modExtChip = (M, mi, j) => { const x = M.extra[j]; return `<span class="mchip mok mxchip" data-mext="${mi}:${j}" title="Messo da te: clicca per togliere o cambiare">${x.k === 'x' ? '✗' : x.k === 'v' ? '✓' : x.k === 'f' ? '✍️ firma e timbro' : esc(modExtText(x) || '…')}</span>`; };
+const modExtText = x => x.k === 'x' ? 'X' : x.k === 'v' ? '✓' : EXTK[x.k] ? EXTK[x.k] : (x.f ? modValue(x.f, MODV) : x.t) || '';
+const modExtChip = (M, mi, j) => { const x = M.extra[j]; return `<span class="mchip mok mxchip" data-mext="${mi}:${j}" title="Messo da te: clicca per togliere o cambiare">${x.k === 'x' ? '✗' : x.k === 'v' ? '✓' : EXTK[x.k] ? SIGNL[SIGNK[EXTK[x.k]]] : esc(modExtText(x) || '…')}</span>`; };
 let MOD_PEND = null;   /* where you clicked on the page, waiting for what to put there */
 function modPopAt(cx, cy, html) {
   const pop = $('modPop'); if (!pop) return; pop.innerHTML = html; pop.hidden = false; const ed = pop.parentNode.getBoundingClientRect();
@@ -2558,7 +2566,7 @@ function modPopFor(mi, i) {
 }
 function modPickList(cur, mi, i) {
   const o = (v, l, val) => `<div class="mopt ${v === cur ? 'on' : ''}" data-mpick="${mi}:${i}" data-v="${esc(v)}">${esc(l)}${val ? ` — <b>${esc(String(val).replace(/\s+/g, ' ').slice(0, 45))}</b>` : ''}</div>`;
-  const sp = MOD_SPECIAL.map(([k, l]) => { let val = ''; try { val = modValue(k, MODV); } catch (e) {} return o(k, l, val === '@firma' ? '' : val); }).join('');
+  const sp = MOD_SPECIAL.map(([k, l]) => { let val = ''; try { val = modValue(k, MODV); } catch (e) {} return o(k, l, SIGNK[val] ? '' : val); }).join('');
   return '<div class="mgrp">Scelte</div>' + o('', '— lascia com\'è') + o('x', '✕ cancella i puntini') + o('@t', '✏️ scrivo io…') + '<div class="mgrp">Speciali</div>' + sp
     + DITTA_FIELDS.filter(x => x[0] !== 'Scadenze').map(([t, fs]) => `<div class="mgrp">${esc(t)}</div>` + fs.filter(f => f[3] !== 'area' && f[3] !== 'calc').map(f => o(f[0], f[1], dittaVal(f[0], f[2]))).join('')).join('');
 }
@@ -2667,7 +2675,7 @@ async function modPreview(mi) {
 }
 // where the free writing goes: a point of a PDF page, or a point of the text of a Word paragraph
 const modPendAt = () => MOD_PEND.docx ? { pi: MOD_PEND.pi, at: MOD_PEND.at } : { p: MOD_PEND.p, x: MOD_PEND.x, y: MOD_PEND.y };
-const modPutHtml = () => `<div class="mini" style="margin-bottom:6px">Cosa metto qui?</div><div style="display:flex;gap:6px;flex-wrap:wrap"><button type="button" class="btn" data-mput="x">✗ Una X</button><button type="button" class="btn" data-mput="v">✓ Una spunta</button><button type="button" class="btn" data-mput="f">✍️ Firma e timbro</button></div>
+const modPutHtml = () => `<div class="mini" style="margin-bottom:6px">Cosa metto qui?</div><div style="display:flex;gap:6px;flex-wrap:wrap"><button type="button" class="btn" data-mput="x">✗ Una X</button><button type="button" class="btn" data-mput="v">✓ Una spunta</button><button type="button" class="btn" data-mput="f">✍️ Firma e timbro</button><button type="button" class="btn" data-mput="ff">✍️ Solo firma</button><button type="button" class="btn" data-mput="ft">🔖 Solo timbro</button></div>
   <div style="display:flex;gap:6px;margin-top:8px"><input id="modPutT" placeholder="scrivi un testo…" style="flex:1"><button type="button" class="btn pri" data-mput="t">Metti</button></div>
   <div class="mini" style="margin:10px 0 4px">📋 oppure scegli un dato di Nextravel:</div>${modFieldList('', 'put')}`;
 // a little window with some buttons → the key of the one clicked ('back' with Esc or a click outside)
@@ -2706,7 +2714,7 @@ document.addEventListener('click', e => {
   const put = e.target.closest('[data-mput]'); if (put && MOD_PEND) { const k = put.dataset.mput, t = k === 't' ? ($('modPutT').value || '').trim() : ''; if (k === 't' && !t) return $('modPutT').focus();
     const M = MODS[MOD_PEND.mi]; (M.extra = M.extra || []).push({ ...modPendAt(), k, t }); MOD_PEND = null; $('modPop').hidden = true; return modRefresh(); }
   const xc = e.target.closest('[data-mext]'); if (xc) { const [mi, j] = xc.dataset.mext.split(':').map(Number); const x = MODS[mi].extra[j]; const b = xc.getBoundingClientRect();
-    return modPopAt(b.left, b.bottom, `${x.k === 't' ? `<div class="mini">${x.f ? 'Dato di Nextravel' : 'Testo'}</div>${x.f ? modFieldList(x.f, `ext:${mi}:${j}`) : `<input data-mextt="${mi}:${j}" value="${esc(x.t)}">`}` : `<div class="mini">${x.k === 'f' ? 'Firma e timbro' : x.k === 'x' ? 'Una X' : 'Una spunta'} messa qui da te</div>`}
+    return modPopAt(b.left, b.bottom, `${x.k === 't' ? `<div class="mini">${x.f ? 'Dato di Nextravel' : 'Testo'}</div>${x.f ? modFieldList(x.f, `ext:${mi}:${j}`) : `<input data-mextt="${mi}:${j}" value="${esc(x.t)}">`}` : `<div class="mini">${EXTK[x.k] ? SIGNL[SIGNK[EXTK[x.k]]].replace(/^\S+\s/, '') : x.k === 'x' ? 'Una X' : 'Una spunta'} messa qui da te</div>`}
       <div style="display:flex;gap:6px;justify-content:flex-end;margin-top:8px"><button type="button" class="btn" data-mextdel="${mi}:${j}">🗑 Togli</button><button type="button" class="btn" data-mpopx>Chiudi</button></div>`); }
   const xd = e.target.closest('[data-mextdel]'); if (xd) { const [mi, j] = xd.dataset.mextdel.split(':').map(Number); MODS[mi].extra.splice(j, 1); $('modPop').hidden = true; return modRefresh(); }
   const cv = e.target.closest('.mpdfpage canvas'); if (cv && MOD_CUR >= 0) { const M = MODS[MOD_CUR], p = +cv.dataset.mpage, pg = M.pages[p - 1], r = cv.getBoundingClientRect(), sc = r.width / pg.w;
@@ -2810,7 +2818,7 @@ async function letOpen(id) {
   let L = id ? lettere().find(x => x.id === id) : null;
   if (!L) { L = { id: 'l' + Date.now().toString(36), to: '', auto: true, place: dittaVal('sede_comune', 'Carini'), when: '', title: '', body: '', sign: true, at: Date.now() }; lettere().push(L); docLog('Lettera: nuova', ''); }
   if (L.auto === undefined) L.auto = false;
-  LET_CUR = L; const sign = (ditta().firma || ditta().timbro) ? (await modSignImg() || {}).url : null;
+  LET_CUR = L; const SG = {}; for (const kind of ['both', 'firma', 'timbro']) SG[kind] = ((await modSignImg(kind)) || {}).url || null; const sign = SG.both; const sgn = () => SG[L.signMode || 'both'] || sign;
   const back = document.createElement('div'); back.className = 'dlg-back'; back.id = 'letEd'; back.style.zIndex = 190;
   back.innerHTML = `<div class="medit lted"><div class="mtop" style="padding-bottom:8px"><h3 style="flex:1;margin:0">✉️ Lettera su carta intestata</h3><button type="button" class="mclose" data-lclose title="Chiudi">✕</button></div>
     <div class="ltbody"><div class="ltform">
@@ -2821,12 +2829,13 @@ async function letOpen(id) {
       <label>Luogo e data <span class="mini">(in fondo, prima della firma)</span><input id="ltWhen" value="${esc(L.auto === false ? L.when : (L.place ?? ''))}" placeholder="${L.auto === false ? 'Carini, ' + letToday() : 'Carini'}"></label>
       <label class="tgtile rbt" style="margin-top:6px"><input type="checkbox" id="ltAuto" ${L.auto !== false ? 'checked' : ''}><b class="spmk" style="margin:0">📅</b><span>Sempre la data di oggi</span><small>scrivi solo il luogo: la data si aggiorna da sola</small><i class="onoff"></i></label>
       <label class="tgtile gdt" style="margin-top:10px"><input type="checkbox" id="ltSign" ${L.sign ? 'checked' : ''}><b class="spmk gd" style="margin:0">✍️</b><span>Firma e timbro</span><small>${esc(dittaVal('lr_nome') || 'legale rappresentante')}${sign ? '' : ' · carica firma e timbro in Dati Nextravel'}</small><i class="onoff"></i></label>
+      <div class="ltsm">${[['both', '✍️ Firma e timbro'], ['firma', '✍️ Solo firma'], ['timbro', '🔖 Solo timbro']].map(([k, l]) => `<label><input type="radio" name="ltSm" value="${k}" ${(L.signMode || 'both') === k ? 'checked' : ''}> ${l}</label>`).join('')}</div>
       <div class="ltact"><button type="button" class="btn" data-lbozza>📝 Salva bozza</button><button type="button" class="btn pri" data-lpdf="save">💾 Salva PDF</button></div>
       <p class="mini" style="margin:6px 0 0">Tutto è facoltativo. La bozza si salva anche da sola mentre scrivi: la ritrovi in Compilaz. doc. › Lettere su carta intestata. Con Salva PDF scegli tu la cartella (per esempio Dropbox › Nextravel › Nextravel Documenti).</p>
     </div><div class="ltprev"><iframe id="ltFrame"></iframe></div></div></div>`;
   document.body.appendChild(back);
-  const get = () => { L.to = $('ltTo').value; const au = $('ltAuto').checked; if (au) { L.place = $('ltWhen').value; } else L.when = $('ltWhen').value; L.title = $('ltTitle').value; L.body = letClean($('ltBody').innerHTML); L.sign = $('ltSign').checked; L.at = Date.now(); };
-  const draw = () => { $('ltFrame').srcdoc = letterHtml(L, sign, false); };
+  const get = () => { L.to = $('ltTo').value; const au = $('ltAuto').checked; if (au) { L.place = $('ltWhen').value; } else L.when = $('ltWhen').value; L.title = $('ltTitle').value; L.body = letClean($('ltBody').innerHTML); L.sign = $('ltSign').checked; const sm = document.querySelector('input[name=ltSm]:checked'); L.signMode = sm ? sm.value : 'both'; L.at = Date.now(); };
+  const draw = () => { $('ltFrame').srcdoc = letterHtml(L, sgn(), false); };
   let t; const changed = () => { get(); clearTimeout(t); t = setTimeout(() => { draw(); save(); renderLettere(); }, 350); };
   back.addEventListener('input', changed); back.addEventListener('change', changed);
   $('ltAuto').addEventListener('change', () => { const w = $('ltWhen'), au = $('ltAuto').checked;
@@ -2839,7 +2848,7 @@ async function letOpen(id) {
     const p = e.target.closest('[data-lpdf]'); if (!p) return; get(); save(); renderLettere();
     const name = (`Lettera${L.title ? ' - ' + L.title : ''}${L.to ? ' - ' + L.to.split('\n')[0] : ''} - ${letToday().replace(/\//g, '.')}`).replace(/[\\/:*?"<>|\n]/g, '-').replace(/\s+/g, ' ').slice(0, 120).trim();
     toast('Preparo il PDF…');
-    try { const bytes = await letterPdf(L, sign); const n = await salvaFile(bytes, name + '.pdf', PDF_T); if (!n) return;
+    try { const bytes = await letterPdf(L, sgn()); const n = await salvaFile(bytes, name + '.pdf', PDF_T); if (!n) return;
       L.pdfAt = Date.now(); L.pdfName = n; docLog('Lettera: PDF creato', L.title || name); save(); renderLettere(); toast('Salvato: ' + n); }
     catch (er) { info('Salva PDF', 'Il PDF non è venuto: ' + er.message); }
   });
@@ -2893,6 +2902,16 @@ window.docView = view => {
   docFilesLoad().finally(() => { if ($('viewDocumenti')) renderDocumenti(); });
 };
 window.docReset = () => { DOCS = { ditta: {}, moduli: { rules: {}, checks: {} }, lettere: [], storico: {} }; DOCBASE = null; DFILEBASE = null; DFILES_OK = !SB; };
+/* drag and drop: a Word or PDF file dropped on the page opens like with Carica moduli */
+{ let depth = 0; const hasFiles = e => [...((e.dataTransfer || {}).types || [])].includes('Files');
+  const onPage = () => !!$('viewDocumenti') && /^#documenti/.test(location.hash) && !document.querySelector('#letEd');
+  const box = on => { const b = $('modList') && $('modList').closest('.modbox'); if (b) b.classList.toggle('moddrop', on); };
+  document.addEventListener('dragenter', e => { if (!hasFiles(e) || !onPage()) return; e.preventDefault(); depth++; box(true); });
+  document.addEventListener('dragover', e => { if (!hasFiles(e) || !onPage()) return; e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; });
+  document.addEventListener('dragleave', e => { if (!hasFiles(e) || !onPage()) return; depth = Math.max(0, depth - 1); if (!depth) box(false); });
+  document.addEventListener('drop', e => { if (!hasFiles(e) || !onPage()) return; e.preventDefault(); depth = 0; box(false);
+    const fs = [...e.dataTransfer.files], ok = fs.filter(f => /\.(docx|pdf)$/i.test(f.name)); if (ok.length) modAddFiles(ok);
+    if (ok.length < fs.length) info('Compila un modulo', 'Apro solo i moduli Word (.docx) e PDF. Un .doc vecchio: aprilo in Word e salvalo come .docx.'); }); }
 window.docEditorAperto = () => !!document.querySelector('#modEd,#letEd');
 })();
 
