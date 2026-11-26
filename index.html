@@ -546,6 +546,18 @@ table.agx td>.agv{margin-bottom:2px;font-size:12.5px;padding:2px 4px;gap:4px}
 @media (max-width:760px){.ltbody{flex-direction:column;overflow:auto}.ltform{width:100%}.ltprev{min-height:60vh}.medit{height:100vh;border-radius:0}.mpop{width:calc(100% - 16px)}}
 .modbox.moddrop{outline:3px dashed var(--red);outline-offset:2px;background:#fff5f2}
 .ltsm{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 0}.ltsm label{display:flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:8px;padding:5px 9px;background:#fff;cursor:pointer;font-size:14px}.ltsm input{width:16px;height:16px;margin:0}
+.ptabs button{font-size:16px}
+table.ptab td.rauto{color:var(--green)} table.ptab td.rpend{color:var(--mute);font-size:12px;line-height:1.1}
+.spgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:14px;margin-top:14px}
+.spcard{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:#fff}.spcard.ok{border-color:var(--green);box-shadow:0 0 0 2px var(--green-bg)}
+.sph{display:flex;align-items:center;gap:10px;margin-bottom:8px}.sph b{flex:1;font-size:17px}
+.spok{border:1.5px solid var(--line);background:#fff;border-radius:20px;padding:5px 14px;font-weight:800;font-size:16px;cursor:pointer}.spok.on{background:var(--green);border-color:var(--green);color:#fff}
+.sptab{width:100%;border-collapse:collapse}.sptab th{font-size:12px;color:var(--mute);text-align:left;font-weight:600;padding:2px 4px}.sptab td{padding:2px 3px}.sptab input{width:100%;border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:15px}
+.sptab td:nth-child(1){width:150px}.sptab td:nth-child(2){width:100px}.sptab td:nth-child(4){width:30px}.sptab .x{border:0;background:none;cursor:pointer;color:var(--mute);font-size:16px}
+.stipbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px;padding:10px 14px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.stipt .stacc{display:inline-flex;gap:4px;align-items:center;background:var(--grey-bg);border-radius:8px;padding:2px 8px;margin:2px 4px 2px 0;font-size:14px}.stipt .stacc i{cursor:pointer;color:var(--mute);font-style:normal}
+.stipt tr.stpaid td{background:var(--green-bg)} .stipt .stdue{font-size:17px} .stipt tr.sttot td{border-top:2px solid var(--ink)}
+@media (max-width:760px){.spgrid{grid-template-columns:1fr}}
 .print-only{display:none}
 @media print{
   .print-only{display:block}
@@ -610,8 +622,8 @@ const SB_URL = 'https://jofzimnrgkzvlawuuivp.supabase.co', SB_KEY = 'eyJhbGciOiJ
 const EMAILS = {Jessica:'jessica@nextravel.app', Roberto:'roberto@nextravel.app', Alessandro:'alessandro@nextravel.app', Lia:'lia@nextravel.app', Letizia:'letizia@nextravel.app'};
 const PINLEN = SB ? 6 : 4;
 /* ---------------- AVVISO AGGIORNAMENTI ---------------- */
-const APP_VERSION = '20261123-134324';
-const APP_NOVITA = [{"v":"20261008-092039","d":"2026-10-08","n":["NUOVA AGENDA: dopo il PIN scegli se entrare nel Gestionale Next o nell\u0027Agenda di Jessica e Lia.","Agenda: stessi colori dell\u0027Excel (azzurro Diodoro bus, pesca Next, verde Diodoro agenzia, bianco extra). Clicca il quadratino per barrare una cosa fatta.","Agenda: trascina una voce su un altro giorno per spostarla; il triangolino rosso indica una nota."]},{"v":"20261008-094415","d":"2026-10-08","n":["Agenda: tutti i mesi sono nella stessa pagina, uno sotto l\u0027altro: scorri in giù e in su. Si apre sul mese corrente.","Agenda: per aggiungere una cosa da fare basta cliccare sul giorno.","Agenda: in alto il menu giallo porta subito a un mese, \"Oggi\" riporta al giorno di oggi."]},{"v":"20261008-094943","d":"2026-10-08","n":["Agenda: \"Nascondi le cose già fatte\" e i colori per filtrare restano sempre visibili in alto mentre scorri i mesi."]},{"v":"20261013-102616","d":"2026-10-13","n":["Agenda sul telefono: i giorni sono in elenco, uno sotto l\u0027altro, con le note leggibili subito sotto ogni voce.","Agenda sul telefono: tocca un giorno per aggiungere, tocca il quadratino per barrare. La lente 🔍 in alto apre ricerca e filtri."]},{"v":"20261014-100104","d":"2026-10-14","n":["Agenda: i pagamenti ai fornitori registrati nel Gestionale con una data di scadenza compaiono da soli nell\u0027agenda (💶, bordo tratteggiato), nel giorno giusto.","Agenda: il quadratino di un pagamento lo segna come pagato anche nel Gestionale (chiede la data); cliccando la scritta si apre il gruppo."]},{"v":"20261014-100849","d":"2026-10-14","n":["Agenda: compaiono da soli anche gli INCASSI dai clienti (acconti e saldi) che nel Gestionale hanno una data: 💰 con bordo verde tratteggiato."]},{"v":"20261014-101935","d":"2026-10-14","n":["Prima di eliminare qualsiasi cosa (voce dell\u0027agenda, entrata, uscita, rimborso, gruppo, fornitore) l\u0027app chiede sempre la conferma.","Dopo ogni azione compare in basso il tasto \"↶ Annulla azione\" per 15 secondi: anche dopo aver eliminato, barrato, spostato o modificato una voce dell\u0027agenda."]},{"v":"20261014-102248","d":"2026-10-14","n":["L\u0027avviso \"Aggiorna ora\" sta in alto a destra, più piccolo, e sparisce mentre stai compilando una finestra: non copre più il tasto Salva.","Con la × puoi rimandare l\u0027aggiornamento: l\u0027avviso ricompare dopo 10 minuti."]},{"v":"20261014-102553","d":"2026-10-14","n":["Chi non apre l\u0027app da qualche giorno ora vede, all\u0027apertura, la raccolta di TUTTE le novità che si è perso, divise per giorno (prima vedeva solo le ultime)."]},{"v":"20261015-113623","d":"2026-10-15","n":["Agenda: i colori ora si chiamano \"Diodoro Viaggi noleggio bus\" (azzurro), \"Nextravel\" (pesca) e \"Diodoro Viaggi agenzia\" (verde)."]},{"v":"20261016-122517","d":"2026-10-16","n":["Nella schermata del PIN c\u0027è la casella \"Mantieni l\u0027accesso su questo dispositivo\": se la spunti, l\u0027app non ti chiede più il PIN (e non si blocca da sola) finché non premi \"Esci\"."]},{"v":"20261105-090352","d":"2026-11-05","n":["NUOVA SEZIONE \"📑 Compilaz. doc.\": i dati di Nextravel sempre pronti, le lettere su carta intestata Nextravel in PDF e i moduli di scuole e gare (Word o PDF) compilati in pochi clic."]},{"v":"20261110-130358","d":"2026-11-10","n":["Presenze: quando scrivi a mano in una casella (es. P=2) la tabella si aggiorna subito, e premere Invio salva."]},{"v":"20261113-101706","d":"2026-11-13","n":["Le modifiche fatte dalle colleghe ora arrivano da sole, in pochi secondi, senza dover aggiornare la pagina. Quando torni sull\u0027app (o torna internet) si rimette subito in pari."]},{"v":"20261118-092449","d":"2026-11-18","n":["Agenda: dopo aver aggiunto o modificato una cosa, il menu giallo del mese resta sul mese che stai guardando."]},{"v":"20261123-134324","d":"2026-11-23","n":["Compilaz. doc.: puoi trascinare i moduli Word o PDF direttamente nella pagina per aprirli.","Compilaz. doc.: firma e timbro si possono mettere anche separati (solo firma, solo timbro), nei moduli e nelle lettere."]}];
+const APP_VERSION = '20261126-123119';
+const APP_NOVITA = [{"v":"20261008-092039","d":"2026-10-08","n":["NUOVA AGENDA: dopo il PIN scegli se entrare nel Gestionale Next o nell\u0027Agenda di Jessica e Lia.","Agenda: stessi colori dell\u0027Excel (azzurro Diodoro bus, pesca Next, verde Diodoro agenzia, bianco extra). Clicca il quadratino per barrare una cosa fatta.","Agenda: trascina una voce su un altro giorno per spostarla; il triangolino rosso indica una nota."]},{"v":"20261008-094415","d":"2026-10-08","n":["Agenda: tutti i mesi sono nella stessa pagina, uno sotto l\u0027altro: scorri in giù e in su. Si apre sul mese corrente.","Agenda: per aggiungere una cosa da fare basta cliccare sul giorno.","Agenda: in alto il menu giallo porta subito a un mese, \"Oggi\" riporta al giorno di oggi."]},{"v":"20261008-094943","d":"2026-10-08","n":["Agenda: \"Nascondi le cose già fatte\" e i colori per filtrare restano sempre visibili in alto mentre scorri i mesi."]},{"v":"20261013-102616","d":"2026-10-13","n":["Agenda sul telefono: i giorni sono in elenco, uno sotto l\u0027altro, con le note leggibili subito sotto ogni voce.","Agenda sul telefono: tocca un giorno per aggiungere, tocca il quadratino per barrare. La lente 🔍 in alto apre ricerca e filtri."]},{"v":"20261014-100104","d":"2026-10-14","n":["Agenda: i pagamenti ai fornitori registrati nel Gestionale con una data di scadenza compaiono da soli nell\u0027agenda (💶, bordo tratteggiato), nel giorno giusto.","Agenda: il quadratino di un pagamento lo segna come pagato anche nel Gestionale (chiede la data); cliccando la scritta si apre il gruppo."]},{"v":"20261014-100849","d":"2026-10-14","n":["Agenda: compaiono da soli anche gli INCASSI dai clienti (acconti e saldi) che nel Gestionale hanno una data: 💰 con bordo verde tratteggiato."]},{"v":"20261014-101935","d":"2026-10-14","n":["Prima di eliminare qualsiasi cosa (voce dell\u0027agenda, entrata, uscita, rimborso, gruppo, fornitore) l\u0027app chiede sempre la conferma.","Dopo ogni azione compare in basso il tasto \"↶ Annulla azione\" per 15 secondi: anche dopo aver eliminato, barrato, spostato o modificato una voce dell\u0027agenda."]},{"v":"20261014-102248","d":"2026-10-14","n":["L\u0027avviso \"Aggiorna ora\" sta in alto a destra, più piccolo, e sparisce mentre stai compilando una finestra: non copre più il tasto Salva.","Con la × puoi rimandare l\u0027aggiornamento: l\u0027avviso ricompare dopo 10 minuti."]},{"v":"20261014-102553","d":"2026-10-14","n":["Chi non apre l\u0027app da qualche giorno ora vede, all\u0027apertura, la raccolta di TUTTE le novità che si è perso, divise per giorno (prima vedeva solo le ultime)."]},{"v":"20261015-113623","d":"2026-10-15","n":["Agenda: i colori ora si chiamano \"Diodoro Viaggi noleggio bus\" (azzurro), \"Nextravel\" (pesca) e \"Diodoro Viaggi agenzia\" (verde)."]},{"v":"20261016-122517","d":"2026-10-16","n":["Nella schermata del PIN c\u0027è la casella \"Mantieni l\u0027accesso su questo dispositivo\": se la spunti, l\u0027app non ti chiede più il PIN (e non si blocca da sola) finché non premi \"Esci\"."]},{"v":"20261105-090352","d":"2026-11-05","n":["NUOVA SEZIONE \"📑 Compilaz. doc.\": i dati di Nextravel sempre pronti, le lettere su carta intestata Nextravel in PDF e i moduli di scuole e gare (Word o PDF) compilati in pochi clic."]},{"v":"20261110-130358","d":"2026-11-10","n":["Presenze: quando scrivi a mano in una casella (es. P=2) la tabella si aggiorna subito, e premere Invio salva."]},{"v":"20261113-101706","d":"2026-11-13","n":["Le modifiche fatte dalle colleghe ora arrivano da sole, in pochi secondi, senza dover aggiornare la pagina. Quando torni sull\u0027app (o torna internet) si rimette subito in pari."]},{"v":"20261118-092449","d":"2026-11-18","n":["Agenda: dopo aver aggiunto o modificato una cosa, il menu giallo del mese resta sul mese che stai guardando."]},{"v":"20261123-134324","d":"2026-11-23","n":["Compilaz. doc.: puoi trascinare i moduli Word o PDF direttamente nella pagina per aprirli.","Compilaz. doc.: firma e timbro si possono mettere anche separati (solo firma, solo timbro), nei moduli e nelle lettere."]},{"v":"20261126-123119","d":"2026-11-26","n":["Presenze: nuova scheda 🧾 Spese dipendenti. Gli scontrini confermati (verde) vanno da soli nella colonna RIMBORSO SPESE del registro.","Presenze: nuova scheda 💶 Stipendi: acconti, netto in busta, da bonificare e bonificato. Con ✂ Dividi il PDF del consulente le buste paga vengono divise per persona, rinominate e salvate in Dropbox › Nextravel › Buste paga › anno › mese."]}];
 let UPDATE = null;   // {version, novita} quando sul sito c'è una versione più nuova
 async function checkUpdate(){
   if(!SB || location.protocol==='file:') return;
@@ -1224,6 +1236,7 @@ function presFromDoc(d){
     o[v].rows = isObj(r) ? Object.entries(r).filter(([k,x])=>isObj(x)).map(([k,x])=>({...x,id:x.id||k,d:x.d||{}})).sort((a,b)=>(a.ord??0)-(b.ord??0)) : (Array.isArray(r)?r:[]);
     o[v].notes = o[v].notes||'';
   }
+  const sp=o.spese; o.spese = isObj(sp) ? Object.entries(sp).filter(([k,x])=>isObj(x)).map(([k,x])=>({...x,id:x.id||k})).sort((a,b)=>(a.ord??0)-(b.ord??0)) : (Array.isArray(sp)?sp:[]);
   const s=o.storico; o.storico = isObj(s) ? Object.entries(s).filter(([k,x])=>isObj(x)).map(([k,x])=>({...x,id:x.id||k})).sort((a,b)=>(a.n??0)-(b.n??0)) : (Array.isArray(s)?s:[]);
   return o;
 }
@@ -1234,6 +1247,7 @@ function presToDoc(mo){
     const m={}; mo[v].rows.forEach((r,i)=>{ if(!r.id) r.id=uid('d'); r.ord=i+1; m[r.id]=JSON.parse(JSON.stringify(r)); });
     d[v]={rows:m, notes:mo[v].notes||''};
   }
+  const spm={}; (mo.spese||[]).forEach((s,i)=>{ if(!s.id) s.id=uid('s'); s.ord=i+1; spm[s.id]=JSON.parse(JSON.stringify(s)); }); d.spese=spm;
   const st={}; (mo.storico||[]).forEach((e,i)=>{ if(!e.id) e.id=uid('a'); if(e.n==null) e.n=Date.now()+i; st[e.id]=JSON.parse(JSON.stringify(e)); }); d.storico=st;
   return d;
 }
@@ -1306,6 +1320,9 @@ function viewPresenze(){
     <div class="seg">${anni.map(a=>`<button class="${a===PY?'on':''}" onclick="PY=${a};psel=null;render()">${a}</button>`).join('')}</div></div>
   <p class="sub">Un registro per ogni mese. Casella vuota = ha lavorato.</p>
   <div class="pmesi">${MESI_N.map((m,i)=>{ const o=DB.presenze[pKey(PY,i+1)]; return `<button class="pill-m ${PMN===i+1?'on':''} ${o&&(o.orig||o.cons)?'has':''}" onclick="PMN=${i+1};psel=null;render()">${m.slice(0,3)}</button>`; }).join('')}</div>`;
+  h+=presTabs(mo);
+  if(PTAB==='spese') return h+viewSpese();
+  if(PTAB==='stip'){ setTimeout(()=>{ if(BROOT_STATE==='?') busteRoot(false).then(()=>stipLoad()); else stipLoad(); },0); return h+viewStip(); }
   if(!mo || !(mo.orig||mo.cons)){
     return h+`<div class="card pad" style="margin-top:16px"><h2 style="margin-top:0">${MESI_N[PMN-1]} ${PY}: registro non ancora creato</h2>
       <p class="sub">Lo creo con i dipendenti del mese precedente e tutte le caselle vuote (vuoto = ha lavorato).</p>
@@ -1326,8 +1343,8 @@ function viewPresenze(){
     h+=`<tr><td class="pn"><span>${esc(r.n)}</span><span class="ptl"><button onclick="spostaDip(${i},-1)" title="Su">↑</button><button onclick="spostaDip(${i},1)" title="Giù">↓</button><button onclick="togliDip(${i})" title="Togli dal mese">✕</button></span></td>`;
     for(let d=1; d<=31; d++){ const wd=d<=nd?new Date(PY,PMN-1,d).getDay():-1; const c=(r.d||{})[d]||''; const red=r.red&&r.red[d];
       h+=`<td class="d ${wd===0?'sun':''} ${d>nd?'off':''}" data-i="${i}" data-d="${d}" style="color:${red?'#fff':pCodeColor(c)};${red?'background:#e00000':''}">${d<=nd?esc(c):''}</td>`; }
-    const t=totRiga(r);
-    h+=`<td class="pm m" onclick="modSoldi(${i},'base')">${r.base!=null&&r.base!==''?eur(r.base):''}</td><td class="pm m" onclick="modSoldi(${i},'rimb')">${r.rimb!=null&&r.rimb!==''?eur(r.rimb):''}</td><td class="pm">${t!==null?eur(t):''}</td></tr>`;
+    const t=totMese(mo,r), rb=rimbOf(mo,r);
+    h+=`<td class="pm m" onclick="modSoldi(${i},'base')">${r.base!=null&&r.base!==''?eur(r.base):''}</td><td class="pm m ${rb.auto&&rb.v?'rauto':''} ${rb.pend?'rpend':''}" onclick="modSoldi(${i},'rimb')" title="${rb.pend?'Scontrini caricati ma non confermati: confermali (verde) in Spese dipendenti':rb.auto&&rb.v?'Dagli scontrini confermati in Spese dipendenti':rb.v?'Scritto a mano (svuota per usare gli scontrini)':''}">${rb.v?eur(rb.v):rb.pend?'<small>da confermare</small><br>'+eur(rb.pend):''}</td><td class="pm">${t!==null?eur(t):''}</td></tr>`;
   });
   h+=`</tbody></table></div>
   <div class="row" style="margin-top:12px"><input class="pin" id="pAddName" list="pNomi" placeholder="Aggiungi dipendente…"><datalist id="pNomi">${nomiDipendenti().map(n=>`<option value="${esc(n)}">`).join('')}</datalist><button class="btn" onclick="aggiungiDip()">＋ Aggiungi</button></div>
@@ -1381,7 +1398,7 @@ function scriviGiorno(i,d){
       salvaMese(pKey(PY,PMN), c?`Scritto ${c}`:'Casella svuotata (= ha lavorato)', `${r.n} · giorno ${d}/${String(PMN).padStart(2,'0')}`); render(); toast(c?`✓ Scritto ${c} a ${r.n}, giorno ${d}`:'✓ Casella svuotata'); } });
 }
 function modSoldi(i,campo){
-  const v=pVers(), r=v.rows[i], lab=campo==='base'?'Base':'Rimborso spese';
+  const v=pVers(), r=v.rows[i], lab=campo==='base'?'Base':'Rimborso spese (vuoto = somma degli scontrini confermati)';
   openForm({ title:`${r.n} · ${lab}`, intro:`${MESI_N[PMN-1]} ${PY}. Lascia vuoto per togliere l'importo.`, values:{x:r[campo]}, fields:[{key:'x',label:lab,type:'money'}],
     onSave:x=>{ const prima=r[campo]; r[campo]=x.x; salvaMese(pKey(PY,PMN), `${lab} modificato`, `${r.n} · ${fmtV.soldi(prima)} → ${fmtV.soldi(x.x)}`); render(); } });
 }
@@ -1398,7 +1415,7 @@ function salvaNote(t){ const v=pVers(); if(!v) return; v.notes=t; salvaMese(pKey
 function stampaPresenze(){
   const mo=pMese(), v=pVers(); if(!v) return; const nd=giorniMese(PY,PMN);
   const leg=PCODES.filter(c=>!['MA','AI'].includes(c[0])).map(([c,n,col])=>`<span style="color:${col}">${c}= ${n}</span>`).join('');
-  const righe=v.rows.map(r=>{ let x=`<tr><td class="n">${esc(r.n)}</td>`; for(let d=1; d<=nd; d++){ const c=d<=nd?((r.d||{})[d]||''):''; const red=d<=nd&&r.red&&r.red[d]; x+=`<td style="color:${red?'#fff':pCodeColor(c)};${red?'background:#e00000;':''}${c.length>2?'font-size:7pt;':''}">${esc(c)}</td>`; } const t=totRiga(r); return x+`<td class="m">${r.base!=null&&r.base!==''?eur(r.base):''}</td><td class="m">${r.rimb!=null&&r.rimb!==''?eur(r.rimb):''}</td><td class="m">${t!==null?eur(t):''}</td></tr>`; }).join('');
+  const righe=v.rows.map(r=>{ let x=`<tr><td class="n">${esc(r.n)}</td>`; for(let d=1; d<=nd; d++){ const c=d<=nd?((r.d||{})[d]||''):''; const red=d<=nd&&r.red&&r.red[d]; x+=`<td style="color:${red?'#fff':pCodeColor(c)};${red?'background:#e00000;':''}${c.length>2?'font-size:7pt;':''}">${esc(c)}</td>`; } const t=totMese(mo,r), rb=rimbOf(mo,r); return x+`<td class="m">${r.base!=null&&r.base!==''?eur(r.base):''}</td><td class="m">${rb.v?eur(rb.v):''}</td><td class="m">${t!==null?eur(t):''}</td></tr>`; }).join('');
   const html=`<!doctype html><html><head><meta charset="utf-8"><title>Presenze Nextravel ${MESI_N[PMN-1]} ${PY}</title><style>
     @page{size:A4 landscape;margin:9mm} body{font-family:Calibri,Arial,sans-serif;margin:0}
     .head{display:flex;align-items:center;gap:18px;border:1.5px solid #000;padding:6px 10px 4px}.head img{height:50px}
@@ -1439,6 +1456,185 @@ document.addEventListener('keydown', e=>{
     else { const i=Math.max(0,Math.min(n-1,psel.i1+mv[0])), d=Math.max(1,Math.min(nd,psel.d1+mv[1])); psel={i1:i,d1:d,i2:i,d2:d}; }
     paintPSel(); }
 });
+/* =========================================================
+   PRESENZE › SPESE DIPENDENTI e 💶 STIPENDI (come nel gestionale Diodoro)
+   mo.spese = [{id, n, dt (aaaa-mm-gg), a, note}] · mo.speseOk = {NOME: true} · mo.stip = {NOME: {acc:[{d,imp}], netto, bNetto, bFile, bAt, paid}}
+   ========================================================= */
+let PTAB = 'reg';
+const nmTok = n => String(n||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').split(/[^a-z]+/).filter(t=>t.length>1);
+function sameName(a,b){ const A=nmTok(a), B=nmTok(b); if(!A.length||!B.length) return false; const [s,l]=A.length<=B.length?[A,B]:[B,A]; return s.every(t=>l.includes(t)); }
+const pnum = s => { const n=parseMoney(s); return isNaN(n)?null:n; };
+const pMeseAny = () => { const k=pKey(PY,PMN); return DB.presenze[k] || (DB.presenze[k]={orig:null, cons:null, storico:[]}); };
+const speseOk = (mo,n) => !!(mo && mo.speseOk && Object.keys(mo.speseOk).some(k=>mo.speseOk[k] && sameName(k,n)));
+function speseAuto(mo,n){ return r2((mo.spese||[]).filter(s=>sameName(s.n,n)).reduce((t,s)=>t+(+s.a||0),0)); }
+/* RIMBORSO SPESE: scritto a mano vale quello; altrimenti la somma degli scontrini confermati (verde) */
+function rimbOf(mo,r){ if(r.rimb!=null && r.rimb!=='') return {v:+r.rimb, auto:false}; const a=mo?speseAuto(mo,r.n):0; if(a && !speseOk(mo,r.n)) return {v:null, auto:true, pend:a}; return {v:a||null, auto:true}; }
+function totMese(mo,r){ const b=+r.base||0, s=rimbOf(mo,r).v||0; return (b||s)?r2(b+s):null; }
+function presTabs(mo){
+  const n=(mo&&mo.spese||[]).length;
+  return `<div class="seg ptabs" style="margin:14px 0 4px"><button class="${PTAB==='reg'?'on':''}" onclick="PTAB='reg';render()">📋 Registro presenze</button><button class="${PTAB==='spese'?'on':''}" onclick="PTAB='spese';render()">🧾 Spese dipendenti (${n})</button><button class="${PTAB==='stip'?'on':''}" onclick="PTAB='stip';render()">💶 Stipendi</button></div>`;
+}
+/* ---------- 🧾 Spese dipendenti ---------- */
+function viewSpese(){
+  const mo=DB.presenze[pKey(PY,PMN)]||{spese:[]}; const sp=mo.spese||[];
+  const names=[]; sp.forEach(s=>{ if(!names.some(n=>sameName(n,s.n))) names.push(s.n); });
+  let h=`<div class="card pad" style="margin-top:10px"><p class="sub" style="margin:0 0 12px">Qui metti gli scontrini che ti portano i dipendenti (pasti, materiale… pagati di tasca loro). Quando hai controllato la nota spese di una persona clicca il suo totale: diventa <b style="color:var(--green)">verde</b> e va da solo nella colonna <b>RIMBORSO SPESE</b> del registro.</p>
+    <div class="row"><input class="pin" id="sAddName" list="sNomi" placeholder="Dipendente…"><datalist id="sNomi">${nomiDipendenti().map(n=>`<option value="${esc(n)}">`).join('')}</datalist><button class="btn" onclick="spNuovo()">＋ Nuovo dipendente</button></div>
+    <div class="spgrid">`;
+  names.forEach(n=>{
+    const list=sp.map((s,i)=>[s,i]).filter(([s])=>sameName(s.n,n)).sort(([a,ia],[b,ib])=>String(a.dt||'9').localeCompare(String(b.dt||'9'))||ia-ib);
+    const tot=r2(list.reduce((t,[s])=>t+(+s.a||0),0)), ok=speseOk(mo,n);
+    h+=`<div class="spcard ${ok?'ok':''}"><div class="sph"><b>${esc(n)}</b><button class="spok ${ok?'on':''}" onclick="spConferma(${esc(JSON.stringify(n))})" title="${ok?'Nota spese controllata ✓ (clicca per togliere)':'Clicca quando hai controllato la nota spese: diventa verde e va nel registro'}">${ok?'✓ ':''}${eur(tot)}</button></div>
+      <table class="sptab"><tr><th>Data</th><th>Spesa</th><th>Note</th><th></th></tr>
+      ${list.map(([s,i])=>`<tr><td><input type="date" value="${esc(s.dt||'')}" onchange="spCampo(${i},'dt',this.value)"></td><td><input value="${s.a!=null&&s.a!==''?String(s.a).replace('.',','):''}" inputmode="decimal" placeholder="0,00" style="text-align:right" onchange="spCampo(${i},'a',this.value)"></td><td><input value="${esc(s.note||'')}" placeholder="pasto, parcheggio…" onchange="spCampo(${i},'note',this.value)"></td><td><button class="x" onclick="spTogli(${i})" title="Elimina">✕</button></td></tr>`).join('')}
+      </table><button class="btn small" style="margin-top:8px" onclick="spAggiungi(${esc(JSON.stringify(n))})">＋ scontrino</button></div>`;
+  });
+  if(!names.length) h+=`<div class="empty">Nessuna spesa a ${MESI_N[PMN-1].toLowerCase()} ${PY}.</div>`;
+  return h+'</div></div>';
+}
+const spDesc = s => `${s.n}${s.dt?' · '+fdate(s.dt):''}${+s.a?' · '+eur(s.a):''}${s.note?' · '+s.note:''}`;
+function spNuovo(){ const n=($('#sAddName').value||'').trim().toUpperCase(); if(!n) return toast('Scrivi il nome del dipendente'); const mo=pMeseAny(); (mo.spese=mo.spese||[]).push({id:uid('s'), n, dt:'', a:null, note:''}); salvaMese(pKey(PY,PMN),'Spese: nuovo dipendente', n); render(); }
+function spAggiungi(n){ const mo=pMeseAny(); (mo.spese=mo.spese||[]).push({id:uid('s'), n, dt:'', a:null, note:''}); salvaMese(pKey(PY,PMN)); render(); }
+function spCampo(i,f,v){ const mo=pMeseAny(), s=mo.spese[i]; if(!s) return; const prima=spDesc(s); v=String(v||'').trim();
+  if(f==='a'){ if(v===''){ s.a=null; } else { const x=pnum(v); if(x===null) return toast('Importo non valido: scrivi solo numeri, es. 12,50'); s.a=x; } } else s[f]=v;
+  salvaMese(pKey(PY,PMN),'Spese: scontrino modificato', `${prima} → ${spDesc(s)}`); render(); }
+function spTogli(i){ const mo=pMeseAny(), s=mo.spese[i]; if(!s) return;
+  askConfirm(`Eliminare questo scontrino?\n${spDesc(s)}`,'🗑️ Sì, elimina',()=>{ const k=mo.spese.indexOf(s); if(k>=0) mo.spese.splice(k,1); salvaMese(pKey(PY,PMN),'Spese: scontrino eliminato', spDesc(s)); render();
+    toast('Scontrino eliminato',()=>{ mo.spese.push(s); salvaMese(pKey(PY,PMN),'Spese: scontrino ripristinato', spDesc(s)); render(); }); }); }
+function spConferma(n){ const mo=pMeseAny(); mo.speseOk=mo.speseOk||{}; const k=Object.keys(mo.speseOk).find(x=>sameName(x,n))||n; const on=!mo.speseOk[k];
+  if(on) mo.speseOk[k]=true; else delete mo.speseOk[k];
+  salvaMese(pKey(PY,PMN), on?'Spese: nota spese confermata':'Spese: conferma tolta', `${n} · ${eur(speseAuto(mo,n))}`); render(); }
+/* ---------- 💶 Stipendi ---------- */
+const stipOf = (mo,n) => { mo.stip=mo.stip||{}; const k=Object.keys(mo.stip).find(x=>sameName(x,n))||n; return mo.stip[k]||(mo.stip[k]={acc:[]}); };
+const stipNetto = st => typeof st.netto==='number' ? st.netto : typeof st.bNetto==='number' ? st.bNetto : null;
+/* the "netto in busta" of a payslip: the last amount on the lines after "NETTO IN BUSTA" */
+function bustaNetto(T){ const H=/NETTO\s+IN\s+BUSTA\s*$/i; let tot=null;
+  T.forEach((t,i)=>{ if(!H.test(t)) return; for(let k=i+1;k<=i+4&&k<T.length&&!H.test(T[k]);k++){ const m=T[k].match(/\d{1,3}(?:\.\d{3})*,\d{2}/g); if(m){ tot=r2((tot||0)+pnum(m[m.length-1])); return; } } });
+  if(tot===null){ const j=T.findIndex(t=>/NETTO\s+(IN\s+BUSTA|DEL\s+MESE|A\s+PAGARE)/i.test(t)); if(j>=0){ for(let k=j;k<=j+3&&k<T.length;k++){ const m=T[k].match(/\d{1,3}(?:\.\d{3})*,\d{2}/g); if(m){ tot=pnum(m[m.length-1]); break; } } } }
+  return tot; }
+/* the name on a payslip page: under "COGNOME E NOME", else the employee of the register whose name is on the page */
+function bustaName(T, rows){ const i=T.findIndex(t=>/COGNOME\s+E\s+NOME/i.test(t));
+  if(i>=0){ const m=(T[i+1]||'').match(/^\s*\d*\s*([A-ZÀ-Ù' ]+?)\s+[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]/); if(m) return m[1].trim(); }
+  const txt=' '+T.join(' ').toUpperCase().replace(/[^A-ZÀ-Ù]+/g,' ')+' '; const r=(rows||[]).find(r=>nmTok(r.n).every(t=>txt.includes(' '+t.toUpperCase()+' '))); return r?r.n:null; }
+const nice = n => String(n).toLowerCase().replace(/(^|[\s'])([a-zà-ù])/g,(x,a,c)=>a+c.toUpperCase());
+const bustaNome = n => `Busta paga ${MESI_N[PMN-1]} ${PY} - ${nice(n)}.pdf`;
+/* ---- the Dropbox folder on this computer (Jessica › Nextravel): chosen once, remembered ---- */
+const FSDB = { open:()=>new Promise((ok,ko)=>{ const r=indexedDB.open('nextravel-cartelle',1); r.onupgradeneeded=()=>r.result.createObjectStore('h'); r.onsuccess=()=>ok(r.result); r.onerror=()=>ko(r.error); }),
+  get:async k=>{ try{ const db=await FSDB.open(); return await new Promise(ok=>{ const q=db.transaction('h').objectStore('h').get(k); q.onsuccess=()=>ok(q.result||null); q.onerror=()=>ok(null); }); }catch(e){ return null; } },
+  set:async (k,v)=>{ try{ const db=await FSDB.open(); await new Promise(ok=>{ const q=db.transaction('h','readwrite').objectStore('h').put(v,k); q.onsuccess=ok; q.onerror=ok; }); }catch(e){} } };
+const FSB_OK = !!window.showDirectoryPicker;
+let BROOT=null, BROOT_STATE='?';   /* '?' not checked · 'none' never chosen · 'ask' needs a click to allow · 'ok' */
+async function busteRoot(ask){
+  if(!FSB_OK) return null;
+  if(!BROOT) BROOT=await FSDB.get('buste');
+  if(!BROOT){ BROOT_STATE='none'; if(!ask) return null;
+    try{ BROOT=await window.showDirectoryPicker({id:'nxbuste', mode:'readwrite'}); }catch(e){ return null; }
+    if(!/nextravel|buste/i.test(BROOT.name) && !confirm(`Hai scelto la cartella «${BROOT.name}».\nDi solito si sceglie Dropbox › Jessica › Nextravel.\nVa bene questa?`)){ BROOT=null; return null; }
+    await FSDB.set('buste', BROOT); }
+  let p=await BROOT.queryPermission({mode:'readwrite'});
+  if(p!=='granted' && ask){ try{ p=await BROOT.requestPermission({mode:'readwrite'}); }catch(e){} }
+  BROOT_STATE = p==='granted' ? 'ok' : 'ask'; return p==='granted' ? BROOT : null;
+}
+const busteSub = () => /^buste/i.test((BROOT&&BROOT.name)||'') ? [String(PY), `${String(PMN).padStart(2,'0')} ${MESI_N[PMN-1]}`] : ['Buste paga', String(PY), `${String(PMN).padStart(2,'0')} ${MESI_N[PMN-1]}`];
+const bustePath = () => [(BROOT&&BROOT.name)||'Nextravel', ...busteSub()].join(' › ');
+async function busteDir(create){ const root=await busteRoot(create); if(!root) return null; let d=root; try{ for(const p of busteSub()) d=await d.getDirectoryHandle(p,{create:!!create}); return d; }catch(e){ return null; } }
+const STIP = {files:{}, at:{}};
+async function pdfRighe(bytes, page){ const lib=await pdfjsReady(); const doc=await lib.getDocument({data:bytes.slice ? bytes.slice(0) : bytes}).promise; const out=[];
+  for(let p=1;p<=doc.numPages;p++){ if(page && p!==page) continue; const tc=await (await doc.getPage(p)).getTextContent(); const its=tc.items.filter(i=>i.str.length).map(i=>({s:i.str,x:i.transform[4],y:i.transform[5]}));
+    const byY=[]; its.sort((a,b)=>b.y-a.y||a.x-b.x).forEach(i=>{ const l=byY.find(l=>Math.abs(l.y-i.y)<3); if(l) l.items.push(i); else byY.push({y:i.y,items:[i]}); });
+    out.push(byY.map(l=>l.items.sort((a,b)=>a.x-b.x).map(i=>i.s).join(' ').replace(/\s+/g,' '))); }
+  return {pages:out, doc}; }
+const pdfjsReady = () => window.pdfjsLib ? Promise.resolve(window.pdfjsLib) : new Promise((ok,ko)=>{ const s=document.createElement('script'); s.src='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js'; s.onload=()=>{ pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'; ok(pdfjsLib); }; s.onerror=()=>ko(new Error('Serve la connessione a internet')); document.head.appendChild(s); });
+const pdflibReady = () => window.PDFLib ? Promise.resolve(window.PDFLib) : new Promise((ok,ko)=>{ const s=document.createElement('script'); s.src='https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js'; s.onload=()=>ok(window.PDFLib); s.onerror=()=>ko(new Error('Serve la connessione a internet')); document.head.appendChild(s); });
+/* the payslips of the month in the folder: list them, read the netto of the new / changed ones */
+async function stipLoad(force){
+  const k=pKey(PY,PMN); if(!force && STIP.at[k] && Date.now()-STIP.at[k]<60000) return; STIP.at[k]=Date.now();
+  const dir=await busteDir(false); if(!dir){ STIP.files[k]=null; if(PTAB==='stip' && /^#presenze/.test(location.hash)) render(); return; }
+  const files=[]; try{ for await (const [name,h] of dir.entries()) if(h.kind==='file' && /\.pdf$/i.test(name)) files.push({name,h}); }catch(e){}
+  STIP.files[k]=files; const mo=DB.presenze[k], v=mo&&(mo.orig||mo.cons); let changed=false;
+  if(v) for(const f of files){ const who=f.name.replace(/\.pdf$/i,'').split(' - ').slice(1).join(' - ').trim(); const row=v.rows.find(x=>sameName(x.n,who)); if(!row) continue;
+    const st=stipOf(mo,row.n); let file; try{ file=await f.h.getFile(); }catch(e){ continue; }
+    if(!force && st.bFile===f.name && st.bAt===file.lastModified && typeof st.bNetto==='number') continue;
+    try{ const {pages}=await pdfRighe(new Uint8Array(await file.arrayBuffer())); const n=bustaNetto(pages.flat()); if(n!==null){ st.bNetto=n; st.bFile=f.name; st.bAt=file.lastModified; changed=true; } }catch(e){} }
+  if(changed) salvaMese(k,'Stipendi: netto letto dalle buste paga', `${MESI_N[PMN-1]} ${PY}`);
+  if(PTAB==='stip' && /^#presenze/.test(location.hash)) render();
+}
+function stipNoteAcconti(mo){ const v=mo.orig||mo.cons; if(!v) return []; const out=[];
+  String((mo.orig||{}).notes||'').split(/\n/).forEach(l=>{ const m=l.match(/^(.+?)\s*[-–:]\s*ACCONTO[^€\d]*€?\s*([\d.]+(?:,\d{1,2})?)\s*(?:€\s*)?(?:IL|DEL)?\s*(\d{1,2}\/\d{1,2}\/\d{2,4})?/i); if(!m) return;
+    const row=v.rows.find(x=>sameName(x.n,m[1].trim())); if(!row) return; const imp=pnum(m[2]); if(!imp) return;
+    const dm=m[3]&&m[3].match(/(\d+)\/(\d+)\/(\d+)/); const d=dm?`${+dm[3]<100?2000+ +dm[3]:dm[3]}-${String(dm[2]).padStart(2,'0')}-${String(dm[1]).padStart(2,'0')}`:'';
+    if((stipOf(mo,row.n).acc||[]).some(a=>Math.abs(a.imp-imp)<0.005 && (!d||a.d===d))) return; out.push({n:row.n, imp, d, line:l.trim()}); });
+  return out; }
+function viewStip(){
+  const k=pKey(PY,PMN), mo=DB.presenze[k], v=mo&&(mo.orig||mo.cons);
+  if(!v) return `<div class="empty" style="margin-top:14px">Prima crea il registro presenze di ${MESI_N[PMN-1].toLowerCase()}.</div>`;
+  const files=STIP.files[k];
+  const rows=v.rows.map(r=>{ const st=stipOf(mo,r.n), net=stipNetto(st), acc=r2((st.acc||[]).reduce((t,a)=>t+(+a.imp||0),0)); return {r,st,net,acc,due:net===null?null:r2(net-acc)}; });
+  const tot=f=>r2(rows.reduce((t,x)=>t+(x[f]||0),0)), noteAcc=stipNoteAcconti(mo).length;
+  const cart = !FSB_OK ? `📄 Buste paga di <b>${MESI_N[PMN-1].toLowerCase()} ${PY}</b> · <span class="mini">su questo dispositivo le buste divise si scaricano</span>`
+    : BROOT_STATE==='none' ? `📂 <b>Cartella delle buste paga non ancora scelta</b> <button class="btn small" onclick="stipCollega()">📂 Scegli la cartella Dropbox › Jessica › Nextravel</button>`
+    : BROOT_STATE==='ask' ? `📂 Cartella <b>${esc(bustePath())}</b> <button class="btn small" onclick="stipCollega()">🔓 Consenti l'accesso</button>`
+    : `📄 Buste paga di <b>${MESI_N[PMN-1].toLowerCase()} ${PY}</b>: ${files==null?'cerco…':files.length?`<b>${files.length}</b> in ${esc(bustePath())}`:`<b>nessuna</b> ancora in ${esc(bustePath())}`}`;
+  return `<div class="stipbar"><span>${cart}</span><span class="spacer"></span>
+      ${noteAcc?`<button class="btn small" onclick="stipDaNote()" title="Gli acconti scritti nelle note del mese">📝 Acconti dalle note (${noteAcc})</button>`:''}
+      ${FSB_OK && BROOT_STATE==='ok'?`<button class="btn small" onclick="stipLoad(true)" title="Rilegge le buste paga del mese">↻ Rileggi le buste</button>`:''}
+      <button class="btn small dark" onclick="stipDividi()" title="Il PDF unico del consulente: lo divido in una busta per persona e la salvo nella cartella del mese">✂ Dividi il PDF del consulente</button><input type="file" id="stFile" accept="application/pdf" style="display:none"></div>
+    <div class="tablewrap" style="margin-top:10px"><table class="t stipt"><thead><tr><th>Dipendente</th><th>Acconti</th><th class="num">Netto busta</th><th class="num">Da bonificare</th><th style="text-align:center">Bonificato</th></tr></thead><tbody>
+    ${rows.map(({r,st,net,acc,due},i)=>`<tr class="${st.paid?'stpaid':''}"><td><b>${esc(r.n)}</b></td>
+      <td>${(st.acc||[]).map((a,j)=>`<span class="stacc">${a.d?fdate(a.d).slice(0,5)+' · ':''}<b>${eur(a.imp)}</b> <i onclick="stipTogliAcc(${i},${j})" title="Togli">✕</i></span>`).join('')}<button class="btn small" onclick="stipAcconto(${i})">＋ Acconto</button></td>
+      <td class="num"><input value="${net!==null?String(net).replace('.',','):''}" placeholder="—" inputmode="decimal" style="width:120px;text-align:right;font-weight:700" onchange="stipNetSet(${i},this.value)">
+        <div class="s">${typeof st.netto==='number'?'scritto a mano'+(typeof st.bNetto==='number'&&Math.abs(st.bNetto-st.netto)>0.005?` · busta ${eur(st.bNetto)}`:''):typeof st.bNetto==='number'?'dalla busta':'busta non trovata'}${st.bFile&&FSB_OK&&BROOT_STATE==='ok'?` · <a href="#" onclick="stipApri(${esc(JSON.stringify(st.bFile))});return false">📄 apri</a>`:''}</div></td>
+      <td class="num"><b class="stdue">${due===null?'—':eur(due)}</b>${acc?`<div class="s">netto − acconti ${eur(acc)}</div>`:''}</td>
+      <td style="text-align:center"><input type="checkbox" ${st.paid?'checked':''} onchange="stipPagato(${i},this.checked)" title="Bonifico fatto" style="width:22px;height:22px"></td></tr>`).join('')}
+    <tr class="sttot"><td><b>Totale</b></td><td><b>${eur(tot('acc'))}</b></td><td class="num"><b>${eur(tot('net'))}</b></td><td class="num"><b class="stdue">${eur(tot('due'))}</b><div class="s">ancora da bonificare: ${eur(r2(rows.filter(x=>!x.st.paid).reduce((t,x)=>t+(x.due||0),0)))}</div></td><td></td></tr></tbody></table></div>
+    <p class="sub" style="margin:10px 0 0">Netto busta: lo leggo da solo dalle buste paga del mese (cartella ${esc(FSB_OK?bustePath():'Buste paga › anno › mese')}). Se lo scrivi a mano vale il tuo; cancellalo per tornare a quello della busta.</p>`;
+}
+async function stipCollega(){ const r=await busteRoot(true); if(r){ toast('📂 Cartella collegata: '+r.name); STIP.at={}; stipLoad(true); } else render(); }
+async function stipApri(name){ const d=await busteDir(false); if(!d) return toast('Cartella non disponibile'); try{ const f=await (await d.getFileHandle(name)).getFile(); window.open(URL.createObjectURL(f),'_blank'); }catch(e){ toast('Non trovo '+name); } }
+function stipAcconto(i){ const mo=pMese(), v=mo.orig||mo.cons, r=v.rows[i];
+  openForm({ title:`＋ Acconto · ${r.n}`, values:{d:todayIso(), imp:null}, fields:[{key:'d',label:'Data',type:'date'},{key:'imp',label:'Importo',type:'money',required:true}],
+    onSave:x=>{ const st=stipOf(mo,r.n); (st.acc=st.acc||[]).push({d:x.d||'', imp:x.imp}); salvaMese(pKey(PY,PMN),'Stipendi: acconto aggiunto', `${r.n} · ${eur(x.imp)}${x.d?' del '+fdate(x.d):''}`); render(); } }); }
+function stipTogliAcc(i,j){ const mo=pMese(), v=mo.orig||mo.cons, r=v.rows[i], st=stipOf(mo,r.n), a=st.acc[j];
+  askConfirm(`Togliere l'acconto?\n${r.n}: ${eur(a.imp)}${a.d?' del '+fdate(a.d):''}`,'Sì, togli',()=>{ st.acc.splice(j,1); salvaMese(pKey(PY,PMN),'Stipendi: acconto tolto', `${r.n} · ${eur(a.imp)}`); render(); }); }
+function stipNetSet(i,val){ const mo=pMese(), v=mo.orig||mo.cons, r=v.rows[i], st=stipOf(mo,r.n); val=String(val||'').trim(); const prima=stipNetto(st);
+  if(val===''){ delete st.netto; } else { const n=pnum(val); if(n===null) return toast('Importo non valido'); if(typeof st.bNetto==='number' && Math.abs(n-st.bNetto)<0.005) delete st.netto; else st.netto=n; }
+  salvaMese(pKey(PY,PMN),'Stipendi: netto modificato', `${r.n} · ${prima!==null?eur(prima):'—'} → ${stipNetto(st)!==null?eur(stipNetto(st)):'—'}`); render(); }
+function stipPagato(i,on){ const mo=pMese(), v=mo.orig||mo.cons, r=v.rows[i], st=stipOf(mo,r.n); st.paid=on; if(on) st.paidAt=todayIso(); else delete st.paidAt;
+  const net=stipNetto(st), acc=r2((st.acc||[]).reduce((t,a)=>t+(+a.imp||0),0));
+  salvaMese(pKey(PY,PMN), on?'Stipendi: bonifico fatto':'Stipendi: bonifico tolto', `${r.n}${net!==null?' · '+eur(r2(net-acc)):''}`); render(); }
+function stipDaNote(){ const mo=pMese(), L=stipNoteAcconti(mo); if(!L.length) return;
+  askConfirm(`Aggiungo questi acconti scritti nelle note?\n\n${L.map(a=>`• ${a.n}: ${eur(a.imp)}${a.d?' del '+fdate(a.d):''}`).join('\n')}`,'Sì, aggiungi',()=>{
+    L.forEach(a=>{ const st=stipOf(mo,a.n); (st.acc=st.acc||[]).push({d:a.d, imp:a.imp}); }); salvaMese(pKey(PY,PMN),'Stipendi: acconti presi dalle note', L.map(a=>`${a.n} ${eur(a.imp)}`).join(', ')); render(); }); }
+/* ✂ the consulente's PDF: pages grouped by person, saved as "Busta paga <Mese> <anno> - Nome Cognome.pdf" in Buste paga › anno › mese */
+function stipDividi(){ const inp=$('#stFile'); inp.onchange=()=>{ const f=inp.files[0]; inp.value=''; if(f) stipSplit(f); }; inp.click(); }
+let SPLIT=null;
+async function stipSplit(file){
+  const mo=pMese(), v=mo&&(mo.orig||mo.cons); if(!v) return;
+  toast('Leggo il PDF…'); const bytes=new Uint8Array(await file.arrayBuffer()); let R; try{ R=await pdfRighe(bytes); }catch(e){ return toast('Non riesco a leggere il PDF: '+e.message); }
+  const groups=[]; R.pages.forEach((lines,p)=>{ const name=bustaName(lines, v.rows), last=groups[groups.length-1], n=bustaNetto(lines);
+    if(name && (!last || !sameName(last.name,name))) groups.push({name, pages:[p], netto:n}); else if(last){ last.pages.push(p); if(n!==null) last.netto=r2((last.netto||0)+n); } });
+  if(!groups.length) return askConfirm('Non trovo i nomi dei dipendenti nel PDF (cerco la riga "COGNOME E NOME" o i nomi del registro).','Ho capito',()=>{});
+  await busteRoot(false); const dir=FSB_OK?await busteDir(false):null; const have=[]; if(dir) try{ for await (const [n] of dir.entries()) have.push(n.toLowerCase()); }catch(e){}
+  SPLIT={bytes, groups, pick:groups.map(g=>!have.includes(bustaNome(g.name).toLowerCase()))};
+  $('#modalBox').innerHTML=`<div class="ov" onmousedown="if(event.target===this)closeConfirm()"><div class="modal" style="max-width:720px"><div class="mh"><h3>✂ Dividi il PDF del consulente</h3><button class="x" onclick="closeConfirm()">×</button></div>
+    <div class="mb"><p style="margin:0 0 10px">${R.pages.length} pagine, <b>${groups.length} buste</b>. ${FSB_OK?`Le salvo in <b>${esc(BROOT_STATE==='none'?'Dropbox › Jessica › Nextravel':bustePath().split(' › ')[0])} › ${esc(busteSub().join(' › '))}</b>${BROOT_STATE==='none'?' (la prima volta ti chiedo di scegliere la cartella)':''}:`:'Le scarico una per una:'}</p>
+    <table class="t"><tbody>${groups.map((g,i)=>{ const ex=have.includes(bustaNome(g.name).toLowerCase()); return `<tr><td style="width:30px"><input type="checkbox" ${SPLIT.pick[i]?'checked':''} onchange="SPLIT.pick[${i}]=this.checked" style="width:20px;height:20px"></td><td>${esc(bustaNome(g.name))}${ex?' <span class="s" style="color:var(--red)">(c\'è già)</span>':''}</td><td class="num">${g.pages.length} pag.</td><td class="num">${g.netto!==null?'netto '+eur(g.netto):''}</td></tr>`; }).join('')}</tbody></table></div>
+    <div class="mf"><button class="btn big primary" onclick="stipSalvaBuste()">💾 Salva le buste</button><button class="btn big ghost" onclick="closeConfirm()">Annulla</button></div></div></div>`;
+}
+async function stipSalvaBuste(){
+  const S=SPLIT; if(!S) return; const pick=S.groups.filter((g,i)=>S.pick[i]); if(!pick.length) return toast('Spunta almeno una busta');
+  const dir = FSB_OK ? await busteDir(true) : null; if(FSB_OK && !dir) return toast('Scegli la cartella per salvare le buste');
+  closeConfirm(); toast('Divido e salvo…');
+  const PL=await pdflibReady(), src=await PL.PDFDocument.load(S.bytes), mo=pMese(), v=mo.orig||mo.cons; let ok=0; const errs=[];
+  for(const g of pick){ try{ const out=await PL.PDFDocument.create(); (await out.copyPages(src,g.pages)).forEach(pg=>out.addPage(pg)); const bytes=await out.save(), name=bustaNome(g.name);
+      if(dir){ const w=await (await dir.getFileHandle(name,{create:true})).createWritable(); await w.write(new Blob([bytes],{type:'application/pdf'})); await w.close(); }
+      else { const u=URL.createObjectURL(new Blob([bytes],{type:'application/pdf'})), a=document.createElement('a'); a.href=u; a.download=name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(u),5000); await new Promise(r=>setTimeout(r,400)); }
+      const row=v.rows.find(x=>sameName(x.n,g.name)); if(row && g.netto!==null){ const st=stipOf(mo,row.n); st.bNetto=g.netto; st.bFile=name; st.bAt=null; }
+      ok++; }catch(e){ errs.push(nice(g.name)+': '+e.message); } }
+  SPLIT=null; salvaMese(pKey(PY,PMN),'Stipendi: buste paga divise e salvate', `${ok} buste${dir?' in '+bustePath():' scaricate'}`);
+  toast(`✓ Salvate ${ok} buste`); if(errs.length) askConfirm('Non salvate:\n'+errs.join('\n'),'Ho capito',()=>{});
+  STIP.at={}; if(dir) stipLoad(true); else render();
+}
 /* =========================================================
    AGENDA (Jessica e Lia · Next e Diodoro)
    ========================================================= */
